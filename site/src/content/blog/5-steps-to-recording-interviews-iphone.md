@@ -36,7 +36,7 @@ cardImage: "/blog/5-steps-to-recording-interviews-iphone/card.webp"
 <p>Do Not Disturb on. Lens clean. Lock exposure and focus once the frame is right.</p>
 <p>Say how they will film. A desktop filming link usually means webcam height and headphones. If the interview lives in the phone app, send them to the app. Do not assume a phone browser will do the same job.</p>
 <figure>
-<img src="/blog/5-steps-to-recording-interviews-iphone/img-d.webp" alt="Charging and propping a phone before a remote interview" />
+<img src="/blog/5-steps-to-recording-interviews-iphone/img-d.webp" alt="Checking battery and storage on a phone before a remote interview" />
 </figure>
 <h2>E - Ensemble (wardrobe)</h2>
 <p>Clothes are not an afterthought, even when the letter is a stretch.</p>
