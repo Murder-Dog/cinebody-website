@@ -59,29 +59,35 @@ html { scroll-padding-top: var(--nav-h); }
 /* ---- Post page ---- */
 .post { padding: 0; }
 
-/* Full-bleed photo behind the title. Type sits in the 1200 wrap. */
+/* Full-bleed photo only. Title / meta / dek live on the dark body below. */
 .post-hero {
   position: relative;
   overflow: hidden;
-  min-height: 560px;
-  padding: calc(var(--nav-h) + 48px) 0 88px;
+  width: 100%;
+  height: min(68vh, 700px);
+  min-height: 280px;
   background: #0a0a0a;
 }
 .post-hero::before,
 .post-hero::after { display: none; }
-.post-hero__grid {
-  max-width: 1200px;
+.post-hero__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.post-lede { background: #041a24; }
+.post-intro {
+  max-width: 720px;
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  padding: 48px clamp(1.25rem, 4vw, 3rem) 8px;
 }
-.post-hero__copy {
-  position: relative;
-  z-index: 2;
-  max-width: 36rem;
-  text-align: left;
-}
-.post-hero__copy h1 {
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+.post--no-hero .post-intro { padding-top: calc(var(--nav-h) + 48px); }
+.post-lede + .post-article { padding-top: 24px; }
+.post-intro h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   color: #fff;
@@ -91,37 +97,10 @@ html { scroll-padding-top: var(--nav-h); }
 }
 .post-dek {
   margin: 0;
-  max-width: 480px;
+  max-width: 540px;
   font-size: 1.15rem;
   line-height: 1.65;
   color: rgba(255,255,255,0.78);
-}
-.post-hero__visual {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.post-hero__visual::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.42) 38%, rgba(10,10,10,0.12) 68%, transparent 100%);
-}
-.post-hero__photo {
-  display: block;
-  position: absolute;
-  inset: 0;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transform: none;
-  object-fit: cover;
-  object-position: center 40%;
 }
 .post-meta {
   font-family: var(--mono);
@@ -133,6 +112,13 @@ html { scroll-padding-top: var(--nav-h); }
   line-height: 1.55;
 }
 .post-meta span { color: var(--teal); }
+
+/* Preview toolbars sit on the viewport edge and land on the photo/body
+   seam. Keep them on the dark body, off the hero. */
+:is(vercel-live-feedback, #vercel-toolbar, [data-vercel-toolbar], [data-cursor-toolbar]) {
+  top: auto !important;
+  bottom: 20px !important;
+}
 
 .post-article {
   position: relative;
@@ -268,15 +254,12 @@ html { scroll-padding-top: var(--nav-h); }
 }
 
 @media (max-width: 1000px) {
-  .post-hero { min-height: 480px; padding: calc(var(--nav-h) + 32px) 0 64px; }
-  .post-hero__visual::after {
-    background: linear-gradient(180deg, rgba(10,10,10,0.68) 0%, rgba(10,10,10,0.32) 48%, rgba(10,10,10,0.52) 100%),
-                linear-gradient(90deg, rgba(10,10,10,0.62) 0%, transparent 62%);
-  }
+  .post-hero { height: min(62vh, 560px); min-height: 240px; }
 }
 @media (max-width: 600px) {
-  .post-hero { min-height: 420px; }
-  .post-hero__copy h1 { font-size: 2.15rem; }
+  .post-hero { height: min(56vh, 460px); }
+  .post:not(.post--no-hero) .post-intro { padding-top: 36px; }
+  .post-intro h1 { font-size: 2.05rem; }
   .post-meta { letter-spacing: 0.06em; }
 }
 

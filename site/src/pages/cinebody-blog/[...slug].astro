@@ -43,20 +43,19 @@ const blogSchema = {
 ---
 
 <Base title={title} description={description} image={heroImage || '/og.png'} schema={blogSchema}>
-  <article class="post">
-    <div class="post-hero">
-      <div class="post-hero__grid">
-        <div class="post-hero__copy">
-          <p class="post-meta"><span>Blog</span> &nbsp;&middot;&nbsp; {fmt(pubDate)} &nbsp;&middot;&nbsp; {author}</p>
-          <h1>{title}</h1>
-          {description && <p class="post-dek">{description}</p>}
-        </div>
-        {heroImage && (
-          <div class="post-hero__visual">
-            <img class="post-hero__photo" src={heroImage} alt="" fetchpriority="high" />
-          </div>
-        )}
+  <article class:list={['post', !heroImage && 'post--no-hero']}>
+    {heroImage && (
+      <div class="post-hero">
+        <img class="post-hero__photo" src={heroImage} alt="" fetchpriority="high" />
       </div>
+    )}
+
+    <div class="post-lede">
+      <header class="post-intro">
+        <p class="post-meta"><span>Blog</span> &nbsp;&middot;&nbsp; {fmt(pubDate)} &nbsp;&middot;&nbsp; {author}</p>
+        <h1>{title}</h1>
+        {description && <p class="post-dek">{description}</p>}
+      </header>
     </div>
 
     {lightBand ? (
