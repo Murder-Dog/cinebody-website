@@ -24,10 +24,6 @@ cardImage: "/blog/5-steps-to-recording-interviews-iphone/card.webp"
 <p>Stop recording whenever you get a clean beat. The clip is saved the moment you stop.</p>
 <p>One long take is a big file and one point of failure. A call or a storage hiccup can wipe the whole run. Break between questions. Short clips upload and cut faster.</p>
 <p>That rhythm is also how a conversational interview wants to move. Ask. Record. Stop. The next question can use what they just said, or dig deeper when the answer was thin, before you move on. Prior answers stay safe. You are not betting the whole conversation on one continuous take.</p>
-<figure>
-<img src="/blog/5-steps-to-recording-interviews-iphone/img-b.webp" alt="Filming two coworkers in an office interview on a phone" />
-</figure>
-
 <h2>C - Connectivity</h2>
 <p>If clips upload as you go, the network is part of the shoot.</p>
 <p>Check Wi-Fi before talent sits down. Weak room? Move, or use a hotspot you trust. Five short files usually beat one giant one stuck in a queue while the next question waits.</p>
@@ -36,17 +32,9 @@ cardImage: "/blog/5-steps-to-recording-interviews-iphone/card.webp"
 <p>Full battery, or keep it plugged in. Enough free storage for the interview plus a little b-roll. A few minutes of 4K eats gigabytes, so do the math before they sit.</p>
 <p>Do Not Disturb on. Lens clean. Lock exposure and focus once the frame is right.</p>
 <p>Say how they will film. A desktop filming link usually means webcam height and headphones. If the interview lives in the phone app, send them to the app. Do not assume a phone browser will do the same job.</p>
-<figure>
-<img src="/blog/5-steps-to-recording-interviews-iphone/img-d.webp" alt="Holding a phone to film a hotel staff interview at the front desk" />
-</figure>
-
 <h2>E - Ensemble (wardrobe)</h2>
 <p>Clothes are not an afterthought, even when the letter is a stretch.</p>
 <p>Do not match the wall. Skip busy stripes (moiré on camera). Fit over fashion: nothing that swallows gesture or distracts. Ask what colors they like wearing on camera. Fix wardrobe before question one. Follow-ups keep them in every frame.</p>
-<figure>
-<img src="/blog/5-steps-to-recording-interviews-iphone/img-e.webp" alt="Filming a chef in a kitchen on a phone for on-location interview content" />
-</figure>
-
 <h2>Keep ABCDE in your pocket</h2>
 <p><strong>A</strong>udio & lighting. <strong>B</strong>reaking file. <strong>C</strong>onnectivity. <strong>D</strong>evice basics. <strong>E</strong>nsemble.</p>
 <p>Run the letters once before you roll. On Cinebody, a conversational interviewer can hold the questions, coach the frame, and pick the session back up when someone steps away. The checklist still decides whether those answers are editable: clear sound, clean light, short saved clips, a phone that can finish, clothes that do not fight the shot.</p>
