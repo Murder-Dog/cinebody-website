@@ -10,7 +10,7 @@ cardImage: "/blog/the-ultimate-guide-to-capturing-b-roll/card.webp"
 <p>B-roll is the supporting footage. Wide shots that place you. Close-ups that land a detail. Action that keeps the cut moving while someone talks. Without it, interviews sit on one face and events feel like a single angle.</p>
 <p>You do not need a crew on site to get cutaways an editor will keep. You need a short list of asks, a few filmable checks, and enough takes that the edit has options.</p>
 <figure>
-<img src="/blog/the-ultimate-guide-to-capturing-b-roll/img-hud.webp" alt="Native app camera with AI Director coaching and CueDots for light, focus, steady, and audio" />
+<img src="/blog/the-ultimate-guide-to-capturing-b-roll/img-hud2.webp" alt="Native app camera with AI Director coaching and CueDots for light, focus, steady, and audio" />
 </figure>
 <h2>Know what the edit needs</h2>
 <p>Before you roll, write down what the story is missing. Not “capture the vibe.” Concrete asks.</p>
@@ -18,7 +18,7 @@ cardImage: "/blog/the-ultimate-guide-to-capturing-b-roll/card.webp"
 <p>Brief remote filmers in home language. “Establishing shot” lands better as “stand across the street and hold for five seconds, then walk toward the door.” Most important clips first. Keep the list short enough that a festival or office day does not feel like homework.</p>
 <p>A Guided shot list can open a brief card before the camera. Open shots keep the brief collapsible so you can peek and roll. Orientation lock and quality settings are context for the take, not a second coaching screen.</p>
 <figure>
-<img src="/blog/the-ultimate-guide-to-capturing-b-roll/img-brief.webp" alt="Filmer brief for a project: shot count, time, and Start filming" />
+<img src="/blog/the-ultimate-guide-to-capturing-b-roll/img-brief2.webp" alt="Filmer brief for a project: shot count, time, and Start filming" />
 </figure>
 <h2>Light, frame, steady</h2>
 <p>These three decide whether a clip survives the first scrub.</p>
