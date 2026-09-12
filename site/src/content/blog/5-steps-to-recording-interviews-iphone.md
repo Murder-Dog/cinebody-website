@@ -1,267 +1,49 @@
 ---
-title: "5 Steps to Recording a Great Interview with iPhone"
-description: "We created a five-step process that ensures iPhone interview gold time, after time, after time. It’s what we like to call the A,B,C,D,E technique. Easy to learn, hard to forget."
+title: "Record a Great iPhone Interview with the ABCDE Checklist"
+description: "A pocket checklist for iPhone interviews: audio and light, break file, connectivity, device basics, and wardrobe. Same craft with a paper list or a conversational interviewer."
 pubDate: 2019-05-28
 author: "Scott McDonald"
 heroImage: "/blog/5-steps-to-recording-interviews-iphone/hero.webp"
 cardImage: "/blog/5-steps-to-recording-interviews-iphone/card.webp"
 ---
-<p><strong><em>RECORDING AN IPHONE INTERVIEW IS AS EASY AS A,B,C…</em></strong></p>
-<p><br>When it comes to recording interviews, there’s no hard and fast rule on how to do it right. Some like high-end productions, film crews, and a well-dressed set. Others just grab their subject, point and shoot (we’re lookin’ at you, <a href="https://www.youtube.com/watch?v=aHkYC4tqeQk">Billy Eichner</a>). But in this <a href="https://www.cinebody.com/cinebody-blog/the-ultimate-guide-to-video-production">new remote video production revolution</a> being led by smartphones, mobile apps, and 5G speeds, there are definitely some tried-and-trusted steps to success that you can take to get a great result every time.&nbsp;</p>
-<p><br>By far the leader of the interview equipment pack is Apple, with the iPhone now being the go-to device for everything from short and sweet content to full length movie productions being shot on just one device. And of course, the limits that applied to more traditional forms of production have been removed. No more travel, crews, and couriers delivering hard drives filled with content. Now you can get your <a href="https://www.cinebody.com/cinebody-blog/3-key-tips-for-remote-video-production">remote footage</a> from one side of the world to the other in minutes instead of days (or sometimes weeks).&nbsp;</p>
-<p><br>However, going into your next iPhone interview fully prepared is crucial. There are definitely a few hiccups that could happen if you aren’t buttoned up ahead of time, and these days even the smallest disruptions can put a big dent in your content plan.&nbsp;</p>
-<p><br>So we created a five-step process that ensures iPhone interview gold time, after time, after time. It’s what we like to call the <strong>A,B,C,D,E technique. </strong>Easy to learn, hard to forget.&nbsp;</p>
 
-
- 
-
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
- 
- <h3><br><strong>A - AUDIO &amp; LIGHTING</strong></h3>
-<p>If you can’t hear and see the subject clearly, everything that follows is moot. And while you don’t need to go all-out with the huge lighting rigs and booms, you do need to perform a few simple but effective checks to guarantee success. First, find a quiet place to record. Background noises can kill your content. And if possible use an auxiliary mic plugged into the iPhone for superior audio. </p>
-<p>Next, record the room tone for 10-15 seconds without anyone talking. This will be invaluable during the edit, using room tone to avoid sharp cuts in your audio. And finally, lighting. Look for shadows on the interviewee’s face and <a href="https://www.cinebody.com/cinebody-blog/remote-interview-lighting">adjust the lighting accordingly</a>. They need to be well lit, not ominous looking. </p>
-
-
- 
-
- 
-
- 
-
- 
- 
- 
-
- 
-
- 
- <figure>
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <img src="/blog/5-steps-to-recording-interviews-iphone/img-1.webp" alt="">
-
- 
- 
- 
- 
- 
-
- 
- 
- <figcaption>
- <p>Lighting takes a shot from good to great. </p>
-
- </figcaption>
-
- 
- 
- </figure>
-
- 
-
- 
- 
-
- 
-
- 
- <h3><strong>B - BREAKING FILE</strong></h3>
-<p>Speak to any experienced camera operator and they’ll tell you that whenever they record an interview, they’ll break file (stop recording) at every chance they get. Why? Well, first up as soon as you stop recording the footage saves. It’s safe and “in the can.” Think of it like regularly saving any kind of doc, from Final Cut Pro to Photoshop.&nbsp;</p>
-<p><br>If you try and get a 20-30 minute interview in only one take you’re just asking for trouble. For a start, that’s going to create an incredibly large file to upload. You also run the risk of having that one take being interrupted by a call, email or text message, creating issues with storage, a corrupted file or any number of other issues. So just remember, break file and break often. You’ll have smaller, bite-sized pieces of footage to easily and quickly upload and edit.</p>
-
-
- 
-
- 
-
- 
-
- 
- 
- 
-
- 
-
- 
- <figure>
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <img src="/blog/5-steps-to-recording-interviews-iphone/img-2.webp" alt="">
-
- 
- 
- 
- 
- 
-
- 
- 
- <figcaption>
- <p>Social Content is short, small clips. Not hour long interviews.</p>
-
- </figcaption>
-
- 
- 
- </figure>
-
- 
-
- 
- 
-
- 
-
- 
- <h3><br><strong>C - CONNECTIVITY</strong></h3>
-<p>If you’re using an app like Cinebody, that auto uploads your footage for instant access, you want to ensure a solid and stable internet connection. That way, every time you stop recording (see above) the files will upload faster. Bear in mind, five 1GB files take less time to upload than one 5GB file, not to mention these files are quickly uploaded as you film. So once again, small files coupled with fast, stable internet will always be your best strategy.&nbsp;</p>
-
-
- 
-
- 
-
- 
-
- 
- 
- 
-
- 
-
- 
- <figure>
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <img src="/blog/5-steps-to-recording-interviews-iphone/img-3.webp" alt="">
-
- 
- 
- 
- 
- 
-
- 
- 
- </figure>
-
- 
-
- 
- 
-
- 
-
- 
- <h3><strong>D - DEVICE BASICS</strong></h3>
-<p>We could have called this the “duh” section, but we’re all guilty of forgetting even the most simple things before a shoot. What this means is check the iPhone. Have a full battery AND have ample storage before filming. A 5-minute clip at 4K can take up approximately 3.5-4GB depending on your FPS, so make sure you have ample footage for saving clips and capturing b-roll. If that means transferring a bunch of files to the cloud before the shoot to create space, give yourself ample time to get that done.&nbsp;</p>
-
-
- 
-
- 
-
- 
-
- 
- 
- 
-
- 
-
- 
- <figure>
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <img src="/blog/5-steps-to-recording-interviews-iphone/img-4.webp" alt="">
-
- 
- 
- 
- 
- 
-
- 
- 
- </figure>
-
- 
-
- 
- 
-
- 
-
- 
- <h3><strong>E - ENSEMBLE (WARDROBE)&nbsp;</strong></h3>
-<p>OK, you got us, it’s a bit of a stretch. Yes, ensemble is a fancy term for wardrobe (but whoever heard of A, B C, D, W?) Anyway, whatever you like to call it, don’t let it be an afterthought. If you’re shooting against a white cyc, don’t dress the subject in white. Use colors that stand out and complement the subject (some people look better in certain colors so ask them about it), and make sure the clothing fits well. Nothing too baggy, or too tight. And PRO TIP - avoid striped clothing. That can often result in “the moiré effect” - in layman's terms, weird squiggly lines that either give you a headache or make you turn away to avoid it.&nbsp;</p>
-<p><br>And there you have it. <strong>A</strong>udio &amp; lighting, <strong>B</strong>reaking File, <strong>C</strong>onnectivity, <strong>D</strong>evice basics, and <strong>E</strong>nsemble. <strong>A,B,C,D,E.</strong> Keep it in mind for every iPhone interview and you’ll get a stellar result every time.&nbsp;</p>
+<p>The interview is the easy part to care about. The phone is what bites you: a noisy room, one giant take that never uploads, a dead battery right when they finally open up.</p>
+<p>Before you roll, run five letters. <strong>A, B, C, D, E.</strong> Same craft whether the questions are on paper, on a teleprompter, or coming from a conversational interviewer that listens and asks a follow-up.</p>
+<h2>A - Audio &amp; lighting</h2>
+<p>If you cannot hear and see them, you do not have an interview.</p>
+<p>Find a quiet room. HVAC and street noise bury soft answers. Use an aux mic when you can. Record 10-15 seconds of room tone with nobody talking so the edit has a bed between bites.</p>
+<p>Then fix the face. Soft, even light. No hard shadows, no bright window behind them. They should look clear, not dramatic.</p>
+<p>If the viewfinder shows live light, focus, steady, and audio checks, use them as a second pair of eyes. Same with a short coach (look into the lens like you are talking to a friend). Adjust once, then talk.</p>
+<figure>
+<img src="/blog/5-steps-to-recording-interviews-iphone/img-1.webp" alt="Even light on an interviewee's face during a phone interview" />
+</figure>
+<h2>B - Breaking file</h2>
+<p>Stop recording whenever you get a clean beat. The clip is saved the moment you stop.</p>
+<p>One long take is a big file and one point of failure. A call or a storage hiccup can wipe the whole run. Break between questions. Short clips upload and cut faster.</p>
+<p>That rhythm is also how a conversational interview wants to move. Ask. Record. Stop. The next question can use what they just said, or dig deeper when the answer was thin, before you move on. Prior answers stay safe. You are not betting the whole conversation on one continuous take.</p>
+<figure>
+<img src="/blog/5-steps-to-recording-interviews-iphone/img-b.webp" alt="Filming a cafe conversation interview on a phone" />
+</figure>
+<h2>C - Connectivity</h2>
+<p>If clips upload as you go, the network is part of the shoot.</p>
+<p>Check Wi-Fi before talent sits down. Weak room? Move, or use a hotspot you trust. Five short files usually beat one giant one stuck in a queue while the next question waits.</p>
+<p>People leave mid-conversation. Phones lock. Links drop. Prefer a workflow that keeps finished answers and lets you reopen the same interview shot while the session is still warm, instead of starting from zero. Clips that already uploaded stay uploaded. Protect what you got, then finish the rest.</p>
+<figure>
+<img src="/blog/5-steps-to-recording-interviews-iphone/img-c.webp" alt="Uploading interview clips from a phone over Wi-Fi" />
+</figure>
+<h2>D - Device basics</h2>
+<p>Full battery, or keep it plugged in. Enough free storage for the interview plus a little b-roll. A few minutes of 4K eats gigabytes, so do the math before they sit.</p>
+<p>Do Not Disturb on. Lens clean. Lock exposure and focus once the frame is right.</p>
+<p>Say how they will film. A desktop filming link usually means webcam height and headphones. If the interview lives in the phone app, send them to the app. Do not assume a phone browser will do the same job.</p>
+<figure>
+<img src="/blog/5-steps-to-recording-interviews-iphone/img-d.webp" alt="Checking battery and storage on a phone before a remote interview" />
+</figure>
+<h2>E - Ensemble (wardrobe)</h2>
+<p>Clothes are not an afterthought, even when the letter is a stretch.</p>
+<p>Do not match the wall. Skip busy stripes (moiré on camera). Fit over fashion: nothing that swallows gesture or distracts. Ask what colors they like wearing on camera. Fix wardrobe before question one. Follow-ups keep them in every frame.</p>
+<figure>
+<img src="/blog/5-steps-to-recording-interviews-iphone/img-e.webp" alt="Choosing a jacket before an on-camera interview" />
+</figure>
+<h2>Keep ABCDE in your pocket</h2>
+<p><strong>A</strong>udio & lighting. <strong>B</strong>reaking file. <strong>C</strong>onnectivity. <strong>D</strong>evice basics. <strong>E</strong>nsemble.</p>
+<p>Run the letters once before you roll. On Cinebody, a conversational interviewer can hold the questions, coach the frame, and pick the session back up when someone steps away. The checklist still decides whether those answers are editable: clear sound, clean light, short saved clips, a phone that can finish, clothes that do not fight the shot.</p>
