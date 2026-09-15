@@ -109,5 +109,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/u/:token",
+      "destination": "https://api.cinebrain.ai/unsubscribe/:token",
+      "permanent": false
+    }
   ]
 }
