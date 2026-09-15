@@ -1,0 +1,13 @@
+---
+// Preview a queued post before its go-live date. Not indexed, not in the sitemap.
+import BlogPostView from '../../../components/BlogPost.astro';
+import { getUpcomingPosts } from '../../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getUpcomingPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+---
+<BlogPostView post={post} noindex />

@@ -1,0 +1,37 @@
+---
+// Hidden schedule of queued posts for review. Not linked, not indexed, not in the sitemap.
+import Base from '../../layouts/Base.astro';
+import '../../styles/blog.css';
+import { getUpcomingPosts } from '../../lib/blog';
+
+const posts = await getUpcomingPosts();
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title="Upcoming posts" description="Queued blog posts and their go-live dates." noindex>
+  <div class="blog-room">
+    <section class="blog-hero">
+      <div class="blog-wrap">
+        <p class="blog-eyebrow">Queue · not public</p>
+        <h1>Upcoming posts</h1>
+        <p>{posts.length} queued. Each goes live on its date and replaces the old post at the same address.</p>
+      </div>
+    </section>
+    <div class="blog-wrap">
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <a class="blog-card" href={`/cinebody-blog/preview/${post.id}`}>
+            {(post.data.cardImage || post.data.heroImage) && (
+              <img class="blog-card__img" src={post.data.cardImage || post.data.heroImage} alt={post.data.title} loading="lazy" decoding="async" />
+            )}
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Goes live {fmt(post.data.pubDate)} &middot; {post.data.author}</div>
+              <h2 class="blog-card__title">{post.data.title}</h2>
+              <p class="blog-card__excerpt">{post.data.description}</p>
+              <span class="blog-card__more">Preview &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>
