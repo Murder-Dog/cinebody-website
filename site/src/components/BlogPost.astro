@@ -1,13 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import '../styles/blog.css';
-import type { BlogPost } from '../lib/blog';
+import { getLivePosts, type BlogPost } from '../lib/blog';
 
 interface Props { post: BlogPost; noindex?: boolean }
 const { post, noindex = false } = Astro.props;
 const { title, description, pubDate, updatedDate, author, heroImage, cardImage } = post.data;
 const shareImage = heroImage || cardImage;
-const html = post.body;
+// A link to a post that is not live yet (queued for a later date) shows as plain
+// text until that post goes live; the daily rebuild turns it into a link then.
+const liveIds = new Set((await getLivePosts()).map((p) => p.id));
+const html = post.body.replace(
+  /<a\s+href="\/cinebody-blog\/([a-z0-9-]+)"[^>]*>([\s\S]*?)<\/a>/g,
+  (link, id, text) => (liveIds.has(id) ? link : text),
+);
 const lightStart = html.indexOf('<h2>A short example');
 const lightEnd = html.indexOf('<h2>The brief is the start');
 const wideFigure = html.match(/<figure class="post-figure--wide">[\s\S]*?<\/figure>/)?.[0] ?? '';
@@ -79,7 +85,7 @@ const blogSchema = {
       </>
     ) : (
       <div class="post-article">
-        <div class="post-content" set:html={post.body} />
+        <div class="post-content" set:html={html} />
         <div class="post-foot">
           <a class="post-foot__back" href="/cinebody-blog">&larr; All posts</a>
         </div>
