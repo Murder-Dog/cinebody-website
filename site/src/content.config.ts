@@ -16,4 +16,20 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// Rewrites and new posts waiting for their go-live day. A queued post with
+// the same id as a live post replaces it on its publishOn date, and takes that
+// date as its pubDate. Until then the live post stays as it is.
+const blogQueue = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog-queue' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().default(''),
+    publishOn: z.coerce.date(),
+    author: z.string().default('Cinebody'),
+    heroImage: z.string().optional(),
+    cardImage: z.string().optional(),
+    focal: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, blogQueue };
