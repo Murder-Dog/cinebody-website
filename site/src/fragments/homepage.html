@@ -820,7 +820,7 @@ body > * { position: relative; z-index: 1; }
         <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow">Book a Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         <a href="#pipeline" class="btn btn-ghost">See how it works</a>
       </div>
-      <p class="hero-trust hero-trust--auth">Real people. Real phones. Never synthetic faces or AI testimonials.</p>
+      <a href="#proof" class="hero-trust hero-trust--auth">Real people, real phones. Every clip carries a Proof of&nbsp;Capture.</a>
       <div class="hero-apps-wrap">
         <div class="hero-apps-row">
           <div class="store-badges">
@@ -1555,6 +1555,24 @@ body > * { position: relative; z-index: 1; }
 .stats-grid.vis .stat:nth-child(2) { transition-delay: .15s; }
 .stats-grid.vis .stat:nth-child(3) { transition-delay: .25s; }
 .stats-grid.vis .stat:nth-child(4) { transition-delay: .35s; }
+
+/* ── PROOF OF CAPTURE band (the demo card itself lives in global.css) ── */
+a.hero-trust--auth { text-decoration: none; transition: border-color .25s ease, background .25s ease; }
+a.hero-trust--auth:hover { border-color: rgba(0,188,241,0.6); background: rgba(0,188,241,0.12); }
+.poc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; margin-top: 96px; padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.08); scroll-margin-top: 90px; }
+.poc-copy .label { margin-bottom: 14px; }
+.payoff .poc-copy h2 { font-size: clamp(2rem,4vw,3rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; color: #111 !important; margin: 0 0 18px; }
+.poc-copy h2 em { font-style: normal; color: var(--teal); }
+.poc-sub { font-size: 1.05rem; line-height: 1.65; color: #555; max-width: 520px; margin: 0 0 28px; }
+.poc-steps { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 16px; }
+.poc-steps li { display: flex; gap: 14px; align-items: flex-start; }
+.poc-n { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #0a7fa3; background: rgba(0,188,241,0.1); }
+.payoff .poc-steps h3 { font-size: 1rem; font-weight: 700; color: #111; margin: 5px 0 2px; letter-spacing: -0.01em; }
+.poc-steps p { font-size: 0.95rem; line-height: 1.5; color: #666; margin: 0; }
+.poc-closer { font-size: clamp(1.1rem,1.8vw,1.3rem); font-weight: 700; letter-spacing: -0.02em; color: #111; margin: 0; }
+.poc-closer em { font-style: normal; color: var(--teal); }
+.poc-demo .pipe-cap { margin-top: 16px; }
+@media (max-width: 900px) { .poc { grid-template-columns: 1fr; margin-top: 72px; padding-top: 64px; } }
 </style>
 <section class="stats payoff">
   <div class="contain">
@@ -1578,6 +1596,45 @@ body > * { position: relative; z-index: 1; }
       <div class="stat"><div class="stat-num" data-count-to="70" data-count-suffix="%">0%</div><div class="stat-label">Cheaper than studio</div></div>
     </div>
     <div class="stats-foot reveal reveal-d2">Category benchmarks for authentic and user-made video. Cinebody's own numbers coming as programs mature.</div>
+
+    <div class="poc" id="proof">
+      <div class="poc-copy reveal">
+        <div class="label">Proof of Capture</div>
+        <h2>Real, <em>with receipts.</em></h2>
+        <p class="poc-sub">Every clip gets a signed receipt the moment it lands in Cinebody: when it arrived, the phone it came from, and the untouched original. The receipt stays with the clip through the edit, your client sees it on delivery, and anyone can check&nbsp;it.</p>
+        <ol class="poc-steps">
+          <li><span class="poc-n">01</span><div><h3>Filmed by a person</h3><p>A real phone in a real hand. No avatars, no generated faces.</p></div></li>
+          <li><span class="poc-n">02</span><div><h3>Signed when it lands</h3><p>The original file is fingerprinted and signed the second it arrives.</p></div></li>
+          <li><span class="poc-n">03</span><div><h3>Proof rides with the cut</h3><p>The finished video carries a ledger of every clip inside it.</p></div></li>
+        </ol>
+        <p class="poc-closer">AI helps with the edit. <em>It never makes the&nbsp;footage.</em></p>
+      </div>
+      <div class="poc-demo reveal reveal-d1">
+        <div class="poc-card">
+          <div class="poc-top"><span class="poc-title">Spring campaign · Final cut</span><span class="poc-ver">Version 2</span></div>
+          <div class="poc-player" role="img" aria-label="A finished cut waiting for client review">
+            <div class="poc-play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></div>
+            <div class="poc-scrub"><span>0:24</span><i></i><span>1:02</span></div>
+          </div>
+          <details class="poc-proof" open>
+            <summary class="poc-badge"><span class="poc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94"/><path d="M9.69 8h11.48"/><path d="m7.38 12 5.74-9.94"/><path d="M9.69 16 3.95 6.06"/><path d="M14.31 16H2.83"/><path d="m16.62 12-5.74 9.94"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Proof of Capture · 6 of 6 source clips verified</span></summary>
+            <div class="poc-ledger">
+              <div class="poc-ledger-h">Source clips in this cut · recorded through Cinebody</div>
+              <ol class="poc-rows">
+                <li class="poc-row" style="--r:0"><b>01</b><span>Opening line, to camera</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
+                <li class="poc-row" style="--r:1"><b>02</b><span>Walking into work</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
+                <li class="poc-row" style="--r:2"><b>03</b><span>Hands on the product</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
+                <li class="poc-row" style="--r:3"><b>04</b><span>Customer interview</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
+                <li class="poc-row" style="--r:4"><b>05</b><span>The team, candid</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
+                <li class="poc-row" style="--r:5"><b>06</b><span>Closing line</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
+              </ol>
+              <p class="poc-fine">Each receipt says a file with exactly those bytes reached Cinebody at that moment, from that phone, and that Cinebody signed it. It does not judge what the footage shows.</p>
+            </div>
+          </details>
+        </div>
+        <div class="pipe-cap">How it looks on a delivery · example</div>
+      </div>
+    </div>
   </div>
 </section>
 
