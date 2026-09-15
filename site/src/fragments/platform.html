@@ -2144,6 +2144,16 @@ body > * { position: relative; z-index: 1; }
 .pipe-stage { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: center; margin-bottom: 96px; }
 .pipe-stage.flip { direction: rtl; }
 .pipe-stage.flip > * { direction: ltr; }
+/* Proof of Capture stop: lay the demo card out wide so it sits at the same height as the other stops */
+@media (min-width: 901px) {
+  .tour-sec .poc-card { max-width: none; display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); grid-template-areas: "top top" "player proof"; column-gap: 14px; }
+  .tour-sec .poc-top { grid-area: top; }
+  .tour-sec .poc-player { grid-area: player; aspect-ratio: auto; }
+  .tour-sec .poc-proof { grid-area: proof; margin-top: 0; }
+  .tour-sec .poc-row { padding: 7px 0; }
+  .tour-sec .poc-fine { display: none; }
+  .tour-sec .poc-ledger-h { letter-spacing: 0.03em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
 /* connecting spine between stages */
 .pipe-track { position: relative; }
 @keyframes pipeflow { to { background-position: 0 18px; } }
