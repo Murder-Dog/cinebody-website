@@ -1,0 +1,26 @@
+# Rebuild the site every morning so queued blog posts go live on their
+# publishOn date (see site/src/lib/blog.ts on the redesign). Calls Vercel
+# deploy hooks stored as repository secrets; each is skipped if not set.
+#   BLOG_REBUILD_HOOK        production (main)
+#   BLOG_REBUILD_HOOK_STAGE  staged redesign (redesign/ai-platform)
+name: Blog daily rebuild
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # 12:00 UTC, 8 a.m. Eastern
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel rebuilds
+        env:
+          PROD: ${{ secrets.BLOG_REBUILD_HOOK }}
+          STAGE: ${{ secrets.BLOG_REBUILD_HOOK_STAGE }}
+        run: |
+          for name in PROD STAGE; do
+            url="${!name}"
+            if [ -z "$url" ]; then echo "$name hook not set; skipping."; continue; fi
+            curl -fsS -X POST "$url" > /dev/null && echo "$name rebuild triggered."
+          done
