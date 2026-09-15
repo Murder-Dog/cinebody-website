@@ -4,7 +4,7 @@ description: "How to run a video shoot without a crew on site: plan, write the b
 author: "Travis Page"
 heroImage: "/blog/the-ultimate-guide-to-video-production/hero.webp"
 cardImage: "/blog/the-ultimate-guide-to-video-production/card.webp"
-publishOn: 2026-10-29
+order: 15
 ---
 <p>Remote video production means the people on camera, and usually the people holding the camera, are somewhere you are not. You direct from a desk. Done well, it gets you real footage from many places in the time it takes to book one crew.</p>
 <p>The work does not disappear. It moves: more planning up front, clearer direction, faster review. Here is the whole process, start to finish.</p>

@@ -1,7 +1,7 @@
 ---
 title: "Apple Just Made Proving a Photo Is Real a Camera Feature"
 description: "With Reference Image on iPhone 18 Pro, Apple is treating proof of real capture as something a camera should do. Here's what it does, what it doesn't, and what it means for brand video."
-pubDate: 2026-09-15
+order: 2
 author: "Scott McDonald"
 cardImage: "/blog/apple-reference-image-proof-of-real/card.webp"
 ---

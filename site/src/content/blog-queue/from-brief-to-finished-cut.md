@@ -2,7 +2,7 @@
 title: "From Brief to Finished Cut: The Whole Production in One Place"
 description: "Follow one project from a plain-English brief to a delivered video, step by step, and see what Cinebody handles on its own and what your team still decides."
 author: "Scott McDonald"
-publishOn: 2027-01-12
+order: 32
 cardImage: "/blog/from-brief-to-finished-cut/card.webp"
 ---
 <p>A typical community video project runs through five or six tools. A doc for the brief, a spreadsheet for the shot list, email for recruiting, a shared drive for uploads, an editing app, and a file-sharing link for delivery. Every handoff drops a little context: which clip was for which shot, which take was the good one, what the client actually asked for.</p>

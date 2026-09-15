@@ -4,7 +4,7 @@ description: "Before you ask customers, fans, or employees to film for you, deci
 author: "Travis Page"
 heroImage: "/blog/crowdsourcing-a-video-campaign-read-these-5-tips-first/hero.webp"
 cardImage: "/blog/crowdsourcing-a-video-campaign-read-these-5-tips-first/card.webp"
-publishOn: 2026-11-12
+order: 19
 ---
 <p>Crowdsourced video tends to fail in the same five ways. The ask is vague, so the clips are random. Nobody knows what they get for filming, so few people do. Rights come up after the best clip arrives. Half the footage is dark and shaky. And a pile of uploads sits unreviewed until the moment has passed.</p>
 <p>Each of those is a decision you can make before launch. Here are the five to settle first. If you are still choosing where to run the campaign, start with <a href="/cinebody-blog/video-crowdsourcing-platforms">video crowdsourcing platforms</a>.</p>

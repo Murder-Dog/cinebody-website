@@ -4,7 +4,7 @@ description: "From LiDAR to Action mode, Audio Mix, and Dual Capture: which iPho
 author: "Scott McDonald"
 heroImage: "/blog/with-time-of-flight-the-iphone-looks-set-to-rule-the-content-world/hero.webp"
 cardImage: "/blog/with-time-of-flight-the-iphone-looks-set-to-rule-the-content-world/card.webp"
-publishOn: 2026-10-13
+order: 10
 ---
 
 <p>Every September, Apple announces a longer list of camera features. Most of them will never matter to a brand team collecting video from employees, customers, and fans. A handful matter a lot, and they are often the least flashy ones.</p>

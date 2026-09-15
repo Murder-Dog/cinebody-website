@@ -1,7 +1,7 @@
 ---
 title: "Will AI Video Hurt Your Reach? What YouTube, Meta, and TikTok Actually Changed"
 description: "No major platform has banned AI video. But they're all labeling it, and YouTube won't pay for mass-produced content. Here's what changed, in plain English, and what it means for brands."
-pubDate: 2026-09-14
+order: 1
 author: "Scott McDonald"
 cardImage: "/blog/will-ai-video-hurt-your-reach/card.webp"
 ---

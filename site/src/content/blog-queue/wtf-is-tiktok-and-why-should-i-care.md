@@ -4,7 +4,7 @@ description: "Where TikTok stands in the US after the ownership deal, who is act
 author: "Scott McDonald"
 heroImage: "/blog/wtf-is-tiktok-and-why-should-i-care/hero.webp"
 cardImage: "/blog/wtf-is-tiktok-and-why-should-i-care/card.webp"
-publishOn: 2026-09-29
+order: 6
 ---
 
 <p>For about two years, the honest answer to "should we invest in TikTok?" was "maybe, if it survives." That question is mostly settled in the US. What is left is the practical one: does your audience spend time there, and can you make video that belongs in the feed?</p>

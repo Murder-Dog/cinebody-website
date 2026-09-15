@@ -4,7 +4,7 @@ description: "For \"Catching Fire,\" a song about mental health and suicide, Sum
 author: "Travis Page"
 heroImage: "/blog/how-sum-41-tapped-fan-content-for-a-moving-music-video/hero.webp"
 cardImage: "/blog/how-sum-41-tapped-fan-content-for-a-moving-music-video/card.webp"
-publishOn: 2026-12-03
+order: 24
 ---
 
 <p>Some songs need more than a slick music video. "Catching Fire," Sum 41's 2021 single, deals heavily with mental health and suicide. The band, director John Asher, and their management company, Patriot Management, wanted a video that connected the song to the real experiences of the people listening to it.</p>

@@ -1,9 +1,13 @@
 import { getCollection } from 'astro:content';
+import { publishSlots } from './blog-schedule';
 
 export type BlogPost = {
   id: string;
   body: string;
   queued: boolean;
+  /** Queued posts: place in line, and whether the launch date is still unset. */
+  order?: number;
+  pending?: boolean;
   data: {
     title: string;
     description: string;
@@ -20,25 +24,35 @@ export type BlogPost = {
 export const liveDate = (p: BlogPost) => p.data.updatedDate ?? p.data.pubDate;
 const byNewest = (a: BlogPost, b: BlogPost) => liveDate(b).getTime() - liveDate(a).getTime();
 
+/** Stand-in date for posts waiting on the launch date; never treated as live. */
+const NOT_SCHEDULED = new Date(Date.UTC(9999, 11, 31));
+
 async function queued(): Promise<BlogPost[]> {
   const originals = new Map((await getCollection('blog')).map((p) => [p.id, p.data.pubDate]));
-  return (await getCollection('blogQueue')).map((q) => {
+  const entries = (await getCollection('blogQueue')).sort(
+    (a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id),
+  );
+  // Each post takes the next publishing day after the site launch, in order.
+  const slots = publishSlots(entries.length);
+  return entries.map((q, i) => {
+    const { order, ...data } = q.data;
+    const date = slots ? slots[i] : NOT_SCHEDULED;
     const original = originals.get(q.id);
     return {
       id: q.id,
       body: q.body ?? '',
       queued: true,
+      order,
+      pending: !slots,
       // A rewrite keeps the original publish date and shows when it was updated.
       // A brand-new post is simply published on its date.
-      data: original
-        ? { ...q.data, pubDate: original, updatedDate: q.data.publishOn }
-        : { ...q.data, pubDate: q.data.publishOn },
+      data: original ? { ...data, pubDate: original, updatedDate: date } : { ...data, pubDate: date },
     };
   });
 }
 
 /** Posts that are live as of the build: every live post, with any queued
- *  rewrite whose publishOn date has arrived swapped in (or added). The site
+ *  rewrite whose go-live date has arrived swapped in (or added). The site
  *  rebuilds daily so each queued post appears on its day. */
 export async function getLivePosts(now = new Date()): Promise<BlogPost[]> {
   const posts = new Map<string, BlogPost>();
@@ -46,7 +60,7 @@ export async function getLivePosts(now = new Date()): Promise<BlogPost[]> {
     posts.set(p.id, { id: p.id, body: p.body ?? '', queued: false, data: p.data });
   }
   for (const q of await queued()) {
-    if (liveDate(q).getTime() <= now.getTime()) posts.set(q.id, q);
+    if (!q.pending && liveDate(q).getTime() <= now.getTime()) posts.set(q.id, q);
   }
   return [...posts.values()].sort(byNewest);
 }
@@ -54,6 +68,6 @@ export async function getLivePosts(now = new Date()): Promise<BlogPost[]> {
 /** Queued posts that have not gone live yet, soonest first (for the preview pages). */
 export async function getUpcomingPosts(now = new Date()): Promise<BlogPost[]> {
   return (await queued())
-    .filter((q) => liveDate(q).getTime() > now.getTime())
-    .sort((a, b) => liveDate(a).getTime() - liveDate(b).getTime());
+    .filter((q) => q.pending || liveDate(q).getTime() > now.getTime())
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }

@@ -4,7 +4,7 @@ description: "The quick B-roll cheat sheet: an establishing shot, a detail, the 
 author: "Travis Page"
 heroImage: "/blog/five-tips-for-great-b-roll-filming/hero.webp"
 cardImage: "/blog/five-tips-for-great-b-roll-filming/card.webp"
-publishOn: 2026-10-20
+order: 12
 ---
 <p>If you only remember five B-roll shots, remember these. They cover what an editor reaches for first: where we are, what matters, what is happening, how people feel, and how to get from one scene to the next.</p>
 <p>This is the pocket version. For the full craft, including light, steady hands, coverage, and filming at events or remotely, read <a href="/cinebody-blog/the-ultimate-guide-to-capturing-b-roll">Film B-Roll Editors Can Actually Use</a>.</p>

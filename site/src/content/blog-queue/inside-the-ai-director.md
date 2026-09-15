@@ -2,7 +2,7 @@
 title: "Inside the AI Director: How Cinebody Coaches Every Shot Live"
 description: "What a filmer sees on Cinebody's camera, what the AI Director checks while they film, why it gives one clear note at a time, and how your team's directions reach them mid-shoot."
 author: "Scott McDonald"
-publishOn: 2026-12-17
+order: 28
 cardImage: "/blog/inside-the-ai-director/card.webp"
 ---
 <p>Most footage problems get found in the edit. By then the soft focus, the blown-out window, and the missing sound are baked in, and the person who filmed it has gone home.</p>

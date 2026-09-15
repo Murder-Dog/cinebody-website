@@ -4,7 +4,7 @@ description: "Schedule lo-fi video next to your hero content: two lanes, a caden
 author: "Scott McDonald"
 heroImage: "/blog/why-lo-fi-content-should-be-part-of-your-video-content-plan/hero.webp"
 cardImage: "/blog/why-lo-fi-content-should-be-part-of-your-video-content-plan/card.webp"
-publishOn: 2026-10-27
+order: 14
 ---
 <p>Most brands agree lo-fi video works. The trouble is that it rarely gets planned. It shows up as a one-off when someone has a free afternoon, then disappears for two months while the team finishes the big shoot.</p>
 <p>This is how to give lo-fi a permanent place in the calendar. If you want the background on what lo-fi is and why it performs, start with <a href="/cinebody-blog/lo-fi-video-content">What Lo-Fi Video Is and When It Beats Polish</a>.</p>

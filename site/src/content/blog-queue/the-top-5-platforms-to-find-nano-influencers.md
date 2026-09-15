@@ -4,7 +4,7 @@ description: "Start free with your own followers, customers, and hashtags. Then 
 author: "Travis Page"
 heroImage: "/blog/the-top-5-platforms-to-find-nano-influencers/hero.webp"
 cardImage: "/blog/the-top-5-platforms-to-find-nano-influencers/card.webp"
-publishOn: 2026-11-19
+order: 21
 ---
 <p>Nano influencers, usually defined as creators with roughly 1,000 to 10,000 followers, are easy to picture and hard to find. They do not show up in celebrity rankings, and many of them have never worked with a brand before.</p>
 <p>The good news is that the best places to look are often free. Here are eleven, in the order most brands should try them: your own audience first, then the platforms' built-in marketplaces, then paid tools. Once you have a shortlist, <a href="/cinebody-blog/how-to-engage-micro-amp-nano-influencers-in-5-easy-steps">How to Work With Micro and Nano Influencers</a> covers outreach, briefs, pay, and rights.</p>

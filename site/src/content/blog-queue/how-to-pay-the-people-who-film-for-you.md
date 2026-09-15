@@ -2,7 +2,7 @@
 title: "How to Pay the People Who Film for You"
 description: "Flat rate, per-clip bounty, or a gift card: when each one fits, how to keep it fair and clear, what the FTC expects when paid people appear in your ads, and how payouts work in Cinebody."
 author: "Scott McDonald"
-publishOn: 2027-01-26
+order: 36
 cardImage: "/blog/how-to-pay-the-people-who-film-for-you/card.webp"
 ---
 <p>When your employees, customers, and fans film for your brand, they are doing real work. How you thank them shapes who shows up, what they film, and how much of it you can use. Get it wrong and you either get three clips or three hundred you cannot use.</p>

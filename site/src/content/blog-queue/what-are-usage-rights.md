@@ -4,7 +4,7 @@ description: "Usage rights decide where, how long, and how you can run a photo o
 author: "Scott McDonald"
 heroImage: "/blog/what-are-usage-rights/hero.webp"
 cardImage: "/blog/what-are-usage-rights/card.webp"
-publishOn: 2026-10-22
+order: 13
 ---
 <p>You have a great clip. A customer filmed it, or an employee did, or a creator posted it and tagged you. Before it goes into an ad, you need to know one thing: are you allowed to use it that way?</p>
 <p>Usage rights answer that question. They are the permission to use a photo, a video, a song, or a person's likeness, spelled out by where, for how long, and how. This is the plain version. For the full advertising checklist (releases, minors, music, logos, paid social), read <a href="/cinebody-blog/photo-video-usage-rights">Photo and Video Usage Rights for Advertising</a>.</p>

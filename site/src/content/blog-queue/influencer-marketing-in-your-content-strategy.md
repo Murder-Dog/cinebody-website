@@ -4,7 +4,7 @@ description: "To launch a new shoe, Crocs paired a traditional ad with phone foo
 author: "Travis Page"
 heroImage: "/blog/influencer-marketing-in-your-content-strategy/hero.webp"
 cardImage: "/blog/influencer-marketing-in-your-content-strategy/card.webp"
-publishOn: 2026-12-10
+order: 26
 ---
 
 <p>Finding influencers is the easy half of influencer marketing. The hard half is getting people spread across the country to film the right shots, the right way, on a budget and a deadline.</p>

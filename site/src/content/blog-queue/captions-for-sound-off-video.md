@@ -2,7 +2,7 @@
 title: "Captions That Work When the Sound Is Off"
 description: "Why captions matter, when to burn them in or use platform captions, how to make them readable and accurate, and how to open a video that works in silence."
 author: "Travis Page"
-publishOn: 2027-01-21
+order: 35
 cardImage: "/blog/captions-for-sound-off-video/card.webp"
 ---
 <p>If your video only makes sense with the sound on, a lot of people will never get the point. Captions fix that, but only if they are accurate, readable, and placed where the app's buttons will not cover them.</p>

@@ -3,6 +3,7 @@
 import Base from '../../layouts/Base.astro';
 import '../../styles/blog.css';
 import { getUpcomingPosts, liveDate } from '../../lib/blog';
+import { SITE_LAUNCH_DATE } from '../../lib/blog-schedule';
 
 const posts = await getUpcomingPosts();
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
@@ -13,7 +14,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month
       <div class="blog-wrap">
         <p class="blog-eyebrow">Queue · not public</p>
         <h1>Upcoming posts</h1>
-        <p>{posts.length} queued. Each goes live on its date and replaces the old post at the same address.</p>
+        <p>{posts.length} queued, two a week on Tuesdays and Thursdays{SITE_LAUNCH_DATE ? ` from the site launch on ${fmt(new Date(`${SITE_LAUNCH_DATE}T00:00:00Z`))}` : ', starting when the new site launches'}. A rewrite replaces the old post at the same address.</p>
       </div>
     </section>
     <div class="blog-wrap">
@@ -24,7 +25,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month
               <img class="blog-card__img" src={post.data.cardImage || post.data.heroImage} alt={post.data.title} loading="lazy" decoding="async" />
             )}
             <div class="blog-card__body">
-              <div class="blog-card__meta">Goes live {fmt(liveDate(post))}{post.data.updatedDate && <> &middot; originally {fmt(post.data.pubDate)}</>} &middot; {post.data.author}</div>
+              <div class="blog-card__meta">{post.pending ? `Post ${post.order} after launch` : `Goes live ${fmt(liveDate(post))}`}{post.data.updatedDate && <> &middot; originally {fmt(post.data.pubDate)}</>} &middot; {post.data.author}</div>
               <h2 class="blog-card__title">{post.data.title}</h2>
               <p class="blog-card__excerpt">{post.data.description}</p>
               <span class="blog-card__more">Preview &rarr;</span>

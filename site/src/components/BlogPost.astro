@@ -56,7 +56,7 @@ const blogSchema = {
 
     <div class="post-lede">
       <header class="post-intro">
-        <p class="post-meta"><span>Blog</span> &nbsp;&middot;&nbsp; {updatedDate ? <>Originally published {fmt(pubDate)} &nbsp;&middot;&nbsp; Updated {fmt(updatedDate)}</> : fmt(pubDate)} &nbsp;&middot;&nbsp; {author}</p>
+        <p class="post-meta"><span>Blog</span> &nbsp;&middot;&nbsp; {post.pending ? (updatedDate ? <>Originally published {fmt(pubDate)} &nbsp;&middot;&nbsp; Updates after site launch</> : <>Goes live after site launch</>) : updatedDate ? <>Originally published {fmt(pubDate)} &nbsp;&middot;&nbsp; Updated {fmt(updatedDate)}</> : fmt(pubDate)} &nbsp;&middot;&nbsp; {author}</p>
         <h1>{title}</h1>
         {description && <p class="post-dek">{description}</p>}
       </header>

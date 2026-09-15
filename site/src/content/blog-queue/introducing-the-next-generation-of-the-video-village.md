@@ -4,7 +4,7 @@ description: "On set, the video village is where the director watches the shot a
 author: "Travis Page"
 heroImage: "/blog/introducing-the-next-generation-of-the-video-village/hero.webp"
 cardImage: "/blog/introducing-the-next-generation-of-the-video-village/card.webp"
-publishOn: 2026-11-17
+order: 20
 ---
 <p>On a professional set, many of the most important calls are not made behind the camera. They are made a few steps away, in front of a monitor, in a spot crews call the video village. It is where the director sees the shot, spots the problem, and fixes it before the next take.</p>
 <p>Remote shoots lose that by default. Here is what a video village is, what it is really for, and how to rebuild it when the people filming are spread across cities with phones in their hands.</p>

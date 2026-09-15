@@ -4,7 +4,7 @@ description: "Pick creators for fit over follower count, reach out like a person
 author: "Scott McDonald"
 heroImage: "/blog/how-to-engage-micro-amp-nano-influencers-in-5-easy-steps/hero.webp"
 cardImage: "/blog/how-to-engage-micro-amp-nano-influencers-in-5-easy-steps/card.webp"
-publishOn: 2026-11-03
+order: 16
 ---
 <p>Smaller creators are often the better bet for a brand: tighter audiences, more trust, and a far more reasonable price. The hard part is not deciding to work with them. It is doing it well, one person at a time, without turning every partnership into a negotiation.</p>
 <p>First, the labels. There is no official standard. Nano influencers are commonly defined as about 1,000 to 10,000 followers, and micro influencers as 10,000 to 100,000. Some agencies draw the lines lower, capping nano at 5,000 or micro at 50,000. Treat the numbers as a rough guide.</p>

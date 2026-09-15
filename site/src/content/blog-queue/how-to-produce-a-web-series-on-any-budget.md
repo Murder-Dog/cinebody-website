@@ -4,7 +4,7 @@ description: "A documentary-style web series shot on phones: pick a format, cast
 author: "Travis Page"
 heroImage: "/blog/how-to-produce-a-web-series-on-any-budget/hero.webp"
 cardImage: "/blog/how-to-produce-a-web-series-on-any-budget/card.webp"
-publishOn: 2026-11-24
+order: 22
 ---
 <p>A web series does not need a crew, a script, or a studio budget. It needs a format you can repeat, real people with stories worth following, and a plan that gets footage in every week without heroics.</p>
 <p>The budget-friendly version is documentary style, filmed on phones by the people in it. Here is how to build one.</p>
