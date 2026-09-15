@@ -4,7 +4,7 @@ description: "Generic stock looks generic. How to build a library of your own pe
 author: "Travis Page"
 heroImage: "/blog/ugc-stock-footage/hero.webp"
 cardImage: "/blog/ugc-stock-footage/card.webp"
-publishOn: 2026-11-05
+order: 17
 ---
 <p>Everyone has seen the stock clip of a team laughing around a laptop. Your audience has too. Generic stock fills a gap in the edit, but it says nothing about your brand, and anyone can license the same clip.</p>
 <p>The better option is footage of your own people, places, and product, filmed once and reused for years. Here is how to build that library so it is actually usable.</p>

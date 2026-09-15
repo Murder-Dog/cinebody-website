@@ -4,7 +4,7 @@ description: "A practical checklist for clearing photo and video for ads: talent
 author: "Travis Page"
 heroImage: "/blog/photo-video-usage-rights/hero.webp"
 cardImage: "/blog/photo-video-usage-rights/card.webp"
-publishOn: 2026-11-10
+order: 18
 ---
 <p>Ads get pulled for reasons that have nothing to do with the creative. A song nobody licensed. A release that only covered organic social. A license that ran out three weeks ago while the ad kept spending. Every one of those is avoidable with a checklist.</p>
 <p>This is that checklist, for anyone running photo or video in paid media. If you want the basics first (what usage rights are, the key terms, and who owns footage by default), start with <a href="/cinebody-blog/what-are-usage-rights">What Are Usage Rights?</a></p>

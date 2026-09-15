@@ -2,7 +2,7 @@
 title: "How to Prove Your Brand Video Is Real"
 description: "Platforms label generated video, and clients are starting to ask where footage came from. Here is the difference between capture signatures and chain of custody, and what each can prove."
 author: "Scott McDonald"
-publishOn: 2027-01-05
+order: 30
 cardImage: "/blog/how-to-prove-your-brand-video-is-real/card.webp"
 ---
 <p>&quot;Is this real?&quot; used to be a question for newsrooms. Now it shows up in brand reviews, legal checks, and client emails. If a real customer is on camera saying your product changed their morning, you want to be able to show that a real customer said it.</p>

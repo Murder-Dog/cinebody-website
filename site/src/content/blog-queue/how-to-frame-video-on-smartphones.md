@@ -4,7 +4,7 @@ description: "Framing is free and decides whether a clip looks intentional. Orie
 author: "Travis Page"
 heroImage: "/blog/how-to-frame-video-on-smartphones/hero.webp"
 cardImage: "/blog/how-to-frame-video-on-smartphones/card.webp"
-publishOn: 2026-10-08
+order: 9
 ---
 <p>Most phone video that looks amateur does not have a gear problem. It has a framing problem: the subject is jammed against the top edge, the horizon tilts, a lamp grows out of someone's head, and every shot is the same distance away.</p>
 <p>Framing costs nothing and takes seconds. Here is what to check before you press record.</p>

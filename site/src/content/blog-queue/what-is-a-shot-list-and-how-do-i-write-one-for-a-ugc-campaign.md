@@ -4,7 +4,7 @@ description: "A UGC shot list is the set of asks your filmers follow on their ph
 author: "Scott McDonald"
 heroImage: "/blog/what-is-a-shot-list-and-how-do-i-write-one-for-a-ugc-campaign/hero.webp"
 cardImage: "/blog/what-is-a-shot-list-and-how-do-i-write-one-for-a-ugc-campaign/card.webp"
-publishOn: 2026-09-22
+order: 4
 ---
 <p>A shot list is the set of asks you send the people filming your UGC campaign. For most of them, it is the only direction they will get. A good list gets you footage you can cut. A vague or long one gets you atmosphere, half-finished submissions, and a lot of luck.</p>
 <p>On a traditional shoot, a crew works through the list shot by shot. On a UGC campaign, the list goes to employees, customers, or fans holding their own phones, many of whom have never filmed anything for a brand. That changes what a good list looks like. Here are the rules that matter.</p>

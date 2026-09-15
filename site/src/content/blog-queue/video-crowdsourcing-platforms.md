@@ -4,7 +4,7 @@ description: "Five platforms that connect brands with people who make video, wha
 author: "Scott McDonald"
 heroImage: "/blog/video-crowdsourcing-platforms/hero.webp"
 cardImage: "/blog/video-crowdsourcing-platforms/card.webp"
-publishOn: 2026-12-01
+order: 23
 ---
 
 <p>"Crowdsourced video" covers very different businesses. Some platforms run creative competitions, some hand you a curated filmmaker, some are marketplaces for hiring freelancers, and some help your own people film. Picking the wrong model is how a brand ends up paying for polish when it needed volume, or getting volume when it needed a story.</p>

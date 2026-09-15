@@ -4,7 +4,7 @@ description: "Lo-fi video is real people, filmed simply, usually on a phone. Why
 author: "Scott McDonald"
 heroImage: "/blog/lo-fi-video-content/hero.webp"
 cardImage: "/blog/lo-fi-video-content/card.webp"
-publishOn: 2026-10-06
+order: 8
 ---
 <p>Most of the video people watch on their phones was not made on a set. It was filmed by a person holding a phone, talking like a person. Lo-fi video is what happens when a brand makes that kind of video on purpose.</p>
 <p>This post covers what lo-fi is, why it works, and when you still want the big production.</p>

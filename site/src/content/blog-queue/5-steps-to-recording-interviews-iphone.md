@@ -1,7 +1,7 @@
 ---
 title: "Record a Great iPhone Interview with the ABCDE Checklist"
 description: "A pocket checklist for iPhone interviews: audio and light, break file, connectivity, device basics, and wardrobe. Same craft with a paper list or a conversational interviewer."
-publishOn: 2026-10-01
+order: 7
 author: "Scott McDonald"
 heroImage: "/blog/5-steps-to-recording-interviews-iphone/hero.webp"
 cardImage: "/blog/5-steps-to-recording-interviews-iphone/card.webp"

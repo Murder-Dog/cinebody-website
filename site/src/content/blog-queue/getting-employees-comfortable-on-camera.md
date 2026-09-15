@@ -2,7 +2,7 @@
 title: "How to Get Employees Comfortable on Camera"
 description: "Why people freeze on camera and how to help: keep it optional and low-stakes, use prompts instead of scripts, allow practice takes, keep the setup simple, and respect opt-outs."
 author: "Travis Page"
-publishOn: 2027-01-07
+order: 31
 heroImage: "/blog/getting-employees-comfortable-on-camera/hero.webp"
 cardImage: "/blog/getting-employees-comfortable-on-camera/card.webp"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Start Your Shot List From a Brief, Not a Blank Page"
 description: "Before you write a shot list, write a short brief: what you are making, who is filming, and what the edit needs. Then turn that into asks a person can actually film."
-publishOn: 2026-09-17
+order: 3
 author: "Scott McDonald"
 heroImage: "/blog/start-your-shot-list-from-the-brief/hero.webp"
 cardImage: "/blog/start-your-shot-list-from-the-brief/card.webp"

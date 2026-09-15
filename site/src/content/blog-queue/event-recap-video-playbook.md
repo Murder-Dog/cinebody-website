@@ -2,7 +2,7 @@
 title: "The Event Recap Video Playbook"
 description: "How to plan, film, and cut an event recap people actually watch: a short shot list, clear roles and releases, the moments to catch on the day, and a fast cut for each channel."
 author: "Travis Page"
-publishOn: 2027-01-14
+order: 33
 cardImage: "/blog/event-recap-video-playbook/card.webp"
 ---
 <p>Most event recaps fail for the same reason: nobody decided what to film until the doors opened. The fix is a little planning before, a clear list of moments during, and a fast, channel-specific edit after.</p>

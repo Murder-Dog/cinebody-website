@@ -4,7 +4,7 @@ description: "No crew does not mean no video. Let the people closest to the stor
 author: "Scott McDonald"
 heroImage: "/blog/creating-video-content-without-a-production-crew/hero.webp"
 cardImage: "/blog/creating-video-content-without-a-production-crew/card.webp"
-publishOn: 2026-10-15
+order: 11
 ---
 <p>A production crew is the right call for some videos. For most of the video a brand needs, booking one every time is too slow and too expensive. The weekly social clip, the employee story, the event recap, the customer testimonial: these need to happen often, in many places, on short notice.</p>
 <p>You can make them without a crew. What you cannot skip is the work a crew does. The trick is knowing what those jobs are and covering each one another way.</p>

@@ -1,7 +1,7 @@
 ---
 title: "Film B-Roll Editors Can Actually Use"
 description: "Cutaways that earn their spot: light, frame, steady, and coverage. Same craft with a paper list or CueDots in the native app camera."
-publishOn: 2026-09-24
+order: 5
 author: "Scott McDonald"
 heroImage: "/blog/the-ultimate-guide-to-capturing-b-roll/hero.webp"
 cardImage: "/blog/the-ultimate-guide-to-capturing-b-roll/card.webp"

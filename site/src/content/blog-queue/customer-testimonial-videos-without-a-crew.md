@@ -2,7 +2,7 @@
 title: "How to Make Customer Testimonial Videos Without a Crew"
 description: "Find customers who will talk, make an easy ask, use questions that get real answers, help them film at home or work, clear releases, and edit so it stays believable."
 author: "Travis Page"
-publishOn: 2026-12-22
+order: 29
 heroImage: "/blog/customer-testimonial-videos-without-a-crew/hero.webp"
 cardImage: "/blog/customer-testimonial-videos-without-a-crew/card.webp"
 ---

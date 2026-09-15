@@ -2,7 +2,7 @@
 title: "How Cinebody Scores Every Clip"
 description: "What Cinebody looks and listens for when a clip lands, what Great, Good, and Redo mean, how scoring cuts review time, and how the scores shape the edit."
 author: "Scott McDonald"
-publishOn: 2027-01-19
+order: 34
 cardImage: "/blog/how-cinebody-scores-every-clip/card.webp"
 ---
 <p>A community video shoot has a pleasant problem: a lot of footage. Twenty people filming five shots each is a hundred clips, and the one line you need for the cut is in there somewhere. Watching all of it by hand is where most of a production week goes.</p>

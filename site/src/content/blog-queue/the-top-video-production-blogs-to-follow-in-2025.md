@@ -4,7 +4,7 @@ description: "Ten sources that are still publishing, what each one is good for, 
 author: "Scott McDonald"
 heroImage: "/blog/the-top-video-production-blogs-to-follow-in-2025/hero.webp"
 cardImage: "/blog/the-top-video-production-blogs-to-follow-in-2025/card.webp"
-publishOn: 2026-12-08
+order: 25
 ---
 
 <p>Most "blogs to follow" lists go stale fast. Sites stop posting, get folded into other brands, or drift into pure product news. Every source below was actively publishing when we checked in September 2026.</p>

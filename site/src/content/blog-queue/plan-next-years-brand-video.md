@@ -2,7 +2,7 @@
 title: "How to Plan Next Year's Brand Video"
 description: "An annual video plan that mixes a few hero pieces with an everyday stream: audit what worked, anchor to real dates, pick formats, assign filmers, budget, and review."
 author: "Travis Page"
-publishOn: 2026-12-15
+order: 27
 cardImage: "/blog/plan-next-years-brand-video/card.webp"
 ---
 <p>Plenty of brand video plans are a list of big projects and a hope that the rest will happen. Then the launch film eats the budget, the calendar fills with requests nobody planned for, and the feed goes quiet for months at a time.</p>
