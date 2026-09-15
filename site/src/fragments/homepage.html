@@ -1570,9 +1570,19 @@ a.hero-trust--auth:hover { border-color: rgba(0,188,241,0.6); background: rgba(0
 .payoff .poc-steps h3 { font-size: 1rem; font-weight: 700; color: #111; margin: 5px 0 2px; letter-spacing: -0.01em; }
 .poc-steps p { font-size: 0.95rem; line-height: 1.5; color: #666; margin: 0; }
 .poc-closer { font-size: clamp(1.1rem,1.8vw,1.3rem); font-weight: 700; letter-spacing: -0.02em; color: #111; margin: 0; }
-.poc-closer em { font-style: normal; color: var(--teal); }
+.poc-closer em { font-style: normal; color: var(--teal); white-space: nowrap; }
 .poc-demo .pipe-cap { margin-top: 16px; }
 @media (max-width: 900px) { .poc { grid-template-columns: 1fr; margin-top: 72px; padding-top: 64px; } }
+/* Lay the demo card out wide, like the platform tour stop, so it sits level with the copy */
+@media (min-width: 901px) {
+  .poc { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+  .poc .poc-card { max-width: none; display: grid; grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr); grid-template-areas: "top top" "player proof"; column-gap: 14px; }
+  .poc .poc-top { grid-area: top; }
+  .poc .poc-player { grid-area: player; aspect-ratio: auto; }
+  .poc .poc-proof { grid-area: proof; margin-top: 0; }
+  .poc .poc-row { padding: 7px 0; }
+  .poc .poc-fine { display: none; }
+}
 </style>
 <section class="stats payoff">
   <div class="contain">
