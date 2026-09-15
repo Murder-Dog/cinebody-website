@@ -4,7 +4,7 @@ import '../../styles/blog.css';
 import { getLivePosts } from '../../lib/blog';
 
 const posts = await getLivePosts();
-const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 
 <Base
@@ -33,7 +33,7 @@ const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric
             </div>
           )}
           <div class="blog-card__body">
-            <div class="blog-card__meta">{fmt(post.data.pubDate)} &middot; {post.data.author}</div>
+            <div class="blog-card__meta">{post.data.updatedDate ? `Updated ${fmt(post.data.updatedDate)}` : fmt(post.data.pubDate)} &middot; {post.data.author}</div>
             <h2 class="blog-card__title">{post.data.title}</h2>
             <p class="blog-card__excerpt">{post.data.description}</p>
             <span class="blog-card__more">Read more &rarr;</span>

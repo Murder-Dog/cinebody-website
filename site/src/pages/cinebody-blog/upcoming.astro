@@ -2,7 +2,7 @@
 // Hidden schedule of queued posts for review. Not linked, not indexed, not in the sitemap.
 import Base from '../../layouts/Base.astro';
 import '../../styles/blog.css';
-import { getUpcomingPosts } from '../../lib/blog';
+import { getUpcomingPosts, liveDate } from '../../lib/blog';
 
 const posts = await getUpcomingPosts();
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
@@ -24,7 +24,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month
               <img class="blog-card__img" src={post.data.cardImage || post.data.heroImage} alt={post.data.title} loading="lazy" decoding="async" />
             )}
             <div class="blog-card__body">
-              <div class="blog-card__meta">Goes live {fmt(post.data.pubDate)} &middot; {post.data.author}</div>
+              <div class="blog-card__meta">Goes live {fmt(liveDate(post))}{post.data.updatedDate && <> &middot; originally {fmt(post.data.pubDate)}</>} &middot; {post.data.author}</div>
               <h2 class="blog-card__title">{post.data.title}</h2>
               <p class="blog-card__excerpt">{post.data.description}</p>
               <span class="blog-card__more">Preview &rarr;</span>
