@@ -215,6 +215,9 @@ a { color: inherit; text-decoration: none; }
 
 .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .svc-grid--two { grid-template-columns: 1fr 1fr; }
+.svc-grid--four { grid-template-columns: repeat(4, 1fr); }
+.svc-num { font-family: var(--mono); font-size: 18px; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
+.services-head--sub { margin-top: 56px; }
 
 .svc-card { background: #fff; border: 2px solid rgba(0,0,0,0.05); border-radius: 16px; padding: 32px 26px; transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }
 .svc-card:hover { border-color: rgba(0,0,0,0.1); box-shadow: 0 20px 48px rgba(0,0,0,0.07); }
@@ -229,6 +232,8 @@ a { color: inherit; text-decoration: none; }
 .svc-card p  { font-size: 0.85rem; color: #666; line-height: 1.6; }
 .svc-card p.fine { color: #999; font-size: 0.8rem; margin-top: 8px; }
 .svc-card code { font-family: var(--mono); font-size: 0.85em; background: #f2f2f2; border: 1px solid #e3e3e3; padding: 0.1em 0.4em; border-radius: 5px; color: #333; }
+.svc-card p a { color: #0a7ea3; text-decoration: underline; text-decoration-color: rgba(10,126,163,0.35); text-underline-offset: 3px; }
+.svc-card p a:hover { text-decoration-color: #0a7ea3; }
 
 .svc-fine { margin-top: 16px; padding-top: 16px; border-top: 1px solid #ececec; font-family: var(--mono); font-size: 0.8rem; color: #888; line-height: 1.7; }
 .svc-fine code { font-family: var(--mono); background: #f2f2f2; border: 1px solid #e3e3e3; padding: 0.1em 0.4em; border-radius: 5px; color: #333; }
@@ -383,21 +388,61 @@ a { color: inherit; text-decoration: none; }
     <div class="services-head reveal">
       <div class="label">Setup</div>
       <h2>Get set up</h2>
-      <p>Two things to install: the web platform, and the mobile app. Takes about five minutes.</p>
+      <p>Two things to install: the web platform, and the mobile app for your device (iOS or Android). Takes about five minutes.</p>
     </div>
 
-    <div class="svc-grid svc-grid--two reveal reveal-d1">
+    <div class="svc-grid reveal reveal-d1">
       <div class="svc-card">
         <div class="svc-bar svc-bar--teal"></div>
         <h3>Web platform</h3>
-        <p>Head to <code>app.cinebody.com</code> and create an account with whichever email you'd like tied to your organization.</p>
+        <p>Head to <a href="https://app.cinebody.com"><code>app.cinebody.com</code></a> and create an account with whichever email you'd like tied to your organization.</p>
         <p class="fine">This is where briefs, projects, footage, and payouts live: the control room for everything below.</p>
       </div>
       <div class="svc-card">
         <div class="svc-bar svc-bar--teal"></div>
-        <h3>Mobile app</h3>
-        <p>We'll send you a link to download the beta app straight to your device. Tap the link and follow the prompts to install — that's it.</p>
-        <p class="fine">Open the link on the device you'll be filming with, then follow the on-screen steps to finish installing Cinebody.</p>
+        <h3>iOS app</h3>
+        <p>Install via TestFlight: <a href="https://testflight.apple.com/join/WejHA3pb">testflight.apple.com/join/WejHA3pb</a></p>
+        <p class="fine">Open the link on the iPhone you'll be filming with, then follow the prompts to install.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-bar svc-bar--teal"></div>
+        <h3>Android app</h3>
+        <p>Download the beta build: <a href="https://cinebody.com/android-beta">cinebody.com/android-beta</a></p>
+        <p class="fine">Open the link on the Android device you'll be filming with, then follow the prompts to install.</p>
+      </div>
+    </div>
+
+    <div class="next-note next-note--teal reveal reveal-d2">
+      <svg class="next-note-icon" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="2" y1="10" x2="22" y2="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="next-note-text"><strong>Setting up your account:</strong> when you're asked to pick a plan, choose Pro, and use the test card <code>4000 0000 0000 0077</code>, any future expiry, any CVC, any ZIP. Same card works later for funding a payout incentive; on the filmer's side, use any made-up SSN, phone number, past birthdate, and address. It all auto-verifies in test mode.</div>
+    </div>
+
+    <div class="services-head services-head--sub reveal reveal-d2">
+      <div class="label">Quick start</div>
+      <h2>Where to begin</h2>
+      <p>The fastest path through the product, if you're not sure where to start.</p>
+    </div>
+
+    <div class="svc-grid svc-grid--four reveal reveal-d3">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h3>Brand kit</h3>
+        <p>Set it up first so your logo and colors carry through everything else.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <h3>Create a project</h3>
+        <p>Write a brief and let the AI shot-list generator turn it into something directable.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <h3>Film it</h3>
+        <p>Guided, open capture, or a simple filmer link — whichever fits the project.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <h3>See scores</h3>
+        <p>Uploaded footage gets scored automatically, with the strongest takes surfaced for you.</p>
       </div>
     </div>
   </div>
@@ -461,11 +506,6 @@ a { color: inherit; text-decoration: none; }
         <h3>Payouts</h3>
         <p>Fund an incentive on a project and watch a filmer cash out. It's all sandboxed in Stripe's test mode, so nothing here touches a real card or bank account.</p>
       </div>
-    </div>
-
-    <div class="service-note reveal reveal-d1">
-      <svg class="service-note-icon" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="2" y1="10" x2="22" y2="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="service-note-text"><strong>Testing Payouts:</strong> funding card <code>4000 0000 0000 0077</code>, any future expiry, any CVC, any ZIP. On the filmer's side, use any made-up SSN, phone number, past birthdate, and address. It all auto-verifies in test mode.</div>
     </div>
 
     <div class="service-note service-note--yellow reveal reveal-d2">
