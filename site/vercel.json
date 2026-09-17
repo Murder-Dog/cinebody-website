@@ -115,6 +115,11 @@
       "source": "/u/:token",
       "destination": "https://api.cinebrain.ai/unsubscribe/:token",
       "permanent": false
+    },
+    {
+      "source": "/android-beta",
+      "destination": "https://github.com/Murder-Dog/cinebody-website/releases/latest/download/Cinebody-2.0-android.apk",
+      "permanent": false
     }
   ]
 }
