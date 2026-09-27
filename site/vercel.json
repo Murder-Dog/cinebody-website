@@ -139,6 +139,24 @@
       ]
     },
     {
+      "source": "/beta-testing",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/royal-caribbean-renewal",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -169,6 +187,16 @@
       "source": "/software",
       "destination": "/platform",
       "permanent": true
+    },
+    {
+      "source": "/u/:token",
+      "destination": "https://api.cinebrain.ai/unsubscribe/:token",
+      "permanent": false
+    },
+    {
+      "source": "/android-beta",
+      "destination": "https://github.com/Murder-Dog/cinebody-website/releases/latest/download/Cinebody-2.0-android.apk",
+      "permanent": false
     }
   ]
 }

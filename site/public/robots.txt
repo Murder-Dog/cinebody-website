@@ -7,6 +7,8 @@ Disallow: /gilead-cds
 Disallow: /kc-current
 Disallow: /sashco-year2
 Disallow: /royal-caribbean-renewal
+Disallow: /kong
+Disallow: /beta-testing
 
 # AI search and assistant crawlers (explicitly allowed; same private pitch pages excluded)
 User-agent: GPTBot
@@ -33,5 +35,7 @@ Disallow: /gilead-cds
 Disallow: /kc-current
 Disallow: /sashco-year2
 Disallow: /royal-caribbean-renewal
+Disallow: /kong
+Disallow: /beta-testing
 
 Sitemap: https://www.cinebody.com/sitemap-index.xml
