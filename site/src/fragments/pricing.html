@@ -225,7 +225,8 @@ body > * { position: relative; z-index: 1; }
 .cb-pricing__header h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px; color: #0d0d0d; }
 .cb-pricing__header p { font-size: clamp(1rem, 2vw, 1.15rem); color: #71717a; line-height: 1.6; max-width: 680px; margin: 0 auto; }
 .cb-pricing__savings { display: block; margin: 20px auto 32px; padding: 10px 24px; background: rgba(0,188,241,0.08); border: 1px solid rgba(0,188,241,0.28); border-radius: 100px; width: fit-content; font-size: 0.9rem; font-weight: 500; color: #075f7d; text-align: center; }
-.cb-pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.cb-pricing__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+@media (max-width: 1240px) and (min-width: 961px) { .cb-pricing__grid { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; } }
 .cb-pricing__card { position: relative; background: #fff; border: 1px solid #ededef; border-radius: 16px; padding: 36px 30px 32px; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s cubic-bezier(0.22,1,0.36,1), border-color 0.6s ease; display: flex; flex-direction: column; }
 .cb-pricing__card:hover { transform: translateY(-10px) scale(1.01); border-color: rgba(7,188,241,0.55); box-shadow: 0 28px 56px rgba(0,0,0,0.09), 0 0 0 1px rgba(7,188,241,0.12); }
 .cb-pricing__card--featured { border: 2px solid #07BCF1; box-shadow: 0 12px 32px rgba(7,188,241,0.14); }
@@ -266,6 +267,7 @@ body > * { position: relative; z-index: 1; }
 .cb-pricing__footer p { font-size: 0.9rem; color: #71717a; line-height: 1.6; max-width: 560px; margin: 0 auto; }
 .cb-pricing__footer a { color: #07BCF1; font-weight: 600; text-decoration: none; }
 @media (max-width: 960px) { .cb-pricing__grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 24px; } .cb-pricing__card--featured { order: -1; } .cb-pricing__plan-desc { min-height: unset; } }
+@media (min-width: 1241px) { .cb-pricing__card { padding: 34px 26px 30px; } .cb-pricing__plan-title { font-size: 1.25rem; } .cb-pricing__plan-desc { min-height: 84px; } .cb-pricing__price-custom { font-size: 1.35rem; } }
 
 /* ═══════════════════════════
    FAQ
@@ -359,7 +361,7 @@ body > * { position: relative; z-index: 1; }
         <img src="/assets/ee5abd07-unsplash-image-ab0D6SoBn3w.webp" alt="Software Platform">
         <h3>Want to run it yourself?</h3>
         <p>Cinebody's platform lets you direct shoots remotely and collect footage from anyone, anywhere. Set the specs, send the link, get the&nbsp;clips.</p>
-        <div class="compare-price">Plans start at $250/mo</div>
+        <div class="compare-price">Free to start. Paid plans from $250/mo</div>
         <a href="#plans" class="compare-btn compare-btn--outline">See Plans Below</a>
       </div>
     </div>
@@ -379,6 +381,25 @@ body > * { position: relative; z-index: 1; }
   </div>
   <div class="cb-pricing__grid">
     <div class="cb-pricing__card">
+      <div class="cb-pricing__plan-name">Free</div>
+      <div class="cb-pricing__plan-title" style="font-family:'Plus Jakarta Sans',sans-serif">For getting started</div>
+      <div class="cb-pricing__plan-desc">Try Cinebody on one project, right from your phone.</div>
+      <div class="cb-pricing__price-wrap">
+        <div class="cb-pricing__price"><span class="cb-pricing__price-dollar">$</span><span class="cb-pricing__price-amount" data-annual="0" data-monthly="0">0</span><span class="cb-pricing__price-period">/mo</span></div>
+        <div class="cb-pricing__price-billing" data-annual="Free forever" data-monthly="Free forever">Free forever</div>
+      </div>
+      <div class="cb-pricing__divider"></div>
+      <div class="cb-pricing__features-label">What's included</div>
+      <ul class="cb-pricing__features">
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>1 project</strong>, 1 admin seat</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Up to <strong>3 people</strong> filming at once</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>10 GB</strong> cloud storage</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The Cinebody app</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Live coaching in the camera</span></li>
+      </ul>
+      <a href="/signup" class="cb-pricing__cta cb-pricing__cta--outline">Start Free</a>
+    </div>
+    <div class="cb-pricing__card">
       <div class="cb-pricing__plan-name">Plus</div>
       <div class="cb-pricing__plan-title" style="font-family:'Plus Jakarta Sans',sans-serif">For small teams</div>
       <div class="cb-pricing__plan-desc">Everything you need to start capturing community video on your own.</div>
@@ -387,10 +408,12 @@ body > * { position: relative; z-index: 1; }
         <div class="cb-pricing__price-billing" data-annual="Billed annually" data-monthly="Billed month to month">Billed annually</div>
       </div>
       <div class="cb-pricing__divider"></div>
-      <div class="cb-pricing__features-label">What's included</div>
+      <div class="cb-pricing__features-label">Everything in Free, and</div>
       <ul class="cb-pricing__features">
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Unlimited projects</strong>, 2 admin seats, unlimited filmers</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Unlimited projects</strong>, 2 admin seats</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Up to <strong>10 people</strong> filming at once</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>100 GB</strong> cloud storage, real-time sync</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The full platform, app and desktop</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Patented AI-powered production</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>AI Voice Interviews</strong></span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AI Shot List + Clip Review</span></li>
@@ -410,9 +433,11 @@ body > * { position: relative; z-index: 1; }
       <div class="cb-pricing__divider"></div>
       <div class="cb-pricing__features-label">Everything in Plus, and</div>
       <ul class="cb-pricing__features">
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>5 admin seats</strong></span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>5 admin seats</strong>, up to <strong>50 people</strong> filming at once</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>500 GB</strong> cloud storage</span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>AI Auto Editor</strong> (coming soon)</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>AI Auto Editor</strong>, 5 finished edits a month</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Captions, motion graphics, music and sound</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Add seats, storage and edits as you grow</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Advanced exports</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Dedicated Support</span></li>
       </ul>
@@ -429,7 +454,8 @@ body > * { position: relative; z-index: 1; }
       <div class="cb-pricing__divider"></div>
       <div class="cb-pricing__features-label">Everything in Pro, and</div>
       <ul class="cb-pricing__features">
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Custom admins & storage</strong></span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Custom admins, storage & edits</strong></span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No cap on people filming</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Concierge support</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SSO Integration</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Custom legal</span></li>
@@ -452,11 +478,11 @@ body > * { position: relative; z-index: 1; }
   <div class="contain">
     <h2 class="reveal">Frequently asked&nbsp;questions</h2>
     <div class="reveal reveal-d1">
-      <div class="faq-item"><button class="faq-q">How much does Cinebody cost?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Software plans start at $250/month billed annually. Our AI editor is included in a Pro plan, starting at $500/month billed annually. Creative services are custom-quoted based on your content needs. Most brands save 70%+ compared to traditional video production.</div></div></div>
+      <div class="faq-item"><button class="faq-q">How much does Cinebody cost?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Cinebody is free to start: one project, filmed from the app. Paid plans start at $250/month billed annually. Our AI editor is included in a Pro plan, starting at $500/month billed annually. Creative services are custom-quoted based on your content needs. Most brands save 70%+ compared to traditional video production.</div></div></div>
       <div class="faq-item"><button class="faq-q">Isn't it cheaper to just generate video with AI?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Cheaper to make, maybe. But people trust it less, and the platforms are starting to label it. Real video from your own people earns trust that generated video can't, and with Cinebody every clip carries a Proof of Capture to show it is real.</div></div></div>
       <div class="faq-item"><button class="faq-q">What's the difference between software and services?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">The software subscription gives you the platform, you direct shoots, collect footage, and edit with your own team. Creative services add our producers and editors who handle everything from strategy to final cut. You can use either standalone or pair them together.</div></div></div>
-      <div class="faq-item"><button class="faq-q">Can I switch plans later?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Yes. You can upgrade or downgrade at any time. If you start with Plus and need more storage or seats, upgrading to Pro is seamless. Enterprise plans are custom-scoped to fit your exact needs.</div></div></div>
-      <div class="faq-item"><button class="faq-q">Is there a free trial?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">We offer personalized demos where you can see the platform in action with your own use case. Book a call with our team and we'll walk you through exactly how Cinebody fits your workflow.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Can I switch plans later?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Yes. You can upgrade or downgrade at any time. Start free and move to Plus when you need more projects, or to Pro when you want the AI editor. Enterprise plans are custom-scoped to fit your exact needs.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Is there a free plan?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Yes. The Free plan gives you one project in the Cinebody app, with up to three people filming at once and 10 GB of storage, free for as long as you like. Want to see the full platform first? Book a call and we'll walk you through it with your own use case.</div></div></div>
       <div class="faq-item"><button class="faq-q">Do I need creative services to use the software?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">No. The software is fully standalone. Many brands use it with their own editing teams. Creative services are an optional add-on for teams that want end-to-end production without hiring.</div></div></div>
     </div>
   </div>
@@ -512,4 +538,4 @@ document.querySelectorAll('.faq-q').forEach(function(b){
 });
 </script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Cinebody cost?","acceptedAnswer":{"@type":"Answer","text":"Software plans start at $250/month billed annually. Our AI editor is included in a Pro plan, starting at $500/month billed annually. Creative services are custom-quoted based on your content needs. Most brands save 70%+ compared to traditional video production."}},{"@type":"Question","name":"What's the difference between software and services?","acceptedAnswer":{"@type":"Answer","text":"The software subscription gives you the platform, you direct shoots, collect footage, and edit with your own team. Creative services add our producers and editors who handle everything from strategy to final cut. You can use either standalone or pair them together."}},{"@type":"Question","name":"Can I switch plans later?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can upgrade or downgrade at any time. If you start with Plus and need more storage or seats, upgrading to Pro is seamless. Enterprise plans are custom-scoped to fit your exact needs."}},{"@type":"Question","name":"Is there a free trial?","acceptedAnswer":{"@type":"Answer","text":"We offer personalized demos where you can see the platform in action with your own use case. Book a call with our team and we'll walk you through exactly how Cinebody fits your workflow."}},{"@type":"Question","name":"Do I need creative services to use the software?","acceptedAnswer":{"@type":"Answer","text":"No. The software is fully standalone. Many brands use it with their own editing teams. Creative services are an optional add-on for teams that want end-to-end production without hiring."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Cinebody cost?","acceptedAnswer":{"@type":"Answer","text":"Cinebody is free to start: one project, filmed from the app. Paid plans start at $250/month billed annually. Our AI editor is included in a Pro plan, starting at $500/month billed annually. Creative services are custom-quoted based on your content needs. Most brands save 70%+ compared to traditional video production."}},{"@type":"Question","name":"What's the difference between software and services?","acceptedAnswer":{"@type":"Answer","text":"The software subscription gives you the platform, you direct shoots, collect footage, and edit with your own team. Creative services add our producers and editors who handle everything from strategy to final cut. You can use either standalone or pair them together."}},{"@type":"Question","name":"Can I switch plans later?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can upgrade or downgrade at any time. Start free and move to Plus when you need more projects, or to Pro when you want the AI editor. Enterprise plans are custom-scoped to fit your exact needs."}},{"@type":"Question","name":"Is there a free plan?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Free plan gives you one project in the Cinebody app, with up to three people filming at once and 10 GB of storage, free for as long as you like. Want to see the full platform first? Book a call and we'll walk you through it with your own use case."}},{"@type":"Question","name":"Do I need creative services to use the software?","acceptedAnswer":{"@type":"Answer","text":"No. The software is fully standalone. Many brands use it with their own editing teams. Creative services are an optional add-on for teams that want end-to-end production without hiring."}}]}</script>
