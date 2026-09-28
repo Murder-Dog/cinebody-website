@@ -394,6 +394,10 @@ body > * { position: relative; z-index: 1; }
 .cb-pricing__cta--secondary:hover { background: #0099c8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(7,188,241,0.4); }
 .cb-pricing__cta--outline { background: transparent; color: #0d0d0d; border: 1.5px solid #c4c4c8; }
 .cb-pricing__cta--outline:hover { border-color: #07BCF1; color: #07BCF1; background: #e6f7fd; transform: translateY(-1px); }
+.cb-pricing__toggle { display: flex; justify-content: center; gap: 0; margin: 0 auto 36px; width: fit-content; background: #fff; border: 1px solid #e4e4e7; border-radius: 100px; padding: 4px; }
+.cb-pricing__toggle-btn { font-family: var(--font); font-size: 0.88rem; font-weight: 600; color: #71717a; background: transparent; border: none; border-radius: 100px; padding: 9px 22px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.25s ease, color 0.25s ease; }
+.cb-pricing__toggle-btn.is-active { background: #07BCF1; color: #fff; }
+.cb-pricing__toggle-btn .save { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: #FEF247; color: #0d0d0d; padding: 3px 8px; border-radius: 100px; }
 .cb-pricing__footer { text-align: center; margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); }
 .cb-pricing__footer p { font-size: 1.1rem; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 600px; margin: 0 auto; }
 .cb-pricing__footer a { color: #07BCF1; font-weight: 600; text-decoration: none; }
@@ -565,7 +569,7 @@ body > * { position: relative; z-index: 1; }
     <div class="reveal">
       <div class="hero-eyebrow">The Platform</div>
       <h1>The whole production, <em>run by Cinebody.</em></h1>
-      <p class="hero-body">Cinebody plans the shoot, coaches every filmer, grades every clip, and hands you the finished video. The people are&nbsp;real.</p>
+      <p class="hero-body">Cinebody plans the shoot, coaches every filmer, grades every clip, and hands you a video in one click. The people are&nbsp;real.</p>
       <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow">Book a Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         <a href="#pipeline" class="btn btn-ghost">Follow the pipeline</a>
       <p class="hero-trust">Trusted by Nike, Royal Caribbean, Dell, and 100+ brands</p>
@@ -623,7 +627,7 @@ body > * { position: relative; z-index: 1; }
     <div class="reveal">
       <div class="label" style="text-align:center;">Global organized shoot</div>
       <h2>Run a global shoot <em>without leaving your desk.</em></h2>
-      <p>One brief, filmers anywhere, all on-brand, all organized, footage back in real time. No crews flown in, no logistics, no lost weekends.</p>
+      <p>Send one brief to filmers anywhere and get organized, on-brand footage back in real time, with no crews to fly in and no weekends lost to&nbsp;logistics.</p>
     </div>
     <div class="global-globe reveal reveal-d1" aria-hidden="true">
       <svg viewBox="0 0 1000 470" fill="none">
@@ -2115,8 +2119,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Open a finished cut</h3>
-        <p>Footage syncs to your dashboard and Cinebody hands back an edited, captioned video, ready to&nbsp;publish.</p>
+        <h3>Produce a cut with a click</h3>
+        <p>Footage syncs to your dashboard ready for editing. In one click Cinebody hands back an edited, captioned video, ready to&nbsp;publish.</p>
       </div>
     </div>
     <div class="global-stats reveal reveal-d2">
@@ -2423,7 +2427,7 @@ body > * { position: relative; z-index: 1; }
     <div class="pipeline-head reveal">
       <div class="label" style="text-align:center;">The tour</div>
       <h2>Inside the platform.</h2>
-      <p>What each part of Cinebody actually does, in the order you'll use it, shown with real screens from the product, web and app. Click any screen to look closer.</p>
+      <p>What each part of Cinebody actually does, in the order you'll use it. Click any screen to take a closer look.</p>
     </div>
     <div class="tour-scroll">
     <div class="tour-body">
@@ -2461,14 +2465,14 @@ body > * { position: relative; z-index: 1; }
       <div class="pipe-copy">
         <div class="pipe-num">Projects &amp; Idea Studio</div>
         <h3>From idea to plan in a minute</h3>
-        <p>Stuck? Idea Studio deals you shoot ideas built on your brand; keep one and it becomes a project. Then the wizard writes the shot list from your description: every shot with plain directions, orientations, even slow-mo flags. Edit anything, invite filmers, done.</p>
+        <p>Stuck? Idea Studio deals you shoot ideas built on your brand; keep one and it becomes a project. Then generate a shot list automatically from the brief with plain directions, orientations, even slow-mo flags. Edit anything you'd like, invite your filmers, and you're live.</p>
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
           <div class="pipe-pair-main">
         <div class="pipe-stack">
           <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The idea"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-ideastudio.webp"  alt="Idea Studio: a dealt shoot idea, ready to keep or skip" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="The generated shot list" data-crop="center"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-wizard.webp"  alt="The wizard: an AI-generated shot list from one description" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="The generated shot list" data-crop="center"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-wizard.webp"  alt="An AI-generated shot list from one description" loading="lazy"></div>
         </div>
           </div>
           <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-project.webp"  alt="The same project in the Cinebody app" loading="lazy"></div>
@@ -2498,7 +2502,7 @@ body > * { position: relative; z-index: 1; }
       <div class="pipe-copy">
         <div class="pipe-num">AI Voice Interviews</div>
         <h3>An interviewer in every pocket</h3>
-        <p>For story shots, Cinebody interviews people out loud, listens to the answer, and asks the follow-up a producer would. Real stories pulled out of anyone, on any phone, in any city.</p>
+        <p>For story shots, Cinebody interviews people out loud, listens to the answer, and asks the follow-up a director or producer would. Real stories pulled out of anyone, on any phone, in any city.</p>
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
@@ -2514,7 +2518,7 @@ body > * { position: relative; z-index: 1; }
       <div class="pipe-copy">
         <div class="pipe-num">Messages, Directions &amp; Map</div>
         <h3>Run the shoot from your desk</h3>
-        <p>Watch clips land on the live map as people film. Message one filmer or all of them, or send a direction mid-shoot: it hits their phone as a notification while the camera is up. Course-correct in the moment, not after the footage is home.</p>
+        <p>Watch clips land as people film. Message one filmer or all of them, or send a direction mid-shoot: it hits their phone as a notification while the camera is up. Course-correct in the moment, not after the footage is home.</p>
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
@@ -2556,7 +2560,7 @@ body > * { position: relative; z-index: 1; }
       <div class="pipe-copy">
         <div class="pipe-num">Payouts</div>
         <h3>Incentivize your best filmers</h3>
-        <p>The best footage deserves real money behind it: flat rates, per-clip bounties, or gift cards, your call per project. Filmers see what it pays before they film, connect Stripe once in the app, and the money lands the moment you approve.</p>
+        <p>The best footage deserves real money behind it: a flat rate or a per-clip bounty, your call per project. Filmers see what it pays before they film, connect Stripe once in the app, and the money lands the moment you approve.</p>
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
@@ -2700,23 +2704,27 @@ body > * { position: relative; z-index: 1; }
     <p>Run it yourself or bring in our team. Either way, you're getting real content from real people, at a fraction of traditional production&nbsp;costs.</p>
   </div>
   <div class="cb-pricing__savings">Brands using Cinebody typically save 70%+ vs. traditional production</div>
+  <div class="cb-pricing__toggle" role="group" aria-label="Billing period">
+    <button type="button" class="cb-pricing__toggle-btn" data-period="monthly" aria-pressed="false">Monthly</button>
+    <button type="button" class="cb-pricing__toggle-btn is-active" data-period="annual" aria-pressed="true">Annual <span class="save">Save 17%</span></button>
+  </div>
   <div class="cb-pricing__grid">
     <div class="cb-pricing__card">
       <div class="cb-pricing__plan-name">Plus</div>
       <div class="cb-pricing__plan-title" style="font-family:'Plus Jakarta Sans',sans-serif">For small teams</div>
       <div class="cb-pricing__plan-desc">Everything you need to start capturing community video on your own.</div>
       <div class="cb-pricing__price-wrap">
-        <div class="cb-pricing__price"><span class="cb-pricing__price-dollar">$</span><span class="cb-pricing__price-amount">250</span><span class="cb-pricing__price-period">/mo</span></div>
-        <div class="cb-pricing__price-billing">Billed annually</div>
+        <div class="cb-pricing__price"><span class="cb-pricing__price-dollar">$</span><span class="cb-pricing__price-amount" data-annual="250" data-monthly="300">250</span><span class="cb-pricing__price-period">/mo</span></div>
+        <div class="cb-pricing__price-billing" data-annual="Billed annually" data-monthly="Billed month to month">Billed annually</div>
       </div>
       <div class="cb-pricing__divider"></div>
       <div class="cb-pricing__features-label">What's included</div>
       <ul class="cb-pricing__features">
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>1 Team</strong> with 2 admin seats</span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>25 GB</strong> cloud storage</span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Unlimited filmers</strong></span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Patented shot list technology</span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Photo capture + real-time sync</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Unlimited projects</strong>, 2 admin seats, unlimited filmers</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>100 GB</strong> cloud storage, real-time sync</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Patented AI-powered production</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>AI Voice Interviews</strong></span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AI Shot List + Clip Review</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Email & FAQ support</span></li>
       </ul>
       <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="cb-pricing__cta cb-pricing__cta--outline">Get Started</a>
@@ -2727,18 +2735,17 @@ body > * { position: relative; z-index: 1; }
       <div class="cb-pricing__plan-title" style="font-family:'Plus Jakarta Sans',sans-serif">For growing brands</div>
       <div class="cb-pricing__plan-desc">Scale content across multiple projects with more storage and dedicated support.</div>
       <div class="cb-pricing__price-wrap">
-        <div class="cb-pricing__price"><span class="cb-pricing__price-dollar">$</span><span class="cb-pricing__price-amount">500</span><span class="cb-pricing__price-period">/mo</span></div>
-        <div class="cb-pricing__price-billing">Billed annually</div>
+        <div class="cb-pricing__price"><span class="cb-pricing__price-dollar">$</span><span class="cb-pricing__price-amount" data-annual="500" data-monthly="600">500</span><span class="cb-pricing__price-period">/mo</span></div>
+        <div class="cb-pricing__price-billing" data-annual="Billed annually" data-monthly="Billed month to month">Billed annually</div>
       </div>
       <div class="cb-pricing__divider"></div>
       <div class="cb-pricing__features-label">Everything in Plus, and</div>
       <ul class="cb-pricing__features">
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Multiple teams</strong> as you grow</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>5 admin seats</strong></span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>100 GB</strong> cloud storage</span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Dedicated support</strong></span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SSO integration</span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Custom legal + API access</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>500 GB</strong> cloud storage</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>AI Auto Editor</strong> (coming soon)</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Advanced exports</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Dedicated Support</span></li>
       </ul>
       <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="cb-pricing__cta cb-pricing__cta--secondary">Book a Demo</a>
     </div>
@@ -2753,12 +2760,13 @@ body > * { position: relative; z-index: 1; }
       <div class="cb-pricing__divider"></div>
       <div class="cb-pricing__features-label">Everything in Pro, and</div>
       <ul class="cb-pricing__features">
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Custom teams, admins & storage</strong></span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Concierge support</strong></span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Advanced security & encryption</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Custom admins & storage</strong></span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Concierge support</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SSO Integration</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Custom legal</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>API Access</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Custom integrations (DAM, Drive)</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Strategic Producer</span></li>
-        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Custom legal document signing</span></li>
       </ul>
       <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="cb-pricing__cta cb-pricing__cta--primary">Talk to Our Team</a>
     </div>
@@ -2802,6 +2810,28 @@ body > * { position: relative; z-index: 1; }
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
   }, { passive: true });
+})();
+
+// Billing toggle
+(function(){
+  var btns = document.querySelectorAll('.cb-pricing__toggle-btn');
+  if (!btns.length) return;
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var period = btn.dataset.period;
+      btns.forEach(function(b){
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      document.querySelectorAll('.cb-pricing__price-amount[data-annual]').forEach(function(el){
+        el.textContent = el.dataset[period];
+      });
+      document.querySelectorAll('.cb-pricing__price-billing[data-annual]').forEach(function(el){
+        el.textContent = el.dataset[period];
+      });
+    });
+  });
 })();
 
 // Tour: a reel that idles through sections until you engage, then click-driven.

@@ -18,7 +18,7 @@ const csKeys = caseStudies.map((c) => c.href.slice(1));
 const workActive = active === 'work' || csKeys.includes(active);
 const resourcesActive = ['blog', 'knowledge-base'].includes(active);
 
-const LOGIN_URL = 'https://pro.cinebody.com/login';
+const LOGIN_URL = 'https://app.cinebody.com/login';
 const DEMO_URL = 'https://calendly.com/gavin-cinebody/cinebody-intro2';
 const LOGO = '/assets/5b29f7e3-cb_white.png';
 ---
@@ -81,7 +81,7 @@ const LOGO = '/assets/5b29f7e3-cb_white.png';
             <span class="site-nav__dropdown-label">Resources</span>
             <div class="site-nav__dropdown-grid site-nav__dropdown-grid--stack">
               <a href="/cinebody-blog" role="menuitem" aria-current={active === 'blog' ? 'page' : undefined}>Blog</a>
-              <a href="/knowledge-base" role="menuitem" aria-current={active === 'knowledge-base' ? 'page' : undefined}>Knowledge Base</a>
+              <a href="/knowledge-base" role="menuitem" aria-current={active === 'knowledge-base' ? 'page' : undefined}>Help Center</a>
             </div>
           </div>
         </li>
@@ -90,6 +90,7 @@ const LOGO = '/assets/5b29f7e3-cb_white.png';
         <a class="site-nav__login" href={LOGIN_URL}>Log in</a>
         <a class="site-nav__cta" href={DEMO_URL}>Book a Demo</a>
       </div>
+      <!-- Get the app: replace href="#" with the real App Store / Play Store URLs when live -->
       <div class="site-nav__apps">
         <span class="site-nav__apps-label">Get the app</span>
         <div class="store-badges">
