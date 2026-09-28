@@ -1,12 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import '../../styles/blog.css';
+import { getLivePosts } from '../../lib/blog';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-);
-const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const posts = await getLivePosts();
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 
 <Base
@@ -14,6 +12,7 @@ const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric
   active="blog"
   description="Field notes on video, UGC, and creation from the Cinebody team: production tips, content strategy, and how brands capture authentic video at scale."
 >
+  <div class="blog-room">
   <section class="blog-hero">
     <div class="blog-wrap">
       <p class="blog-eyebrow">The Cinebody Blog</p>
@@ -26,11 +25,15 @@ const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric
     <div class="blog-grid">
       {posts.map((post) => (
         <a class="blog-card" href={`/cinebody-blog/${post.id}`}>
-          {(post.data.cardImage || post.data.heroImage) && (
-            <img class="blog-card__img" src={post.data.cardImage || post.data.heroImage} alt="" loading="lazy" decoding="async" />
+          {(post.data.cardImage || post.data.heroImage) ? (
+            <img class="blog-card__img" src={post.data.cardImage || post.data.heroImage} alt={post.data.title} loading="lazy" decoding="async" />
+          ) : (
+            <div class="blog-card__img blog-card__img--fallback" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="42" height="42"><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(0,188,241,0.55)" stroke-width="1.2"/><path d="M10 8.2 L16.2 12 L10 15.8 Z" fill="rgba(0,188,241,0.75)"/></svg>
+            </div>
           )}
           <div class="blog-card__body">
-            <div class="blog-card__meta">{fmt(post.data.pubDate)} &middot; {post.data.author}</div>
+            <div class="blog-card__meta">{post.data.updatedDate ? `Updated ${fmt(post.data.updatedDate)}` : fmt(post.data.pubDate)} &middot; {post.data.author}</div>
             <h2 class="blog-card__title">{post.data.title}</h2>
             <p class="blog-card__excerpt">{post.data.description}</p>
             <span class="blog-card__more">Read more &rarr;</span>
@@ -38,5 +41,6 @@ const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric
         </a>
       ))}
     </div>
+  </div>
   </div>
 </Base>

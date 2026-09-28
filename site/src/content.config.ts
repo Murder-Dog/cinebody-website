@@ -16,4 +16,22 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// Rewrites and new posts waiting to go live, in order. Their dates are worked out
+// from the site launch date (src/lib/blog-schedule.ts): two a week from launch. A
+// queued post with the same id as a live post replaces it on its day and shows
+// "Updated" with that date; until then the live post stays as it is.
+const blogQueue = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog-queue' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().default(''),
+    /** Place in line. Dates come from the site launch date (src/lib/blog-schedule.ts). */
+    order: z.number().int().positive(),
+    author: z.string().default('Cinebody'),
+    heroImage: z.string().optional(),
+    cardImage: z.string().optional(),
+    focal: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, blogQueue };

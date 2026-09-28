@@ -20,8 +20,8 @@
   --text: #e8e8e8;
   --text-dim: rgba(255,255,255,0.5);
   --text-muted: rgba(255,255,255,0.3);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Plus Jakarta Sans', sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --radius: 12px;
 }
@@ -72,27 +72,13 @@ body > * { position: relative; z-index: 1; }
   transition: all 0.3s var(--ease); position: relative; isolation: isolate;
 }
 
-.btn-glow {
-  background: var(--teal); color: #fff;
-  box-shadow: 0 0 20px rgba(0,188,241,0.15), 0 2px 8px rgba(0,0,0,0.3);
-}
-
-.btn-glow::before {
-  content: ''; position: absolute; inset: -2px; border-radius: 10px; z-index: -1;
-  background: linear-gradient(135deg, var(--teal), var(--pink), var(--yellow));
-  opacity: 0; transition: opacity 0.5s ease; filter: blur(8px);
-}
-
-.btn-glow:hover::before { opacity: 0.7; }
-.btn-glow:hover {
-  box-shadow: 0 0 40px rgba(0,188,241,0.25), 0 4px 16px rgba(0,0,0,0.3);
-  transform: translateY(-2px);
-}
-.btn-glow svg { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
-.btn-glow:hover svg { transform: translateX(3px); }
+.btn-glow { background: #151518; color: #fff; border-radius: 9999px; box-shadow: none; transition: color 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
+.btn-glow:hover { box-shadow: 0 0 20px rgba(0,188,241,0.15), 0 0 20px rgba(235,0,139,0.1); transform: translateY(-1px); }
+.btn-glow svg:not(.ai-ring) { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
+.btn-glow:hover svg:not(.ai-ring) { transform: translateX(3px); }
 
 /* ═══ HERO ═══ */
-.hero { padding: 100px 0 120px; position: relative; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #0a0a0a 0%, #041a24 100%); }
+.hero { padding: 132px 0 120px; position: relative; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #0a0a0a 0%, #041a24 100%); }
 
 
 .hero .contain {
@@ -145,7 +131,7 @@ body > * { position: relative; z-index: 1; }
 /* ═══ TREE STRUCTURE ═══ */
 .tree-section { padding: 100px 0; position: relative; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #041a24 0%, #0a1e2e 50%, #0f1a24 100%); }
 
-.tree-head { text-align: center; margin-bottom: 64px; }
+.tree-head { text-align: center; margin-bottom: 44px; }
 
 .tree-head h2 {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700;
@@ -160,7 +146,7 @@ body > * { position: relative; z-index: 1; }
 
 /* Hero CTV video */
 .tree-hero {
-  max-width: 700px; margin: 0 auto 48px;
+  max-width: 640px; margin: 0 auto 0;
   border-radius: var(--radius); overflow: hidden;
   border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.3);
 }
@@ -178,10 +164,12 @@ body > * { position: relative; z-index: 1; }
 
 /* Branch connector */
 .tree-connector {
-  display: flex; justify-content: center; margin-bottom: 48px; position: relative;
+  display: block; margin: -2px auto 11px; position: relative; max-width: 900px;
 }
-
-.tree-connector svg { width: 600px; max-width: 100%; height: 80px; }
+.tree-connector svg { width: 100%; height: 96px; display: block; }
+.tree-flow path { animation: treeFlow 1.4s linear infinite; }
+@keyframes treeFlow { to { stroke-dashoffset: -14; } }
+@media (prefers-reduced-motion: reduce){ .tree-flow path { animation: none; } }
 
 /* Node grid */
 .tree-nodes {
@@ -190,11 +178,19 @@ body > * { position: relative; z-index: 1; }
 }
 
 .tree-node {
-  border-radius: var(--radius); overflow: hidden;
+  position: relative;
+  border-radius: var(--radius); overflow: visible;
   border: 1px solid var(--border); background: #111;
   box-shadow: 0 4px 24px rgba(0,0,0,0.2);
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s ease;
 }
+.tree-node > .vid-playable, .tree-node > .vid-playable--v { border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; }
+.tree-node::before {
+  content: ''; position: absolute; top: -11px; left: 18%; right: 18%; height: 11px;
+  border: 2px solid var(--pink); border-bottom: none; border-radius: 7px 7px 0 0;
+  z-index: 2; transition: border-color 0.4s ease;
+}
+.tree-node:hover::before { border-color: var(--pink); box-shadow: 0 0 14px rgba(235,0,139,0.4); }
 
 .tree-node:hover {
   transform: translateY(-4px);
@@ -207,18 +203,18 @@ body > * { position: relative; z-index: 1; }
 .tree-node .vid-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 
 .tree-node-label {
-  padding: 12px 14px; text-align: center;
+  padding: 14px; text-align: center;
   border-top: 1px solid var(--border);
 }
 
 .tree-node-label .node-type {
-  font-family: var(--mono); font-size: 10px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal);
-  margin-bottom: 2px;
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink);
+  margin-bottom: 4px;
 }
 
 .tree-node-label .node-name {
-  font-size: 0.78rem; font-weight: 600; color: var(--text-dim);
+  font-size: 0.95rem; font-weight: 700; color: #fff;
 }
 
 /* ═══ CTA BAND ═══ */
@@ -232,33 +228,19 @@ body > * { position: relative; z-index: 1; }
 .cta-band .btn-glow:hover { box-shadow: 0 0 40px rgba(0,0,0,0.25); }
 
 /* ═══ FOOTER ═══ */
-.footer { border-top: none; padding: 56px 0 28px; position: relative; background: var(--bg); }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand img { height: 22px; margin-bottom: 14px; }
-.footer-brand p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; max-width: 240px; }
-.footer-col h4 { font-family: var(--mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 14px; }
-.footer-col a { display: block; font-size: 0.82rem; color: var(--text-muted); padding: 3px 0; transition: color 0.2s ease; }
-.footer-col a:hover {
-  background: linear-gradient(135deg, var(--teal), var(--pink), var(--yellow));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-}
-.footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.72rem; color: var(--text-muted); }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 1000px) {
   .hero .contain { grid-template-columns: 1fr; gap: 48px; }
-  .hero { padding: 60px 0 80px; }
+  .hero { padding: 104px 0 68px; }
   .tree-nodes { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
-  .hero { padding: 40px 0 60px; }
+  .hero { padding: 96px 0 52px; }
   .hero h1 { font-size: 2.25rem; }
   .tree-section, .cta-band { padding: 60px 0; }
   .tree-nodes { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -266,7 +248,9 @@ body > * { position: relative; z-index: 1; }
 }
 </style>
 <style>
-      .pm-orbit-group { animation: pmOrbit 12s linear infinite; transform-origin: 120px 120px; }
+      .pm-orbit-g { animation: pmOrbit 14s linear infinite; transform-origin: 150px 150px; }
+      .pm-spoke { animation: pmSpoke 1.6s linear infinite; animation-delay: var(--sd,0s); }
+      @keyframes pmSpoke { to { stroke-dashoffset: -16; } }
       @keyframes pmOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       .pm-float-1 { animation: pmFloat1 4s ease-in-out infinite; }
       .pm-float-2 { animation: pmFloat2 4.5s ease-in-out infinite; }
@@ -302,69 +286,80 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
-<!-- curve: dark → light -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
-
 <!-- ═══ STATS ═══ -->
 <section style="background:#fff;color:#111;padding:80px 0">
-  <div class="contain" style="max-width:900px">
+  <div class="contain" style="max-width:1040px">
 
     <!-- Globe Graphic -->
     <style>
-      .pm-orbit-group { animation: pmOrbit 12s linear infinite; transform-origin: 120px 120px; }
-      @keyframes pmOrbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-      .pm-float-1 { animation: pmFloat1 4s ease-in-out infinite; }
-      .pm-float-2 { animation: pmFloat2 4.5s ease-in-out infinite; }
-      .pm-float-3 { animation: pmFloat3 3.8s ease-in-out infinite; }
-      .pm-float-4 { animation: pmFloat4 4.2s ease-in-out infinite; }
-      @keyframes pmFloat1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(2px,-4px)} }
-      @keyframes pmFloat2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-3px,-3px)} }
-      @keyframes pmFloat3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(3px,3px)} }
-      @keyframes pmFloat4 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-2px,4px)} }
-    </style>
-    <div class="reveal" style="max-width:300px;margin:0 auto 56px">
-      <svg viewBox="0 0 240 244" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto">
-        <!-- Globe -->
-        <circle cx="120" cy="120" r="52" fill="rgba(0,188,241,0.05)"/>
-        <circle cx="120" cy="120" r="52" fill="none" stroke="rgba(0,188,241,0.2)" stroke-width="1.4"/>
-        <ellipse cx="120" cy="120" rx="52" ry="18" fill="none" stroke="rgba(0,188,241,0.1)" stroke-width="0.8"/>
-        <ellipse cx="120" cy="104" rx="46" ry="12" fill="none" stroke="rgba(0,188,241,0.1)" stroke-width="0.8"/>
-        <ellipse cx="120" cy="136" rx="46" ry="12" fill="none" stroke="rgba(0,188,241,0.1)" stroke-width="0.8"/>
-        <ellipse cx="120" cy="120" rx="18" ry="52" fill="none" stroke="rgba(0,188,241,0.1)" stroke-width="0.8"/>
-        <ellipse cx="120" cy="120" rx="38" ry="52" fill="none" stroke="rgba(0,188,241,0.1)" stroke-width="0.8"/>
-        <!-- Orbit -->
-        <ellipse cx="120" cy="120" rx="72" ry="72" fill="none" stroke="rgba(0,188,241,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-        <!-- Orbiting plane -->
-        <g class="pm-orbit-group">
-          <g transform="translate(120, 48)">
-            <ellipse cx="2" cy="0" rx="16" ry="3" fill="#00bcf1"/>
-            <path d="M16,-2 Q24,0 16,2 Z" fill="#00bcf1"/>
-            <path d="M4,-3 L-2,-16 L-10,-16 L-4,-3 Z" fill="rgba(0,188,241,0.8)"/>
-            <path d="M4,3 L-2,16 L-10,16 L-4,3 Z" fill="rgba(0,188,241,0.8)"/>
-            <path d="M-12,-2.5 L-16,-9 L-20,-9 L-15,-2.5 Z" fill="rgba(0,188,241,0.8)"/>
-            <path d="M-12,2.5 L-16,9 L-20,9 L-15,2.5 Z" fill="rgba(0,188,241,0.8)"/>
-            <rect x="-16" y="-1.2" width="5" height="2.4" rx="0.8" fill="#ffec03"/>
-            <ellipse cx="-2" cy="-7" rx="3" ry="1.5" fill="rgba(0,188,241,0.4)"/>
-            <ellipse cx="-2" cy="7" rx="3" ry="1.5" fill="rgba(0,188,241,0.4)"/>
-            <line x1="-5" y1="-7" x2="-26" y2="-7" stroke="rgba(0,188,241,0.08)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="-5" y1="7" x2="-26" y2="7" stroke="rgba(0,188,241,0.08)" stroke-width="2" stroke-linecap="round"/>
-          </g>
+      .pm-viz { position:relative; width:100%; max-width:460px; margin:0 auto; aspect-ratio:460/340; }
+      .pm-svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+      .pm-pill { position:absolute; transform:translate(-50%,-50%); display:inline-flex; align-items:center; gap:8px; background:#fff; border:1.6px solid var(--teal); border-radius:9999px; padding:8px 15px 8px 11px; font-family:var(--font); font-size:13px; font-weight:700; color:#06546c; white-space:nowrap; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+      .pm-pill .pl { width:16px; height:16px; border-radius:50%; background:var(--pink); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+      .pm-pill .pl::after { content:''; border-left:6px solid #fff; border-top:4px solid transparent; border-bottom:4px solid transparent; margin-left:2px; }
+      .pm-pill--tl { left:17%; top:12%; } .pm-pill--tr { left:83%; top:12%; }
+      .pm-pill--bl { left:17%; top:88%; } .pm-pill--br { left:83%; top:88%; }
+      .pm-plane { offset-path: path('M 118,170 a 112,30 0 1,1 224,0 a 112,30 0 1,1 -224,0'); offset-rotate:auto; animation: pmFly 7s linear infinite; }
+      .pm-plane--front { animation-name: pmFly, pmFront; }
+      .pm-plane--back { animation-name: pmFly, pmBack; }
+      @keyframes pmFly { to { offset-distance:100%; } }
+      @keyframes pmFront { 0%{opacity:0;} 50%{opacity:0;} 52%{opacity:1;} 98%{opacity:1;} 100%{opacity:0;} }
+      @keyframes pmBack { 0%{opacity:.5;} 48%{opacity:.5;} 50%{opacity:0;} 98%{opacity:0;} 100%{opacity:.5;} }
+      @media (prefers-reduced-motion: reduce){ .pm-plane{ animation:none; } }
+      .pm-split { display:grid; grid-template-columns:1fr 1fr; gap:clamp(36px,5vw,72px); align-items:center; }
+      .pm-split .pm-viz { margin:0; }
+      .pm-stats { display:grid; grid-template-columns:1fr 1fr; border:1px solid #e8e8e8; border-radius:14px; overflow:hidden; }
+      .pm-stat { padding:28px 22px; }
+      .pm-stat:nth-child(2n) { border-left:1px solid #eee; }
+      .pm-stat:nth-child(n+3) { border-top:1px solid #eee; }
+      .pm-stat .n { font-size:2rem; font-weight:700; color:var(--teal); letter-spacing:-0.03em; line-height:1; margin-bottom:6px; }
+      .pm-stat .l { font-family:var(--mono); font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:#999; }
+      .pm-info-note { font-size:0.95rem; color:#666; line-height:1.65; margin:24px 0 0; }
+      @media (max-width:820px){ .pm-split { grid-template-columns:1fr; gap:40px; } .pm-split .pm-viz { max-width:400px; margin:0 auto; } .pm-info-note { text-align:center; } }
+    
+.cta-band { padding-bottom: 0 !important; }
+.cta-band .btn-glow { margin-bottom: 56px; }
+.cta-marquee { display: flex; height: 200px; overflow: hidden; }
+.cta-marquee-track { display: flex; animation: logos-scroll 28s linear infinite; flex-shrink: 0; }
+.cta-marquee-track img { width: 200px; height: 200px; object-fit: cover; flex-shrink: 0; }
+@keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+    <div class="pm-split">
+      <div class="pm-info">
+        <div class="pm-stats reveal reveal-d1">
+          <div class="pm-stat"><div class="n">1</div><div class="l">Shoot</div></div>
+          <div class="pm-stat"><div class="n">70+</div><div class="l">Real Customers</div></div>
+          <div class="pm-stat"><div class="n">5+</div><div class="l">Derivative Assets</div></div>
+          <div class="pm-stat"><div class="n">Multi</div><div class="l">Platform</div></div>
+        </div>
+        <p class="pm-info-note reveal reveal-d1">From a single CTV production featuring 70+ real customers, Cinebody's team extracted vignettes, social cuts, clips, and bonus content, maximizing every frame into a full multi-platform&nbsp;campaign.</p>
+      </div>
+      <div class="reveal pm-viz">
+      <svg class="pm-svg" viewBox="0 0 460 340" fill="none">
+        <g stroke="#eb008b" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="3 6" opacity="0.55">
+          <line x1="188" y1="128" x2="112" y2="58"/><line x1="272" y1="128" x2="348" y2="58"/>
+          <line x1="188" y1="212" x2="112" y2="282"/><line x1="272" y1="212" x2="348" y2="282"/>
         </g>
-        <!-- Content cards -->
-        <g class="pm-float-1"><rect x="20" y="30" width="40" height="22" rx="3" fill="rgba(0,188,241,0.06)" stroke="rgba(0,188,241,0.2)" stroke-width="0.9"/><polygon points="36,36 36,46 44,41" fill="rgba(0,188,241,0.5)"/><text x="40" y="62" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="700" fill="rgba(0,0,0,0.3)">CTV</text></g>
-        <g class="pm-float-2"><rect x="180" y="36" width="40" height="22" rx="3" fill="rgba(0,188,241,0.06)" stroke="rgba(0,188,241,0.2)" stroke-width="0.9"/><polygon points="196,42 196,52 204,47" fill="rgba(0,188,241,0.5)"/><text x="200" y="68" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="700" fill="rgba(0,0,0,0.3)">Social</text></g>
-        <g class="pm-float-3"><rect x="16" y="188" width="48" height="22" rx="3" fill="rgba(0,188,241,0.06)" stroke="rgba(0,188,241,0.2)" stroke-width="0.9"/><polygon points="36,194 36,204 44,199" fill="rgba(0,188,241,0.5)"/><text x="40" y="220" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="700" fill="rgba(0,0,0,0.3)">Vignettes</text></g>
-        <g class="pm-float-4"><rect x="180" y="192" width="40" height="22" rx="3" fill="rgba(0,188,241,0.06)" stroke="rgba(0,188,241,0.2)" stroke-width="0.9"/><polygon points="196,198 196,208 204,203" fill="rgba(0,188,241,0.5)"/><text x="200" y="224" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="700" fill="rgba(0,0,0,0.3)">Clips</text></g>
+        <ellipse cx="230" cy="170" rx="112" ry="30" fill="none" stroke="rgba(0,188,241,0.28)" stroke-width="1.4" stroke-dasharray="4 5"/>
+        <g class="pm-plane pm-plane--back"><g transform="scale(1.15) rotate(90) translate(-8,-8)"><path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10 16H6a.5.5 0 0 1-.354-.854l1.318-1.318-.375-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" fill="#eb008b"/></g></g>
+        <g>
+          <circle cx="230" cy="170" r="64" fill="url(#pmgfill)"/>
+          <circle cx="230" cy="170" r="64" fill="none" stroke="#00bcf1" stroke-width="2.2"/>
+          <ellipse cx="230" cy="170" rx="64" ry="21" fill="none" stroke="rgba(0,188,241,0.4)" stroke-width="1.2"/>
+          <ellipse cx="230" cy="170" rx="21" ry="64" fill="none" stroke="rgba(0,188,241,0.4)" stroke-width="1.2"/>
+          <ellipse cx="230" cy="170" rx="45" ry="64" fill="none" stroke="rgba(0,188,241,0.22)" stroke-width="1"/>
+          <line x1="166" y1="170" x2="294" y2="170" stroke="rgba(0,188,241,0.3)" stroke-width="1"/>
+          <text x="230" y="174" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" letter-spacing="1.4" fill="#0a6f90">ONE SHOOT</text>
+        </g>
+        <g class="pm-plane pm-plane--front"><g transform="scale(1.5) rotate(90) translate(-8,-8)"><path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10 16H6a.5.5 0 0 1-.354-.854l1.318-1.318-.375-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" fill="#eb008b"/></g></g>
+        <defs><radialGradient id="pmgfill" cx="42%" cy="34%" r="70%"><stop offset="0" stop-color="rgba(0,188,241,0.14)"/><stop offset="1" stop-color="rgba(0,188,241,0.03)"/></radialGradient></defs>
       </svg>
+      <div class="pm-pill pm-pill--tl"><span class="pl"></span>CTV</div>
+      <div class="pm-pill pm-pill--tr"><span class="pl"></span>Social</div>
+      <div class="pm-pill pm-pill--bl"><span class="pl"></span>Vignettes</div>
+      <div class="pm-pill pm-pill--br"><span class="pl"></span>Clips</div>
     </div>
-
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e0e0e0;border-radius:12px;overflow:hidden" class="reveal">
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">1</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">Shoot</div></div>
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">70+</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">Real Customers</div></div>
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">5+</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">Derivative Assets</div></div>
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">Multi</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">Platform</div></div>
     </div>
-    <p class="reveal reveal-d1" style="font-size:0.95rem;color:#666;line-height:1.65;max-width:560px;margin:32px auto 0;text-align:center">From a single CTV production featuring 70+ real customers, Cinebody's team extracted vignettes, social cuts, clips, and bonus content, maximizing every frame into a full multi-platform&nbsp;campaign.</p>
   </div>
 </section>
 
@@ -387,24 +382,22 @@ body > * { position: relative; z-index: 1; }
       <div class="tree-hero-label">Hero CTV Commercial</div>
     </div>
 
-    <!-- Branch SVG -->
+    <!-- Branch connector: content flows from the hero down into each derivative -->
     <div class="tree-connector reveal reveal-d2">
-      <svg viewBox="0 0 600 80" preserveAspectRatio="xMidYMid meet">
-        <line x1="300" y1="0" x2="300" y2="20" stroke="rgba(0,188,241,0.3)" stroke-width="2"/>
-        <line x1="300" y1="20" x2="75" y2="20" stroke="rgba(0,188,241,0.3)" stroke-width="2"/>
-        <line x1="300" y1="20" x2="525" y2="20" stroke="rgba(0,188,241,0.3)" stroke-width="2"/>
-        <line x1="75" y1="20" x2="75" y2="80" stroke="rgba(0,188,241,0.3)" stroke-width="2"/>
-        <line x1="225" y1="20" x2="225" y2="80" stroke="rgba(0,188,241,0.3)" stroke-width="2"/>
-        <line x1="375" y1="20" x2="375" y2="80" stroke="rgba(0,188,241,0.3)" stroke-width="2"/>
-        <line x1="525" y1="20" x2="525" y2="80" stroke="rgba(0,188,241,0.3)" stroke-width="2"/>
-        <circle cx="300" cy="4" r="4" fill="var(--teal)" filter="url(#glow)"/>
-        <circle cx="75" cy="76" r="4" fill="var(--teal)" filter="url(#glow)"/>
-        <circle cx="225" cy="76" r="4" fill="var(--teal)" filter="url(#glow)"/>
-        <circle cx="375" cy="76" r="4" fill="var(--teal)" filter="url(#glow)"/>
-        <circle cx="525" cy="76" r="4" fill="var(--teal)" filter="url(#glow)"/>
-        <defs>
-          <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
+      <svg viewBox="0 0 900 96" preserveAspectRatio="none">
+        <g fill="none" stroke="rgba(0,188,241,0.22)" stroke-width="2">
+          <path d="M450,2 C450,58 106,40 106,94"/>
+          <path d="M450,2 C450,58 335,46 335,94"/>
+          <path d="M450,2 C450,58 565,46 565,94"/>
+          <path d="M450,2 C450,58 794,40 794,94"/>
+        </g>
+        <g class="tree-flow" fill="none" stroke="#eb008b" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 12">
+          <path d="M450,2 C450,58 106,40 106,94"/>
+          <path d="M450,2 C450,58 335,46 335,94"/>
+          <path d="M450,2 C450,58 565,46 565,94"/>
+          <path d="M450,2 C450,58 794,40 794,94"/>
+        </g>
+        <circle cx="450" cy="2" r="5" fill="var(--teal)"/>
       </svg>
     </div>
 
@@ -428,14 +421,14 @@ body > * { position: relative; z-index: 1; }
         <div class="vid-playable vid-playable--v" data-vimeo="1087576984" style="width:100%"><img class="vid-poster" src="https://i.vimeocdn.com/video/2019611648-a6bdc1b8c347c1fed85192125fbe2e96fda414deb4f802faf143dde092dece54-d_640" alt="Clip"></div>
         <div class="tree-node-label">
           <div class="node-type">Derivative</div>
-          <div class="node-name">Clip</div>
+          <div class="node-name">Graphic Ad</div>
         </div>
       </div>
       <div class="tree-node">
         <div class="vid-playable vid-playable--v" data-vimeo="1087438401" style="width:100%"><img class="vid-poster" src="https://i.vimeocdn.com/video/2019435288-9a144453bd98b7e9da4c1647eee0d84e359ec5a5123127483892080752aab951-d_640" alt="Bonus"></div>
         <div class="tree-node-label">
           <div class="node-type">Derivative</div>
-          <div class="node-name">Bonus</div>
+          <div class="node-name">Story Content</div>
         </div>
       </div>
     </div>
@@ -451,10 +444,11 @@ body > * { position: relative; z-index: 1; }
     <h2 class="reveal">Want results like Point.me?<br><span>Let's map out your strategy.</span></h2>
     <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow reveal reveal-d1">Book a Strategy Call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
+  <div class="cta-marquee" style="position:relative">
+    <div class="cta-marquee-track" id="ctaTrack"></div>
+    <svg style="position:absolute;bottom:0;left:0;width:100%;height:50px;z-index:2" viewBox="0 0 1440 50" preserveAspectRatio="none"><path d="M0,0 Q720,50 1440,0 L1440,50 L0,50 Z" fill="#0a0a0a"/></svg>
+  </div>
 </section>
-
-<!-- curve: yellow → dark -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#ffec03"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#0a0a0a"/></svg></div>
 
 <script>
 // Reveal
@@ -474,5 +468,13 @@ body > * { position: relative; z-index: 1; }
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
   }, { passive: true });
+})();
+
+// CTA image marquee
+(function(){
+  var imgs=['/assets/cta-still006.jpg','/assets/cta-still005.jpg','/assets/cta-still004.jpg','/assets/cta-still009.jpg','/assets/cta-still008.jpg','/assets/cta-still007.jpg'];
+  var t=document.getElementById('ctaTrack');
+  if(!t) return;
+  for(var i=0;i<4;i++) imgs.forEach(function(s){ var img=document.createElement('img'); img.src=s; img.loading='lazy'; img.alt=''; t.appendChild(img); });
 })();
 </script>

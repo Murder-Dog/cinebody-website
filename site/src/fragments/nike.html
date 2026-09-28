@@ -20,8 +20,8 @@
   --text: #e8e8e8;
   --text-dim: rgba(255,255,255,0.5);
   --text-muted: rgba(255,255,255,0.3);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Plus Jakarta Sans', sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --radius: 12px;
 }
@@ -70,25 +70,13 @@ body > * { position: relative; z-index: 1; }
   padding: 13px 30px; border-radius: 8px; border: none; cursor: pointer;
   transition: all 0.3s var(--ease); position: relative; isolation: isolate;
 }
-.btn-glow {
-  background: var(--teal); color: #fff;
-  box-shadow: 0 0 20px rgba(0,188,241,0.15), 0 2px 8px rgba(0,0,0,0.3);
-}
-.btn-glow::before {
-  content: ''; position: absolute; inset: -2px; border-radius: 10px; z-index: -1;
-  background: linear-gradient(135deg, var(--teal), var(--pink), var(--yellow));
-  opacity: 0; transition: opacity 0.5s ease; filter: blur(8px);
-}
-.btn-glow:hover::before { opacity: 0.7; }
-.btn-glow:hover {
-  box-shadow: 0 0 40px rgba(0,188,241,0.25), 0 4px 16px rgba(0,0,0,0.3);
-  transform: translateY(-2px);
-}
-.btn-glow svg { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
-.btn-glow:hover svg { transform: translateX(3px); }
+.btn-glow { background: #151518; color: #fff; border-radius: 9999px; box-shadow: none; transition: color 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
+.btn-glow:hover { box-shadow: 0 0 20px rgba(0,188,241,0.15), 0 0 20px rgba(235,0,139,0.1); transform: translateY(-1px); }
+.btn-glow svg:not(.ai-ring) { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
+.btn-glow:hover svg:not(.ai-ring) { transform: translateX(3px); }
 
 /* ═══ HERO ═══ */
-.hero { padding: 100px 0 120px; position: relative; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #0a0a0a 0%, #041a24 100%); }
+.hero { padding: 132px 0 120px; position: relative; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #0a0a0a 0%, #041a24 100%); }
 
 
 .hero .contain {
@@ -172,19 +160,16 @@ body > * { position: relative; z-index: 1; }
 /* 2x2 Grid */
 .grid-2x2 {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-  max-width: 900px; margin: 0 auto;
 }
-
-/* Horizontal pair */
 .horiz-pair {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-  max-width: 900px; margin: 0 auto;
 }
-
-/* Vertical pair */
 .vert-pair {
-  display: flex; gap: 16px; justify-content: center;
-  max-width: 480px; margin: 0 auto;
+  display: flex; gap: 16px;
+}
+@media (min-width: 701px) {
+  .grid-2x2, .horiz-pair { max-width: 900px; margin: 0 auto; }
+  .vert-pair { justify-content: center; max-width: 480px; margin: 0 auto; }
 }
 .vert-pair .vid-card { flex: 1; max-width: 230px; }
 
@@ -349,6 +334,13 @@ body > * { position: relative; z-index: 1; }
 .cb-legend-dot--teal { background: var(--teal); box-shadow: 0 0 8px rgba(0,188,241,.4); }
 .cb-legend-dot--yellow { background: var(--yellow); box-shadow: 0 0 8px rgba(255,236,3,.4); }
 
+/* ═══ CONTENT EXAMPLES: continuous teal->pink room ═══ */
+.nk-examples { position: relative; background:
+  radial-gradient(ellipse 60% 40% at 75% 12%, rgba(0,188,241,0.08) 0%, transparent 70%),
+  radial-gradient(ellipse 60% 40% at 25% 88%, rgba(235,0,139,0.07) 0%, transparent 70%),
+  linear-gradient(180deg, #041a24 0%, #0c1420 45%, #1a0a18 100%); }
+.nk-examples .content-section { background: transparent; }
+
 /* ═══ LIGHT SECTION ═══ */
 .content-section--light { background: #fff; color: #111; }
 .content-section--light .section-head h2 { color: #111 !important; }
@@ -367,34 +359,19 @@ body > * { position: relative; z-index: 1; }
 .cta-band .btn-glow:hover { box-shadow: 0 0 40px rgba(0,0,0,0.25); }
 
 /* ═══ FOOTER ═══ */
-.footer { border-top: none; padding: 56px 0 28px; position: relative; background: var(--bg); }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand img { height: 22px; margin-bottom: 14px; }
-.footer-brand p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; max-width: 240px; }
-.footer-col h4 { font-family: var(--mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 14px; }
-.footer-col a { display: block; font-size: 0.82rem; color: var(--text-muted); padding: 3px 0; transition: color 0.2s ease; }
-.footer-col a:hover {
-  background: linear-gradient(135deg, var(--teal), var(--pink), var(--yellow));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-}
-.footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.72rem; color: var(--text-muted); }
 
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 1000px) {
   .hero .contain { grid-template-columns: 1fr; gap: 48px; }
-  .hero { padding: 60px 0 80px; }
+  .hero { padding: 104px 0 68px; }
   .grid-2x2, .horiz-pair { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
-  .hero { padding: 40px 0 60px; }
+  .hero { padding: 96px 0 52px; }
   .hero h1 { font-size: 2.25rem; }
   .content-section, .cta-band { padding: 60px 0; }
-  .vert-pair .vid-card { max-width: 160px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -432,119 +409,94 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
-<!-- curve: dark → light -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
-
 <!-- ═══ STATS ═══ -->
-<section style="background:#fff;color:#111;padding:80px 0">
-  <div class="contain" style="max-width:900px">
+<section style="background:#fff;color:#111;padding:84px 0">
+  <div class="contain" style="max-width:1040px">
     <style>
-      .nk-city-pulse { animation: nkCityPulse 2.5s ease-out infinite; }
-      @keyframes nkCityPulse { 0%{r:14;opacity:0.3} 100%{r:30;opacity:0} }
-      .nk-hub-pulse { animation: nkHubPulse 3s ease-out infinite; }
-      @keyframes nkHubPulse { 0%{r:36;opacity:0.2} 100%{r:60;opacity:0} }
+      .nk-split { display:grid; grid-template-columns:1fr 1fr; gap:clamp(36px,5vw,72px); align-items:center; }
+      .nk-viz { position:relative; width:100%; max-width:460px; margin:0; aspect-ratio:460/340; }
+      .nk-svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+      .nk-pulse { transform-box:fill-box; transform-origin:center; opacity:0; animation:nkPulse 3s ease-out infinite; }
+      @keyframes nkPulse { 0%{opacity:.5;transform:scale(1)} 70%{opacity:0;transform:scale(1.9)} 100%{opacity:0;transform:scale(1.9)} }
+      .nk-clip { transform-box:fill-box; transform-origin:center; opacity:0; animation: nkClipPop 3.6s ease-in-out infinite; animation-delay: var(--cd,0s); }
+      @keyframes nkClipPop { 0%{opacity:0;transform:scale(.3)} 10%{opacity:1;transform:scale(1)} 90%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(.3)} }
+      @media (prefers-reduced-motion: reduce){ .nk-clip { opacity:1; animation:none; } }
+      .nk-pill { position:absolute; transform:translate(-50%,-50%); display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.6px solid var(--teal); border-radius:9999px; padding:8px 15px 8px 12px; font-family:var(--font); font-size:13px; font-weight:700; color:#06546c; white-space:nowrap; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+      .nk-pill svg { flex-shrink:0; }
+      .nk-city { position:absolute; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:6px; }
+      .nk-city .nk-pill { position:static; transform:none; }
+      .nk-city-ico { display:flex; }
+      .nk-ico { width:38px; height:auto; overflow:visible; }
+      .nk-city--tl { left:17%; top:14%; } .nk-city--tr { left:83%; top:14%; }
+      .nk-city--bl { left:17%; top:86%; } .nk-city--br { left:83%; top:86%; }
+      .nk-stats { display:grid; grid-template-columns:1fr 1fr; border:1px solid #e8e8e8; border-radius:14px; overflow:hidden; }
+      .nk-stat { padding:28px 22px; }
+      .nk-stat:nth-child(2n) { border-left:1px solid #eee; }
+      .nk-stat:nth-child(n+3) { border-top:1px solid #eee; }
+      .nk-stat .n { font-size:2rem; font-weight:700; color:var(--teal); letter-spacing:-0.03em; line-height:1; margin-bottom:6px; }
+      .nk-stat .l { font-family:var(--mono); font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:#999; }
+      .nk-info-note { font-size:0.95rem; color:#666; line-height:1.65; margin:24px 0 0; }
+      @media (prefers-reduced-motion: reduce){ .nk-pulse{ animation:none; } }
+      @media (max-width:820px){ .nk-split { grid-template-columns:1fr; gap:40px; } .nk-viz { max-width:400px; margin:0 auto; } .nk-info-note { text-align:center; } }
+
+.cta-band { padding-bottom: 0 !important; }
+.cta-band .btn-glow { margin-bottom: 56px; }
+.cta-marquee { display: flex; height: 200px; overflow: hidden; }
+.cta-marquee-track { display: flex; animation: logos-scroll 28s linear infinite; flex-shrink: 0; }
+.cta-marquee-track img { width: 200px; height: 200px; object-fit: cover; flex-shrink: 0; }
+@keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     </style>
-    <div class="reveal" style="max-width:500px;margin:0 auto 32px">
-      <svg viewBox="-20 -10 440 320" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto">
-
-        <!-- Curved paths, arc around the text labels -->
-        <path d="M60,80 Q30,130 170,140" fill="none" stroke="rgba(0,188,241,0.12)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <path d="M340,80 Q370,130 230,140" fill="none" stroke="rgba(0,188,241,0.12)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <path d="M60,230 Q30,180 170,160" fill="none" stroke="rgba(0,188,241,0.12)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <path d="M340,230 Q370,180 230,160" fill="none" stroke="rgba(0,188,241,0.12)" stroke-width="1.5" stroke-dasharray="5 4"/>
-
-        <!-- Particles follow the curved paths -->
-        <circle r="3.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" repeatCount="indefinite" path="M60,80 Q30,130 170,140"/><animate attributeName="opacity" values="0;0.8;0.6;0" dur="2s" repeatCount="indefinite"/></circle>
-        <circle r="2.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M60,80 Q30,130 170,140"/><animate attributeName="opacity" values="0;0.5;0.3;0" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
-        <circle r="3.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" begin="0.25s" repeatCount="indefinite" path="M340,80 Q370,130 230,140"/><animate attributeName="opacity" values="0;0.8;0.6;0" dur="2s" begin="0.25s" repeatCount="indefinite"/></circle>
-        <circle r="2.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" begin="1.25s" repeatCount="indefinite" path="M340,80 Q370,130 230,140"/><animate attributeName="opacity" values="0;0.5;0.3;0" dur="2s" begin="1.25s" repeatCount="indefinite"/></circle>
-        <circle r="3.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" path="M60,230 Q30,180 170,160"/><animate attributeName="opacity" values="0;0.8;0.6;0" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
-        <circle r="2.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M60,230 Q30,180 170,160"/><animate attributeName="opacity" values="0;0.5;0.3;0" dur="2s" begin="1.5s" repeatCount="indefinite"/></circle>
-        <circle r="3.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" begin="0.75s" repeatCount="indefinite" path="M340,230 Q370,180 230,160"/><animate attributeName="opacity" values="0;0.8;0.6;0" dur="2s" begin="0.75s" repeatCount="indefinite"/></circle>
-        <circle r="2.5" fill="#00bcf1" opacity="0"><animateMotion dur="2s" begin="1.75s" repeatCount="indefinite" path="M340,230 Q370,180 230,160"/><animate attributeName="opacity" values="0;0.5;0.3;0" dur="2s" begin="1.75s" repeatCount="indefinite"/></circle>
-
-        <!-- LA lockup, building on top, name below -->
-        <g>
-          <g transform="translate(60,30)">
-            <rect x="-16" y="-6" width="12" height="22" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="-2" y="-14" width="18" height="30" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="-14" y="2" width="8" height="5" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="2" y="-8" width="6" height="4" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="9" y="-8" width="6" height="4" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="2" y="2" width="6" height="4" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="9" y="2" width="6" height="4" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-          </g>
-          <text x="60" y="72" text-anchor="middle" font-family="Inter" font-size="15" font-weight="800" fill="rgba(0,0,0,0.7)">Los Angeles</text>
+    <div class="nk-split">
+      <div class="nk-info">
+        <div class="nk-stats reveal reveal-d1">
+          <div class="nk-stat"><div class="n">4</div><div class="l">Cities</div></div>
+          <div class="nk-stat"><div class="n">1</div><div class="l">Weekend</div></div>
+          <div class="nk-stat"><div class="n">0</div><div class="l">Crews</div></div>
+          <div class="nk-stat"><div class="n">100%</div><div class="l">On Brand</div></div>
+        </div>
+        <p class="nk-info-note reveal reveal-d1">Nike activated run clubs in LA, Austin, Chicago, and NYC, all filming simultaneously through Cinebody. Every clip synced to one dashboard in real&nbsp;time.</p>
+      </div>
+      <div class="reveal nk-viz">
+        <svg class="nk-svg" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="rgba(235,0,139,0.28)" stroke-width="1.6" stroke-dasharray="3 6" stroke-linecap="round">
+        <line x1="101" y1="55" x2="188" y2="144"/>
+        <line x1="359" y1="55" x2="272" y2="144"/>
+        <line x1="101" y1="285" x2="188" y2="196"/>
+        <line x1="359" y1="285" x2="272" y2="196"/>
         </g>
-
-        <!-- Chicago lockup -->
+        <circle r="3" fill="#eb008b" opacity="0"><animateMotion dur="1.8s" begin="0.00s" repeatCount="indefinite" path="M101,55 L188,144"/><animate attributeName="opacity" values="0;0.9;0.7;0" dur="1.8s" begin="0.00s" repeatCount="indefinite"/></circle>
+        <circle r="3" fill="#eb008b" opacity="0"><animateMotion dur="1.8s" begin="0.35s" repeatCount="indefinite" path="M359,55 L272,144"/><animate attributeName="opacity" values="0;0.9;0.7;0" dur="1.8s" begin="0.35s" repeatCount="indefinite"/></circle>
+        <circle r="3" fill="#eb008b" opacity="0"><animateMotion dur="1.8s" begin="0.70s" repeatCount="indefinite" path="M101,285 L188,196"/><animate attributeName="opacity" values="0;0.9;0.7;0" dur="1.8s" begin="0.70s" repeatCount="indefinite"/></circle>
+        <circle r="3" fill="#eb008b" opacity="0"><animateMotion dur="1.8s" begin="1.05s" repeatCount="indefinite" path="M359,285 L272,196"/><animate attributeName="opacity" values="0;0.9;0.7;0" dur="1.8s" begin="1.05s" repeatCount="indefinite"/></circle>
+        <circle class="nk-pulse" cx="230" cy="170" r="50" fill="none" stroke="rgba(0,188,241,0.5)" stroke-width="1.5"/>
+        <circle class="nk-pulse" cx="230" cy="170" r="50" fill="none" stroke="rgba(0,188,241,0.4)" stroke-width="1.5" style="animation-delay:1.4s"/>
+        <circle cx="230" cy="170" r="52" fill="rgba(0,0,0,0.08)"/>
+        <circle cx="230" cy="170" r="50" fill="#fff" stroke="#00bcf1" stroke-width="2.4"/>
+        <rect x="206" y="150" width="48" height="30" rx="4" fill="none" stroke="rgba(0,188,241,0.25)" stroke-width="1.4"/>
         <g>
-          <g transform="translate(340,24)">
-            <rect x="-8" y="-16" width="16" height="32" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="-16" y="0" width="10" height="16" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="6" y="-6" width="14" height="22" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="-5" y="-10" width="4" height="3" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="1" y="-10" width="4" height="3" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="-5" y="-4" width="4" height="3" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="1" y="-4" width="4" height="3" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <line x1="0" y1="-16" x2="0" y2="-24" stroke="rgba(0,188,241,0.35)" stroke-width="1.5"/>
-          </g>
-          <text x="340" y="72" text-anchor="middle" font-family="Inter" font-size="15" font-weight="800" fill="rgba(0,0,0,0.7)">Chicago</text>
+          <rect class="nk-clip" x="210" y="154" width="12" height="10" rx="1.5" fill="#00bcf1" style="--cd:0s"/>
+          <rect class="nk-clip" x="224" y="154" width="12" height="10" rx="1.5" fill="#eb008b" style="--cd:.3s"/>
+          <rect class="nk-clip" x="238" y="154" width="12" height="10" rx="1.5" fill="#00bcf1" style="--cd:.6s"/>
+          <rect class="nk-clip" x="210" y="166" width="12" height="10" rx="1.5" fill="#00bcf1" style="--cd:.9s"/>
+          <rect class="nk-clip" x="224" y="166" width="12" height="10" rx="1.5" fill="#eb008b" style="--cd:1.2s"/>
+          <rect class="nk-clip" x="238" y="166" width="12" height="10" rx="1.5" fill="#00bcf1" style="--cd:1.5s"/>
         </g>
-
-        <!-- Austin lockup -->
-        <g>
-          <g transform="translate(60,228)">
-            <rect x="-16" y="-14" width="32" height="14" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="-12" y="-20" width="24" height="8" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <path d="M-8,-20 Q0,-32 8,-20" fill="#fff" stroke="rgba(0,188,241,0.35)" stroke-width="1.5"/>
-            <line x1="0" y1="-32" x2="0" y2="-38" stroke="rgba(0,188,241,0.4)" stroke-width="1.5"/>
-            <rect x="-2.5" y="-10" width="5" height="10" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-          </g>
-          <text x="60" y="250" text-anchor="middle" font-family="Inter" font-size="15" font-weight="800" fill="rgba(0,0,0,0.7)">Austin</text>
-        </g>
-
-        <!-- NYC lockup -->
-        <g>
-          <g transform="translate(340,224)">
-            <rect x="-12" y="-16" width="24" height="18" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="-8" y="-26" width="16" height="12" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <rect x="-4" y="-36" width="8" height="12" rx="1" fill="#fff" stroke="rgba(0,188,241,0.3)" stroke-width="1.5"/>
-            <line x1="0" y1="-36" x2="0" y2="-44" stroke="rgba(0,188,241,0.4)" stroke-width="1.5"/>
-            <rect x="-5" y="-22" width="4" height="3" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="1" y="-22" width="4" height="3" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-            <rect x="-2" y="-32" width="4" height="3" rx="0.5" fill="rgba(0,188,241,0.15)" stroke="rgba(0,188,241,0.25)" stroke-width="0.8"/>
-          </g>
-          <text x="340" y="250" text-anchor="middle" font-family="Inter" font-size="15" font-weight="800" fill="rgba(0,0,0,0.7)">New York</text>
-        </g>
-
-        <!-- CENTER HUB -->
-        <circle class="nk-hub-pulse" cx="200" cy="150" r="36" fill="none" stroke="rgba(255,200,0,0.3)" stroke-width="1.5"/>
-        <circle class="nk-hub-pulse" cx="200" cy="150" r="36" fill="none" stroke="rgba(255,200,0,0.2)" stroke-width="1.5" style="animation-delay:1.5s"/>
-        <circle cx="200" cy="150" r="36" fill="rgba(255,200,0,0.06)" stroke="rgba(255,200,0,0.25)" stroke-width="2"/>
-        <circle cx="200" cy="150" r="25" fill="rgba(255,200,0,0.1)" stroke="rgba(255,200,0,0.35)" stroke-width="1.5"/>
-        <text x="200" y="147" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#00bcf1" letter-spacing="0.05em">CINEBODY</text>
-        <text x="200" y="162" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="rgba(0,0,0,0.35)" letter-spacing="0.08em">DASHBOARD</text>
-
-        <!-- Glow filter -->
-        <defs>
-          <filter id="nkGlow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-
-      </svg>
+        <text x="230" y="196" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="8" font-weight="800" letter-spacing="1" fill="#0a6f90">DASHBOARD</text>
+        </svg>
+        <div class="nk-city nk-city--tl"><div class="nk-city-ico"><svg class="nk-ico" viewBox="0 0 64 64" style="color:#00bcf1"><path fill="currentColor" d="m42.079 17.179l-2.005-3.601l4.701.215l-2.209-3.348l4.297.074l-2.328-2.965L49 7.93l-2.479-3.08l3.826-1.102c-11.779-6.61-17.98 6.786-18.672 19.198C28.091 10.376 17.52-2.529 6.886 8.725l4.148-.289l-1.636 3.863l4.378-1.949l-1.516 3.697l4.295-1.598l-.895 2.788C9.724 13.338 4.284 14.757 2 22.525l3.554-1.906l.322 4.199l2.999-3.521l.351 3.996l3.087-3.164l.702 4.211l3.281-3.566l1.102 4.574l2.96-3.098l.717 2.688c-8.249 1.297-14.342 5.75-9.069 14.255l.745-3.238l2.926 2.416l-.623-3.914l2.813 2.273l-.342-3.746l3.15 2.203l-.495-4.107l3.609 2.199l-.365-3.631l1.06.614c.396 1.249 1.197 2.28 2.302 2.904c.317.18.658.315 1.009.421L32.587 62h1.524l-.173-.952l6.464-1.2l-6.895-1.172l-.774-4.27l6.363-1.184l-6.787-1.149l-.795-4.381l5.876-1.093l-6.267-1.063l-.82-4.52l5.592-1.04l-5.964-1.012l-.574-3.162a5.6 5.6 0 0 0 2.285-.544c.39.406.823.752 1.303 1.002l-2.167.403l6.037 1.025l1.399 4.647l-5.114.952l5.691.964l1.413 4.695l-5.184.964l5.769.979l1.394 4.63l-5.456 1.015l6.072 1.03L44.135 62h1.566l-7.893-26.22a4 4 0 0 0 1.311-2.658a4.5 4.5 0 0 0-.136-1.443l2.149-1.351l-.525 3.439l3.402-2.232l-.666 3.898l2.982-2.219l-.506 3.547l2.68-2.268l-.771 3.719l2.789-2.406l.51 3.02c5.41-8.526-.439-12.442-8.263-13.12l.876-3.028l2.959 2.859l1.104-4.223l3.281 3.291l.701-3.885l3.086 2.92l.354-3.688l2.996 3.248l.322-3.875L62 21.086c-3.08-9.662-11.884-8.695-19.921-3.907m-22.69-.363a25 25 0 0 0-2.315-1.07l2.853-1.148zm3.314 1.999q-.572-.39-1.146-.751l1.426-.545zm.729 7.842l.676-.687l.26.618a40 40 0 0 0-.936.069m16.727-1.041c-.15-.273-.33-.53-.531-.774l.263-.576l1.444 1.354c-.388-.014-.783-.005-1.176-.004m-1.118-6.421l-.977-1.863l3.602.097a39 39 0 0 0-2.625 1.766"/></svg></div><div class="nk-pill">Los Angeles</div></div>
+        <div class="nk-city nk-city--tr"><div class="nk-city-ico"><svg class="nk-ico" viewBox="0 0 64 64" style="color:#00bcf1"><path fill="currentColor" d="M62 59.526c0-.743-.427-1.373-1.027-1.724a2.3 2.3 0 0 0 .328-1.168a2.28 2.28 0 0 0-2.272-2.286c-.047 0-.097.014-.145.02v-.283c0-.645-.522-1.17-1.164-1.17c-.163 0-.313.043-.453.106v-.827h1.782v-5.348h-1.291V42.39h1.291v-5.349h-1.291v-4.457h1.291v-5.349h-1.291v-4.457h1.291V17.43h-1.291v-4.457h1.291V4.951H47.246V2H15.771v3.842h-3.074v-.891H3.783V49.52H2v2.674h1.783V62H62v-.983h-.657c.4-.371.657-.9.657-1.491M39.438 12.974h4.457v4.457h-4.457zm0 9.804h4.457v4.457h-4.457zm0 9.806h4.457v4.457h-4.457zm0 9.806h4.457v4.457h-4.457zm-8.914-29.416h4.457v4.457h-4.457zm0 9.804h4.457v4.457h-4.457zm0 9.806h4.457v4.457h-4.457zm0 9.806h4.457v4.457h-4.457zM16.476 61.017h-2.674v-7.039h2.674zm3.565 0h-2.674v-7.039h2.674zm6.026 0h-5.135v-7.931H12.91v7.931H5.565v-8.822h20.502zm0-18.627v7.131H12.696v-8.468h13.371zm0-9.806v5.794H12.696v-7.131h13.371zm0-9.806v5.794H12.696v-7.131h13.371zm0-9.804v5.794H12.696v-7.131h13.371zm0-4.012H12.696V6.733h13.371zm4.457 52.055h-2.95v-.983h2.95v-7.839h4.457v7.839h4.457v-7.839h4.457v7.839h4.08c.202.475.609.833 1.109.983zm17.829-5.754v-3.068h4.457v1.367c-.108-.022-.211-.058-.327-.058a1.74 1.74 0 0 0-1.571 1.007a2.4 2.4 0 0 0-.751-.133c-.735 0-1.383.35-1.808.885m1.346 4.087c-.321 0-.578.323-.578 0a.581.581 0 1 1 1.162 0c0 .323-.258 0-.584 0m.624-3.148c-.644 0-1.166 1.024-1.166.371a1.168 1.168 0 1 1 2.336 0c0 .654-.518-.371-1.17-.371m2.534 3.144c-.642 0-1.164.899-1.164.251a1.17 1.17 0 0 1 1.164-1.168a1.16 1.16 0 0 1 1.158 1.168c.001.648-.51-.251-1.158-.251m1.464-4.673a.786.786 0 1 1 1.573 0c0 .436-.35-.22-.789-.22c-.434 0-.784.655-.784.22m1.368 2.887c-.321 0-.578.324-.578 0c0-.319.257-.58.578-.58a.58.58 0 0 1 .584.58c0 .324-.255 0-.584 0m.594-10.713h-8.914V42.39h8.914zm0-9.806h-8.914v-4.457h8.914zm0-9.806h-8.914v-4.457h8.914zm0-9.804h-8.914v-4.457h8.914zm.995 42.233c-.435 0-.784.655-.784.22a.786.786 0 1 1 1.571 0c0 .435-.347-.22-.787-.22m.203-3.788c-.322 0-.578.424-.578.101c0-.33.256-.588.578-.588c.317 0 .584.258.584.588c0 .323-.266-.101-.584-.101m1.391 1.791a.58.58 0 1 1 1.161 0c0 .323-.256-.095-.577-.095c-.326 0-.584.418-.584.095m1.116 2.081c-.322 0-.586.33-.586 0c0-.318.264-.583.586-.583c.319 0 .578.265.578.583c0 .33-.258 0-.578 0"/></svg></div><div class="nk-pill">Chicago</div></div>
+        <div class="nk-city nk-city--bl"><div class="nk-city-ico"><svg class="nk-ico" viewBox="0 0 64 64" style="color:#00bcf1"><path fill="currentColor" d="M62 24.051v-2.816L31.988 2L2 21.234v2.816l1.635-1.049l.94 1.273L2 25.928v1.875h2.617v1.842H2V32h5.75v1.195h.75V52.75h-.75v1.75h-.5v1.875H5.5v1.875H3.75v1.875H2V62h60v-1.875h-1.75V58.25H58.5v-1.875h-1.75V54.5h-.5v-1.75h-.75V33.195h.75V32H62v-2.355h-2.617v-1.842H62v-1.875l-2.576-1.651l.941-1.273zM9.807 52.02h-.708V33.979h.708zm1.364 0h-.707V33.979h.707zm1.364 0h-.707V33.979h.707zm1.365 0h-.708V33.979h.708zm8.266.791h-.75V54.5H15.25v-1.75h-.75V33.195h.75V32h6.166v1.195h.75zm1.307-.791h-.707V33.979h.707zm1.365 0h-.708V33.979h.708zm1.364 0h-.708V33.979h.708zm1.364 0h-.707V33.979h.707zm8.267.791h-.75V54.5h-6.167v-1.689h-.75V33.195h.75V32h6.167v1.195h.75zm1.307-.791h-.707V33.979h.707zm1.365 0h-.708V33.979h.708zm1.364 0h-.708V33.979h.708zm1.364 0h-.707V33.979h.707zm8.267.73h-.75v1.75h-6.167v-1.689h-.75V33.195h.75V32h6.167v1.195h.75zm1.307-.73h-.708V33.979h.708zm1.364 0h-.707V33.979h.707zm1.364 0h-.707V33.979h.707zm1.365 0h-.708V33.979h.708zm2.483-22.375H6.617v-1.842h50.766zM7.082 25.928L31.988 9.482l24.93 16.445H7.082zm50.655-2.733L31.988 6.691L6.262 23.193l-.94-1.273L31.988 4.814l26.689 17.107z"/><path fill="currentColor" d="M32.352 22.875a.25.25 0 0 0-.225-.152h-.252a.25.25 0 0 0-.225.152l-.402-.232l-.966-.553v2.21l.966-.553l.402-.23c.04.09.125.152.225.152h.252a.25.25 0 0 0 .225-.152l.402.23l.964.553v-2.21l-.964.553zm.502-2.795a2 2 0 0 1-.853.189a2 2 0 0 1-.853-.188a1.6 1.6 0 0 1-.648-.564c-.035.295.117.619.403.846c.281.23.689.367 1.099.365c.408.002.817-.133 1.098-.365c.285-.227.438-.551.402-.846a1.55 1.55 0 0 1-.648.563"/><path fill="currentColor" d="M28.104 16.266a1.4 1.4 0 0 0-.334.125c-.035.018-.043.029-.043.092v.082c0 .15-.018.092.09.154a.4.4 0 0 1 .098.08c-.1.361-.153.744-.153 1.139a4.238 4.238 0 1 0 8.322-1.141a.5.5 0 0 1 .099-.078c.109-.063.09-.004.09-.154v-.082c0-.063-.006-.074-.041-.092c-.059-.029-.12-.059-.182-.08a2 2 0 0 0-.152-.045a4.24 4.24 0 0 0-3.896-2.568a4.24 4.24 0 0 0-3.898 2.568m7.633 1.588l.001.084a3.738 3.738 0 1 1-7.477 0l.001-.084c.133.5.428.822.871.99a2.05 2.05 0 0 0 1.477-.018c.26-.102.486-.266.666-.529c.315-.465.22-.754.383-1.152c.143-.346.541-.346.684 0c.162.398.068.688.383 1.152c.18.264.407.428.665.529a2.06 2.06 0 0 0 1.478.018c.442-.168.736-.49.868-.99M32 14.199c1.426 0 2.666.799 3.295 1.973a8.5 8.5 0 0 0-1.387-.008q-.785.069-1.32.346a1.43 1.43 0 0 1-1.174 0q-.537-.277-1.322-.346a8.5 8.5 0 0 0-1.386.008A3.73 3.73 0 0 1 32 14.199"/></svg></div><div class="nk-pill">Austin</div></div>
+        <div class="nk-city nk-city--br"><div class="nk-city-ico"><svg class="nk-ico" viewBox="0 0 64 64" style="color:#00bcf1"><path fill="currentColor" d="M33.574 57.039c-.763-9.927 4.268-17.382 4.268-17.382C27.603 48.021 29.231 62 29.231 62h6.405C33.989 56 37.3 51.103 37.3 51.103c-2.117 1.729-3.189 3.95-3.726 5.936"/><path fill="currentColor" d="M31.69 37.132C20.292 46.44 22.105 62 22.105 62h5.786c-3.756-13.689 3.799-24.868 3.799-24.868m.094-6.579c0 .226.775.573 1.734.573c.957 0 1.733-.348 1.733-.573c.001-.146-3.467-.146-3.467 0m.596 1.751c0 .154.497.394 1.109.394s1.109-.239 1.109-.394c.001-.099-2.218-.099-2.218 0m2.929-4.991c0 .522.748 1.324 1.671 1.324c.924 0 1.673-.802 1.673-1.324c-.001-.333-3.344-.333-3.344 0m-6.925 0c0 .522.749 1.324 1.674 1.324c.921 0 1.671-.802 1.671-1.324c0-.333-3.345-.333-3.345 0"/><path fill="currentColor" d="M56 45.196L45.692 35.019l-2.752 2.412V27.34l5.825-4.312l6.392-4.735l-7.845 1.371l-5.117.894l.344-4.587l.561-7.466l-4.035 6.314l-2.147 3.357l-1.579-5.666l-1.82-6.53l-1.818 6.53l-1.579 5.667l-2.148-3.359l-4.036-6.312l.562 7.464l.345 4.587l-5.117-.894l-.38-.066q.072-.24.103-.493h1.888V13.08h-1.096c.355-1.172.347-2.338.205-3.131l-1.275-7.135l-1.145 3.31C15.786 3.497 9.516 2 9.516 2l2.414 3.678c-1.215.722-2.882 2.379-3.162 5.094a5.7 5.7 0 0 0 .239 2.308H8.005v.882L8 15.844v3.261h.654a2.65 2.65 0 0 0-.303 1.228q.002.466.146.888a2.6 2.6 0 0 0-.146.863v.046a2.68 2.68 0 0 0 .699 1.79a2.69 2.69 0 0 0 2.071 2.246a3.62 3.62 0 0 0 3.153 1.856h.228l2.223 4.766c-.629 1.953-.76 4.342-.393 7.115l.021.16l.048.152l3.229 10.338C18.614 56.534 18.554 62 18.554 62h1.889s-.349-11.171 3.712-20.71c.462-2.254 1.146-7.1-.305-11.592l.85 1.021l-.367-.442l1.651 1.983l.632.76s.49 1.768.094 4.077a10 10 0 0 1 .809-.835c2.322-2.098 9.68-2.098 12.001 0a11 11 0 0 1 1.534 1.752v.001a17 17 0 0 1 1.544 2.656l-7.195 7.156l7.625 7.528l2.793-2.674l-.991-.979c-.749-.713-.115-1.654.533-1.367c-.485-.669.458-1.846 1.146-1.388c-.48-.663.597-1.81 1.414-1.127c-.448-.933.894-1.668 1.562-.981l1.934 1.91c.6.815-.285 1.77-.99 1.545c.616.637-.239 1.871-1.143 1.393c.461.611-.675 1.67-1.406 1.133c.2.434-.566 1.197-1.384.525l-.665-.656c.007.051.008.102.021.151c1.001 4.06.742 9.16.742 9.16h1.889s-.032-2.933-.434-6.726q.345-.136.641-.361a2.7 2.7 0 0 0 1.764-.775c.22-.217.398-.463.531-.727c.264-.127 1.347-1.314 1.463-1.76c.867-.41 1.428-2.895.738-3.678zM10.646 10.965c.292-2.831 2.523-3.812 2.523-3.812s-.595 2.369 0 2.708c.075.043.184.07.31.07c.532 0 1.387-.482 1.514-2.257c.049-.695-.892-2.126-.892-2.126s2.137.727 2.947 2.585c.601 1.379.013 3.784.013 3.784s1.055-.279 1.524-1.639c0 0 .259 1.447-.358 2.802h-7.204a3.84 3.84 0 0 1-.377-2.115m-.752 3.997h.868v.882h.869v-.882h.868v.882h.868v-.882h.869v.882h.868v-.882h.868v.882h.868v-.882h.869v.882h.868v-.882h.868v2.261H9.889zm4.772 8.05c.619.253.324 1.337-.603 1.337H11.71c-.939 0-1.249-1.113-.603-1.337c-.927-.158-1.031-1.569-.186-1.782c-.831-.332-.697-1.758.193-1.783c-.669-.254-.832-1.784.403-1.784h2.735c.912 0 1.045 1.575.403 1.784c.774.084.818 1.555.194 1.783c.835.212.657 1.667-.183 1.782m5.461 12.609l-1.36-2.918l-.003.006l.003-.007l-3.103-6.654a1.77 1.77 0 0 0 .788-1.476l.013-4.724a1.1 1.1 0 0 1-1.097-1.088c0-.604.496-1.092 1.106-1.092a1.1 1.1 0 0 1 1.105 1.092c0 .52-.349 1.035-.829 1.035l5.463 9.553l.005-.002l-.005.002l.805 1.407c.001 4.215-2.891 4.866-2.891 4.866m3.152-8.398l-.104.007l-.566-.99l1.295.959zm10.24 6.991c-1.841 0-6.812-2.578-6.812-7.928c0 0 13.621-4.125 13.621 0c0 5.35-4.969 7.928-6.809 7.928"/></svg></div><div class="nk-pill">New York</div></div>
+      </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e0e0e0;border-radius:12px;overflow:hidden" class="reveal">
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">4</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">Cities</div></div>
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">1</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">Weekend</div></div>
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">0</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">Crews</div></div>
-      <div style="background:#fff;padding:36px 20px;text-align:center"><div style="font-size:2rem;font-weight:700;color:#00bcf1;letter-spacing:-0.03em;line-height:1;margin-bottom:6px">100%</div><div style="font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em">On Brand</div></div>
-    </div>
-    <p class="reveal reveal-d1" style="font-size:0.95rem;color:#666;line-height:1.65;max-width:560px;margin:32px auto 0;text-align:center">Nike activated run clubs in LA, Austin, Chicago, and NYC, all filming simultaneously through Cinebody. Every clip synced to one dashboard in real&nbsp;time.</p>
   </div>
 </section>
 
 <!-- curve: light → teal-navy -->
 <div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
+
+<!-- ═══ CONTENT EXAMPLES (one continuous gradient room) ═══ -->
+<div class="nk-examples">
 
 <!-- ═══ NATIONWIDE SYNC, 2x2 Grid ═══ -->
 <section class="content-section">
@@ -558,59 +510,30 @@ body > * { position: relative; z-index: 1; }
     <div class="grid-2x2 reveal reveal-d1">
       <div class="vid-card">
         <div class="vid-playable vid-playable--h" data-vimeo="210955565" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/210955565.jpg" alt="LA Run Club">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/876803307-99d176512d4bed8ddf439900af2a4a067a935e1b5b35ad3055bf0122dff479d1-d_1280" alt="LA Run Club">
         </div>
       </div>
       <div class="vid-card">
         <div class="vid-playable vid-playable--h" data-vimeo="210956522" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/210956522.jpg" alt="Austin Run Club">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/641462142-aa14919f98428d8bbb164f1ce211944c79630f18f2f02f8571ac4ec85a447969-d_1280" alt="Austin Run Club">
         </div>
       </div>
       <div class="vid-card">
         <div class="vid-playable vid-playable--h" data-vimeo="210956382" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/210956382.jpg" alt="Chicago Run Club">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/641462056-1efc58a056c9accdc6bc43843c835972fae57f4a84b363298aaa08d0128529ee-d_1280" alt="Chicago Run Club">
         </div>
       </div>
       <div class="vid-card">
         <div class="vid-playable vid-playable--h" data-vimeo="210956225" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/210956225.jpg" alt="NYC Run Club">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/641461942-99a5c735e11dcf75f68645587bdc7a5757a4a2e7fbc4bf4f33cbf4dd2906610c-d_1280" alt="NYC Run Club">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ MAP SECTION ═══ -->
-<section class="content-section">
-  <div class="contain">
-    <div class="section-head reveal">
-      <div class="label">Capture Map</div>
-      <h2>Coast to coast. <em>One platform.</em></h2>
-    </div>
-
-    <div class="reveal reveal-d1">
-      <div class="cb-map-viewer" id="nikeMap">
-        <!-- Tiles + dots filled by JS -->
-      </div>
-      <div class="cb-map-stats">
-        <div class="cb-map-stat"><div class="cb-map-stat-city">Los Angeles</div><div class="cb-map-stat-num" id="stat-la">0</div><div class="cb-map-stat-label">clips synced</div></div>
-        <div class="cb-map-stat"><div class="cb-map-stat-city">Austin</div><div class="cb-map-stat-num" id="stat-austin">0</div><div class="cb-map-stat-label">clips synced</div></div>
-        <div class="cb-map-stat"><div class="cb-map-stat-city">Chicago</div><div class="cb-map-stat-num" id="stat-chicago">0</div><div class="cb-map-stat-label">clips synced</div></div>
-        <div class="cb-map-stat"><div class="cb-map-stat-city">New York</div><div class="cb-map-stat-num" id="stat-nyc">0</div><div class="cb-map-stat-label">clips synced</div></div>
-      </div>
-      <div class="cb-map-legend">
-        <span><div class="cb-legend-dot cb-legend-dot--teal"></div>Run club filming location</span>
-        <span><div class="cb-legend-dot cb-legend-dot--yellow"></div>Your dashboard, anywhere</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- curve: dark → light -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0f1a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
-
 <!-- ═══ POP-UP POWER ═══ -->
-<section class="content-section content-section--light" style="padding-top:60px">
+<section class="content-section" style="padding-top:60px">
   <div class="contain">
     <div class="section-head reveal">
       <div class="label">Pop-Up Power</div>
@@ -620,21 +543,18 @@ body > * { position: relative; z-index: 1; }
 
     <div class="horiz-pair reveal reveal-d1">
       <div class="vid-card">
-        <div class="vid-playable vid-playable--h" data-vimeo="265928299" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/265928299.jpg" alt="Pop-Up 1">
+        <div class="vid-playable vid-playable--h" data-vimeo="265928299" data-vimeo-h="10ec2810ff" style="width:100%">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/696061055-cd34ca440798414c8d191af42901cde8208bcb11564388245cd9e462f14bb719-d_1280" alt="Pop-Up 1">
         </div>
       </div>
       <div class="vid-card">
         <div class="vid-playable vid-playable--h" data-vimeo="214760772" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/214760772.jpg" alt="Pop-Up 2">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/641462228-a9213472ae6af97065dc28be41d3b0bc567a90e9b01406ee0a4f124e45055318-d_1280" alt="Pop-Up 2">
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- curve: light → teal-navy -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
 
 <!-- ═══ INFLUENCER IGNITION ═══ -->
 <section class="content-section" style="padding-top:60px">
@@ -648,20 +568,22 @@ body > * { position: relative; z-index: 1; }
     <div class="vert-pair reveal reveal-d1">
       <div class="vid-card">
         <div class="vid-playable vid-playable--v" data-vimeo="329885560" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/329885560.jpg" alt="Influencer 1">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/2038625107-eddbe5bc74a96d3ef3094b3ea79dd232418b38eee38eafa6df67b58765ec5e4f-d_1280" alt="Influencer 1">
         </div>
       </div>
       <div class="vid-card">
         <div class="vid-playable vid-playable--v" data-vimeo="329885498" style="width:100%">
-          <img class="vid-poster" src="https://vumbnail.com/329885498.jpg" alt="Influencer 2">
+          <img class="vid-poster" src="https://i.vimeocdn.com/video/774805000-cec677bae3f98751c3c791b209b849f77addc2af01059553dc74c0389e60c23e-d_1280" alt="Influencer 2">
         </div>
       </div>
     </div>
   </div>
 </section>
 
+</div><!-- /nk-examples -->
+
 <!-- curve: dark → yellow -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0f1a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffec03"/></svg></div>
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#1a0a18"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffec03"/></svg></div>
 
 <!-- ═══ CTA BAND ═══ -->
 <section class="cta-band">
@@ -669,10 +591,11 @@ body > * { position: relative; z-index: 1; }
     <h2 class="reveal">Want authentic content from every city?<br><span>Let's build your playbook.</span></h2>
     <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow reveal reveal-d1">Book a Strategy Call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
+  <div class="cta-marquee" style="position:relative">
+    <div class="cta-marquee-track" id="ctaTrack"></div>
+    <svg style="position:absolute;bottom:0;left:0;width:100%;height:50px;z-index:2" viewBox="0 0 1440 50" preserveAspectRatio="none"><path d="M0,0 Q720,50 1440,0 L1440,50 L0,50 Z" fill="#0a0a0a"/></svg>
+  </div>
 </section>
-
-<!-- curve: yellow → dark -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#ffec03"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#0a0a0a"/></svg></div>
 
 <script>
 // Reveal
@@ -695,177 +618,13 @@ body > * { position: relative; z-index: 1; }
 })();
 
 // Nike Capture Map, CartoDB tiles + Mercator dots + footage streams + live counter
+/* map removed */
+
+// CTA image marquee
 (function(){
-  var cities = [
-    { id:'la',      lat:34.0522, lng:-118.2437, label:'Los Angeles', labelPos:'below', speed:1800 },
-    { id:'austin',  lat:30.2672, lng:-97.7431,  label:'Austin',      labelPos:'below', speed:2800 },
-    { id:'chicago', lat:41.8781, lng:-87.6298,  label:'Chicago',     labelPos:'above', speed:1200 },
-    { id:'nyc',     lat:40.7128, lng:-74.0060,  label:'New York',    labelPos:'above', speed:900 }
-  ];
-
-  var hub = { lat:39.7392, lng:-104.9903 };
-  var z=4, xS=2, xE=5, yS=5, yE=6;
-  var totalClips = 0;
-  var cityCounts = { la:0, austin:0, chicago:0, nyc:0 };
-
-  function toGrid(lat, lng) {
-    var n = Math.pow(2, z);
-    var xT = (lng + 180) / 360 * n;
-    var latR = lat * Math.PI / 180;
-    var yT = (1 - Math.log(Math.tan(latR) + 1 / Math.cos(latR)) / Math.PI) / 2 * n;
-    return {
-      left: ((xT - xS) / (xE - xS + 1) * 100).toFixed(2) + '%',
-      top:  ((yT - yS) / (yE - yS + 1) * 100).toFixed(2) + '%'
-    };
-  }
-
-  var viewer = document.getElementById('nikeMap');
-  if (!viewer) return;
-
-  // Tiles
-  var tilesHTML = '<div class="cb-map-tiles">';
-  for (var y = yS; y <= yE; y++) {
-    for (var x = xS; x <= xE; x++) {
-      tilesHTML += '<img src="https://basemaps.cartocdn.com/dark_nolabels/' + z + '/' + x + '/' + y + '@2x.png" alt="">';
-    }
-  }
-  tilesHTML += '</div>';
-
-  var hubPos = toGrid(hub.lat, hub.lng);
-  var hx = parseFloat(hubPos.left), hy = parseFloat(hubPos.top);
-  var cityPositions = [];
-
-  // Connection lines
-  var connHTML = '<svg class="cb-conn-layer" viewBox="0 0 100 100" preserveAspectRatio="none">';
-  cities.forEach(function(c) {
-    var pos = toGrid(c.lat, c.lng);
-    cityPositions.push(pos);
-    var cx1 = parseFloat(pos.left), cy1 = parseFloat(pos.top);
-    var midX = (cx1 + hx) / 2;
-    var midY = Math.min(cy1, hy) - Math.abs(cx1 - hx) * 0.1;
-    connHTML += '<path d="M' + cx1 + ' ' + cy1 + ' Q' + midX + ' ' + midY + ' ' + hx + ' ' + hy + '"/>';
-  });
-  connHTML += '</svg>';
-
-  // Dots
-  var dotsHTML = '<div class="cb-dot-layer">';
-  cities.forEach(function(c, i) {
-    var pos = cityPositions[i];
-    dotsHTML += '<div class="cb-map-dot" data-city="' + c.id + '" style="left:' + pos.left + ';top:' + pos.top + '">';
-    dotsHTML += '<div class="cb-map-dot-inner"></div>';
-    dotsHTML += '<div class="cb-pulse"></div>';
-    dotsHTML += '<div class="cb-pulse cb-pulse2"></div>';
-    dotsHTML += '<div class="cb-map-dot-label ' + c.labelPos + '">' + c.label + '</div>';
-    dotsHTML += '</div>';
-  });
-
-  // Hub
-  dotsHTML += '<div class="cb-hub cb-map-dot" style="left:' + hubPos.left + ';top:' + hubPos.top + '">';
-  dotsHTML += '<div class="cb-hub-inner"><svg class="cb-hub-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>';
-  dotsHTML += '<div class="cb-pulse"></div>';
-  dotsHTML += '<div class="cb-pulse cb-pulse2"></div>';
-  dotsHTML += '<div class="cb-hub-counter" id="hubCounter"><span>0</span> clips synced</div>';
-  dotsHTML += '<div class="cb-hub-label">Your Dashboard</div>';
-  dotsHTML += '</div>';
-  dotsHTML += '</div>';
-
-  viewer.innerHTML = tilesHTML + connHTML + dotsHTML;
-
-  var counterEl = document.getElementById('hubCounter');
-  var counterNum = counterEl ? counterEl.querySelector('span') : null;
-
-  function bumpCount(cityId) {
-    totalClips++;
-    cityCounts[cityId]++;
-    if (counterNum) counterNum.textContent = totalClips;
-    var statEl = document.getElementById('stat-' + cityId);
-    if (statEl) statEl.textContent = cityCounts[cityId];
-  }
-
-  // Animate on visible
-  var mapObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        viewer.querySelectorAll('.cb-map-dot').forEach(function(d) { d.classList.add('entered'); });
-        if (counterEl) setTimeout(function() { counterEl.classList.add('vis'); }, 600);
-        startStreams();
-        mapObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  mapObs.observe(viewer);
-
-  // Smooth quadratic bezier point
-  function bezier(t, p0, p1, p2) {
-    var mt = 1 - t;
-    return mt * mt * p0 + 2 * mt * t * p1 + t * t * p2;
-  }
-
-  // Smooth easeInOutCubic
-  function ease(t) {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  }
-
-  function startStreams() {
-    var vw = viewer.offsetWidth;
-    var vh = viewer.offsetHeight;
-
-    cities.forEach(function(c, i) {
-      var fromPos = cityPositions[i];
-      var sent = 0;
-
-      var sx = parseFloat(fromPos.left) / 100 * vw;
-      var sy = parseFloat(fromPos.top) / 100 * vh;
-      var ex = hx / 100 * vw;
-      var ey = hy / 100 * vh;
-      // Control point, arc upward
-      var cpx = (sx + ex) / 2;
-      var cpy = Math.min(sy, ey) - Math.abs(sx - ex) * 0.15;
-
-      function sendParticle() {
-        var p = document.createElement('div');
-        p.className = 'cb-stream-particle';
-        p.style.opacity = '0';
-        viewer.appendChild(p);
-
-        var dur = 1800 + Math.random() * 600;
-        var startTime = performance.now();
-        var counted = false;
-
-        function tick(now) {
-          var elapsed = now - startTime;
-          var t = Math.min(elapsed / dur, 1);
-          var et = ease(t);
-
-          var x = bezier(et, sx, cpx, ex);
-          var y = bezier(et, sy, cpy, ey);
-
-          var opacity = t < 0.08 ? t / 0.08 : t > 0.9 ? (1 - t) / 0.1 : 1;
-
-          p.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
-          p.style.opacity = (opacity * 0.9).toFixed(2);
-
-          if (t > 0.88 && !counted) {
-            counted = true;
-            bumpCount(c.id);
-          }
-
-          if (t < 1) {
-            requestAnimationFrame(tick);
-          } else {
-            p.remove();
-          }
-        }
-
-        requestAnimationFrame(tick);
-
-        // Each city has its own cadence
-        var nextDelay = c.speed + Math.random() * c.speed * 0.5;
-        setTimeout(sendParticle, nextDelay);
-      }
-
-      setTimeout(sendParticle, 800 + i * 400);
-    });
-  }
+  var imgs=['/assets/cta-still006.jpg','/assets/cta-still005.jpg','/assets/cta-still004.jpg','/assets/cta-still009.jpg','/assets/cta-still008.jpg','/assets/cta-still007.jpg'];
+  var t=document.getElementById('ctaTrack');
+  if(!t) return;
+  for(var i=0;i<4;i++) imgs.forEach(function(s){ var img=document.createElement('img'); img.src=s; img.loading='lazy'; img.alt=''; t.appendChild(img); });
 })();
 </script>

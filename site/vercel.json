@@ -22,7 +22,70 @@
       ]
     },
     {
-      "source": "/beta-testing",
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/wall/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=31536000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/cuts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=31536000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/who/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=31536000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/app-ui/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=31536000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/blog/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=31536000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/og/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=31536000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/sashco-year2",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -67,7 +130,7 @@
       ]
     },
     {
-      "source": "/royal-caribbean-renewal",
+      "source": "/ai-loop",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -76,7 +139,16 @@
       ]
     },
     {
-      "source": "/ai-loop",
+      "source": "/beta-testing",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/royal-caribbean-renewal",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -112,6 +184,11 @@
   ],
   "redirects": [
     {
+      "source": "/software",
+      "destination": "/platform",
+      "permanent": true
+    },
+    {
       "source": "/u/:token",
       "destination": "https://api.cinebrain.ai/unsubscribe/:token",
       "permanent": false
@@ -120,6 +197,31 @@
       "source": "/android-beta",
       "destination": "https://github.com/Murder-Dog/cinebody-website/releases/latest/download/Cinebody-2.0-android.apk",
       "permanent": false
+    },
+    {
+      "source": "/blog",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/cinebody-blog/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "https://app.cinebody.com/login",
+      "permanent": false
+    },
+    {
+      "source": "/signup",
+      "destination": "https://app.cinebody.com/signup",
+      "permanent": false
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
     }
   ]
 }

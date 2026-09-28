@@ -20,8 +20,8 @@
   --text: #e8e8e8;
   --text-dim: rgba(255,255,255,0.5);
   --text-muted: rgba(255,255,255,0.3);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Plus Jakarta Sans', sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --radius: 12px;
 }
@@ -101,26 +101,21 @@ body > * { position: relative; z-index: 1; }
   transition: all 0.3s var(--ease); position: relative; isolation: isolate;
 }
 
+/* App AI surface: dark pill + the shared brand ring */
 .btn-glow {
-  background: var(--teal); color: #fff;
-  box-shadow: 0 0 20px rgba(0,188,241,0.15), 0 2px 8px rgba(0,0,0,0.3);
+  background: #151518; color: #fff;
+  border-radius: 9999px;
+  transition: color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
 }
-
-.btn-glow::before {
-  content: ''; position: absolute; inset: -2px; border-radius: 10px; z-index: -1;
-  background: linear-gradient(135deg, var(--teal), var(--pink), var(--yellow));
-  opacity: 0; transition: opacity 0.5s ease; filter: blur(8px);
-}
-
-.btn-glow:hover::before { opacity: 0.7; }
 
 .btn-glow:hover {
-  box-shadow: 0 0 40px rgba(0,188,241,0.25), 0 4px 16px rgba(0,0,0,0.3);
-  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0,188,241,0.15), 0 0 20px rgba(235,0,139,0.1);
+  transform: translateY(-1px);
 }
 
-.btn-glow svg { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
-.btn-glow:hover svg { transform: translateX(3px); }
+
+.btn-glow svg:not(.ai-ring) { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
+.btn-glow:hover svg:not(.ai-ring) { transform: translateX(3px); }
 
 /* ═══════════════════════════
    HERO
@@ -146,26 +141,26 @@ body > * { position: relative; z-index: 1; }
 }
 
 .hero h1 {
-  font-size: clamp(2.75rem, 5.5vw, 4rem);
-  font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px;
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 24px;
   color: #fff !important;
 }
 
 .hero h1 em {
-  font-style: italic;
+  font-style: normal;
   color: var(--teal) !important;
   -webkit-text-fill-color: var(--teal) !important;
 }
 
 .hero-body {
-  font-size: 1rem; line-height: 1.7; color: var(--text-dim); max-width: 440px; margin-bottom: 36px;
+  font-size: 1.15rem; line-height: 1.65; color: var(--text-dim); max-width: 480px; margin-bottom: 36px;
 }
 
 /* Vertical video scroller */
 .hero-scroller {
   display: flex;
   gap: 10px;
-  height: 820px;
+  height: 720px;
   margin-top: -100px;
   margin-bottom: -120px;
   overflow: hidden;
@@ -175,6 +170,8 @@ body > * { position: relative; z-index: 1; }
 }
 
 .hero-scroller-col {
+  opacity: 0.65;
+  filter: saturate(0.9);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -215,6 +212,19 @@ body > * { position: relative; z-index: 1; }
   color: rgba(255,255,255,0.6); z-index: 3;
 }
 
+/* Hero entrance: CSS-only so first paint isn't gated on the reveal observer (LCP). */
+.hero .reveal { opacity: 1; transform: none; animation: heroIn 0.7s var(--ease) both; }
+.hero .reveal.reveal-d2 { animation-delay: 0.15s; }
+@keyframes heroIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .hero .reveal { animation: none; } }
+/* Mobile wall: no filter on the animated columns, and each half of the loop keeps 3 cards
+   (the two halves stay identical so the -50% loop is seamless) = fewer decodes + smaller layers. */
+@media (max-width: 600px) {
+  .hero-scroller-col { filter: none; }
+  .hero-scroller-col .scr-card:nth-child(4), .hero-scroller-col .scr-card:nth-child(5),
+  .hero-scroller-col .scr-card:nth-child(9), .hero-scroller-col .scr-card:nth-child(10) { display: none; }
+}
+
 /* ═══════════════════════════
    PROCESS
    ═══════════════════════════ */
@@ -232,6 +242,98 @@ body > * { position: relative; z-index: 1; }
   line-height: 1.1; margin-bottom: 56px; color: #fff !important;
 }
 
+.offer { padding: 90px 0 96px; background: #fff; }
+.offer-head { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 64px); align-items: end; margin-bottom: 48px; }
+.offer-head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; color: #111 !important; }
+.offer-head h2 em { font-style: normal; color: var(--teal); }
+.offer-head p { font-size: 0.98rem; color: #555; line-height: 1.7; }
+.offer-num { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: 0.1em; margin-bottom: 8px; }
+.offer-list { margin-top: 16px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.offer-list li { font-size: 0.84rem; color: #555; line-height: 1.5; padding-left: 22px; position: relative; }
+.offer-list li::before { content: ''; position: absolute; left: 0; top: 0.16em; width: 13px; height: 13px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300bcf1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat; }
+/* pillar vignettes: light-mode graphic representations */
+.pv { position: relative; width: min(380px, 92%); height: 220px; }
+.pv-cal { position: absolute; left: 0; top: 18px; width: 200px; background: #fafafa; border: 1px solid rgba(0,0,0,0.09); border-radius: 12px; padding: 16px; }
+.pv-cal-head { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; color: #99a2a8; margin-bottom: 10px; }
+.pv-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.pv-cal-grid span { width: 100%; aspect-ratio: 1; border-radius: 4px; background: rgba(0,0,0,0.06); }
+.pv-cal-grid span.on { background: var(--teal); box-shadow: 0 0 8px rgba(0,188,241,0.4); }
+.pv-idea { position: absolute; right: 0; bottom: 10px; width: 190px; background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 14px; box-shadow: 0 16px 36px rgba(0,0,0,0.12); transform: rotate(2.5deg); }
+.pv-idea-tag { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.14em; color: var(--teal); font-weight: 700; margin-bottom: 6px; }
+.pv-idea-title { font-size: 0.9rem; font-weight: 700; color: #111; line-height: 1.25; margin-bottom: 10px; }
+.pv-idea-btns { display: flex; gap: 6px; }
+.pv-keep, .pv-skip { font-size: 10px; font-weight: 700; border-radius: 99px; padding: 4px 12px; }
+.pv-keep { background: var(--teal); color: #04141c; }
+.pv-skip { background: rgba(0,0,0,0.05); color: #888; }
+.pv-casting { }
+.pv-call { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+.pv-call-card { position: relative; z-index: 2; background: #fff; border: 1px solid rgba(0,188,241,0.35); border-radius: 12px; padding: 12px 18px; font-size: 11px; color: #667; text-align: center; line-height: 1.5; box-shadow: 0 14px 30px rgba(0,0,0,0.1); }
+.pv-call-card b { color: #111; font-size: 12.5px; }
+.pv-ring { position: absolute; left: 50%; top: 50%; width: 70px; height: 70px; border: 1.5px solid rgba(0,188,241,0.5); border-radius: 50%; transform: translate(-50%,-50%); animation: pvring 3s ease-out infinite; opacity: 0; }
+.pv-ring--2 { animation-delay: 1.5s; }
+@keyframes pvring { 0% { opacity: 0.7; width: 70px; height: 70px; } 100% { opacity: 0; width: 300px; height: 300px; } }
+.pv-av { position: absolute; left: var(--x); top: var(--y); width: 34px; height: 34px; border-radius: 50%; background: rgba(0,0,0,0.06); color: #99a2a8; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.pv-av--on { background: rgba(0,188,241,0.14); color: #067ba0; box-shadow: 0 0 0 2px rgba(0,188,241,0.35); }
+.pv-pay { position: absolute; left: var(--x); top: var(--y); font-family: var(--mono); font-size: 9.5px; font-weight: 700; color: #067ba0; background: rgba(0,188,241,0.1); border-radius: 99px; padding: 3px 8px; }
+.pv-direction { background: transparent; border: 0; }
+.pv-c { position: absolute; width: 18px; height: 18px; border: 2.5px solid rgba(0,188,241,0.7); }
+.pv-c1 { top: 14px; left: 14px; border-right: 0; border-bottom: 0; border-top-left-radius: 5px; }
+.pv-c2 { top: 14px; right: 14px; border-left: 0; border-bottom: 0; border-top-right-radius: 5px; }
+.pv-c3 { bottom: 14px; left: 14px; border-right: 0; border-top: 0; border-bottom-left-radius: 5px; }
+.pv-c4 { bottom: 14px; right: 14px; border-left: 0; border-top: 0; border-bottom-right-radius: 5px; }
+.pv-dir-cue { position: absolute; left: 50%; top: 38%; transform: translateX(-50%); font-size: 1.05rem; font-weight: 800; color: #111; letter-spacing: -0.02em; white-space: nowrap; }
+.pv-dir-ok { position: absolute; left: 50%; top: 56%; transform: translateX(-50%); font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #067ba0; background: rgba(0,188,241,0.12); border-radius: 99px; padding: 5px 12px; white-space: nowrap; }
+.pv-shot-line { position: absolute; left: 18%; bottom: 34px; width: 40%; height: 5px; border-radius: 3px; background: rgba(0,0,0,0.08); }
+.pv-shot-line--2 { width: 26%; bottom: 22px; }
+.pv-post { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.pv-track { display: flex; gap: 5px; height: 30px; }
+.pv-track span { background: rgba(0,188,241,0.2); border: 1px solid rgba(0,188,241,0.35); border-radius: 6px; height: 100%; }
+.pv-track--gfx { height: 20px; align-items: center; }
+.pv-track--gfx em { font-style: normal; font-family: var(--mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--pink); margin-right: 6px; align-self: center; }
+.pv-track--gfx span { background: rgba(235,0,139,0.12); border-color: rgba(235,0,139,0.3); }
+.pv-wave { display: flex; align-items: center; gap: 3px; height: 26px; }
+.pv-wave i { flex: 1; height: var(--h); background: rgba(0,0,0,0.18); border-radius: 2px; }
+.pv-playhead { position: absolute; left: 44%; top: 8%; bottom: 8%; width: 2px; background: var(--teal); box-shadow: 0 0 8px rgba(0,188,241,0.5); animation: pvplay 7s linear infinite; }
+@keyframes pvplay { 0% { left: 6%; } 100% { left: 94%; } }
+.pillar-cards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.5vw, 32px); }
+.pillar-card { background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; padding: 26px; }
+.pillar-fig { background: #f7f9fa; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; overflow: hidden; }
+.pillar-card > svg { width: 26px; height: 26px; stroke: var(--teal); margin-bottom: 12px; }
+.pillar-card h3 { font-size: clamp(1.35rem, 2.1vw, 1.7rem); font-weight: 800; letter-spacing: -0.02em; color: #111; margin-bottom: 10px; }
+
+.pillar-card > p { font-size: 0.92rem; color: #555; line-height: 1.65; max-width: 440px; }
+
+.pillar-frame { border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 22px 54px rgba(0,0,0,0.14); background: #fff; }
+.pillar-frame--browser { width: 100%; max-height: 400px; display: flex; flex-direction: column; }
+.pillar-frame--browser img { flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: left top; }
+.pillar-bar { display: flex; gap: 6px; padding: 9px 12px; background: #f1f3f5; border-bottom: 1px solid rgba(0,0,0,0.08); }
+.pillar-bar span { width: 8px; height: 8px; border-radius: 50%; }
+.pillar-bar span:nth-child(1) { background: #ff5f57; }
+.pillar-bar span:nth-child(2) { background: #febc2e; }
+.pillar-bar span:nth-child(3) { background: #28c840; }
+.pillar-frame--phone { width: clamp(180px, 15vw, 224px); aspect-ratio: 9 / 18.6; padding: 7px; border-radius: 34px; background: linear-gradient(150deg,#2e3237,#131417 55%,#1f2126); border: 1px solid rgba(0,0,0,0.25); box-shadow: inset 0 0 0 2px #000, 0 22px 54px rgba(0,0,0,0.25); position: relative; }
+.pillar-frame--phone::before { content: ''; position: absolute; top: 4.2%; left: 50%; transform: translateX(-50%); width: 27%; height: 2.5%; min-height: 8px; background: #000; border-radius: 99px; z-index: 3; }
+.pillar-frame--phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 27px; }
+.pillar-duo { display: flex; gap: clamp(20px, 2vw, 32px); }
+@media (max-width: 900px) { .pillar-cards { grid-template-columns: 1fr; } }
+.producer-moment { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 80px); align-items: center; margin-top: 56px; background: linear-gradient(160deg, #0c1218, #08131a); border-radius: 26px; padding: clamp(34px, 4vw, 56px); }
+.producer-copy h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 800; letter-spacing: -0.025em; color: #fff; margin-bottom: 14px; }
+.producer-copy h3 em { font-style: normal; color: var(--teal); }
+.producer-copy p { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.7; max-width: 460px; }
+.producer-sub { margin-top: 12px; font-weight: 700; color: #fff !important; }
+.producer-chat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.pm-head { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 6px; }
+.pm-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(0,188,241,0.16); display: flex; align-items: center; justify-content: center; }
+.pm-avatar svg { width: 18px; height: 18px; stroke: var(--teal); }
+.pm-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
+.pm-sub { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+.pm-msg { align-self: flex-start; max-width: 85%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px 14px 14px 4px; padding: 10px 14px; font-size: 0.84rem; color: rgba(255,255,255,0.88); line-height: 1.5; }
+.pm-msg--you { align-self: flex-end; background: rgba(0,188,241,0.16); border-color: rgba(0,188,241,0.35); border-radius: 14px 14px 4px 14px; color: #bfeaf7; }
+@media (max-width: 900px) { .producer-moment { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .offer-grid { grid-template-columns: 1fr 1fr; } .offer-head { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .offer-grid { grid-template-columns: 1fr; } }
+.process-head { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 64px); align-items: end; margin-bottom: 12px; }
+@media (max-width: 900px) { .process-head { grid-template-columns: 1fr; } }
 .process-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -327,10 +429,10 @@ body > * { position: relative; z-index: 1; }
   height: 32px; width: auto; max-width: 160px; margin-bottom: 20px; object-fit: contain;
 }
 /* Per-logo sizing for consistent visual weight */
-.showcase-logo[alt="Royal Caribbean"] { height: 65px; max-width: 280px; }
+.showcase-logo[alt="Royal Caribbean"] { height: 44px; max-width: 240px; }
 .showcase-logo[alt="Altra"] { height: 30px; }
-.showcase-logo[alt="Crocs"] { height: 24px; }
-.showcase-logo[alt="Point.me"] { height: 96px; max-width: 120px; filter: brightness(0) invert(1) !important; }
+.showcase-logo[alt="Crocs"] { height: 28px; max-width: 240px; filter: brightness(0) invert(1) !important; }
+.showcase-logo[alt="Point.me"] { height: 112px; max-width: 240px; margin: -34px 0; filter: brightness(0) invert(1) !important; }
 .showcase-logo[alt="Sploot"] { height: 24px; max-width: 140px; }
 .showcase-logo[alt="Cogent World"] { height: 50px; border-radius: 6px; filter: none !important; }
 .showcase-logo[alt="Dell"] { height: 58px; }
@@ -341,6 +443,8 @@ body > * { position: relative; z-index: 1; }
 .cat-intro h2 { font-family: var(--font); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
 .cat-intro h2 em { font-style: normal; color: var(--teal) !important; }
 .cat-intro--light h2 { color: #111 !important; }
+.feeds-run { background: linear-gradient(180deg, #041a24 0%, #1a0a18 55%, #140a1e 100%); }
+.feeds-run .cat-intro--dark, .feeds-run .showcase--dark { background: transparent !important; }
 .cat-intro--dark h2 { color: var(--text) !important; }
 .cat-intro--pink h2 { color: var(--text) !important; }
 .cat-intro--pink h2 em { color: var(--pink) !important; }
@@ -422,40 +526,32 @@ body > * { position: relative; z-index: 1; }
 /* ═══════════════════════════
    CTA BAND
    ═══════════════════════════ */
-.cta-band { background: var(--yellow); padding: 72px 0; text-align: center; overflow: hidden; }
+.cta-band { background: var(--yellow); padding: 72px 0 0; text-align: center; overflow: hidden; }
+.cta-band .btn-glow { margin-bottom: 56px; }
+.cta-marquee { display: flex; height: 200px; overflow: hidden; }
+.cta-marquee-track { display: flex; animation: logos-scroll 28s linear infinite; flex-shrink: 0; }
+.cta-marquee-track img { width: 200px; height: 200px; object-fit: cover; flex-shrink: 0; }
+@keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 .cta-band h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.03em; color: #111 !important; line-height: 1.2; margin-bottom: 8px; }
 .cta-band p { font-size: 1.05rem; color: #333; margin-bottom: 28px; }
-.cta-band .btn-glow { background: #111; box-shadow: 0 0 20px rgba(0,0,0,0.15); }
-.cta-band .btn-glow:hover { box-shadow: 0 0 40px rgba(0,0,0,0.25); }
+
 
 /* ═══════════════════════════
    FOOTER
    ═══════════════════════════ */
-.footer { border-top: none; padding: 56px 0 28px; position: relative; background: var(--bg); }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand img { height: 22px; margin-bottom: 14px; }
-.footer-brand p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; max-width: 240px; }
-.footer-col h4 { font-family: var(--mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 14px; }
-.footer-col a { display: block; font-size: 0.82rem; color: var(--text-muted); padding: 3px 0; transition: color 0.2s ease; }
-.footer-col a:hover {
-  background: linear-gradient(135deg, var(--teal), var(--pink), var(--yellow));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-}
-.footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.72rem; color: var(--text-muted); }
 
 /* ═══════════════════════════
    RESPONSIVE
    ═══════════════════════════ */
 @media (max-width: 1000px) {
   .hero .contain { grid-template-columns: 1fr; gap: 48px; }
-  .hero { padding: 60px 0 80px; }
-  .hero-scroller { margin-top: 0; margin-bottom: -80px; }
+  .hero { padding: 104px 0 68px; }
+  .hero-scroller { display: none; }   /* video wall is home-page only on mobile */
   .process-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .process-step:nth-child(3)::after { display: none; }
   .showcase .contain { grid-template-columns: 1fr; gap: 40px; }
   .showcase--flip .contain { direction: ltr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -465,7 +561,7 @@ body > * { position: relative; z-index: 1; }
 }
 
 @media (max-width: 600px) {
-  .hero { padding: 40px 0 60px; }
+  .hero { padding: 96px 0 52px; }
   .hero h1 { font-size: 2.25rem; }
   .hero-scroller {
     gap: 6px;
@@ -483,12 +579,10 @@ body > * { position: relative; z-index: 1; }
   .process-step:not(:last-child)::after { display: none; }
   .process-step { text-align: left; display: flex; gap: 16px; align-items: flex-start; padding: 0; }
   .process-num { margin: 0; flex-shrink: 0; }
-  .vid-grid-3v { grid-template-columns: 1fr; max-width: 100%; gap: 12px; }
+  .vid-grid-3v { max-width: 100%; }
   .vid-playable .vid-poster { position: relative; display: block; width: 100%; height: auto; }
   .vid-playable.playing .vid-poster { position: absolute; inset: 0; width: 100%; height: 100%; }
   .showcase, .process { padding: 80px 0; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -503,120 +597,192 @@ body > * { position: relative; z-index: 1; }
   <div class="contain">
     <div class="reveal">
       <div class="hero-eyebrow">Creative Services</div>
-      <h1>Your content team, <em>without the&nbsp;headcount.</em></h1>
-      <p class="hero-body">From testimonials and CTV to social content and employee spotlights, our creative team handles production from brief to final cut, on brand, on time, and built to&nbsp;perform.</p>
-      <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <h1>Want it fully handled?<br><em>We'll run the whole&nbsp;thing.</em></h1>
+      <p class="hero-body">From brief to finished video, your program run for you. Our creative producers handle it on the platform, so you get finished content without hiring or managing a thing from start to&nbsp;finish.</p>
+      <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow">Book a Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
     <div class="hero-scroller reveal reveal-d2">
       <div class="scroll-up">
         <div class="hero-scroller-col">
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2032816480-c57d37ddbcd1b4069810c65e9a339026549fb66876cf3142449f76547a5df8ad-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1098260354?h=9d87d05789&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Altra · Trail Run</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2023646073-6f1603d6e41f2f03abe6a3ab6b8ca1ab67eb75bcbcec9b403088faae5188b511-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1090934200?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · La Onda</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/1922627137-0775e0312b2116704194c99037d883c5b777d63952a59041299f895ffdc5be02-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1005975033?h=77f1627015&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">RC · Rover</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2104637187-8db0f74b1b48ab33013e63e3ce83853b8ff4c489dc24a0c57df50926feb33536-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1152885226?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Allan</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2022328844-96d0f0f9239d7cf1e6e6e0379e16e132e3e91ca2c7d9b2f86f4e793907647532-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1089838824?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · Outside</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2032816480-c57d37ddbcd1b4069810c65e9a339026549fb66876cf3142449f76547a5df8ad-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1098260354?h=9d87d05789&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Altra · Trail Run</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2023646073-6f1603d6e41f2f03abe6a3ab6b8ca1ab67eb75bcbcec9b403088faae5188b511-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1090934200?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · La Onda</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/1922627137-0775e0312b2116704194c99037d883c5b777d63952a59041299f895ffdc5be02-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1005975033?h=77f1627015&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">RC · Rover</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2104637187-8db0f74b1b48ab33013e63e3ce83853b8ff4c489dc24a0c57df50926feb33536-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1152885226?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Allan</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2022328844-96d0f0f9239d7cf1e6e6e0379e16e132e3e91ca2c7d9b2f86f4e793907647532-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1089838824?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · Outside</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1098260354?h=9d87d05789&background=1"><img src="/wall/1098260354-240.webp" srcset="/wall/1098260354-240.webp 240w, /wall/1098260354-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="eager" fetchpriority="high"/><div class="scr-label">Altra · Trail Run</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1090934200?background=1"><img src="/wall/1090934200-240.webp" srcset="/wall/1090934200-240.webp 240w, /wall/1090934200-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · La Onda</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1005975033?h=77f1627015&background=1"><img src="/wall/1005975033-240.webp" srcset="/wall/1005975033-240.webp 240w, /wall/1005975033-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">RC · Rover</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1152885226?background=1"><img src="/wall/1152885226-240.webp" srcset="/wall/1152885226-240.webp 240w, /wall/1152885226-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Dell · Allan</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1089838824?background=1"><img src="/wall/1089838824-240.webp" srcset="/wall/1089838824-240.webp 240w, /wall/1089838824-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · Outside</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1098260354?h=9d87d05789&background=1"><img src="/wall/1098260354-240.webp" srcset="/wall/1098260354-240.webp 240w, /wall/1098260354-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Altra · Trail Run</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1090934200?background=1"><img src="/wall/1090934200-240.webp" srcset="/wall/1090934200-240.webp 240w, /wall/1090934200-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · La Onda</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1005975033?h=77f1627015&background=1"><img src="/wall/1005975033-240.webp" srcset="/wall/1005975033-240.webp 240w, /wall/1005975033-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">RC · Rover</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1152885226?background=1"><img src="/wall/1152885226-240.webp" srcset="/wall/1152885226-240.webp 240w, /wall/1152885226-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Dell · Allan</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1089838824?background=1"><img src="/wall/1089838824-240.webp" srcset="/wall/1089838824-240.webp 240w, /wall/1089838824-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · Outside</div></div>
         </div>
       </div>
       <div class="scroll-down">
         <div class="hero-scroller-col">
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2129569531-e8a359ce81c18194371e8769258a5dffa5acc090f5b5e439537e6c109ea019af-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1170443739?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Claudia</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2020007198-3cdc6a76e05179e00e8eea92d8ca8018261d4d8d2e7652e07d01792e67d07609-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1087899210?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · BottleRock</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2025241323-e06eacd171ff7bf6d1a8c9cf93d3a832638c42f88d0dff5afa4ed3e6df125c32-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1092215288?h=b0766b2779&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Altra · Unboxing</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/1930241712-ba32780c8bb73375c91446fd6b422f567f660d770250da8b04ac663879b907dc-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1012467060?h=39cf8e54c8&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">RC · Deck Life</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2060903069-45e0a3be65f2284c0fcd5c0dcadacb7dbcc9e425b5d8d25b8f4e09a89c5c8407-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1120210852?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · SeaHearNow</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2129569531-e8a359ce81c18194371e8769258a5dffa5acc090f5b5e439537e6c109ea019af-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1170443739?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Claudia</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2020007198-3cdc6a76e05179e00e8eea92d8ca8018261d4d8d2e7652e07d01792e67d07609-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1087899210?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · BottleRock</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2025241323-e06eacd171ff7bf6d1a8c9cf93d3a832638c42f88d0dff5afa4ed3e6df125c32-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1092215288?h=b0766b2779&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Altra · Unboxing</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/1930241712-ba32780c8bb73375c91446fd6b422f567f660d770250da8b04ac663879b907dc-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1012467060?h=39cf8e54c8&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">RC · Deck Life</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2060903069-45e0a3be65f2284c0fcd5c0dcadacb7dbcc9e425b5d8d25b8f4e09a89c5c8407-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1120210852?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · SeaHearNow</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1170443739?background=1"><img src="/wall/1170443739-240.webp" srcset="/wall/1170443739-240.webp 240w, /wall/1170443739-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="eager" fetchpriority="high"/><div class="scr-label">Dell · Claudia</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1087899210?background=1"><img src="/wall/1087899210-240.webp" srcset="/wall/1087899210-240.webp 240w, /wall/1087899210-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · BottleRock</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1092215288?h=b0766b2779&background=1"><img src="/wall/1092215288-240.webp" srcset="/wall/1092215288-240.webp 240w, /wall/1092215288-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Altra · Unboxing</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1012467060?h=39cf8e54c8&background=1"><img src="/wall/1012467060-240.webp" srcset="/wall/1012467060-240.webp 240w, /wall/1012467060-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">RC · Deck Life</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1120210852?background=1"><img src="/wall/1120210852-240.webp" srcset="/wall/1120210852-240.webp 240w, /wall/1120210852-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · SeaHearNow</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1170443739?background=1"><img src="/wall/1170443739-240.webp" srcset="/wall/1170443739-240.webp 240w, /wall/1170443739-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Dell · Claudia</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1087899210?background=1"><img src="/wall/1087899210-240.webp" srcset="/wall/1087899210-240.webp 240w, /wall/1087899210-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · BottleRock</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1092215288?h=b0766b2779&background=1"><img src="/wall/1092215288-240.webp" srcset="/wall/1092215288-240.webp 240w, /wall/1092215288-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Altra · Unboxing</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1012467060?h=39cf8e54c8&background=1"><img src="/wall/1012467060-240.webp" srcset="/wall/1012467060-240.webp 240w, /wall/1012467060-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">RC · Deck Life</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1120210852?background=1"><img src="/wall/1120210852-240.webp" srcset="/wall/1120210852-240.webp 240w, /wall/1120210852-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · SeaHearNow</div></div>
         </div>
       </div>
       <div class="scroll-up">
         <div class="hero-scroller-col">
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2024815845-f9150976e3c159250bde4165c5fd3356a2f755409b183081e782d6bb1b826b87-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1091870084?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · GoPro Mtn</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2118022092-bb449ab6d4fb5d41bec8e2d99f1a30960487a25618ed6db26f23de7efc2d5591-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1162300426?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Bethany</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2038625107-eddbe5bc74a96d3ef3094b3ea79dd232418b38eee38eafa6df67b58765ec5e4f-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/329885560?h=87abedb56e&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Nike · Influencer</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2001789249-3036926667164ce15a6ec6e794dd5f0969f66cc4f384aeb5d0c375fd9814b359-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1072796654?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · Tartuga</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/1737354962-e98a1b12cc9c1ec3d8768d9c928a502e274dab25eb6c83b08855620160fbcc3c-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/873720928?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Office Tour</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2024815845-f9150976e3c159250bde4165c5fd3356a2f755409b183081e782d6bb1b826b87-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1091870084?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · GoPro Mtn</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2118022092-bb449ab6d4fb5d41bec8e2d99f1a30960487a25618ed6db26f23de7efc2d5591-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1162300426?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Bethany</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2038625107-eddbe5bc74a96d3ef3094b3ea79dd232418b38eee38eafa6df67b58765ec5e4f-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/329885560?h=87abedb56e&background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Nike · Influencer</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/2001789249-3036926667164ce15a6ec6e794dd5f0969f66cc4f384aeb5d0c375fd9814b359-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/1072796654?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Cogent · Tartuga</div></div>
-          <div class="scr-card"><img src="https://i.vimeocdn.com/video/1737354962-e98a1b12cc9c1ec3d8768d9c928a502e274dab25eb6c83b08855620160fbcc3c-d_640" alt="" loading="lazy"/><iframe src="https://player.vimeo.com/video/873720928?background=1" allow="autoplay" loading="lazy"></iframe><div class="scr-label">Dell · Office Tour</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1091870084?background=1"><img src="/wall/1091870084-240.webp" srcset="/wall/1091870084-240.webp 240w, /wall/1091870084-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="eager" fetchpriority="high"/><div class="scr-label">Cogent · GoPro Mtn</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1162300426?background=1"><img src="/wall/1162300426-240.webp" srcset="/wall/1162300426-240.webp 240w, /wall/1162300426-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Dell · Bethany</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/329885560?h=87abedb56e&background=1"><img src="/wall/329885560-240.webp" srcset="/wall/329885560-240.webp 240w, /wall/329885560-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Nike · Influencer</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1072796654?background=1"><img src="/wall/1072796654-240.webp" srcset="/wall/1072796654-240.webp 240w, /wall/1072796654-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · Tartuga</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/873720928?background=1"><img src="/wall/873720928-240.webp" srcset="/wall/873720928-240.webp 240w, /wall/873720928-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Dell · Office Tour</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1091870084?background=1"><img src="/wall/1091870084-240.webp" srcset="/wall/1091870084-240.webp 240w, /wall/1091870084-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · GoPro Mtn</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1162300426?background=1"><img src="/wall/1162300426-240.webp" srcset="/wall/1162300426-240.webp 240w, /wall/1162300426-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Dell · Bethany</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/329885560?h=87abedb56e&background=1"><img src="/wall/329885560-240.webp" srcset="/wall/329885560-240.webp 240w, /wall/329885560-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Nike · Influencer</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/1072796654?background=1"><img src="/wall/1072796654-240.webp" srcset="/wall/1072796654-240.webp 240w, /wall/1072796654-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Cogent · Tartuga</div></div>
+          <div class="scr-card" data-video="https://player.vimeo.com/video/873720928?background=1"><img src="/wall/873720928-240.webp" srcset="/wall/873720928-240.webp 240w, /wall/873720928-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" loading="lazy"/><div class="scr-label">Dell · Office Tour</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PROCESS ═══ -->
-<section class="process">
+<!-- curve: dark → white -->
+<!-- ═══ WHAT WE DO ═══ -->
+<section class="offer">
   <div class="contain">
-    <div class="reveal">
-      <div class="label">Our Process</div>
-      <h2>From concept to final&nbsp;cut.</h2>
+    <div class="reveal offer-head">
+      <div>
+        <div class="label">What we do</div>
+        <h2>Your whole program, <em>run for you</em>, start to finish.</h2>
+      </div>
+      <p>Some teams want to run Cinebody themselves. Others want it off their plate entirely. If that's you, our creative producers run the whole program on the platform, so you get finished content without hiring or managing a&nbsp;thing. Cinebody does the heavy lifting. Our people add the judgment and the&nbsp;polish.</p>
     </div>
-    <div class="process-grid reveal reveal-d2">
-      <div class="process-step">
-        <div class="process-num">01</div>
-        <div>
-          <h3>Vision & Alignment</h3>
-          <p>We align on goals, audience, and creative direction, so every shoot has a&nbsp;purpose.</p>
+    <div class="pillar-cards">
+      <div class="pillar-card reveal">
+        <div class="pillar-fig">
+          <div class="pv pv-strategy" aria-hidden="true">
+          <div class="pv-cal">
+            <div class="pv-cal-head">OCTOBER</div>
+            <div class="pv-cal-grid"><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div>
+          </div>
+          <div class="pv-idea">
+            <div class="pv-idea-tag">SHOOT IDEA</div>
+            <div class="pv-idea-title">Last reps at closing time</div>
+            <div class="pv-idea-btns"><span class="pv-keep">Keep</span><span class="pv-skip">Skip</span></div>
+          </div>
         </div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+          <h3>Strategy</h3>
+          <p>We shape what to make and why, tied to your goals: the ideas, the cadence, and the channels every piece is built for.</p>
+          <ul class="offer-list">
+            <li>A content calendar built around your moments</li>
+            <li>Fresh shoot ideas, pitched every month</li>
+            <li>Every piece planned for its channel</li>
+          </ul>
       </div>
-      <div class="process-step">
-        <div class="process-num">02</div>
-        <div>
-          <h3>Talent & Casting</h3>
-          <p>We recruit the right voices from your community, the people your audience&nbsp;trusts.</p>
+      <div class="pillar-card reveal">
+        <div class="pillar-fig">
+          <div class="pv pv-casting" aria-hidden="true">
+          <div class="pv-call">
+            <span class="pv-ring"></span>
+            <span class="pv-ring pv-ring--2"></span>
+            <div class="pv-call-card">Casting call<br><b>12 filmers wanted</b></div>
+          </div>
+          <span class="pv-av" style="--x:8%;--y:12%">M</span>
+          <span class="pv-av pv-av--on" style="--x:78%;--y:8%">J</span>
+          <span class="pv-av pv-av--on" style="--x:88%;--y:56%">A</span>
+          <span class="pv-av" style="--x:6%;--y:66%">T</span>
+          <span class="pv-av pv-av--on" style="--x:70%;--y:84%">P</span>
+          <span class="pv-av" style="--x:22%;--y:88%">C</span>
+          <span class="pv-pay" style="--x:84%;--y:30%">+ $50</span>
+          <span class="pv-pay" style="--x:60%;--y:74%">+ $40</span>
         </div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3>Casting &amp; motivation</h3>
+          <p>Finding, exciting, and incentivizing a large group of filmers at once is a job. We do it: outreach, payouts, reminders, and all the back-and-forth.</p>
+          <ul class="offer-list">
+            <li>A community of proven filmers, ready to go</li>
+            <li>Casting calls that reach the right people, not cold lists</li>
+            <li>Incentives, payouts, and reminders handled</li>
+          </ul>
       </div>
-      <div class="process-step">
-        <div class="process-num">03</div>
-        <div>
-          <h3>Project Execution</h3>
-          <p>Our producers manage the shoot remotely, keeping filmers on-brief and&nbsp;on-schedule.</p>
+      <div class="pillar-card reveal">
+        <div class="pillar-fig">
+          <div class="pv pv-direction" aria-hidden="true">
+          <span class="pv-c pv-c1"></span><span class="pv-c pv-c2"></span><span class="pv-c pv-c3"></span><span class="pv-c pv-c4"></span>
+          <div class="pv-dir-cue">Step a little closer</div>
+          <div class="pv-dir-ok">Framing looks great</div>
+          <div class="pv-shot-line"></div>
+          <div class="pv-shot-line pv-shot-line--2"></div>
         </div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z"/></svg>
+          <h3>Direction</h3>
+          <p>We build the briefs and shot lists and guide your people on camera with the AI Director, so the footage comes back on-brief.</p>
+          <ul class="offer-list">
+            <li>Briefs and shot lists written for real phones</li>
+            <li>The AI Director coaching every take live</li>
+            <li>A producer watching live, redirecting when plans change</li>
+          </ul>
       </div>
-      <div class="process-step">
-        <div class="process-num">04</div>
-        <div>
-          <h3>Pro Editing</h3>
-          <p>Editing starts the moment footage lands, no waiting for a hard drive in the&nbsp;mail.</p>
+      <div class="pillar-card reveal">
+        <div class="pillar-fig">
+          <div class="pv pv-post" aria-hidden="true">
+          <div class="pv-track">
+            <span style="width:26%"></span><span style="width:18%"></span><span style="width:30%"></span><span style="width:16%"></span>
+          </div>
+          <div class="pv-track pv-track--gfx"><em>GFX</em><span style="width:34%; margin-left:18%"></span></div>
+          <div class="pv-wave"><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:40%"></i><i style="--h:75%"></i><i style="--h:50%"></i><i style="--h:85%"></i><i style="--h:45%"></i><i style="--h:65%"></i><i style="--h:35%"></i><i style="--h:70%"></i><i style="--h:52%"></i><i style="--h:80%"></i><i style="--h:42%"></i><i style="--h:60%"></i><i style="--h:33%"></i><i style="--h:72%"></i><i style="--h:48%"></i><i style="--h:58%"></i><i style="--h:38%"></i><i style="--h:66%"></i></div>
+          <div class="pv-playhead"></div>
         </div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="8.1" y1="8.1" x2="20" y2="20"/><line x1="20" y1="4" x2="8.1" y2="15.9"/></svg>
+          <h3>Post production, elevated</h3>
+          <p>The auto-editor gets you a fast cut. Our editors add the human touch: that next level of polish, motion graphics, sound, and finish that holds up anywhere.</p>
+          <ul class="offer-list">
+            <li>Pro editors starting from Cinebody's head start</li>
+            <li>Motion graphics, sound, and licensed music</li>
+            <li>A private screening room to review cuts and leave feedback</li>
+          </ul>
       </div>
-      <div class="process-step">
-        <div class="process-num">05</div>
-        <div>
-          <h3>Motion GFX & Music</h3>
-          <p>Branded graphics and licensed music give every video a polished, professional&nbsp;finish.</p>
-        </div>
+    </div>
+    <div class="producer-moment reveal reveal-d2">
+      <div class="producer-copy">
+        <h3>And one person <em>who owns it all.</em></h3>
+        <p>From kickoff to final delivery you work with one creative producer who knows your brand, your calendar, and your footage. They run the casting, the shoots, and the edit reviews, and they carry all the back-and-forth so it never lands on your desk.</p>
+        <p class="producer-sub">No account layers. No ticket queues. A person.</p>
+      </div>
+      <div class="producer-chat" aria-hidden="true">
+        <div class="pm-head"><span class="pm-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span><div><div class="pm-name">Your producer</div><div class="pm-sub">Cinebody Creative Services</div></div></div>
+        <div class="pm-msg">Morning! 14 new clips came in overnight from the Denver crew. Six are great, already tagged for the cut.</div>
+        <div class="pm-msg">Rough cut of the launch video is in your inbox. Two options for the ending.</div>
+        <div class="pm-msg pm-msg--you">Love option B. Can we push the logo earlier?</div>
+        <div class="pm-msg">Already on it. Final by Thursday.</div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- curve: process → light -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0f1a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
 
 <!-- ═══ SHOWCASE: ROYAL CARIBBEAN (light, content left, 3 vert right) ═══ -->
 <!-- Category: Social Content -->
-<div class="cat-intro cat-intro--light" style="background:#fff;padding-top:60px">
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
+
+<div class="feeds-run">
+<div class="cat-intro cat-intro--dark" style="padding-top:70px">
   <div class="contain reveal">
     <h2><em>Keep your social feeds full,</em> without burning out your&nbsp;team.</h2>
     <p>Production timelines shrink from weeks to days when your community is doing the filming. We handle the&nbsp;rest.</p>
   </div>
 </div>
 
-<section class="showcase showcase--light">
+<section class="showcase showcase--dark">
   <div class="contain">
     <div class="showcase-content reveal">
-      <img src="/assets/f7c6adcf-Royal-Cribbean-logo.png" alt="Royal Caribbean" class="showcase-logo">
+      <img src="/assets/de31bd3b-RCI_Brand_Logo_2-Line_Horiz_White.webp" alt="Royal Caribbean" class="showcase-logo">
       <h3 class="showcase-title">A constant stream of social&nbsp;content.</h3>
       <p class="showcase-desc">Crew members film daily life on board. Cinebody's team turns raw moments into a steady stream of social content, keeping feeds fresh across the&nbsp;fleet.</p>
       <a href="/royal-caribbean" class="showcase-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
@@ -635,65 +801,9 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
-<!-- curve: light → dark-teal -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
 
-<!-- ═══ SHOWCASE: ALTRA (dark, 3 vert left, content right) ═══ -->
+
 <section class="showcase showcase--dark showcase--flip" style="padding-top:60px">
-  <div class="contain">
-    <div class="showcase-content reveal">
-      <img src="/assets/448c4d68-Altra_running_logo.png" alt="Altra" class="showcase-logo">
-      <h3 class="showcase-title">Activating the community</h3>
-      <p class="showcase-desc">Athletes share stories and unboxings. Cinebody edits them into content that deepens the bond between brand and running&nbsp;community.</p>
-      <a href="/altra" class="showcase-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div>
-    <div class="vid-grid-3v reveal reveal-d2">
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1098260354" data-vimeo-h="9d87d05789" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/2032816480-c57d37ddbcd1b4069810c65e9a339026549fb66876cf3142449f76547a5df8ad-d_640" alt="Altra video 1">
-      </div>
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1092175563" data-vimeo-h="aeeb559c41" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/2025192258-80513b19ff58e300f424e59b19a39bd7b10197c78e011653225a96f8dad0048f-d_640" alt="Altra video 2">
-      </div>
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1092215288" data-vimeo-h="b0766b2779" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/2025241323-e06eacd171ff7bf6d1a8c9cf93d3a832638c42f88d0dff5afa4ed3e6df125c32-d_640" alt="Altra video 3">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- curve: dark-teal → light -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0f1a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
-
-<!-- Category: CTV & Testimonials -->
-<div class="cat-intro cat-intro--light" style="background:#fff">
-  <div class="contain reveal">
-    <h2><em>CTV ads that feel real.</em> Because they&nbsp;are.</h2>
-    <p>Viewers skip polished ads. They watch real people. Cinebody helps you create testimonial-driven CTV spots that outperform traditional production at a fraction of the&nbsp;cost.</p>
-  </div>
-</div>
-
-<!-- ═══ SHOWCASE: CROCS (light, content left, 1 horiz right) ═══ -->
-<section class="showcase showcase--light">
-  <div class="contain">
-    <div class="showcase-content reveal">
-      <img src="/assets/0eec5de8-Crocs_wordmark.svg.png" alt="Crocs" class="showcase-logo">
-      <h3 class="showcase-title">Empowering global influencers</h3>
-      <p class="showcase-desc">One global influencer activation. Cinebody collected footage remotely, then repurposed it into polished assets for every&nbsp;channel.</p>
-      <a href="/crocs" class="showcase-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div>
-    <div class="vid-single-h reveal reveal-d2">
-      <div class="vid-playable vid-playable--h" data-autoplay data-vimeo="824853571" data-vimeo-h="a9ef1a15c4" style="border-radius:12px;overflow:hidden">
-        <img class="vid-poster" src="https://vumbnail.com/824853571.jpg" alt="Crocs video">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- curve: light → pink-navy -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#1a0a18"/></svg></div>
-
-<!-- ═══ SHOWCASE: POINT.ME (pink-navy, 1 horiz left, content right) ═══ -->
-<section class="showcase showcase--pink showcase--flip" style="padding-top:60px">
   <div class="contain">
     <div class="showcase-content reveal">
       <img src="/assets/34418268-1I88jMGuA5ObZ3LgSCItTrMBtb51693924089177_200x200.png" alt="Point.me" class="showcase-logo">
@@ -709,108 +819,43 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
-<!-- curve: pink-navy → light -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#140a1e"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
 
-<!-- ═══ SHOWCASE: SPLOOT (light, content left, 1 horiz right) ═══ -->
-<section class="showcase showcase--light" style="padding-top:60px">
+
+<section class="showcase showcase--dark">
   <div class="contain">
     <div class="showcase-content reveal">
-      <img src="/assets/ca32b25a-Sploot-Horizontal-Full-Color-Rgb-2000px-w-72ppi.png" alt="Sploot" class="showcase-logo">
-      <h3 class="showcase-title">Locally Targeted</h3>
-      <p class="showcase-desc">Sploot activated local patrons in Chicago and Denver to deliver geo-targeted CTV ads. By leaning into their thousands of positive reviews, they created content that measurably increased local awareness and drove new&nbsp;appointments.</p>
-      <a href="/sploot" class="showcase-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <img src="/assets/0eec5de8-Crocs_wordmark.svg.png" alt="Crocs" class="showcase-logo">
+      <h3 class="showcase-title">Empowering global influencers</h3>
+      <p class="showcase-desc">One global influencer activation. Cinebody collected footage remotely, then repurposed it into polished assets for every&nbsp;channel.</p>
+      <a href="/crocs" class="showcase-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
     <div class="vid-single-h reveal reveal-d2">
-      <div class="vid-playable vid-playable--h" data-autoplay data-vimeo="1130557367" data-vimeo-h="67815d0119" style="border-radius:12px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/2074280120-09f945986b145cd2a2b928299b48bc2641434676dca2f594a93a39bdd2d6be67-d_640" alt="Sploot video">
+      <div class="vid-playable vid-playable--h" data-autoplay data-vimeo="824853571" data-vimeo-h="a9ef1a15c4" style="border-radius:12px;overflow:hidden">
+        <img class="vid-poster" src="https://i.vimeocdn.com/video/1666973722-68b75d887497a1f6f76fa1ae4435c08c9a84a9758050cc0d171de425e04de3e0-d_640" alt="Crocs video">
       </div>
     </div>
+  </div>
+  <div class="reveal" style="text-align:center; margin:84px 0 28px;">
+    <a href="/work" class="btn btn-glow">See all Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:15px;height:15px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
-
-<!-- curve: light → dark-teal -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
-
-<!-- Category: Events -->
-<div class="cat-intro cat-intro--dark" style="background:#041a24">
-  <div class="contain reveal">
-    <h2>Your events deserve more <em>than a single camera&nbsp;crew.</em></h2>
-    <p>Put phones in the hands of attendees, staff, and talent. Cinebody captures every angle, every reaction, then our team edits it into content that extends the life of every&nbsp;event.</p>
-  </div>
-</div>
-
-<!-- ═══ SHOWCASE: COGENT (dark-teal, 3 vert left, content right) ═══ -->
-<section class="showcase showcase--dark showcase--flip">
-  <div class="contain">
-    <div class="showcase-content reveal">
-      <img src="/assets/2bc61a05-1629489003234.jpg" alt="Cogent World" class="showcase-logo">
-      <h3 class="showcase-title">Scaling content for hundreds of&nbsp;events</h3>
-      <p class="showcase-desc">From music festivals to brand activations, Cogent World produces hundreds of events across the globe. With Cinebody, they empower on-site teams and talent to capture real, in-the-moment content, fueling a steady stream of authentic video that connects with their community long after the event&nbsp;ends.</p>
-      <a href="/cogent" class="showcase-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div>
-    <div class="vid-grid-3v reveal reveal-d2">
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1090977594" data-vimeo-h="646a9f78bc" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/2023698409-54095ce0ac3097d8d2dc6f24231ba292b902eadc9748ff1ab8b53f93036a6ed7-d_640" alt="Cogent World video 1">
-      </div>
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1090655136" data-vimeo-h="32eda7fecd" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/2023308957-b60d46468a140d084beae2f0afac4eacd3bef8e9fdb53c415d2c3e0f518265d1-d_640" alt="Cogent World video 2">
-      </div>
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1089063815" data-vimeo-h="0822c777dc" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/2021455319-42166add3b024c990b06a7211474861fd47c47b14a5a982b2d421483d98e09c5-d_640" alt="Cogent World video 3">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- curve: dark-teal → light -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0f1a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
-
-<!-- Category: Employee Stories -->
-<div class="cat-intro cat-intro--light" style="background:#fff">
-  <div class="contain reveal">
-    <h2><em>Your employees have stories worth telling.</em> Give them the&nbsp;mic.</h2>
-    <p>Cinebody makes it easy for teams anywhere in the world to film real stories in their own words, building trust with external audiences and strengthening culture from the inside&nbsp;out.</p>
-  </div>
-</div>
-
-<!-- ═══ SHOWCASE: DELL (light, content left, 3 vert right) ═══ -->
-<section class="showcase showcase--light">
-  <div class="contain">
-    <div class="showcase-content reveal">
-      <img src="/assets/02f77588-dell-2-logo-png-transparent.png" alt="Dell" class="showcase-logo">
-      <h3 class="showcase-title">Elevating employee voices&nbsp;worldwide</h3>
-      <p class="showcase-desc">Dell uses Cinebody to capture authentic stories from employees and communities across the world to highlight the people behind the innovation. By turning real experiences into high-performing content, Dell builds connection, transparency, and a stronger global&nbsp;culture.</p>
-      <a href="/dell" class="showcase-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div>
-    <div class="vid-grid-3v reveal reveal-d2">
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1065884285" data-vimeo-h="75786524f6" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/1993480268-6a5708386ba0db6e1f616d176abe9881b72dc7c9a1ed6a0241ff77acb996d577-d_640" alt="Dell video 1">
-      </div>
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1065886093" data-vimeo-h="80404d7365" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/1993482466-f54bae18ca4f73806a7452580ea13be1f84dbba0c1e22c04233f20e333b5d86b-d_640" alt="Dell video 2">
-      </div>
-      <div class="vid-playable vid-playable--v" data-autoplay data-vimeo="1065890083" data-vimeo-h="8d129ec781" style="border-radius:8px;overflow:hidden">
-        <img class="vid-poster" src="https://i.vimeocdn.com/video/1993487178-f18895b0fe981a75970a2204846cba31f47678cfb4c502ef843a7dc3e9dd1ccd-d_640" alt="Dell video 3">
-      </div>
-    </div>
-  </div>
-</section>
+</div><!-- /feeds-run -->
 
 <!-- curve: light → yellow -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffec03"/></svg></div>
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#140a1e"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffec03"/></svg></div>
 
 <!-- ═══ CTA BAND ═══ -->
 <section class="cta-band" style="padding-top:40px">
   <div class="contain">
-    <h2 class="reveal">Ready to see what your community can&nbsp;create?</h2>
-    <p class="reveal reveal-d1">Talk to our team.</p>
-    <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow reveal reveal-d2">Let's Talk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <h2 class="reveal">Tell us what you need. <span>We'll handle the rest.</span></h2>
+    <p class="reveal reveal-d1">Talk to a person.</p>
+    <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow reveal reveal-d1">Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  </div>
+  <div class="cta-marquee" style="position:relative">
+    <div class="cta-marquee-track" id="ctaTrack"></div>
+    <svg style="position:absolute;bottom:0;left:0;width:100%;height:50px;z-index:2" viewBox="0 0 1440 50" preserveAspectRatio="none"><path d="M0,0 Q720,50 1440,0 L1440,50 L0,50 Z" fill="#0a0a0a"/></svg>
   </div>
 </section>
-
-<!-- curve: yellow → dark -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#ffec03"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#0a0a0a"/></svg></div>
 
 <script>
 // Scroll reveal
@@ -828,5 +873,13 @@ body > * { position: relative; z-index: 1; }
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
   }, { passive: true });
+})();
+
+// CTA image marquee
+(function(){
+  var imgs=['/assets/cta-still006.jpg','/assets/cta-still005.jpg','/assets/cta-still004.jpg','/assets/cta-still009.jpg','/assets/cta-still008.jpg','/assets/cta-still007.jpg'];
+  var t=document.getElementById('ctaTrack');
+  if(!t) return;
+  for(var i=0;i<4;i++) imgs.forEach(function(s){ var img=document.createElement('img'); img.src=s; img.loading='lazy'; img.alt=''; t.appendChild(img); });
 })();
 </script>
