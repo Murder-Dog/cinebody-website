@@ -202,6 +202,30 @@ body > * { position: relative; z-index: 1; }
   font-size: 1.15rem; line-height: 1.65; color: var(--text-dim); max-width: 480px; margin-bottom: 36px;
 }
 
+/* LAUNCH VIDEO (Sep 28): a quiet play link above the headline; the video opens over the page. */
+.hero-watch {
+  display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px;
+  padding: 6px 14px 6px 6px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.06);
+  color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer;
+  font-family: var(--font); transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.hero-watch:hover { border-color: var(--teal); background: rgba(0,188,241,0.1); }
+.hero-watch-dot {
+  width: 28px; height: 28px; border-radius: 999px; background: var(--pink);
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.hero-watch-dot svg { width: 12px; height: 12px; margin-left: 2px; }
+.hero-watch-time { color: rgba(255,255,255,0.6); font-weight: 500; }
+.launch-video { position: fixed; inset: 0; margin: auto; padding: 0; border: 0; background: transparent; width: min(1100px, 92vw, calc(84vh * 16 / 9)); height: fit-content; max-width: none; max-height: none; overflow: visible; }
+.launch-video::backdrop { background: rgba(0,0,0,0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.launch-video video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; background: #000; }
+.launch-video-close {
+  position: absolute; top: -44px; right: 0; width: 36px; height: 36px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.5); color: #fff; font-size: 20px; line-height: 1; cursor: pointer;
+}
+.launch-video-inner { position: relative; }
+
 .hero-trust {
   font-size: 14px;
   color: rgba(255,255,255,0.88);
@@ -211,15 +235,10 @@ body > * { position: relative; z-index: 1; }
   letter-spacing: 0.01em;
   line-height: 1.35;
 }
+/* Plain text, no pill (Scott, Sep 28). */
 .hero-trust--auth {
   display: inline-block;
   margin-top: 22px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.28);
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -814,6 +833,7 @@ body > * { position: relative; z-index: 1; }
 <section class="hero">
   <div class="contain">
     <div class="reveal">
+      <button type="button" class="hero-watch" data-launch-video aria-haspopup="dialog"><span class="hero-watch-dot"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="#fff"/></svg></span>Watch the launch video <span class="hero-watch-time">2:16</span></button>
       <h1><span class="hl">Real people film it.</span><br><em class="hl">Cinebody does the rest.</em></h1>
       <p class="hero-body">The everyday video your brand needs, made by the people who already love you, at the speed your channels&nbsp;demand.</p>
       <div class="hero-actions">
@@ -1558,8 +1578,8 @@ body > * { position: relative; z-index: 1; }
 .stats-grid.vis .stat:nth-child(4) { transition-delay: .35s; }
 
 /* ── PROOF OF CAPTURE band (the demo card itself lives in global.css) ── */
-a.hero-trust--auth { text-decoration: none; transition: border-color .25s ease, background .25s ease; }
-a.hero-trust--auth:hover { border-color: rgba(0,188,241,0.6); background: rgba(0,188,241,0.12); }
+a.hero-trust--auth { text-decoration: none; transition: color .2s ease; }
+a.hero-trust--auth:hover { color: var(--teal); }
 .poc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; margin-top: 96px; padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.08); scroll-margin-top: 90px; }
 .poc-copy .label { margin-bottom: 14px; }
 .payoff .poc-copy h2 { font-size: clamp(2rem,4vw,3rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; color: #111 !important; margin: 0 0 18px; }
@@ -2210,4 +2230,23 @@ document.querySelectorAll('.faq-q').forEach(function(b){
 });
 </script>
 
+<dialog class="launch-video" id="launchVideo" aria-label="Cinebody launch video">
+  <div class="launch-video-inner">
+    <button type="button" class="launch-video-close" data-launch-close aria-label="Close the video">&times;</button>
+    <video controls playsinline preload="none" poster="/video/cinebody-launch-poster.jpg" src="/video/cinebody-launch.mp4"></video>
+  </div>
+</dialog>
+<script>
+(function () {
+  var dlg = document.getElementById('launchVideo');
+  var open = document.querySelector('[data-launch-video]');
+  if (!dlg || !open || typeof dlg.showModal !== 'function') return;
+  var vid = dlg.querySelector('video');
+  var close = function () { vid.pause(); dlg.close(); };
+  open.addEventListener('click', function () { dlg.showModal(); vid.play().catch(function () {}); });
+  dlg.querySelector('[data-launch-close]').addEventListener('click', close);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+  dlg.addEventListener('close', function () { vid.pause(); });
+})();
+</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What exactly is Cinebody?","acceptedAnswer":{"@type":"Answer","text":"Cinebody is a video production platform where real people (not AI-generated performers) do the filming, and Cinebody does everything else. You say what you need, Cinebody writes the plan, guides people while they film on their phones, grades every clip as it lands, and can produce an edited video that's nearly done in one click."}},{"@type":"Question","name":"How is this different from UGC marketplaces?","acceptedAnswer":{"@type":"Answer","text":"UGC marketplaces match you with paid creators who pretend to be customers. Cinebody activates your actual community, the people who already know and love your brand. The result is genuinely authentic content, not performed."}},{"@type":"Question","name":"Is any of the video AI-generated?","acceptedAnswer":{"@type":"Answer","text":"No. The people on camera are real employees, customers, and fans filming on their own phones. Cinebody coaches the shoot and helps edit, but it never invents faces, voices, or testimonials. What you publish came from a human holding a phone."}},{"@type":"Question","name":"Do filmers need to download an app?","acceptedAnswer":{"@type":"Answer","text":"No. Cinebody works as a web app, filmers access it through a link or QR code. No downloads, no friction. They're filming within seconds."}},{"@type":"Question","name":"Can I use it without creative services?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The software subscription is standalone, you direct shoots, collect footage, and edit in-house. Our creative services are an optional add-on for brands that want strategy, editing, motion graphics, and full campaign execution."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Software plans start at $250/month billed annually. Our AI editor is included in a Pro plan, starting at $500/month billed annually. Creative services are custom-quoted. Most brands save 70%+ compared to traditional video production."}}]}</script>

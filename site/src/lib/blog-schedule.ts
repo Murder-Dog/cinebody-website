@@ -6,7 +6,7 @@
 // before it is set. Set it as 'YYYY-MM-DD' in the same change that takes the
 // new site live. BLOG_LAUNCH_DATE in the build environment overrides it, which
 // is handy for previewing a date on stage.
-const LAUNCH_DATE_IN_CODE: string | null = null;
+const LAUNCH_DATE_IN_CODE: string | null = '2026-09-28';
 
 export const SITE_LAUNCH_DATE: string | null =
   (typeof process !== 'undefined' && process.env.BLOG_LAUNCH_DATE) || LAUNCH_DATE_IN_CODE;

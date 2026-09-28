@@ -197,6 +197,26 @@
       "source": "/android-beta",
       "destination": "https://github.com/Murder-Dog/cinebody-website/releases/latest/download/Cinebody-2.0-android.apk",
       "permanent": false
+    },
+    {
+      "source": "/blog",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/cinebody-blog/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "https://app.cinebody.com/login",
+      "permanent": false
+    },
+    {
+      "source": "/signup",
+      "destination": "https://app.cinebody.com/signup",
+      "permanent": false
     }
   ]
 }
