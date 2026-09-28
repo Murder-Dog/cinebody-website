@@ -217,6 +217,11 @@
       "source": "/signup",
       "destination": "https://app.cinebody.com/signup",
       "permanent": false
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
     }
   ]
 }
