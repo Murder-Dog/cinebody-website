@@ -225,8 +225,8 @@ body > * { position: relative; z-index: 1; }
 .cb-pricing__header h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px; color: #0d0d0d; }
 .cb-pricing__header p { font-size: clamp(1rem, 2vw, 1.15rem); color: #71717a; line-height: 1.6; max-width: 680px; margin: 0 auto; }
 .cb-pricing__savings { display: block; margin: 20px auto 32px; padding: 10px 24px; background: rgba(0,188,241,0.08); border: 1px solid rgba(0,188,241,0.28); border-radius: 100px; width: fit-content; font-size: 0.9rem; font-weight: 500; color: #075f7d; text-align: center; }
-.cb-pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
-.cb-pricing__card { position: relative; background: #fff; border: 1px solid #ededef; border-radius: 16px; padding: 36px 30px 32px; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s cubic-bezier(0.22,1,0.36,1), border-color 0.6s ease; }
+.cb-pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.cb-pricing__card { position: relative; background: #fff; border: 1px solid #ededef; border-radius: 16px; padding: 36px 30px 32px; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s cubic-bezier(0.22,1,0.36,1), border-color 0.6s ease; display: flex; flex-direction: column; }
 .cb-pricing__card:hover { transform: translateY(-10px) scale(1.01); border-color: rgba(7,188,241,0.55); box-shadow: 0 28px 56px rgba(0,0,0,0.09), 0 0 0 1px rgba(7,188,241,0.12); }
 .cb-pricing__card--featured { border: 2px solid #07BCF1; box-shadow: 0 12px 32px rgba(7,188,241,0.14); }
 .cb-pricing__card--featured:hover { box-shadow: 0 24px 48px rgba(7,188,241,0.2); }
@@ -246,7 +246,7 @@ body > * { position: relative; z-index: 1; }
 .cb-pricing__price-custom-sub { font-size: 0.88rem; color: #71717a; margin-top: 4px; }
 .cb-pricing__divider { height: 1px; background: #ededef; margin-bottom: 24px; }
 .cb-pricing__features-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #71717a; margin-bottom: 14px; }
-.cb-pricing__features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.cb-pricing__features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex-grow: 1; }
 .cb-pricing__feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: #3f3f46; line-height: 1.45; }
 .cb-pricing__feature svg { flex-shrink: 0; margin-top: 2px; }
 .cb-pricing__card--featured .cb-pricing__feature svg path { stroke: #07BCF1; }
