@@ -299,18 +299,6 @@ body > * { position: relative; z-index: 1; }
   margin: 0;
 }
 
-.section-summary {
-  font-size: 15px;
-  color: #666;
-  line-height: 1.7;
-  margin-bottom: 24px;
-  padding: 16px 20px;
-  background: rgba(0,188,241,0.04);
-  border-left: 3px solid rgba(0,188,241,0.3);
-  border-radius: 0 8px 8px 0;
-  font-style: italic;
-}
-
 .section-body {
   font-size: 16px;
   color: #333;
@@ -333,6 +321,32 @@ body > * { position: relative; z-index: 1; }
   margin-bottom: 12px;
 }
 
+.section-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.section-body ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+}
+
+.section-body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
 .section-body a {
   color: var(--teal);
   text-decoration: underline;
@@ -352,6 +366,40 @@ body > * { position: relative; z-index: 1; }
   border-radius: 8px;
   margin-top: 16px;
   color: #555;
+}
+
+/* ── LEGAL BASIS TABLE ── */
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+
+.legal-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  padding: 10px 16px;
+  border-bottom: 2px solid #e8ecf0;
+}
+
+.legal-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e8ecf0;
+  color: #333;
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.legal-table td:first-child {
+  font-weight: 600;
+  color: #111;
+  width: 34%;
 }
 
 /* ── CONTACT BLOCK ── */
@@ -394,6 +442,11 @@ body > * { position: relative; z-index: 1; }
     padding-left: 16px;
     padding-right: 16px;
   }
+  .legal-table, .legal-table thead, .legal-table tbody, .legal-table th, .legal-table td, .legal-table tr { display: block; }
+  .legal-table th { display: none; }
+  .legal-table td { border-bottom: none; padding: 4px 0; }
+  .legal-table tr { padding: 16px 0; border-bottom: 1px solid #e8ecf0; }
+  .legal-table td:first-child { width: auto; margin-bottom: 8px; }
 }
 
 @media (max-width: 600px) {
@@ -419,7 +472,7 @@ body > * { position: relative; z-index: 1; }
   <div class="contain">
     <div class="hero-eyebrow reveal">Legal</div>
     <h1 class="reveal reveal-d1">Privacy <em>Policy</em></h1>
-    <p class="hero-sub reveal reveal-d2">Last Updated: April 2025</p>
+    <p class="hero-sub reveal reveal-d2">Last Updated: September 29, 2026</p>
   </div>
 </section>
 
@@ -434,90 +487,43 @@ body > * { position: relative; z-index: 1; }
     <div class="toc reveal">
       <div class="toc-title">Table of Contents</div>
       <ol>
-        <li><a href="#section-1">Information We Collect</a></li>
-        <li><a href="#section-2">Our Uses of Information</a></li>
-        <li><a href="#section-3">Sharing and Disclosure of Information</a></li>
-        <li><a href="#section-4">Choices</a></li>
-        <li><a href="#section-5">Children's Privacy</a></li>
-        <li><a href="#section-6">International Users</a></li>
-        <li><a href="#section-7">Third Party Links and Platforms</a></li>
-        <li><a href="#section-8">How We Protect Your Personal Information</a></li>
-        <li><a href="#section-9">Contact Info</a></li>
+        <li><a href="#section-1">Introduction and Changes to this Privacy Policy</a></li>
+        <li><a href="#section-2">Our Role and Our Customers' Role</a></li>
+        <li><a href="#section-3">Personal Information We Collect</a></li>
+        <li><a href="#section-4">Use of Personal Information</a></li>
+        <li><a href="#section-5">Sharing and Disclosure of Personal Information</a></li>
+        <li><a href="#section-6">Your Choices</a></li>
+        <li><a href="#section-7">Children</a></li>
+        <li><a href="#section-8">International Users and Data Transfers</a></li>
+        <li><a href="#section-9">Third Party Links and Platforms</a></li>
+        <li><a href="#section-10">How We Protect Your Personal Information</a></li>
+        <li><a href="#section-11">Notice to European Users</a></li>
+        <li><a href="#section-12">Contact Info</a></li>
       </ol>
-    </div>
-
-    <!-- INTRO -->
-    <div class="policy-intro reveal">
-      <p>This document outlines the information that Super 6 LLC d/b/a Cinebody ("Cinebody", "we", or "us") collects from you, or if you represent an entity or other organization, that entity or organization (in either case, "you," or "your") and what we do with it. By using any Cinebody websites (including Cinebody.com and the customer portal) or accessing or using any Cinebody products, software licenses or services (collectively, the "Service"), including when you access the Service through mobile devices, you agree to this Privacy Policy. IF YOU DO NOT AGREE TO THIS POLICY, PLEASE DO NOT ACCESS OR USE ANY SERVICES.</p>
-
-      <p>Cinebody reserves the right, at any time, to modify this Privacy Policy. If we make revisions that change the way we collect, use, or share personal information, we will post those changes in this Privacy Policy. You should review this Privacy Policy periodically so that you keep up to date on our most current policies and practices. We will note the effective date of the latest version of our Privacy Policy by updating the "Last Updated" date at the top of this Privacy Policy. Your continued use of the Services following posting of changes constitutes your acceptance of such changes.</p>
-
-      <p>This Privacy Policy informs you about:</p>
-
-      <ul>
-        <li>the personal information we collect and how we collect it;</li>
-        <li>how we use and disclose the personal information;</li>
-        <li>how we protect your personal information;</li>
-        <li>our practices regarding the information of children;</li>
-        <li>third party data practices;</li>
-        <li>your choices about the personal information we store about you; and</li>
-        <li>how you can contact us with any questions or concerns.</li>
-      </ul>
-
-      <div class="definition">"personal information" means information that identifies, relates to, describes, is capable of being associated with, or could reasonably be linked to, directly or indirectly, a particular consumer or household.</div>
     </div>
 
     <!-- SECTION 1 -->
     <div class="policy-section reveal" id="section-1">
       <div class="section-header">
         <span class="section-num">01</span>
-        <h2>Information We Collect</h2>
+        <h2>Introduction and Changes to this Privacy Policy</h2>
       </div>
-      <div class="section-summary">We collect various types of personal information to deliver and improve our services, from contact details and payment info to video content and browsing data.</div>
       <div class="section-body">
-        <p>We collect some or all of the following personal information about you:</p>
+        <p>This Privacy Policy (&ldquo;Privacy Policy&rdquo;) describes how Super 6 LLC d/b/a Cinebody (&ldquo;Cinebody,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) collects, uses, and discloses personal information in connection with our websites, mobile app, browser-camera experience, and content production and delivery platform (collectively, the &ldquo;Platform&rdquo;), and our related emails and other communications, social media pages, and products and services (collectively, and together with the Platform, the &ldquo;Services&rdquo;).</p>
 
-        <h3>Contact Information</h3>
-        <p>Full name, email address, phone number, home address, mobile phone number and shipping address. Our mobile app may request access to your photos, videos, Wi-Fi network name and product serial number.</p>
+        <p>Cinebody reserves the right, at any time, to modify this Privacy Policy. If we make revisions that change the way we collect, use, or share personal information, we will post those changes in this Privacy Policy. You should review this Privacy Policy periodically so that you keep up to date on our most current policies and practices. When we make changes, we will revise the &ldquo;Last updated&rdquo; date at the top of this Privacy Policy and in some cases may inform you about the changes directly, such as by sending you an email if we have your email address on file. In all cases, your continued use of the Services following posting of changes constitutes your acceptance of such changes.</p>
 
-        <h3>Social Media Information</h3>
-        <p>Such as your Facebook Connect credentials (and information that you authorize Facebook to share with us). If you authorize Facebook Connect, the plug-in allows us access to your friends' contact information.</p>
+        <p>This Privacy Policy informs you about:</p>
 
-        <h3>Financial Information</h3>
-        <p>If you are paying for Cinebody products or service and submit a payment form we or our third party partners may collect your payment card information and billing information. Note that Cinebody uses a third-party service provider for the processing of credit card payments (although we may agree to submit your credit card information to the provider on your behalf, upon your request). The identity of the provider will be made known to you during the payment process, and we strongly encourage you to read and understand that provider's privacy practices.</p>
-
-        <h3>Other User Information</h3>
-        <p>Such as your login ID and password. You also have the option to upload your head shot and other information about you if you so choose.</p>
-
-        <h3>Demographic Information</h3>
-        <p>Demographic information including gender, zip code and age.</p>
-
-        <h3>Video Content and other User Generated Content</h3>
-        <p>Video clips that you or your project teammates transmit through the Service in connection with promoting a brand, which might capture a person's name and likeness or a company's logos. We collect all content contained in any video, comment or other submission that you or your team upload or post through the Service.</p>
-
-        <h3>Browsing Information</h3>
-        <p>Browsing history, search history, aggregate user data, preferences, information on your interaction with a website, application, or advertisement.</p>
-
-        <h3>Device and Technical Information</h3>
-        <p>Such information may include IP address, profile information, technical session information, browser type, information about your computer, hardware, software, or mobile device, including a device identifier, device battery and storage information navigational data including log files, server logs, clickstream data, and other data such as your location, where enabled, and language preference. User IP addresses are recorded for security and monitoring purposes. If you arrived at our website via a link from another webpage, we may receive aggregate or otherwise anonymous statistical information about your visit to our site. We also may collect certain geo-location information.</p>
-
-        <h3>Cookies</h3>
-        <p>Cinebody uses cookies to store website visitors' preferences and to record session information, such as pages visited, interactions with website features, time spent on the website, shopping cart items, language preference, intended shipping region, and purchase behavior. We do not link the information we store in cookies to any personal information you submit to us.</p>
-
-        <h3>Web Beacons</h3>
-        <p>Web Beacons are tiny graphics with a unique identifier, similar in function to cookies, and are used to track the online movements of Web users. In contrast to cookies, which are stored on a user's computer hard drive, clear gifs are embedded invisibly on Web pages and are about the size of the period at the end of this sentence. We do not tie the information gathered by clear gifs to our customers' personal information. One or more of our third party advertising partners employ a software technology called web beacons, that help us better manage content on our site by informing us what content is effective.</p>
-
-        <h3>Ad Servers, Third Party Advertising and Website Analytics</h3>
-        <p>We may work with website analytics and advertising partners, such as Google or Doubleclick, to deliver Cinebody advertisements on third party publisher websites, and these partners may set cookies on your computer's web browser. These cookies allow our partners to recognize your computer so that the ad server can show you Cinebody advertisements elsewhere on the Internet, and so that our analytics software can measure your engagement and interactions while using Cinebody.com. In this way, ad servers may compile anonymous, non-personal information about where you, or others who are using your computer, saw our advertisements, whether or not you interacted with our advertisements, and actions performed on subsequent visits to Cinebody.com. This information allows an ad network to deliver targeted advertisements that they believe will be of most interest to you, and it allows Cinebody to optimize the performance of our advertising campaigns and the usability of our website. In other words, we use analytics data in concert with data about our online ads. By doing so, we can understand how anonymous users interacted with our website after seeing our ads. For more information about these advertising services and how to opt out, please see the "Choices" section below.</p>
-
-        <h3>Mobile Software Applications</h3>
-        <p>When you use a Cinebody mobile application we may automatically receive certain information about your mobile device and use of the application, including a device identifier, operating system, version and other information about your mobile device as well as time spent in different portions of the Cinebody mobile application. We monitor customer software usage to help us develop the design and layout of the mobile application and to improve the content to better match the interests of our users. We may also collect different types of information about your location, including general information (e.g., IP address, zip code) and more specific information (e.g., GPS-based functionality on mobile devices used to access the Service), and may use that information to customize the Service. If you access the Service through a mobile device and you do not want your device to provide us with location-tracking information, you can disable the GPS or other location-tracking functions on your device, provided your device allows you to do this. See your device manufacturer's instructions for further details.</p>
-
-        <h3>Information from Other Sources</h3>
-        <p>Cinebody may receive information about you from third parties, such as commerce partners, marketers, social network services and other parties that we may use to supplement the information that we collect directly from you. Cinebody may allow third parties to collect non-personal information by way of cookies, web beacons from the site, although Cinebody does not enable third parties to collect any personal information directly from the Service for their own promotional purposes. This Privacy Policy covers the use of cookies by Cinebody and relevant ad serving, website feature, and analytics partners, and does not cover the use of cookies by 3rd party advertisers. We may also use flash cookies, also known as "local shared objects," on our site. Flash cookies operate differently than browser cookies and cannot be removed or blocked via web browser settings.</p>
-
-        <h3>Other Ways</h3>
-        <p>Finally, we may collect additional information from or about you in other ways not specifically described herein. For example, we may collect information related to your contact with our customer support team or store results when you respond to a survey. If you submit a resume or other document to us, we will collect that. We want to provide a safe and secure user experience, so therefore, before permitting you to use our Service, we may require additional information from you in order to verify your identity or manage risk and compliance throughout our relationship. We may also obtain information about you from third parties for purposes of identity verification and fraud prevention.</p>
+        <ul>
+          <li>the personal information we collect and how we collect it;</li>
+          <li>how we use and disclose the personal information;</li>
+          <li>how we protect your personal information;</li>
+          <li>our practices regarding the information of children;</li>
+          <li>the respective roles of Cinebody and its business customers;</li>
+          <li>your choices about the personal information we store about you; and</li>
+          <li>how you can contact us with any questions or concerns.</li>
+        </ul>
       </div>
     </div>
 
@@ -525,15 +531,10 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-2">
       <div class="section-header">
         <span class="section-num">02</span>
-        <h2>Our Uses of Information</h2>
+        <h2>Our Role and Our Customers' Role</h2>
       </div>
-      <div class="section-summary">We use collected information to operate and improve our services, optimize advertising, fulfill orders, and enhance the overall customer experience.</div>
       <div class="section-body">
-        <p>We may use your personal information: to operate and improve our site and Services; to confirm that you are an actual person and not a bot; to facilitate the creation of and secure your account on our network and identify you as a user in our system; to respond to any questions or concerns that you may have; to send you marketing, promotional communications, upgrades and special offers related to our services and for other marketing purposes of ours or our third party companies; for market research, analytical purposes, project planning, and product development; to better understand your needs and provide you with more personalized Services; and to fulfill other legitimate purposes permitted by applicable law.</p>
-
-        <p>Cinebody may use personal information to improve performance of our Service, to understand how users interact with our website after seeing Cinebody advertisements, to identify and retarget advertisements to past website visitors, and to optimize the performance of our advertising campaigns. Cinebody may use personal information to enable the purchase and fulfillment of Cinebody products and services, and to improve the overall Cinebody customer and product experience. Cinebody may also use personal information in providing the Service, including but not limited to newsletters, special offers, and service announcements.</p>
-
-        <p>We may use your personal information for purposes including the provision and improvement of our products and services, troubleshooting bugs, tracking usage and providing content for referring traffic sources. We monitor customer traffic patterns and site usage to help us develop the design and layout of the site, to improve the content of our website to better match the interests of our website users; and to help protect against fraud. We use cookies and other technological information for various purposes such as ensuring that visitors are not repeatedly offered the same advertisements, to tailor website content and newsletter communications according to visitor preferences, to serve online advertisements based on past visits to the website, and to inform and optimize website performance and online advertising campaigns.</p>
+        <p>As further described in our Terms of Service, Cinebody provides a cloud-based video capture and content management platform that enables the businesses and organizations we work with (our &ldquo;Customers&rdquo;) to collect and process user-generated video content that is uploaded or provided by individual content creators on our Platform. Cinebody does not control how Customers collect, use, or disclose personal information about content creators or individual users, including their collection or processing of videos or other content submitted through the Platform. If you have questions about the privacy practices of a specific Customer, please contact them directly or visit their privacy policy or notice to learn more about how they process personal information.</p>
       </div>
     </div>
 
@@ -541,38 +542,46 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-3">
       <div class="section-header">
         <span class="section-num">03</span>
-        <h2>Sharing and Disclosure of Information</h2>
+        <h2>Personal Information We Collect</h2>
       </div>
-      <div class="section-summary">We share your information with collaborators, service providers, and partners as needed to deliver our services, and may disclose it in connection with legal obligations or business transactions.</div>
       <div class="section-body">
-        <p>Cinebody shares your personal information in the following ways, and we may also share it in other ways upon your consent where such consent is required.</p>
+        <p>We collect various types of personal information directly from you, through your use of our Services, and from other third-party sources.</p>
 
-        <h3>User Database</h3>
-        <p>We maintain a user database that allows users to find each other for purposes of collaborating together on marketing campaigns and we may share your information with other users in that database. We limit the amount of personal information searchable on the user database to that information that is reasonably needed for users to invite and communicate with one another. Also note that users may invite unregistered users to register for the Service and collaborate on a project via email, in which case your email may appear in the directory with "pending" status.</p>
+        <h3>Direct Collection of Personal Information</h3>
+        <p>We may collect some or all of the following personal information about you when you provide it to us, such as when you create an account, use our Platform, send us communications, or otherwise interact with our Services:</p>
 
-        <h3>User-Generated Content</h3>
-        <p>You are solely responsible for ensuring that your video uploads and other user-generated content are lawful and appropriate for the Service, particularly insofar as they capture the name and likeness of natural persons or capture company logos. We may share such information with our partners and clients. Such content is unencrypted public information that may be accessed and stored by us, and there should be no expectation of privacy or confidentiality in such content. This content can be viewed, downloaded and used by other users depending on the privacy settings applicable to your account. If you submit your content to us, we may publish it on the Cinebody website or applications along with certain personal information identifying you, e.g., your first and last name or your username, when we have your consent. For more information relating to the terms governing your user generated content, please see our Terms of Service.</p>
+        <ul>
+          <li><strong>Contact Information</strong>, such as full name, email address, phone number, physical address, or username.</li>
+          <li><strong>Social Media Information</strong>, such as social media handle, profile information, and any information you provide when interacting with Cinebody's social media pages or features, as well as any information that a social media service shares with us based on your settings with that service (such as when you use a social media service to create an account with us).</li>
+          <li><strong>Payment and Creator-Compensation Information</strong>, such as information associated with purchases, subscriptions, and creator compensation (i.e., transaction amount, the products or services purchased, billing contact details, or payment status). Payment, identity-verification, tax, banking, and payout information may be collected and processed directly by a third-party payment provider under that provider's own privacy practices.</li>
+          <li><strong>Account and Profile Information</strong>, such as login ID and account credentials, profile information, any headshot or photograph you choose to upload to your account, account settings and preferences, and any other information you may add to your profile.</li>
+          <li><strong>Demographic Information</strong>, such as gender, zip code and age.</li>
+          <li><strong>Business and Project Information</strong>, such as employer, company name, role or job title, business contact information, project invitations, participation, assignments, shot lists, campaign information, and related communications, and information provided to Cinebody by its business customers, project administrators, or other project participants.</li>
+          <li><strong>Video Content and other User-Generated Content</strong>, such as video, audio, photographs, images, comments, written responses, and other content that you or your project teammates upload to or record through the Services; a person's image, likeness, voice, statements, surroundings, and other information appearing in that content; and metadata associated with that content, such as the date, time, file and device information, and, where enabled, location information. This content may constitute personal information about the individual appearing in it and about other individuals whose image or voice is captured.</li>
+        </ul>
 
-        <h3>Customer Testimonials</h3>
-        <p>At times, we may share customer testimonials on our website which may contain personal information. We will obtain your consent via email and/or opt-in methods prior to posting your name, city, or stated activity/interest along with any testimonial.</p>
+        <h3>Automatic Collection of Personal Information</h3>
+        <p>Cinebody, our service providers, and our advertising partners may automatically log or collect information about individuals or their devices, and their activity over time on our Services and other sites and online services, such as:</p>
 
-        <h3>Third-Party Service Providers</h3>
-        <p>We may use third-party service providers to offer or facilitate services on our behalf, such as a credit card processing company to bill you for product purchases, and an email service provider to send out emails on our behalf. When you order any products or services from Cinebody, we will share your personal information as necessary for our third-party service providers to provide the applicable product or service to you on our behalf.</p>
+        <ul>
+          <li><strong>Browsing Information</strong>, such as browsing history, search history, information about the pages, features, projects, and content you access or use through the Services, referral source information, and other online activity data.</li>
+          <li><strong>Mobile App Usage Information</strong>, such as information about your mobile device and use of the application, including a device identifier, operating system, version and other information about your mobile device as well as time spent in different portions of the Cinebody mobile application, which we may automatically receive when you download or use our mobile app.</li>
+          <li><strong>Device and Technical Information</strong>, such as IP address, technical session information, browser type, information about your computer, hardware, software, or mobile device, including a device identifier, device battery and storage information navigational data including log files, server logs, clickstream data, and other data such as your location, where enabled, and language preference.</li>
+        </ul>
 
-        <h3>Business Transactions</h3>
-        <p>Information that we collect, including your personal information and non-personal information, is considered a business asset. As a result, if we go out of business, enter bankruptcy, or if we are acquired as a result of a transaction such as a merger, acquisition or sale of some or all of our assets, your information may be disclosed or transferred to a third party acquirer in connection with the transaction.</p>
+        <p>The Services may use different types of tracking technologies to collect these categories along with other analytics, attribution, advertising, and campaign-performance information. Those technologies may include, for example:</p>
 
-        <h3>Legal Compliance</h3>
-        <p>We reserve the right to access and disclose your personal information when we believe in good faith that such disclosure is necessary to: (a) enforce legal rights and comply with the law; (b) comply with an order from a government entity or other competent authority, (c) prevent or address potential or actual injury or interference with our rights, property, operations, users or others who may be harmed or may suffer loss or damage; (d) protect our rights, prevent fraud and/or comply with judicial proceeding, court order, or legal process served on Cinebody.</p>
+        <ul>
+          <li><strong>Cookies</strong>, which are text files that websites store on a visitor's device for purposes such as remembering preferences, recording session information (such as pages visited, interactions with website features, time spent on the website, etc.), aiding navigation, enabling functionality, and supporting analytics and advertising.</li>
+          <li><strong>Flash Cookies</strong>, also known as &ldquo;local shared objects,&rdquo; which operate differently than browser cookies and cannot be removed or blocked via web browser settings.</li>
+          <li><strong>Web Beacons</strong>, also known as pixels, tags, or clear GIFs, which are tiny graphics with a unique identifier, similar in function to cookies, and are used to track the online movements of users, such as demonstrating that a webpage or email was accessed or opened, or that certain content was viewed or clicked. In contrast to cookies, which are stored on a user's device or browser, clear gifs are embedded invisibly on websites or in email messages. Web beacons are typically used to compile statistics about usage of websites and the success of marketing campaigns.</li>
+          <li><strong>Local Storage</strong>, which is used to save data on a visitor's device. We may use data from local storage for similar reasons as cookies, such as to store multimedia preferences, customize what we show you based on your past interactions with our Platform, remember your preferences, and measure ad effectiveness.</li>
+          <li><strong>Software Development Kits, or SDKs</strong>, which are types of computer code embedded in mobile apps for a variety of purposes, such as collecting analytics, adding features or functionality, or facilitating online advertising. SDKs may also enable third parties to collect information directly via our mobile app. For example, we monitor software usage to help us develop the design and layout of the mobile application and to improve the content to better match the interests of our users. We may also collect different types of information about your location, including general information (e.g., IP address, zip code) and more specific information (e.g., GPS-based functionality on mobile devices used to access the Platform), and may use that information to customize the Services. If you access the Services through a mobile device and you do not want your device to provide us with location-tracking information, you can disable the GPS or other location-tracking functions on your device. See your device manufacturer's instructions for further details.</li>
+          <li><strong>Chat technologies</strong>, to operate any chat features that you may use to communicate with us through the Platform. Our chat vendors and other third parties may access and use the device and online activity information described above and monitor and record your chats for the purposes described in this Privacy Policy. In most cases, when you use these features, you are communicating with a digital agent and not a human.</li>
+        </ul>
 
-        <h3>Partner or Client Offerings</h3>
-        <p>We may promote events, promotions, or any other product or service offerings of our third party partners or our clients. Unless expressly stated otherwise, we are not responsible for any distribution or fulfillment of any promotions, and you should look to our third party partners for all questions regarding such promotions. The personal information (including any video or other user generated content) that you submit through an event, promotion, or other product or service offering may be combined and transmitted with your account information. Third party partners or clients may collection information directly from you, which may be combined with personal information disclosed by us. If you decide to request, enter into, or participate in an event, promotion, or other product or service offering that is offered by us and identified as a joint effort with a third-party partner or client, the information that you provide may be shared with us and with that identified third party.</p>
-
-        <h3>Social Networking</h3>
-        <p>The Services may offer you the ability to share your personal information through a social networking website (e.g., Facebook), using such site's integrated tools (e.g., Facebook "Like" button). The use of such integrated tools enables you to share personal information about yourself with other individuals or the public, depending on the settings that you have established with such social networking site. For more information about the purpose and scope of data collection and use in connection with such social networking site or a site's integrated tools, please visit the privacy policies of the entities that provide these social networking sites.</p>
-
-        <h3>Non-Personal Information</h3>
-        <p>Cinebody may de-identify information collected by the Service or via other means so that the information does not identify you. Our use and disclosure of aggregated, anonymized, and other non-personal information is not subject to any restrictions under this Privacy Policy, and we may use and disclose it to others without limitation for any purpose.</p>
+        <h3>Personal Information from Other Sources</h3>
+        <p>Cinebody may collect or receive personal information about you from third parties, such as commerce partners, marketers, social media platforms, our Customers and project administrators, other project participants, payment providers, analytics providers, advertising partners, our service providers (including for purposes of identity verification and fraud prevention), or publicly available sources. We may combine this information with or use it to supplement the other information that we otherwise collect about you.</p>
       </div>
     </div>
 
@@ -580,23 +589,45 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-4">
       <div class="section-header">
         <span class="section-num">04</span>
-        <h2>Choices</h2>
+        <h2>Use of Personal Information</h2>
       </div>
-      <div class="section-summary">You can update your personal information, opt out of promotional communications, and request deletion of your data through the channels described below.</div>
       <div class="section-body">
-        <p>We rely on you to update and correct the personal information contained in your account. Note that we may keep historical information in our backup files as permitted by law. If our Services do not permit you to update or correct certain personal information, please contact us as described below.</p>
+        <p>We use personal information to operate and improve our Services, enable participation in customer projects, provide support and payments, improve our products, enhance the overall customer experience, maintain security, comply with law, optimize advertising, and as otherwise described in this Privacy Policy or otherwise to you.</p>
 
-        <p>We provide you the opportunity to "opt-out" of having your personal information used for promotional purposes, when we ask for this information. The option to opt-out of our newsletters and related email promotions is included at the bottom of the applicable communication. To opt out of any other data collection practices set forth in this Privacy Policy, please contact <a href="mailto:info@cinebody.com">info@cinebody.com</a>. If you decide not to receive promotional e-mails, we may still send you service-related communications, such as those about your account, to fulfill orders for products and service you have requested, or deliver notifications directly to you through the Service.</p>
+        <p>Cinebody may use personal information for purposes disclosed at the time of collection, for purposes compatible with those purposes, for purposes to which the individual has consented, or as otherwise permitted by applicable law. Our use of personal information is further described below.</p>
 
-        <p>Some web browsers and devices permit you to broadcast a preference that you not be "tracked" online. At this time we do not modify your experience based upon whether such a signal is broadcast.</p>
+        <h3>To Provide, Operate, and Support the Services</h3>
+        <p>We use personal information to provide, operate, and support the Services, such as to:</p>
+
+        <ul>
+          <li>Create and administer accounts.</li>
+          <li>Authenticate users and identify you as a user in our system.</li>
+          <li>Enable users to participate in Customer-sponsored projects.</li>
+          <li>Record, upload, store, organize, review, score, edit, and deliver content.</li>
+          <li>Share project content and related information with the business Customer sponsoring the project and with authorized project participants.</li>
+          <li>Provide customer support and respond to inquiries.</li>
+          <li>Process purchases, subscriptions, and creator compensation.</li>
+          <li>Provide requested communications and transactional or service notices.</li>
+          <li>Personalize and improve the Services you receive.</li>
+        </ul>
+
+        <h3>For Research and Development</h3>
+        <p>We use personal information for research and development purposes, including to study and improve the Services and our business, understand and analyze the usage trends, demographics, and preferences of our Customers and users, and develop new features, functionality, products, and services. As part of these activities, we may create aggregated, de-identified, or anonymous data from personal information we collect which involves removing information that makes the data personally identifiable. We may use this anonymous data and share it with third parties for our lawful business purposes.</p>
+
+        <h3>Artificial Intelligence and Automated Features</h3>
+        <p>Cinebody may use artificial intelligence, machine learning, or similar technologies to support the Services, customer support, marketing and advertising activities, security and integrity, and the improvement of products, features, internal tools, and workflows. For example, the Platform may include AI-powered features that will use input like project briefs and prompts, interview questions and responses, video and audio content, frames of footage, transcripts, or related project and technical information to analyze and provide outputs, such as recommendations or editing functionality. If you engage with an AI-powered interactive feature, Cinebody may process your personal information to provide relevant outputs and to evaluate and improve those tools and systems. Unless you receive a supplemental privacy notice relating to such services, Cinebody will treat your personal information as described in this Privacy Policy.</p>
+
+        <h3>For Compliance, Fraud Protection, and Safety</h3>
+        <p>We will use personal information as we believe necessary or appropriate to (a) comply with applicable laws, lawful requests, and legal process, such as to respond to subpoenas or requests from government authorities; (b) protect our, your, or others' rights, privacy, safety or property (including by making and defending legal claims); (c) audit our internal processes for compliance with legal and contractual requirements and internal policies; (d) enforce the terms and conditions that govern the Platform or the Services; and (e) prevent, identify, investigate, and deter fraudulent, harmful, unauthorized, unethical or illegal activity, including cyberattacks and identity theft.</p>
+
+        <h3>Marketing Communications</h3>
+        <p>We may send you newsletters and other promotional communications as permitted by law, including materials, updates, information, special offers, and promotional material from us and our business partners. You may opt-out of our marketing communications as described in the &ldquo;Your Choices&rdquo; section below.</p>
 
         <h3>Behavioral-Based Advertising</h3>
-        <p>We participate in behavioral-based advertising. This means that a third party may use technology (e.g., a cookie) to collect information about your use of our Services so that we can provide advertising about products and services tailored to your interest. That advertising may appear either on our Services, or on other websites. If you wish to limit third parties' collection of information about your use of our Services, you can opt-out of such at the Digital Advertising Alliance in the US, the Digital Advertising Alliance of Canada in Canada, or the European Digital Advertising Alliance in Europe.</p>
+        <p>We may work with third-party advertising companies and social media companies to help us advertise our business and to display ads for our Services and Platform to Customers, existing users, and prospective customers or users. These companies may use cookies and similar technologies on our Services to collect information about you (including the types of automatically-collected personal information described above) over time across our Services and other websites and services, and use that information to serve ads that they think will interest you. In addition, some of these companies may use hashed customer or user lists that we share with them to deliver ads to you and to similar users on their platforms. You can learn more about your choices for limiting behavioral-based advertising in the &ldquo;Your Choices&rdquo; section below.</p>
 
-        <div class="caps-note">PLEASE NOTE THAT OPTING OUT OF BEHAVIORAL ADVERTISING DOES NOT MEAN THAT YOU WILL NOT RECEIVE ADVERTISING WHILE USING THE PLATFORM. IT WILL, HOWEVER, EXCLUDE YOU FROM INTEREST-BASED ADVERTISING CONDUCTED THROUGH PARTICIPATING NETWORKS, AS PROVIDED BY THEIR POLICIES AND CHOICE MECHANISMS.</div>
-
-        <h3>Right to Be Forgotten</h3>
-        <p>Typically, we retain your personal information for the period necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. You may, however, request that we delete your personal information by contacting us at <a href="mailto:info@cinebody.com">info@cinebody.com</a> or by contacting support in the user's profile. We will grant a request to delete information as required by law, but you should note that in many situations we must keep your personal information to comply with our legal obligations, resolve disputes, enforce our agreements, or for another one of our business purposes. Except as provided above, we will delete, aggregate, or de-identify all of your personal information as described in this subsection within the timeframes required by law.</p>
+        <h3>With Your Consent</h3>
+        <p>We will use and disclose your personal information in accordance with your prior direction or, in some cases, we may specifically ask you for your consent to collect, use, or share your personal information, such as when required by law.</p>
       </div>
     </div>
 
@@ -604,11 +635,39 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-5">
       <div class="section-header">
         <span class="section-num">05</span>
-        <h2>Children's Privacy</h2>
+        <h2>Sharing and Disclosure of Personal Information</h2>
       </div>
-      <div class="section-summary">Our services are not intended for children under 13, and we do not knowingly collect their personal information.</div>
       <div class="section-body">
-        <p>Cinebody's Service are intended for general audiences and not for children under the age of 13. We do not knowingly collect personal information from children under the age of 13 and if we become aware of such collection, we will take reasonable steps to delete any such information as soon as practicable.</p>
+        <p>We may share your personal information to achieve the purposes of processing described in this Privacy Policy, including with the categories of recipients described below.</p>
+
+        <h3>Other Users, Customers, Project Participants, or the Public</h3>
+        <p>Depending on the project and relevant account settings, certain information about you, including your name, username, profile information, role on a project, and submitted content, may be visible to the business Customer sponsoring the project, project administrators, and other authorized project participants. Users who invite others to a project may cause the invited person's email address to be visible to project participants as a pending invitation.</p>
+        <p>You are responsible for ensuring that content you submit to the Services is lawful and that you have obtained any permissions needed from other individuals whose image, voice, or likeness is captured.</p>
+        <p>If you consent, we may share customer testimonials on our website which may contain personal information or publish content you submit on the Cinebody website or applications along with certain personal information identifying you, e.g., your first and last name or your username.</p>
+
+        <h3>Service Providers</h3>
+        <p>We may disclose personal information to third-party service providers that perform services on our behalf, such as cloud hosting, storage, and content-delivery providers; communications and email providers; customer-support providers; security and fraud-prevention providers; analytics providers; AI model, transcription, media-processing, and API providers; and payment processors and payout providers. These service providers are permitted to use personal information only to provide services to Cinebody and as permitted by applicable law.</p>
+
+        <h3>Business Transaction Participants</h3>
+        <p>We may disclose personal information to third parties in connection with any business transaction (or potential transaction) involving a merger, acquisition, sale of shares or assets, financing, consolidation, reorganization, divestiture, or dissolution of all or a portion of our business (including in connection with a bankruptcy or similar proceedings).</p>
+
+        <h3>Law Enforcement, Authorities, and Others</h3>
+        <p>Under certain circumstances, we may be required to disclose personal information to law enforcement, government authorities, and other parties if required to do so by law or in response to valid requests by public authorities (e.g., a court or a government agency). We may also disclose personal information in the good faith belief that such action is necessary to comply with a legal obligation or for the purposes described above in the section titled &ldquo;For Compliance, Fraud Protection, and Safety.&rdquo;</p>
+
+        <h3>Joint Marketing Partners</h3>
+        <p>We may promote events, promotions, or any other product or service offerings of our third party partners or our clients. Unless expressly stated otherwise, we are not responsible for any distribution or fulfillment of any promotions, and you should look to our third party partners for all questions regarding such promotions. The personal information (including any video or other user generated content) that you submit through an event, promotion, or other product or service offering may be combined and transmitted with your account information. Third party partners or clients may collect information directly from you, which may be combined with personal information disclosed by us. If you decide to request, enter into, or participate in an event, promotion, or other product or service offering that is offered by us and identified as a joint effort with a third-party partner or client, the information that you provide may be shared with us and with that identified third party.</p>
+
+        <h3>Advertising Partners</h3>
+        <p>We may share personal information with third parties who we partner with for advertising campaigns or that collect information about your activity on the Services for the purposes described in the &ldquo;Behavioral-Based Advertising&rdquo; section above.</p>
+
+        <h3>Professional Advisers</h3>
+        <p>We may share personal information with persons, companies, or professional firms providing Cinebody with advice and consulting in accounting, administrative, legal, tax, financial, debt collection, and other matters.</p>
+
+        <h3>Related Companies</h3>
+        <p>We may share your personal information with our affiliates, subsidiaries, and other related companies.</p>
+
+        <h3>At Your Direction</h3>
+        <p>Cinebody may disclose personal information to other parties at your direction or with your appropriate authorization.</p>
       </div>
     </div>
 
@@ -616,11 +675,36 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-6">
       <div class="section-header">
         <span class="section-num">06</span>
-        <h2>International Users</h2>
+        <h2>Your Choices</h2>
       </div>
-      <div class="section-summary">Cinebody operates primarily in the United States, and your data may be transferred to and processed in the US and other countries.</div>
       <div class="section-body">
-        <p>Cinebody operates primarily in the United States and, as a result, the information we collect may be stored in the United States. Your personal information may be transferred to, used, processed or held by Cinebody in the United States and in other countries, including countries outside of your country of residence, and used for the purposes set out in this Privacy Policy.</p>
+        <p>You can update your personal information, opt out of promotional communications, request deletion of your data, and exercise the other choices described below.</p>
+
+        <h3>Accessing, Correcting, or Deleting Information</h3>
+        <p>You may access and correct information in your account by logging in and updating your information or changing your preferences. We rely on you to update and correct the personal information contained in your account. Note that we may keep historical information in our backup files as permitted by law. If our Services do not permit you to update or correct certain personal information, please contact us as described below.</p>
+        <p>You may also request that we delete your personal information by contacting us at <a href="mailto:support@cinebody.com">support@cinebody.com</a> or by contacting support in the user's profile. We will grant a request to delete information as required by law, but you should note that in many situations we must keep your personal information to comply with our legal obligations, resolve disputes, enforce our agreements, or for another one of our business purposes.</p>
+
+        <h3>Opt-Out of Marketing Emails</h3>
+        <p>The option to opt-out of our newsletters and related email promotions is included at the bottom of the applicable communication. If you decide not to receive promotional e-mails, we may still send you service-related communications, such as those about your account, to fulfill orders for products and services you have requested, or deliver notifications directly to you through the Services.</p>
+
+        <h3>Cookies and Browser Web Storage</h3>
+        <p>Most browsers let you remove and/or stop accepting cookies from the websites you visit. To do this, follow the instructions in your browser's settings. Many browsers accept cookies by default until you change your settings. If you do not accept cookies, however, you may not be able to use all functionality of the Services and they may not work properly. For more information about cookies, including how to see what cookies have been set on your browser and how to manage and delete them, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">www.allaboutcookies.org</a>. Similarly, your browser settings may allow you to clear your browser web storage.</p>
+
+        <h3>Do Not Track</h3>
+        <p>Some web browsers and devices permit you to broadcast a preference that you not be &ldquo;tracked&rdquo; online. At this time we do not modify your experience based upon whether such a signal is broadcast. To find out more about &ldquo;Do Not Track,&rdquo; please visit <a href="http://www.allaboutdnt.com" target="_blank" rel="noopener">allaboutdnt.com</a>.</p>
+
+        <h3>Behavioral-Based Advertising Choices</h3>
+        <p>We participate in behavioral-based advertising, as further described above. You can limit the use of your information for behavioral-based advertising by blocking third-party cookies in your browser settings, using browser plug-ins/extensions, and/or using your mobile device settings to limit the use of the advertising ID associated with your mobile device. You can also opt out of behavioral-based ads from companies participating in the following industry opt-out programs by visiting the linked websites: the <a href="http://www.networkadvertising.org/managing/opt_out.asp" target="_blank" rel="noopener">Network Advertising Initiative</a>, the <a href="https://optout.aboutads.info" target="_blank" rel="noopener">Digital Advertising Alliance</a>, or the <a href="http://www.youronlinechoices.eu/" target="_blank" rel="noopener">European Interactive Digital Advertising Alliance</a>. Some of the companies we work with may offer their own opt-out mechanisms.</p>
+        <p>Many of the opt-out preferences described in this section must be set on each device and/or browser for which you want them to apply. Please note that some of the advertising companies we work with may not participate in the opt-out mechanisms described above, so even after opting-out, you may still receive interest-based advertisements from other companies. If you opt-out of behavioral-based advertisements, you will still see advertisements online but they may be less relevant to you.</p>
+
+        <h3>Location and Device Permissions</h3>
+        <p>Cinebody collects approximate location information derived from your IP address and may collect precise geolocation information where you enable it. Our mobile application and browser-based camera experience may request access to your device's camera and microphone to record content, access to your photo or media library to upload and save content, and permission to send notifications. You can generally manage device permissions through your device or application settings; however, disabling a permission may prevent the corresponding feature from functioning.</p>
+
+        <h3>Your California Privacy Rights (Shine the Light)</h3>
+        <p>California's &ldquo;Shine the Light&rdquo; law (Civil Code Section &sect; 1798.83) permits users of our Services that are California residents to request certain information regarding our disclosure of personal information to third parties for their direct marketing purposes, if any. To make such a request, please contact us as provided at the end of this Privacy Policy. You must include the words &ldquo;Shine the Light&rdquo; in your subject line or correspondence.</p>
+
+        <h3>Notice to Nevada Residents</h3>
+        <p>Nevada Revised Statutes Chapter 603A allows Nevada residents to opt-out of the &ldquo;sale&rdquo; of certain types of personal information. Subject to several exceptions, Nevada law defines &ldquo;sale&rdquo; to mean the exchange of certain types of personal information for monetary consideration to another person. If you are a Nevada resident who wishes to exercise your &ldquo;sale&rdquo; opt-out rights, you may submit a request to us using the contact information listed at the end of this Privacy Policy.</p>
       </div>
     </div>
 
@@ -628,13 +712,10 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-7">
       <div class="section-header">
         <span class="section-num">07</span>
-        <h2>Third Party Links and Platforms</h2>
+        <h2>Children</h2>
       </div>
-      <div class="section-summary">Our service may contain links to third-party websites and platforms whose privacy practices are beyond our control.</div>
       <div class="section-body">
-        <p>Cinebody's Service may contain links to or features from other websites. This Privacy Policy covers the privacy practices by Cinebody, and does not cover the privacy practices of third party websites or features. Cinebody is not responsible for the privacy policies and/or practices of third parties. When linking to another Site or using a third party service, you should read the privacy policy on that site or service.</p>
-
-        <p>If you connect to a third party network, platform, or service through the Service, you are authorizing us to collect, store, and use in accordance with this Privacy Policy any and all information that you agreed the social network or other third party platform could provide to Cinebody based on your settings on the third party social network or platform. Your agreement takes place when you connect with the third party network, platform, or service via our Service, and/or when you connect with one of our applications through one of these services.</p>
+        <p>The Services are intended for adult audiences and not for children under the age of 18. If you believe that we have collected personal information from a minor, please contact us as described below.</p>
       </div>
     </div>
 
@@ -642,11 +723,10 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-8">
       <div class="section-header">
         <span class="section-num">08</span>
-        <h2>How We Protect Your Personal Information</h2>
+        <h2>International Users and Data Transfers</h2>
       </div>
-      <div class="section-summary">We implement reasonable administrative, technical, and physical safeguards to protect your data, though no security system is completely impenetrable.</div>
       <div class="section-body">
-        <p>The security of your Personal Information is important to us. We have implemented reasonable administrative, technical, and physical security measures designed to protect against the unauthorized access, destruction or alteration of your information. Despite such efforts, however, please understand that no security measures are completely impenetrable. Have a security concern? Email <a href="mailto:travis@cinebody.com">travis@cinebody.com</a> and we'll address it as soon as possible.</p>
+        <p>Cinebody is based in the United States. Your personal information may be transferred to, stored in, and processed in the United States and in other countries where Cinebody, its affiliates, service providers, and partners operate. The privacy and data protection laws of those countries may differ from, and may be less protective than, the laws of your country of residence. Where required by applicable law, Cinebody uses appropriate safeguards for transfers of personal information. You may request further information about the safeguards applicable to transfers of your personal information by contacting Cinebody at <a href="mailto:support@cinebody.com">support@cinebody.com</a>. For transfers subject to European data protection law, please see the &ldquo;Notice to European Users&rdquo; section below.</p>
       </div>
     </div>
 
@@ -654,16 +734,109 @@ body > * { position: relative; z-index: 1; }
     <div class="policy-section reveal" id="section-9">
       <div class="section-header">
         <span class="section-num">09</span>
+        <h2>Third Party Links and Platforms</h2>
+      </div>
+      <div class="section-body">
+        <p>The Services may contain links to or features from other websites. This Privacy Policy covers the privacy practices by Cinebody, and does not cover the privacy practices of third party websites or features. Cinebody is not responsible for the privacy policies and/or practices of third parties. When linking to another website or using a third party service, you should read the privacy policy on that site or service.</p>
+        <p>If you choose to connect a third party network, platform, or service to the Services, Cinebody may receive information from that third party in accordance with your settings and permissions with that third party, and will use that information as described in this Privacy Policy.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 10 -->
+    <div class="policy-section reveal" id="section-10">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>How We Protect Your Personal Information</h2>
+      </div>
+      <div class="section-body">
+        <p>The security of your personal information is important to us. We have implemented reasonable administrative, technical, and physical security measures designed to protect against the unauthorized access, destruction or alteration of your information. Despite such efforts, however, please understand that no security measures are completely impenetrable. Have a security concern? Email <a href="mailto:support@cinebody.com">support@cinebody.com</a>.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 11 -->
+    <div class="policy-section reveal" id="section-11">
+      <div class="section-header">
+        <span class="section-num">11</span>
+        <h2>Notice to European Users</h2>
+      </div>
+      <div class="section-body">
+        <p>This section applies to individuals located in the European Economic Area, the United Kingdom, and Switzerland (collectively, &ldquo;Europe&rdquo;). It supplements the rest of this Privacy Policy and, if there is a conflict between this section and the rest of this Privacy Policy, this section controls for individuals in Europe.</p>
+
+        <h3>Controller</h3>
+        <p>For the processing described in this Privacy Policy, the controller is Super 6 LLC d/b/a Cinebody, 3839 Jackson St., Denver, Colorado 80205, USA. Where Cinebody processes personal information on behalf of a business customer under that customer's instructions, the business customer is the controller and Cinebody acts as a processor.</p>
+
+        <h3>Legal Basis of Processing</h3>
+        <p>The legal basis we rely on when processing your personal information as described in this Privacy Policy will depend on the type of personal information and the specific context in which we process it. However, the legal bases we typically rely on are set out in the table below. We rely on our legitimate interests as our legal basis only where those interests are not overridden by the impact on you (unless we have your consent, or our processing is otherwise required or permitted by law). If you have questions about the legal basis of how we process your personal information, contact us using the information at the bottom of this Privacy Policy.</p>
+
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Processing Purpose</th>
+              <th>Legal Basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>To Provide, Operate, and Support the Services; Artificial Intelligence and Automated Features</td>
+              <td>Processing is necessary to perform the contract governing our operation of the Services, or to take steps that you request prior to engaging our products or services. Where we cannot process your personal information as required to operate the Services on the grounds of contractual necessity, we process your personal information for this purpose based on our legitimate interests as further described in this Privacy Policy. Where we cannot rely on contractual necessity or our legitimate interests, we will obtain your consent for such processing. Where we rely on your consent, you have the right to withdraw it any time in the manner indicated when you consented or via the relevant Services.</td>
+            </tr>
+            <tr>
+              <td>For Research and Development</td>
+              <td>Processing is based on our legitimate interests in performing research and development activities as described in this Privacy Policy.</td>
+            </tr>
+            <tr>
+              <td>For Compliance, Fraud Protection, and Safety</td>
+              <td>Processing is necessary to comply with our legal obligations or based on our legitimate interests in protecting our or others' rights, privacy, safety, or property.</td>
+            </tr>
+            <tr>
+              <td>Marketing Communications; Behavioral-Based Advertising</td>
+              <td>Processing is based on your consent where that consent is required by applicable law. Where we rely on your consent you have the right to withdraw it any time in the manner indicated when you consented or via the relevant Services. Where such consent is not required by applicable law, we process your personal information for this purpose based on our legitimate interests in promoting our business and providing you with tailored, relevant content.</td>
+            </tr>
+            <tr>
+              <td>With Your Consent</td>
+              <td>Processing is based on your consent. Where we rely on your consent you have the right to withdraw it any time in the manner indicated when you consent or via the relevant Services.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Use For New Purposes</h3>
+        <p>We may use your personal information for reasons not described in this Privacy Policy where permitted by law and the reason is compatible with the purpose for which we collected it. If we need to use your personal information for an unrelated purpose, we will notify you and explain the applicable legal basis.</p>
+
+        <h3>Retention</h3>
+        <p>We will retain your personal information for as long as necessary to fulfill the purpose of collection, including for the purposes of satisfying any legal, accounting, or reporting requirements, to establish and defend legal claims, for fraud prevention purposes, or as long as required to meet our legal obligations or fulfill the agreements we have with our clients. To determine the appropriate retention period for personal information, we consider the amount, nature, and sensitivity of the personal information, the potential risk of harm from unauthorized use or disclosure of your personal information, the purposes for which we process your personal information and whether we can achieve those purposes through other means, and the applicable legal requirements.</p>
+
+        <h3>Your Rights</h3>
+        <p>European data protection laws may give you certain rights regarding your personal information. You may ask us to take the following actions in relation to your personal information that we hold:</p>
+
+        <ul>
+          <li><strong>Access.</strong> Provide you with information about our processing of your personal information and give you access to your personal information.</li>
+          <li><strong>Correct.</strong> Update or correct inaccuracies in your personal information.</li>
+          <li><strong>Delete.</strong> Delete your personal information.</li>
+          <li><strong>Port.</strong> Transfer a machine-readable copy of your personal information to you or a third party of your choice.</li>
+          <li><strong>Restrict.</strong> Restrict the processing of your personal information.</li>
+          <li><strong>Object.</strong> Object to our reliance on our legitimate interests as the basis of our processing of your personal information that impacts your rights.</li>
+        </ul>
+
+        <p>You may submit these requests by contacting us at <a href="mailto:support@cinebody.com">support@cinebody.com</a>. We may request specific information from you to help us confirm your identity and process your request. Applicable law may require or permit us to decline your request. If we decline your request, we will tell you why, subject to legal restrictions. If you would like to submit a complaint about our use of your personal information or our response to your requests regarding your personal information, you may contact us or submit a complaint to the data protection regulator in your jurisdiction.</p>
+
+        <h3>Cross-Border Data Transfer</h3>
+        <p>If we transfer your personal information to a country outside of Europe such that we are required to apply additional safeguards to your personal information under European data protection laws, we will do so. Please contact us using the contact details below for further information about any such transfers or the specific safeguards applied.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 12 -->
+    <div class="policy-section reveal" id="section-12">
+      <div class="section-header">
+        <span class="section-num">12</span>
         <h2>Contact Info</h2>
       </div>
-      <div class="section-summary">For any questions about this Privacy Policy, reach out to our privacy compliance team at the address below.</div>
       <div class="section-body">
         <div class="contact-block">
           <strong>Cinebody</strong>
           Attn: Privacy Compliance<br>
           3839 N Jackson Street<br>
           Denver, CO 80205 USA<br><br>
-          <a href="mailto:info@cinebody.com">info@cinebody.com</a>
+          <a href="mailto:support@cinebody.com">support@cinebody.com</a>
         </div>
       </div>
     </div>
