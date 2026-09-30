@@ -186,13 +186,11 @@ html { scroll-padding-top: var(--nav-h); }
   line-height: 1.7;
 }
 .post-content ol > li {
-  display: grid;
-  grid-template-columns: 46px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
+  position: relative;
+  min-height: 46px;
   counter-increment: post-ol;
   margin: 0 0 10px;
-  padding: 16px 18px;
+  padding: 16px 18px 16px 78px;
   border-radius: 16px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
@@ -201,6 +199,9 @@ html { scroll-padding-top: var(--nav-h); }
 .post-content ol > li:last-child { margin-bottom: 0; }
 .post-content ol > li::before {
   content: counter(post-ol, decimal-leading-zero);
+  position: absolute;
+  left: 18px;
+  top: 16px;
   box-sizing: border-box;
   width: 46px;
   height: 46px;
