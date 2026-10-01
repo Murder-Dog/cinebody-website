@@ -1,0 +1,77 @@
+---
+import '../styles/cookie-consent.css';
+---
+
+<script>
+  import 'vanilla-cookieconsent/dist/cookieconsent.css';
+  import * as CookieConsent from 'vanilla-cookieconsent';
+
+  declare global {
+    interface Window {
+      dataLayer: unknown[];
+      gtag?: (...args: unknown[]) => void;
+    }
+  }
+
+  function updateGtagConsent() {
+    if (typeof window.gtag !== 'function') return;
+    const granted = CookieConsent.acceptedCategory('analytics');
+    window.gtag('consent', 'update', {
+      analytics_storage: granted ? 'granted' : 'denied',
+      ad_storage: granted ? 'granted' : 'denied',
+      ad_user_data: granted ? 'granted' : 'denied',
+      ad_personalization: granted ? 'granted' : 'denied',
+    });
+  }
+
+  CookieConsent.run({
+    guiOptions: {
+      consentModal: {
+        layout: 'bar inline',
+        position: 'bottom',
+        equalWeightButtons: false,
+      },
+    },
+    categories: {
+      necessary: {
+        readOnly: true,
+        enabled: true,
+      },
+      analytics: {},
+    },
+    language: {
+      default: 'en',
+      translations: {
+        en: {
+          consentModal: {
+            description:
+              "We use a little data to see what's working on the site. Nothing without your OK.",
+            acceptAllBtn: 'Accept',
+            acceptNecessaryBtn: 'Decline',
+          },
+          preferencesModal: {
+            title: 'Preferences',
+            acceptAllBtn: 'Accept all',
+            acceptNecessaryBtn: 'Decline',
+            savePreferencesBtn: 'Save',
+            sections: [
+              {
+                title: 'Necessary',
+                description: 'Required for the site to work. Always on.',
+                linkedCategory: 'necessary',
+              },
+              {
+                title: 'Analytics',
+                description: "Helps us see what's working so we can improve the site.",
+                linkedCategory: 'analytics',
+              },
+            ],
+          },
+        },
+      },
+    },
+    onFirstConsent: updateGtagConsent,
+    onConsent: updateGtagConsent,
+    onChange: updateGtagConsent,
+  });
+</script>
