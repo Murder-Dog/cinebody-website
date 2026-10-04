@@ -199,6 +199,686 @@
       "permanent": false
     },
     {
+      "source": "/examples",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/performance",
+      "destination": "/platform",
+      "permanent": true
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/cinebody-icon.png",
+      "permanent": true
+    },
+    {
+      "source": "/apple-touch-icon(.*)",
+      "destination": "/cinebody-icon.png",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/feed",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/feed",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/:name*",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/category/:name*",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/software-pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/video-services",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/creative-services",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/5-steps-to-recording-interviews-iphone",
+      "destination": "/cinebody-blog/5-steps-to-recording-interviews-iphone",
+      "permanent": true
+    },
+    {
+      "source": "/creating-video-content-without-a-production-crew",
+      "destination": "/cinebody-blog/creating-video-content-without-a-production-crew",
+      "permanent": true
+    },
+    {
+      "source": "/crowdsourcing-a-video-campaign-read-these-5-tips-first",
+      "destination": "/cinebody-blog/crowdsourcing-a-video-campaign-read-these-5-tips-first",
+      "permanent": true
+    },
+    {
+      "source": "/five-tips-for-great-b-roll-filming",
+      "destination": "/cinebody-blog/five-tips-for-great-b-roll-filming",
+      "permanent": true
+    },
+    {
+      "source": "/how-sum-41-tapped-fan-content-for-a-moving-music-video",
+      "destination": "/cinebody-blog/how-sum-41-tapped-fan-content-for-a-moving-music-video",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-engage-micro-amp-nano-influencers-in-5-easy-steps",
+      "destination": "/cinebody-blog/how-to-engage-micro-amp-nano-influencers-in-5-easy-steps",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-frame-video-on-smartphones",
+      "destination": "/cinebody-blog/how-to-frame-video-on-smartphones",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-produce-a-web-series-on-any-budget",
+      "destination": "/cinebody-blog/how-to-produce-a-web-series-on-any-budget",
+      "permanent": true
+    },
+    {
+      "source": "/influencer-marketing-in-your-content-strategy",
+      "destination": "/cinebody-blog/influencer-marketing-in-your-content-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/introducing-the-next-generation-of-the-video-village",
+      "destination": "/cinebody-blog/introducing-the-next-generation-of-the-video-village",
+      "permanent": true
+    },
+    {
+      "source": "/lo-fi-video-content",
+      "destination": "/cinebody-blog/lo-fi-video-content",
+      "permanent": true
+    },
+    {
+      "source": "/photo-video-usage-rights",
+      "destination": "/cinebody-blog/photo-video-usage-rights",
+      "permanent": true
+    },
+    {
+      "source": "/the-top-5-platforms-to-find-nano-influencers",
+      "destination": "/cinebody-blog/the-top-5-platforms-to-find-nano-influencers",
+      "permanent": true
+    },
+    {
+      "source": "/the-top-video-production-blogs-to-follow-in-2025",
+      "destination": "/cinebody-blog/the-top-video-production-blogs-to-follow-in-2025",
+      "permanent": true
+    },
+    {
+      "source": "/the-ultimate-guide-to-capturing-b-roll",
+      "destination": "/cinebody-blog/the-ultimate-guide-to-capturing-b-roll",
+      "permanent": true
+    },
+    {
+      "source": "/the-ultimate-guide-to-video-production",
+      "destination": "/cinebody-blog/the-ultimate-guide-to-video-production",
+      "permanent": true
+    },
+    {
+      "source": "/ugc-stock-footage",
+      "destination": "/cinebody-blog/ugc-stock-footage",
+      "permanent": true
+    },
+    {
+      "source": "/video-crowdsourcing-platforms",
+      "destination": "/cinebody-blog/video-crowdsourcing-platforms",
+      "permanent": true
+    },
+    {
+      "source": "/what-are-usage-rights",
+      "destination": "/cinebody-blog/what-are-usage-rights",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-a-shot-list-and-how-do-i-write-one-for-a-ugc-campaign",
+      "destination": "/cinebody-blog/what-is-a-shot-list-and-how-do-i-write-one-for-a-ugc-campaign",
+      "permanent": true
+    },
+    {
+      "source": "/why-lo-fi-content-should-be-part-of-your-video-content-plan",
+      "destination": "/cinebody-blog/why-lo-fi-content-should-be-part-of-your-video-content-plan",
+      "permanent": true
+    },
+    {
+      "source": "/with-time-of-flight-the-iphone-looks-set-to-rule-the-content-world",
+      "destination": "/cinebody-blog/with-time-of-flight-the-iphone-looks-set-to-rule-the-content-world",
+      "permanent": true
+    },
+    {
+      "source": "/wtf-is-tiktok-and-why-should-i-care",
+      "destination": "/cinebody-blog/wtf-is-tiktok-and-why-should-i-care",
+      "permanent": true
+    },
+    {
+      "source": "/3-key-tips-for-remote-video-production",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/3-key-tips-for-remote-video-production",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/4-things-you-should-know-before-managing-your-first-cinebody-project",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/4-things-you-should-know-before-managing-your-first-cinebody-project",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/5-filming-tips-tricks-for-smartphone-videography",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/5-filming-tips-tricks-for-smartphone-videography",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/5-more-tips-and-tricks-for-smartphone-filming",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/5-more-tips-and-tricks-for-smartphone-filming",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/5g-video-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/5g-video-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/affordable-remote-video-production-is-here-to-stay",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/affordable-remote-video-production-is-here-to-stay",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/authentic-content-marketing-is-a-winner",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/authentic-content-marketing-is-a-winner",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/axon-success-story",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/axon-success-story",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/branded-video-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/branded-video-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/broll-remote-video-production-strategy",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/broll-remote-video-production-strategy",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/capture-the-best-broll",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/capture-the-best-broll",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/combine-ugc-with-highend-footage-for-the-human-touch",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/combine-ugc-with-highend-footage-for-the-human-touch",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/connect-with-fans",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/connect-with-fans",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/control-your-users-cameras-to-maximize-the-aesthetic",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/control-your-users-cameras-to-maximize-the-aesthetic",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/creative-services",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/employer-branding-video-examples",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/employer-branding-video-examples",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/event-video-production-cost",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/event-video-production-cost",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/get-better-results-with-your-next-user-generated-content-campaign",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/get-better-results-with-your-next-user-generated-content-campaign",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-durand-jones-the-indications-made-video-collaboration-a-hit",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-durand-jones-the-indications-made-video-collaboration-a-hit",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-onerepublics-better-days-video-was-shot-by-fans-around-the-world",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-onerepublics-better-days-video-was-shot-by-fans-around-the-world",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-the-production-industry-is-moving-to-the-cloud",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-the-production-industry-is-moving-to-the-cloud",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-create-a-web-series",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-to-create-a-web-series",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-create-engaging-content-during-a-pandemic",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-to-create-engaging-content-during-a-pandemic",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-engage-micro-nano-influencers-in-5-easy-steps",
+      "destination": "/cinebody-blog/how-to-engage-micro-amp-nano-influencers-in-5-easy-steps",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-to-engage-micro-nano-influencers-in-5-easy-steps",
+      "destination": "/cinebody-blog/how-to-engage-micro-amp-nano-influencers-in-5-easy-steps",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-make-affordable-video-content-amidst-a-recession",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-to-make-affordable-video-content-amidst-a-recession",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-user-generated-content-fits-into-your-content-strategy",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-user-generated-content-fits-into-your-content-strategy",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-zynga-celebrated-pride-month-and-why-employee-inclusivity-matters",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-zynga-celebrated-pride-month-and-why-employee-inclusivity-matters",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/influencer-video-testimonials",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/influencer-video-testimonials",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/internship-recruitment-videos",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/internship-recruitment-videos",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/iphone-video-production-tools-your-best-options",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/iphone-video-production-tools-your-best-options",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/kellymoore-paints-used-video-to-celebrate-company-culture",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/kellymoore-paints-used-video-to-celebrate-company-culture",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/lofi-video-content",
+      "destination": "/cinebody-blog/lo-fi-video-content",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/lofi-video-content",
+      "destination": "/cinebody-blog/lo-fi-video-content",
+      "permanent": true
+    },
+    {
+      "source": "/meet-the-brand-proving-anyone-can-succeed-with-influencer-video-production",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/meet-the-brand-proving-anyone-can-succeed-with-influencer-video-production",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/need-more-b-roll",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/need-more-b-roll",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/remote-interview-lighting",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/remote-interview-lighting",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/smartphone-accessories-you-should-be-using-in-2022",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/smartphone-accessories-you-should-be-using-in-2022",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/software-pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/student-recruitment-videos",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/student-recruitment-videos",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/testimonial-advertising",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/testimonial-advertising",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/the-future-of-branding-is-user-generated-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/the-future-of-branding-is-user-generated-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/the-future-of-fan-engagement-and-how-to-tap-into-it",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/the-future-of-fan-engagement-and-how-to-tap-into-it",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/user-generated-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/user-generated-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/video-audio-enhancement",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/video-audio-enhancement",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/video-production-budgets",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/video-production-budgets",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/video-production-strategy-for-user-generated-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/video-production-strategy-for-user-generated-content",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/video-services",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/volunteers-of-america",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/volunteers-of-america",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/want-authentic-brand-engagement-ask-your-fans",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/want-authentic-brand-engagement-ask-your-fans",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/want-better-broll-from-event-attendees-follow-this-checklist",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/want-better-broll-from-event-attendees-follow-this-checklist",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/what-and-when-to-post-to-social",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/what-and-when-to-post-to-social",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/what-does-the-new-iphone-11-pro-mean-for-2020",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/what-does-the-new-iphone-11-pro-mean-for-2020",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/why-making-a-web-series-is-easier-than-you-think",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/why-making-a-web-series-is-easier-than-you-think",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
       "source": "/blog",
       "destination": "/cinebody-blog",
       "permanent": true

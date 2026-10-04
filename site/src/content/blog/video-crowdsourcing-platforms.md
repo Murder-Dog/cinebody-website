@@ -171,7 +171,7 @@ cardImage: "/blog/video-crowdsourcing-platforms/card.webp"
 
  
  <h3><strong>3. Cinebody</strong></h3>
-<p>Whether you need one video or one hundred, <a href="https://www.cinebody.com/">Cinebody</a> helps you turn your customers, employees, or fans into a content team. No shoots, no stress, just real footage that performs. Cinebody allows your brand to prompt creators to capture real footage from around the world via anyone with a smartphone. </p>
+<p>Whether you need one video or one hundred, <a href="/">Cinebody</a> helps you turn your customers, employees, or fans into a content team. No shoots, no stress, just real footage that performs. Cinebody allows your brand to prompt creators to capture real footage from around the world via anyone with a smartphone. </p>
 
 
  
@@ -445,6 +445,6 @@ cardImage: "/blog/video-crowdsourcing-platforms/card.webp"
  
 
  
- <p>While primarily known as an online video editing tool, <a href="https://www.veed.io/">Veed.io</a> allows users to collaborate on video projects. Its simplicity and collaboration features make it a great platform for crowdsourced video content, especially for brands and <a href="https://www.cinebody.com/cinebody-blog/testimonial-advertising">influencers</a> looking to co-create with their communities.</p>
+ <p>While primarily known as an online video editing tool, <a href="https://www.veed.io/">Veed.io</a> allows users to collaborate on video projects. Its simplicity and collaboration features make it a great platform for crowdsourced video content, especially for brands and <a href="/cinebody-blog/influencer-marketing-in-your-content-strategy">influencers</a> looking to co-create with their communities.</p>
 <p><br><br><br></p>
 <p>In a rapidly evolving digital landscape, video crowdsourcing platforms have come a long way in revolutionizing the production process. No longer confined to big production houses, today's video content thrives on collaboration, innovation, and a touch of the crowd's magic. As brands continually seek authentic narratives for their marketing initiatives, these platforms become indispensable in the world of digital video storytelling.</p>

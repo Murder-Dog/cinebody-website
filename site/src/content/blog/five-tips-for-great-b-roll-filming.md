@@ -8,7 +8,7 @@ cardImage: "/blog/five-tips-for-great-b-roll-filming/card.webp"
 ---
 <p>You know how to set up your camera. You’ve got the microphone figured out. And you know where to send your footage when you’ve finished recording. So you’re all pumped and ready to help with this remote video production…until you see the shotlist and an abstract, mystical term called ‘b<a href="https://docs.google.com/document/d/1B8YyHvSA0zNsnbJ5O5nMAtmgCiPDlXEP_aVfPnduMgA/edit">-roll</a>’.</p>
 <p><br>First things first: don’t panic. B-roll is simply the collection of shots that support your main scenes: think wide landscapes to establish where the action takes place, close-ups of inanimate objects, or any of the other types of shots you’ll see on any TV show or movie. Just pay attention next time you settle down on the couch.</p>
-<p><br>Next, here’s the good news: <a href="https://www.cinebody.com/cinebody-blog/need-more-b-roll">filming b-roll</a> isn’t remotely difficult once you understand what it is. Just spending a few moments reading these five tips will help you learn how to film b-roll that elevates the final package into something truly memorable.</p>
+<p><br>Next, here’s the good news: <a href="/cinebody-blog/the-ultimate-guide-to-capturing-b-roll">filming b-roll</a> isn’t remotely difficult once you understand what it is. Just spending a few moments reading these five tips will help you learn how to film b-roll that elevates the final package into something truly memorable.</p>
 
 
  
@@ -118,4 +118,4 @@ cardImage: "/blog/five-tips-for-great-b-roll-filming/card.webp"
  
  <h3><strong>5. Embrace angles</strong></h3>
 <p>Want to really show off? Get dramatically high or low with the angles of your shots. You’ll instantly add drama and, if done well, it can build an extra layer into your storytelling.</p>
-<p><a href="https://www.cinebody.com/cinebody-blog/broll-remote-video-production-strategy">B-roll is an essential part of any remote video production</a>. With a bit of effort, it’s easy to understand and straightforward to shoot. Use these tips to take your footage to the next level!</p>
+<p><a href="/cinebody-blog/the-ultimate-guide-to-capturing-b-roll">B-roll is an essential part of any remote video production</a>. With a bit of effort, it’s easy to understand and straightforward to shoot. Use these tips to take your footage to the next level!</p>
