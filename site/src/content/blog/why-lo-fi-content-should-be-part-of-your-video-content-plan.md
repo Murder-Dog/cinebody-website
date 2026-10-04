@@ -94,15 +94,15 @@ cardImage: "/blog/why-lo-fi-content-should-be-part-of-your-video-content-plan/ca
 <p>UGC isn’t just a fantastic way to produce this kind of lo-fi video content, it’s also dominating in the social space because it’s just what consumers are looking for. It’s the answer to the “perfection fatigue” that the vast majority of people (including yourself) are drawn to.&nbsp;</p>
 <p>A recent example of perfection backfiring and being <a href="https://jalopnik.com/what-the-hell-is-this-lamborghini-huracan-sterrato-comm-1849840928">widely ridiculed </a>&nbsp;is the<a href="https://www.youtube.com/watch?v=MLcf6BfG9eU"> bizarre piece of advertising for Lamborghini</a>.. Despite being a high-end brand, the high production values in the ad only resulted in it being seen as insane, unhinged, and hilarious. This multi-million dollar ad features a 610-hp sports car driven by a supermodel, accompanied by a rap voiceover on a slick music track. The result is simply <a href="https://www.creativebloq.com/news/lamborghini-ad">laughable</a>. Just imagine what they could have achieved with some mobile-shot, self-recorded video featuring a rally driver or an influencer pushing that car to its limits.<br>Industry experts at <a href="https://adage.com/article/facebook/how-lo-fi-video-ads-can-produce-impressive-results/2343566">AdAge</a> also agree that lo-fi is producing some impressive results, admitting that while the authentic approach isn’t exactly new, it’s very much NOW. And it’s leveraging community connection, real people, and “simple messages, simply executed.” That’s the very essence of UGC. It’s not about the wow factor. It’s about connection.&nbsp;</p>
 <h3><strong><br>The Outcome is Clear - Lo-Fi Takes on the Giants</strong></h3>
-<p>With everyone and their gran having a smartphone at hand, and the technology making it easy for beginners to capture great content, <a href="https://www.cinebody.com/cinebody-blog/video-production-strategy-for-user-generated-content">UGC</a> is the clear choice for all kinds of authentic video content. And you can utilize it today to create:</p>
-<ul><li><p><a href="https://www.cinebody.com/branded-video-content">Branded video content</a> captured by an army of your influencers.</p>
+<p>With everyone and their gran having a smartphone at hand, and the technology making it easy for beginners to capture great content, <a href="/cinebody-blog/creating-video-content-without-a-production-crew">UGC</a> is the clear choice for all kinds of authentic video content. And you can utilize it today to create:</p>
+<ul><li><p><a href="/work">Branded video content</a> captured by an army of your influencers.</p>
 </li>
 </ul>
-<ul><li><p><a href="https://www.cinebody.com/volunteers-of-america">Moving stories</a> for nonprofits and other charities.</p>
+<ul><li><p><a href="/work">Moving stories</a> for nonprofits and other charities.</p>
 </li>
-<li><p>Genuine <a href="https://www.cinebody.com/student-recruitment-videos">recruitment videos</a> that connect with students.&nbsp;</p>
+<li><p>Genuine <a href="/work">recruitment videos</a> that connect with students.&nbsp;</p>
 </li>
-<li><p><a href="https://www.cinebody.com/cinebody-blog/kellymoore-paints-used-video-to-celebrate-company-culture">Company culture videos </a>that go all-in on authenticity.</p>
+<li><p><a href="/work">Company culture videos </a>that go all-in on authenticity.</p>
 </li>
 </ul>
 <p>The key takeaway here for any brand, corporation, or ad agency is that it’s time to shift the paradigm and move away from “the norm,” which is increasingly becoming a thorn in the side of consumers around the globe. UGC and lo-fi content is in demand, and by making it a key part of your media mix you’re going to drive engagement and lower funnel conversions. And that is a game changer with no downsides.&nbsp;</p>
