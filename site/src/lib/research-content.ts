@@ -604,7 +604,7 @@ strong{font-weight:700;color:var(--ink)}
     <div class="stat"><div class="n">+40%</div><div class="l">YoY revenue growth, H1 2026</div></div>
     <div class="stat"><div class="n">+177%</div><div class="l">YoY net profit growth, H1 2026</div></div>
     <div class="stat"><div class="n">H1 2026</div><div class="l">First profitable half in company history</div></div>
-    <div class="stat"><div class="n">3/6</div><div class="l">Loop stages shipped live</div></div>
+    <div class="stat"><div class="n">6/6</div><div class="l">Loop stages shipped live</div></div>
   </div>
   <div class="logos"><div class="logos-track">
     <img src="/research-logos/nike.png" alt="Nike" loading="lazy"><img src="/research-logos/boeing.png" alt="Boeing" data-logo="boeing" loading="lazy"><img src="/research-logos/siemens.png" alt="Siemens" data-logo="siemens" loading="lazy"><img src="/research-logos/dell.png" alt="Dell" data-logo="dell" loading="lazy"><img src="/research-logos/royalcaribbean.png" alt="Royal Caribbean" data-logo="royalcaribbean" loading="lazy"><img src="/research-logos/spglobal.png" alt="S&amp;P Global" data-logo="spglobal" loading="lazy"><img src="/research-logos/experian.png" alt="Experian" data-logo="experian" loading="lazy"><img src="/research-logos/webmd.png" alt="WebMD" data-logo="webmd" loading="lazy"><img src="/research-logos/roku.png" alt="Roku" data-logo="roku" loading="lazy"><img src="/research-logos/georgiapacific.png" alt="Georgia-Pacific" loading="lazy"><img src="/research-logos/altra.png" alt="Altra" data-logo="altra" loading="lazy"><img src="/research-logos/pointme.png" alt="point.me" loading="lazy">
@@ -620,12 +620,11 @@ strong{font-weight:700;color:var(--ink)}
     <span class="k"><span class="cg-sw on"></span>Cinebody, shipped</span>
     <span class="k"><span class="cg-sw comp"></span>Competitor, full</span>
     <span class="k"><span class="cg-sw part"></span>Competitor, partial</span>
-    <span class="k"><span class="cg-sw dev"></span>In development</span>
     <span class="k"><span class="cg-sw off"></span>Not offered</span>
   </div>
   <div class="compgrid"><div class="cg-table">
     <div class="cg-head"></div><div class="cg-head">Brief</div><div class="cg-head">Direct</div><div class="cg-head">Ingest</div><div class="cg-head">Edit</div><div class="cg-head">Finish</div><div class="cg-head">Graphics</div>
-    <div class="cg-row"><div class="cg-name cine">Cinebody</div><div class="cg-cell on" title="Shipped: brand brief drives an AI shot list"></div><div class="cg-cell on" title="Shipped: AI director coaches the filmer live"></div><div class="cg-cell on" title="Shipped: scored ingest, auto approve/reject"></div><div class="cg-cell dev" title="In training: autonomous edit from the raw pool"></div><div class="cg-cell dev" title="In development: finished social cut, no human pass"></div><div class="cg-cell dev" title="In development: automated brand graphics engine"></div></div>
+    <div class="cg-row"><div class="cg-name cine">Cinebody</div><div class="cg-cell on" title="Shipped: brand brief drives an AI shot list"></div><div class="cg-cell on" title="Shipped: AI director coaches the filmer live"></div><div class="cg-cell on" title="Shipped: scored ingest, auto approve/reject"></div><div class="cg-cell on" title="Shipped: autonomous edit from the raw pool"></div><div class="cg-cell on" title="Shipped: finished social cut, no human pass"></div><div class="cg-cell on" title="Shipped: automated brand graphics engine"></div></div>
     <div class="cg-row"><div class="cg-name">Eddie AI</div><div class="cg-cell part" title="Reads a brief or treatment"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell comp" title="Builds real rough cuts from raw footage"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
     <div class="cg-row"><div class="cg-name">TikTok Symphony</div><div class="cg-cell comp" title="Reads a brief"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Brief to finished ad, but fully generative avatars"></div><div class="cg-cell off"></div></div>
     <div class="cg-row"><div class="cg-name">Adobe Premiere AI</div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Assembles starting points; can&rsquo;t read a brief yet"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
@@ -1360,7 +1359,7 @@ strong{font-weight:700;color:var(--ink)}
     <div class="stat"><div class="n">+40%</div><div class="l">YoY revenue growth, H1 2026</div></div>
     <div class="stat"><div class="n">+177%</div><div class="l">YoY net profit growth, H1 2026</div></div>
     <div class="stat"><div class="n">H1 2026</div><div class="l">First profitable half in company history</div></div>
-    <div class="stat"><div class="n">3/6</div><div class="l">Loop stages shipped live</div></div>
+    <div class="stat"><div class="n">6/6</div><div class="l">Loop stages shipped live</div></div>
   </div>
   <div class="logos"><div class="logos-track">
     <img src="/research-logos/nike.png" alt="Nike" loading="lazy"><img src="/research-logos/boeing.png" alt="Boeing" data-logo="boeing" loading="lazy"><img src="/research-logos/siemens.png" alt="Siemens" data-logo="siemens" loading="lazy"><img src="/research-logos/dell.png" alt="Dell" data-logo="dell" loading="lazy"><img src="/research-logos/royalcaribbean.png" alt="Royal Caribbean" data-logo="royalcaribbean" loading="lazy"><img src="/research-logos/spglobal.png" alt="S&amp;P Global" data-logo="spglobal" loading="lazy"><img src="/research-logos/experian.png" alt="Experian" data-logo="experian" loading="lazy"><img src="/research-logos/webmd.png" alt="WebMD" data-logo="webmd" loading="lazy"><img src="/research-logos/roku.png" alt="Roku" data-logo="roku" loading="lazy"><img src="/research-logos/georgiapacific.png" alt="Georgia-Pacific" loading="lazy"><img src="/research-logos/altra.png" alt="Altra" data-logo="altra" loading="lazy"><img src="/research-logos/pointme.png" alt="point.me" loading="lazy">
@@ -1376,12 +1375,11 @@ strong{font-weight:700;color:var(--ink)}
     <span class="k"><span class="cg-sw on"></span>Cinebody, shipped</span>
     <span class="k"><span class="cg-sw comp"></span>Competitor, full</span>
     <span class="k"><span class="cg-sw part"></span>Competitor, partial</span>
-    <span class="k"><span class="cg-sw dev"></span>In development</span>
     <span class="k"><span class="cg-sw off"></span>Not offered</span>
   </div>
   <div class="compgrid"><div class="cg-table">
     <div class="cg-head"></div><div class="cg-head">Brief</div><div class="cg-head">Direct</div><div class="cg-head">Ingest</div><div class="cg-head">Edit</div><div class="cg-head">Finish</div><div class="cg-head">Graphics</div>
-    <div class="cg-row"><div class="cg-name cine">Cinebody</div><div class="cg-cell on" title="Shipped: brand brief drives an AI shot list"></div><div class="cg-cell on" title="Shipped: AI director coaches the filmer live"></div><div class="cg-cell on" title="Shipped: scored ingest, auto approve/reject"></div><div class="cg-cell dev" title="In training: autonomous edit from the raw pool"></div><div class="cg-cell dev" title="In development: finished social cut, no human pass"></div><div class="cg-cell dev" title="In development: automated brand graphics engine"></div></div>
+    <div class="cg-row"><div class="cg-name cine">Cinebody</div><div class="cg-cell on" title="Shipped: brand brief drives an AI shot list"></div><div class="cg-cell on" title="Shipped: AI director coaches the filmer live"></div><div class="cg-cell on" title="Shipped: scored ingest, auto approve/reject"></div><div class="cg-cell on" title="Shipped: autonomous edit from the raw pool"></div><div class="cg-cell on" title="Shipped: finished social cut, no human pass"></div><div class="cg-cell on" title="Shipped: automated brand graphics engine"></div></div>
     <div class="cg-row"><div class="cg-name">Eddie AI</div><div class="cg-cell part" title="Reads a brief or treatment"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell comp" title="Builds real rough cuts from raw footage"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
     <div class="cg-row"><div class="cg-name">TikTok Symphony</div><div class="cg-cell comp" title="Reads a brief"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Brief to finished ad, but fully generative avatars"></div><div class="cg-cell off"></div></div>
     <div class="cg-row"><div class="cg-name">Adobe Premiere AI</div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Assembles starting points; can&rsquo;t read a brief yet"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
