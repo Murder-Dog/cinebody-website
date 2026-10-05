@@ -1,8 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
 import CookieConsent from '../components/CookieConsent.astro';
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
 import footerHtml from '../fragments/_footer.html?raw';
 import { hasOG, ogFileSlug } from '../og/entries';
 import '../styles/global.css';
@@ -506,10 +504,7 @@ if (!pageSchema && caseStudies[slug]) {
       })();
     </script>
 
-    <!-- Vercel Web Analytics + Speed Insights -->
-    <Analytics />
-    <SpeedInsights />
-
+    <!-- Vercel Web Analytics + Speed Insights load from CookieConsent, only after Accept -->
     <CookieConsent />
   <script is:inline>
 // App AI ring on CTAs sitewide (exact port from the web app's AiPillRing)

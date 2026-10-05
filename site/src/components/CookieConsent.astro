@@ -5,6 +5,8 @@ import '../styles/cookie-consent.css';
 <script>
   import 'vanilla-cookieconsent/dist/cookieconsent.css';
   import * as CookieConsent from 'vanilla-cookieconsent';
+  import { inject as injectAnalytics } from '@vercel/analytics';
+  import { injectSpeedInsights } from '@vercel/speed-insights';
 
   declare global {
     interface Window {
@@ -22,6 +24,26 @@ import '../styles/cookie-consent.css';
       ad_user_data: granted ? 'granted' : 'denied',
       ad_personalization: granted ? 'granted' : 'denied',
     });
+  }
+
+  // Vercel Web Analytics and Speed Insights follow the same Analytics choice
+  // as GA4: they load only after Accept. Neither can be unloaded once running,
+  // so switching Accept to Decline reloads the page without them.
+  let vercelLoaded = false;
+  function updateVercelConsent() {
+    const granted = CookieConsent.acceptedCategory('analytics');
+    if (granted && !vercelLoaded) {
+      vercelLoaded = true;
+      injectAnalytics({ framework: 'astro' });
+      injectSpeedInsights({ framework: 'astro', route: location.pathname });
+    } else if (!granted && vercelLoaded) {
+      location.reload();
+    }
+  }
+
+  function updateConsent() {
+    updateGtagConsent();
+    updateVercelConsent();
   }
 
   CookieConsent.run({
@@ -70,8 +92,8 @@ import '../styles/cookie-consent.css';
         },
       },
     },
-    onFirstConsent: updateGtagConsent,
-    onConsent: updateGtagConsent,
-    onChange: updateGtagConsent,
+    onFirstConsent: updateConsent,
+    onConsent: updateConsent,
+    onChange: updateConsent,
   });
 </script>
