@@ -9,6 +9,7 @@ Disallow: /sashco-year2
 Disallow: /royal-caribbean-renewal
 Disallow: /kong
 Disallow: /beta-testing
+Disallow: /research
 
 # AI search and assistant crawlers (explicitly allowed; same private pitch pages excluded)
 User-agent: GPTBot
@@ -37,5 +38,6 @@ Disallow: /sashco-year2
 Disallow: /royal-caribbean-renewal
 Disallow: /kong
 Disallow: /beta-testing
+Disallow: /research
 
 Sitemap: https://www.cinebody.com/sitemap-index.xml
