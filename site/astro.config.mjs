@@ -1,10 +1,16 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.cinebody.com',
   output: 'static',
+  // Adapter is only here to let src/middleware.ts run on Vercel's edge, gating
+  // the /research/* investor pages. Every other page keeps rendering fully
+  // static at build time, exactly as before - adding the adapter under
+  // output: 'static' does not change that (see middleware.ts for the scope).
+  adapter: vercel({ edgeMiddleware: true }),
   trailingSlash: 'never',
   redirects: {
     '/software': '/platform',
