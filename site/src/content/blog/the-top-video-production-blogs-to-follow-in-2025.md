@@ -29,6 +29,6 @@ cardImage: "/blog/the-top-video-production-blogs-to-follow-in-2025/card.webp"
 <p>ProVideo Coalition brings together the industry's best writers, bloggers, and video gurus to one platform. It offers a wide range of content, including news, reviews, tutorials, and thought leadership articles.</p>
 <h3><a href="https://www.cinema5d.com/"><strong>Cinema5D</strong></a></h3>
 <p>Cinema5D is a leading blog for digital filmmaking news, reviews, and tutorials. It's a great resource for staying updated with the latest camera gear and filmmaking techniques.</p>
-<h3><a href="https://www.cinebody.com/blog"><strong>Cinebody</strong></a></h3>
+<h3><a href="/cinebody-blog"><strong>Cinebody</strong></a></h3>
 <p>Of course, we had to include our blog in the list. With remote video production becoming more and more of a go-to in the world of video content creation, the Cinebody blog provides a wealth of industry trends, tips and tricks, and other insights into producing video content with normal, everyday people vs professionals.</p>
 <p>Whether you're a seasoned professional or just starting out in video production, these blogs offer a wealth of knowledge and inspiration. By following these top video production blogs, you'll stay updated with the latest trends and techniques in the industry.</p>

@@ -1,0 +1,79 @@
+/* Cookie consent banner (vanilla-cookieconsent), restyled to match the Cinebody brand:
+   a slim, single-line bar flush with the bottom edge — reads as site chrome,
+   not a blocking card, and never overlaps the hero's own bottom-left content. */
+
+#cc-main {
+  --cc-font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cc-bg: #0a0a0a;
+  --cc-primary-color: #e8e8e8;
+  --cc-secondary-color: rgba(255, 255, 255, 0.55);
+  --cc-btn-primary-bg: #00bcf1;
+  --cc-btn-primary-color: #fff;
+  --cc-btn-primary-border-color: #00bcf1;
+  --cc-btn-primary-hover-bg: #0099c8;
+  --cc-btn-primary-hover-color: #fff;
+  --cc-btn-primary-hover-border-color: #0099c8;
+  --cc-btn-secondary-bg: transparent;
+  --cc-btn-secondary-color: rgba(255, 255, 255, 0.75);
+  --cc-btn-secondary-border-color: rgba(255, 255, 255, 0.18);
+  --cc-btn-secondary-hover-bg: rgba(255, 255, 255, 0.06);
+  --cc-btn-secondary-hover-color: #fff;
+  --cc-btn-secondary-hover-border-color: rgba(255, 255, 255, 0.28);
+  --cc-separator-border-color: rgba(255, 255, 255, 0.1);
+  --cc-link-color: #00bcf1;
+  --cc-btn-border-radius: 6px;
+  --cc-modal-margin: 0;
+}
+
+#cc-main .cm--bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.35);
+}
+
+#cc-main .cm__body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px clamp(1.25rem, 4vw, 3rem) !important;
+  align-items: center;
+  gap: 20px;
+}
+
+#cc-main .cm__title {
+  display: none;
+}
+
+#cc-main .cm__texts {
+  display: block !important;
+  padding: 0 !important;
+}
+
+#cc-main .cm__desc {
+  display: inline;
+  font-size: 12.5px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+#cc-main .cm__btns {
+  border-top: none !important;
+  padding: 0 !important;
+  flex: 0 0 auto;
+}
+
+#cc-main .cm__btn-group {
+  gap: 8px;
+}
+
+#cc-main button.cm__btn {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 16px;
+  min-width: 0 !important;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  #cc-main .cm__body {
+    padding: 14px clamp(1.25rem, 4vw, 3rem) !important;
+  }
+}

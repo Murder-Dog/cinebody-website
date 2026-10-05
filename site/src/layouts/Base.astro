@@ -1,5 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import footerHtml from '../fragments/_footer.html?raw';
@@ -126,6 +127,30 @@ if (!pageSchema && caseStudies[slug]) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Consent Mode default: deny analytics/ad storage until the cookie banner records a choice -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KLMTJF6S');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -184,6 +209,13 @@ if (!pageSchema && caseStudies[slug]) {
     {schema && [].concat(schema).map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLMTJF6S"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <a href="#content" class="skip-link">Skip to content</a>
 
     <Nav active={active} />
@@ -477,6 +509,8 @@ if (!pageSchema && caseStudies[slug]) {
     <!-- Vercel Web Analytics + Speed Insights -->
     <Analytics />
     <SpeedInsights />
+
+    <CookieConsent />
   <script is:inline>
 // App AI ring on CTAs sitewide (exact port from the web app's AiPillRing)
 (function(){
