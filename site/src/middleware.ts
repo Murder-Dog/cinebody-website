@@ -1,13 +1,23 @@
 import { defineMiddleware } from 'astro:middleware';
 import { INTRO_HTML, UPDATE_HTML } from './lib/research-content';
 
-// Password gate for the two investor microsites, and ONLY those two exact
-// paths. Everything else on www.cinebody.com is still a fully static build -
-// this middleware returns immediately (next()) for any other request, so it
-// cannot affect them. The POST /api/research/unlock-* endpoints that check
-// the password and set the cookie live as their own Astro API routes (see
-// src/pages/api/research/), not here - this file only ever decides what a
-// GET to one of the two page paths below gets back.
+// Password gate for the two investor microsites, and ONLY those four exact
+// paths (two pages, two unlock endpoints). Everything else on
+// www.cinebody.com is still a fully static build - this middleware returns
+// immediately (next()) for any other request, so it cannot affect them.
+//
+// Both the gate check AND the unlock POST are handled right here, entirely
+// on the edge - deliberately not split into separate Astro API routes under
+// src/pages/api/. An edge-middleware request that calls next() for a path
+// Astro treats as dynamic has to hop to the separate Node serverless
+// function (_render.func) to be served; that hop 500'd in practice
+// (FUNCTION_INVOCATION_FAILED) on the deployed preview even though the
+// identical bundle ran fine invoked directly. Handling everything in one
+// edge function avoids that hop. src/pages/research/cinebody-investor-*.ts
+// still exist as unreachable prerender:false stubs purely so Astro
+// registers those two routes as dynamic - with zero dynamic routes the
+// Vercel adapter forces buildOutput to "static" and silently drops
+// edgeMiddleware regardless of the edgeMiddleware:true option.
 //
 // Mirrors the gate already live on app.cinebody.com/research/* (same
 // defaults, same page content - ported from cinebody-platform's
@@ -18,6 +28,7 @@ type GateConfig = {
   unlockPath: string;
   cookie: string;
   token: string;
+  password: string;
   title: string;
   kicker: string;
   heading: string;
@@ -31,6 +42,7 @@ const GATES: GateConfig[] = [
     unlockPath: '/api/research/unlock-intro',
     cookie: 'cb_research_intro',
     token: 'cb-research-intro-unlocked-v1',
+    password: import.meta.env.RESEARCH_PASSWORD_INTRO || 'Cinebody2026Intro',
     title: 'Cinebody: investor intro',
     kicker: 'Investor Intro &middot; Private',
     heading: 'A quick look at Cinebody.',
@@ -42,6 +54,7 @@ const GATES: GateConfig[] = [
     unlockPath: '/api/research/unlock-update',
     cookie: 'cb_research_update',
     token: 'cb-research-update-unlocked-v1',
+    password: import.meta.env.RESEARCH_PASSWORD_UPDATE || 'Cinebody2026Update',
     title: 'Cinebody: investor update',
     kicker: 'Investor Update &middot; Private',
     heading: 'An update for our investors.',
@@ -132,17 +145,47 @@ function gateHtml(g: GateConfig): string {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  const pageGate = GATES.find((g) => g.page === context.url.pathname);
-  if (!pageGate) {
-    // Not one of the two gated pages - the entire rest of www.cinebody.com,
-    // including the two unlock API routes themselves. Pass straight through.
-    return next();
+  const { pathname } = context.url;
+
+  const pageGate = GATES.find((g) => g.page === pathname);
+  if (pageGate) {
+    const token = context.cookies.get(pageGate.cookie)?.value;
+    const body = token === pageGate.token ? pageGate.html : gateHtml(pageGate);
+    return new Response(body, {
+      status: 200,
+      headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'private, no-store' },
+    });
   }
 
-  const token = context.cookies.get(pageGate.cookie)?.value;
-  const body = token === pageGate.token ? pageGate.html : gateHtml(pageGate);
-  return new Response(body, {
-    status: 200,
-    headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'private, no-store' },
-  });
+  const unlockGate = GATES.find((g) => g.unlockPath === pathname);
+  if (unlockGate && context.request.method === 'POST') {
+    let password = '';
+    try {
+      const body = (await context.request.json()) as { password?: unknown };
+      if (typeof body?.password === 'string') password = body.password;
+    } catch {
+      // malformed body -> treated as wrong password below
+    }
+    if (password !== unlockGate.password) {
+      return new Response(JSON.stringify({ ok: false }), {
+        status: 401,
+        headers: { 'content-type': 'application/json' },
+      });
+    }
+    context.cookies.set(unlockGate.cookie, unlockGate.token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 60 * 60 * 24 * 30,
+    });
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'content-type': 'application/json' },
+    });
+  }
+
+  // Not one of the four gated paths - the entire rest of www.cinebody.com.
+  // Pass straight through.
+  return next();
 });
