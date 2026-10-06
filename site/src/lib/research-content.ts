@@ -366,6 +366,7 @@ strong{font-weight:700;color:var(--ink)}
 .advcard b{display:block;font-size:.86rem;color:var(--ink)}
 .advcard span{font-size:.76rem;color:var(--ink-3);line-height:1.4}
 .photo-note{margin-top:1rem;font-size:.72rem;color:var(--ink-3);font-style:italic}
+.roadmap-h{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-top:2.6rem}
 
 .raisebox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.7rem 1.7rem;margin-top:1.4rem}
 .raisebox .lead{color:var(--ink-2);max-width:none;margin-bottom:1.2rem}
@@ -377,16 +378,6 @@ strong{font-weight:700;color:var(--ink)}
 .returns{margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .returns h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:.35rem}
 .returns .sub{font-size:.88rem;color:var(--ink-2);margin-bottom:1.1rem}
-.unlocks{list-style:none;counter-reset:u;display:grid;gap:.55rem;margin:0 0 1.3rem}
-.unlocks li{counter-increment:u;position:relative;padding-left:1.9rem;font-size:.88rem;color:var(--ink-2);line-height:1.5}
-.unlocks li::before{content:counter(u);position:absolute;left:0;top:.05rem;width:1.3rem;height:1.3rem;border-radius:50%;background:rgba(0,188,241,.14);color:var(--cyan);font-family:var(--mono);font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center}
-.unlocks li b{color:var(--ink)}
-.arrbar{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin-bottom:1.3rem}
-.arrbar .from,.arrbar .to{font-family:var(--mono);font-weight:600;font-size:1.35rem;font-variant-numeric:tabular-nums;line-height:1}
-.arrbar .from{color:var(--ink-3)}
-.arrbar .to{color:var(--cyan)}
-.arrbar .arw{color:var(--ink-3)}
-.arrbar .cap{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);flex:1 1 12rem}
 .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
 .case{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1rem;position:relative;overflow:hidden}
 .case::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
@@ -423,7 +414,7 @@ strong{font-weight:700;color:var(--ink)}
       <a class="brandbar" href="/" aria-label="Cinebody"><img src="/cinebody-wordmark.svg" alt="Cinebody" width="130" height="25"></a>
       <p class="ppill">Investor Intro &middot; Private</p>
       <h1>Brief in. Video out. Smarter every time.</h1>
-      <p class="dek">Real people film. AI learns what worked, for which brand, which market, which channel. One shoot becomes every format. Every result makes the next brief smarter. Nobody else has the loop &mdash; or the decade of human decisions training it.</p>
+      <p class="dek">Real people film. AI learns what worked, for which brand, which market, which channel. One shoot becomes every format. Every result makes the next brief smarter. Nobody else has the loop, or the decade of human decisions training it.</p>
       <span class="conf">Confidential &middot; Not For Distribution</span>
     </div>
     <div class="hero-scroller" aria-hidden="true">
@@ -474,7 +465,7 @@ strong{font-weight:700;color:var(--ink)}
   <div class="numlist">
     <div class="numitem"><span class="no">01</span><h3>AI tools process the brief. But they do not understand it.</h3><p>Today&rsquo;s tools ingest a brief but have no grasp of brand voice, market nuance, or audience context. Clips come back with a clear gap between intent and output.</p></div>
     <div class="numitem"><span class="no">02</span><h3>&ldquo;Fix it in post&rdquo; is not a viable option.</h3><p>Every existing AI edit tool receives a dump of unscored, unguided footage. The problem was upstream. The edit cannot fix what the shoot never had.</p></div>
-    <div class="numitem"><span class="no">03</span><h3>Nothing learned for the next brief.</h3><p>Which shots converted, which creators delivered, which channel performed &mdash; none of it feeds back. Every brief is written blind.</p></div>
+    <div class="numitem"><span class="no">03</span><h3>Nothing learned for the next brief.</h3><p>Which shots converted, which creators delivered, which channel performed: none of it feeds back. Every brief is written blind.</p></div>
   </div>
 </div></div>
 
@@ -486,9 +477,9 @@ strong{font-weight:700;color:var(--ink)}
     <div class="pipe-sticky"><div class="ps-grid">
       <div class="ps-copies" id="psCopies">
         <div class="ps-copy on" data-stage="0"><div class="pipe-ghost" aria-hidden="true">01</div><p class="eyebrow">Stage 01 &middot; Brief to shot list</p><h2>It turns a brand brief into a real shot list</h2><p class="lead">Drop in the brand&rsquo;s brief and Cinebody writes the shoot: every shot with its framing, length, seconds, frame-rate and the exact prompt the filmer follows. This is a real shot list generated inside the product.</p></div>
-        <div class="ps-copy c1" data-stage="1"><div class="pipe-ghost" aria-hidden="true">02</div><p class="eyebrow">Stage 02 &middot; The AI Director</p><h2>A director in the viewfinder, not a filter over it</h2><p class="lead">The Director rides in the camera while the filmer shoots &mdash; metering light, focus, steadiness and audio live, and speaking up one note at a time. For testimonials, the same AI runs the interview: it asks the brief&rsquo;s questions out loud and adapts each follow-up to what the person says.</p></div>
+        <div class="ps-copy c1" data-stage="1"><div class="pipe-ghost" aria-hidden="true">02</div><p class="eyebrow">Stage 02 &middot; The AI Director</p><h2>A director in the viewfinder, not a filter over it</h2><p class="lead">The Director rides in the camera while the filmer shoots, metering light, focus, steadiness and audio live, and speaking up one note at a time. For testimonials, the same AI runs the interview: it asks the brief&rsquo;s questions out loud and adapts each follow-up to what the person says.</p></div>
         <div class="ps-copy c2" data-stage="2"><div class="pipe-ghost" aria-hidden="true">03</div><p class="eyebrow">Stage 03 &middot; Scored ingestion</p><h2>Every clip is graded the moment it lands</h2><p class="lead">Uploads hit a zero-click pipeline: a review score against the brief across audio, focus, framing, exposure and stability, with written tips back to the filmer. Strong clips auto-approve into the edit pool.</p></div>
-        <div class="ps-copy" data-stage="3"><div class="pipe-ghost" aria-hidden="true">04</div><p class="eyebrow">Stage 04 &middot; The auto edit</p><h2>An AI edit you can actually edit</h2><p class="lead">Cinebody assembles the cut itself: the best take of each shot in story order, b-roll placed, captions burned, music mixed &mdash; a real, editable timeline out, not a locked render.</p></div>
+        <div class="ps-copy" data-stage="3"><div class="pipe-ghost" aria-hidden="true">04</div><p class="eyebrow">Stage 04 &middot; The auto edit</p><h2>An AI edit you can actually edit</h2><p class="lead">Cinebody assembles the cut itself: the best take of each shot in story order, b-roll placed, captions burned, music mixed. A real, editable timeline out, not a locked render.</p></div>
       </div>
       <div class="ps-rail" id="psRail">
         <div class="ps-rail-line"><div class="ps-rail-fill" id="psRailFill"></div></div>
@@ -563,7 +554,7 @@ strong{font-weight:700;color:var(--ink)}
               <div class="a-tips"><p class="a-tl">TIPS</p><div class="a-tip">Keep your face in frame when speaking, or frame fully out.</div></div>
             </div>
           </div>
-          <p class="d-cap">The clip on one side, its score against the brief on the other &mdash; the real review UI</p>
+          <p class="d-cap">The clip on one side, its score against the brief on the other: the real review UI</p>
         </div></div>
         <div class="ps-scene" data-stage="3"><div class="ps-scene-body">
           <div class="d-editorshot"><img src="/research-cuts/editor-real.png" alt="Cinebody editor, real product capture"></div>
@@ -590,9 +581,9 @@ strong{font-weight:700;color:var(--ink)}
   <h2>Ten years early. Right on time.</h2>
   <div class="tl-h" id="whyNowTl">
     <div class="tl-line"></div>
-    <div class="tlh-item"><span class="yr">2016 &ndash; 2022</span><p>Cinebody ships its first software and gains real traction &mdash; Nike, Gatorade, Diageo and others sign up. The AI needed to complete the full vision doesn&rsquo;t exist yet, and the market isn&rsquo;t ready. We were early.</p></div>
+    <div class="tlh-item"><span class="yr">2016 &ndash; 2022</span><p>Cinebody ships its first software and gains real traction: Nike, Gatorade, Diageo and others sign up. The AI needed to complete the full vision doesn&rsquo;t exist yet, and the market isn&rsquo;t ready. We were early.</p></div>
     <div class="tlh-item"><span class="yr">2022 &ndash; 2025</span><p>Growth plateaus. Brands shift budgets to creators and hit the problem of briefing and managing them at scale. Cinebody survives on services, rebuilds, sharpens the model.</p></div>
-    <div class="tlh-item"><span class="yr">2026</span><p>First profitable half. Three stages live. The AI capabilities Cinebody always needed finally exist. Repositioning to software-first. This is what we set out to build in 2016.</p></div>
+    <div class="tlh-item"><span class="yr">2026</span><p>First profitable half. All six stages live. The AI capabilities Cinebody always needed finally exist. Repositioning to software-first. This is what we set out to build in 2016.</p></div>
   </div>
 </div></div>
 
@@ -618,7 +609,7 @@ strong{font-weight:700;color:var(--ink)}
       <div class="ri"><span class="rdot" style="background:#ffec03"></span><span class="rt"><b>Training data</b><span>Real editor project files, ingested at scale.</span></span></div>
     </div>
   </div>
-  <p style="margin-top:1.4rem;font-size:.86rem">8 granted patents (7 US, 1 Canada), 2017&ndash;2025, protect the foundation of this loop &mdash; new filings extending to AI scoring and edit-assembly are already in process.</p>
+  <p style="margin-top:1.4rem;font-size:.86rem">8 granted patents (7 US, 1 Canada), 2017&ndash;2025, protect the foundation of this loop. New filings extending to AI scoring and edit-assembly are already in process.</p>
 </div></div>
 
 <div class="sec"><div class="wrap">
@@ -656,16 +647,16 @@ strong{font-weight:700;color:var(--ink)}
     <div class="cg-row"><div class="cg-name">Adobe Premiere AI</div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Assembles starting points; can&rsquo;t read a brief yet"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
     <div class="cg-row"><div class="cg-name">Descript Underlord</div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Prompt-directed edits inside its own editor"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
   </div></div>
-  <p class="note">TikTok Symphony is fully generative &mdash; licensed-actor avatars, not real footage. Adobe brief support is explicitly &ldquo;on the roadmap&rdquo; per its own FAQ. Descript takes prompts, not briefs, on single recordings inside its own editor.</p>
+  <p class="note">TikTok Symphony is fully generative: licensed-actor avatars, not real footage. Adobe brief support is explicitly &ldquo;on the roadmap&rdquo; per its own FAQ. Descript takes prompts, not briefs, on single recordings inside its own editor.</p>
 </div></div>
 
 <div class="act-light"><div class="curve-backdrop"></div><div class="wrap" style="padding:0 1.75rem">
   <p class="eyebrow">The Ugly</p>
   <h2>Every reason this could fail. And why it won&rsquo;t.</h2>
   <div class="risks">
-    <div class="riskcard"><div class="rk">Risk</div><div class="rq">A fast-follower builds the full loop.</div><div class="ra">They&rsquo;d need every stage &mdash; brief, shoot, score, adapt, distribute, measure, learn &mdash; run at scale, then start collecting labeled data. Years away. 8 patents protect the foundation; the data moat compounds with every campaign.</div></div>
-    <div class="riskcard"><div class="rk">Risk</div><div class="rq">Google or Adobe builds this themselves.</div><div class="ra">Each owns exactly one piece of the loop. Building the full assembly would take 3&ndash;5 years. They would buy Cinebody before they build it &mdash; and they know it.</div></div>
-    <div class="riskcard"><div class="rk">Risk</div><div class="rq">AI-generated video replaces the need for real footage.</div><div class="ra">Nobody wants synthetic ads. They want authentic content made faster &mdash; exactly what Cinebody delivers. The backlash against AI slop strengthens this position every month.</div></div>
+    <div class="riskcard"><div class="rk">Risk</div><div class="rq">A fast-follower builds the full loop.</div><div class="ra">They&rsquo;d need every stage (brief, shoot, score, adapt, distribute, measure, learn) run at scale, then start collecting labeled data. Years away. 8 patents protect the foundation; the data moat compounds with every campaign.</div></div>
+    <div class="riskcard"><div class="rk">Risk</div><div class="rq">Google or Adobe builds this themselves.</div><div class="ra">Each owns exactly one piece of the loop. Building the full assembly would take 3&ndash;5 years. They would buy Cinebody before they build it.</div></div>
+    <div class="riskcard"><div class="rk">Risk</div><div class="rq">AI-generated video replaces the need for real footage.</div><div class="ra">Nobody wants synthetic ads. They want authentic content made faster, exactly what Cinebody delivers. The backlash against AI slop strengthens this position every month.</div></div>
     <div class="riskcard"><div class="rk">Risk</div><div class="rq">Current revenue is too small for platform-scale returns.</div><div class="ra">$1.4&ndash;1.6M is a services-weighted baseline, not the software ceiling. This raise funds the return to software-first. At platform scale, the trajectory is a different order of magnitude.</div></div>
   </div>
 </div></div>
@@ -676,13 +667,12 @@ strong{font-weight:700;color:var(--ink)}
   <div class="team">
     <div class="tcard"><img class="pface lg" src="/research-headshots/scott-mcdonald.jpg" alt="Scott McDonald"><div class="tbody"><h3>Scott McDonald</h3><div class="role">CEO &amp; Co-Founder</div><p>Built Cinebody from zero to ten years of operating revenue before UGC was a category. Removed his own salary for multiple years to protect the company and the vision. Now leading the return to software-first at the moment the market finally caught up.</p></div></div>
     <div class="tcard"><img class="pface lg" src="/research-headshots/gavin-anstey.jpg" alt="Gavin Anstey"><div class="tbody"><h3>Gavin Anstey</h3><div class="role">President &amp; Co-Founder</div><p>Engineered the H1 2026 turnaround: +40% revenue YoY, first profitable half, full operational rebuild. Also removed his own salary. The financial architect behind the inflection point this raise is built on.</p></div></div>
-    <div class="tcard"><span class="mono lg c3">AS</span><div class="tbody"><h3>Adam Shaffner</h3><div class="role">COO</div><p>Rebuilt the services operation and sales process &mdash; SOPs, sharpened ICP, structured pipeline. Owns delivery quality and client retention. The commercial backbone behind the H1 2026 turnaround.</p></div></div>
+    <div class="tcard"><span class="mono lg c3">AS</span><div class="tbody"><h3>Adam Shaffner</h3><div class="role">COO</div><p>Rebuilt the services operation and sales process: SOPs, sharpened ICP, structured pipeline. Owns delivery quality and client retention. The commercial backbone behind the H1 2026 turnaround.</p></div></div>
   </div>
   <div class="advisors">
     <div class="advcard"><img class="pface" src="/research-headshots/alex-bogusky.jpg" alt="Alex Bogusky"><div><b>Alex Bogusky</b><span>Advisor, Investor &middot; Co-founder, CP+B &middot; Adweek&rsquo;s Creative Director of the Decade</span></div></div>
     <div class="advcard"><img class="pface" src="/research-headshots/olivier-rabenschlag.jpg" alt="Olivier Rabenschlag"><div><b>Olivier Rabenschlag</b><span>Advisor, Investor &middot; Former Google Director (11 yrs), built &amp; scaled Google&rsquo;s Enterprise AI Partnership Portfolio</span></div></div>
   </div>
-  <p class="photo-note">Adam&rsquo;s headshot still pending &mdash; placeholder initials shown until then.</p>
 </div></div>
 
 <div class="sec"><div class="wrap">
@@ -696,21 +686,14 @@ strong{font-weight:700;color:var(--ink)}
       <div class="stat"><div class="n">12mo</div><div class="l">Runway</div></div>
     </div>
     <div class="returns">
-      <h3>The returns case: SaaS math at scale.</h3>
-      <p class="sub">We&rsquo;re priced at $10.4M today. This raise moves Cinebody back to software-first: a $250&ndash;$500/mo platform, not project-based agency work.</p>
-      <ol class="unlocks">
-        <li><b>Growth Marketer + SDR</b> &mdash; 86 new clients in year one, $319K new ARR</li>
-        <li><b>Re-engagement campaign</b> &mdash; 38 reactivated clients, $157K ARR</li>
-        <li><b>Services converting to subscriptions</b> &mdash; $325K ARR</li>
-        <li><b>Debt removal</b> &mdash; frees $2,400/month in cash flow</li>
-      </ol>
-      <div class="arrbar"><span class="from">$320K</span><span class="arw">&rarr;</span><span class="to">$1.15M</span><span class="cap">ARR today &rarr; year one. Excludes any mid-market or enterprise wins, each adding $30K&ndash;$100K ACV.</span></div>
+      <h3>Valued at $10.4M today. Here is where it could go.</h3>
+      <p class="sub">Software companies are valued on recurring revenue. Our bottom-up SOM puts Cinebody at $7&ndash;10M ARR within three years, and that changes the math.</p>
       <div class="cases">
-        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>Priced at the valuation of our last round.</p></div>
-        <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>$7&ndash;10M year-three ARR at a standard SaaS multiple. $7M = 700 SMB, 60 mid-market, 8 enterprise, plus partner integrations.</p></div>
-        <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Cinebody becomes the OS for brand video: enterprise and partner integrations, a compounding data flywheel, and acquirers bidding against each other.</p><span class="ill">Illustrative</span></div>
+        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>The valuation from our last round, priced on a services-weighted business.</p></div>
+        <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>Our $7&ndash;10M ARR SOM at a standard multiple for defensible, patented SaaS.</p></div>
+        <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Strategic partner integrations embed Cinebody inside global brands and agencies, making it the operating system for brand video. Competing acquirers pay a control premium.</p><span class="ill">Illustrative</span></div>
       </div>
-      <p class="note">7&ndash;10x is standard for defensible SaaS with a patented moat (Bessemer Venture Partners, State of the Cloud 2025). Upside assumes platform scale, e.g. 1,500 brands at $20K blended ACV = $30M ARR; it is illustrative, not part of the plan.</p>
+      <p class="note">7&ndash;10x is standard for defensible SaaS with a patented moat (Bessemer Venture Partners, State of the Cloud 2025). The upside case is illustrative, not part of the plan.</p>
     </div>
   </div>
 </div></div>
@@ -1133,6 +1116,7 @@ strong{font-weight:700;color:var(--ink)}
 .advcard b{display:block;font-size:.86rem;color:var(--ink)}
 .advcard span{font-size:.76rem;color:var(--ink-3);line-height:1.4}
 .photo-note{margin-top:1rem;font-size:.72rem;color:var(--ink-3);font-style:italic}
+.roadmap-h{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-top:2.6rem}
 
 .raisebox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.7rem 1.7rem;margin-top:1.4rem}
 .raisebox .lead{color:var(--ink-2);max-width:none;margin-bottom:1.2rem}
@@ -1144,16 +1128,6 @@ strong{font-weight:700;color:var(--ink)}
 .returns{margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .returns h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:.35rem}
 .returns .sub{font-size:.88rem;color:var(--ink-2);margin-bottom:1.1rem}
-.unlocks{list-style:none;counter-reset:u;display:grid;gap:.55rem;margin:0 0 1.3rem}
-.unlocks li{counter-increment:u;position:relative;padding-left:1.9rem;font-size:.88rem;color:var(--ink-2);line-height:1.5}
-.unlocks li::before{content:counter(u);position:absolute;left:0;top:.05rem;width:1.3rem;height:1.3rem;border-radius:50%;background:rgba(0,188,241,.14);color:var(--cyan);font-family:var(--mono);font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center}
-.unlocks li b{color:var(--ink)}
-.arrbar{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin-bottom:1.3rem}
-.arrbar .from,.arrbar .to{font-family:var(--mono);font-weight:600;font-size:1.35rem;font-variant-numeric:tabular-nums;line-height:1}
-.arrbar .from{color:var(--ink-3)}
-.arrbar .to{color:var(--cyan)}
-.arrbar .arw{color:var(--ink-3)}
-.arrbar .cap{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);flex:1 1 12rem}
 .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
 .case{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1rem;position:relative;overflow:hidden}
 .case::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
@@ -1251,7 +1225,7 @@ strong{font-weight:700;color:var(--ink)}
   <div class="numlist">
     <div class="numitem"><span class="no">01</span><h3>AI tools process the brief. But they do not understand it.</h3><p>Today&rsquo;s tools ingest a brief but have no grasp of brand voice, market nuance, or audience context. Clips come back with a clear gap between intent and output.</p></div>
     <div class="numitem"><span class="no">02</span><h3>&ldquo;Fix it in post&rdquo; is not a viable option.</h3><p>Every existing AI edit tool receives a dump of unscored, unguided footage. The problem was upstream. The edit cannot fix what the shoot never had.</p></div>
-    <div class="numitem"><span class="no">03</span><h3>Nothing learned for the next brief.</h3><p>Which shots converted, which creators delivered, which channel performed &mdash; none of it feeds back. Every brief is written blind.</p></div>
+    <div class="numitem"><span class="no">03</span><h3>Nothing learned for the next brief.</h3><p>Which shots converted, which creators delivered, which channel performed: none of it feeds back. Every brief is written blind.</p></div>
   </div>
 </div></div>
 
@@ -1263,9 +1237,9 @@ strong{font-weight:700;color:var(--ink)}
     <div class="pipe-sticky"><div class="ps-grid">
       <div class="ps-copies" id="psCopies">
         <div class="ps-copy on" data-stage="0"><div class="pipe-ghost" aria-hidden="true">01</div><p class="eyebrow">Stage 01 &middot; Brief to shot list</p><h2>It turns a brand brief into a real shot list</h2><p class="lead">Drop in the brand&rsquo;s brief and Cinebody writes the shoot: every shot with its framing, length, seconds, frame-rate and the exact prompt the filmer follows. This is a real shot list generated inside the product.</p></div>
-        <div class="ps-copy c1" data-stage="1"><div class="pipe-ghost" aria-hidden="true">02</div><p class="eyebrow">Stage 02 &middot; The AI Director</p><h2>A director in the viewfinder, not a filter over it</h2><p class="lead">The Director rides in the camera while the filmer shoots &mdash; metering light, focus, steadiness and audio live, and speaking up one note at a time. For testimonials, the same AI runs the interview: it asks the brief&rsquo;s questions out loud and adapts each follow-up to what the person says.</p></div>
+        <div class="ps-copy c1" data-stage="1"><div class="pipe-ghost" aria-hidden="true">02</div><p class="eyebrow">Stage 02 &middot; The AI Director</p><h2>A director in the viewfinder, not a filter over it</h2><p class="lead">The Director rides in the camera while the filmer shoots, metering light, focus, steadiness and audio live, and speaking up one note at a time. For testimonials, the same AI runs the interview: it asks the brief&rsquo;s questions out loud and adapts each follow-up to what the person says.</p></div>
         <div class="ps-copy c2" data-stage="2"><div class="pipe-ghost" aria-hidden="true">03</div><p class="eyebrow">Stage 03 &middot; Scored ingestion</p><h2>Every clip is graded the moment it lands</h2><p class="lead">Uploads hit a zero-click pipeline: a review score against the brief across audio, focus, framing, exposure and stability, with written tips back to the filmer. Strong clips auto-approve into the edit pool.</p></div>
-        <div class="ps-copy" data-stage="3"><div class="pipe-ghost" aria-hidden="true">04</div><p class="eyebrow">Stage 04 &middot; The auto edit</p><h2>An AI edit you can actually edit</h2><p class="lead">Cinebody assembles the cut itself: the best take of each shot in story order, b-roll placed, captions burned, music mixed &mdash; a real, editable timeline out, not a locked render.</p></div>
+        <div class="ps-copy" data-stage="3"><div class="pipe-ghost" aria-hidden="true">04</div><p class="eyebrow">Stage 04 &middot; The auto edit</p><h2>An AI edit you can actually edit</h2><p class="lead">Cinebody assembles the cut itself: the best take of each shot in story order, b-roll placed, captions burned, music mixed. A real, editable timeline out, not a locked render.</p></div>
       </div>
       <div class="ps-rail" id="psRail">
         <div class="ps-rail-line"><div class="ps-rail-fill" id="psRailFill"></div></div>
@@ -1340,7 +1314,7 @@ strong{font-weight:700;color:var(--ink)}
               <div class="a-tips"><p class="a-tl">TIPS</p><div class="a-tip">Keep your face in frame when speaking, or frame fully out.</div></div>
             </div>
           </div>
-          <p class="d-cap">The clip on one side, its score against the brief on the other &mdash; the real review UI</p>
+          <p class="d-cap">The clip on one side, its score against the brief on the other: the real review UI</p>
         </div></div>
         <div class="ps-scene" data-stage="3"><div class="ps-scene-body">
           <div class="d-editorshot"><img src="/research-cuts/editor-real.png" alt="Cinebody editor, real product capture"></div>
@@ -1356,9 +1330,9 @@ strong{font-weight:700;color:var(--ink)}
   <h2>You backed us when nobody understood it. Here is why that bet just came due.</h2>
   <div class="tl-h" id="whyNowTl">
     <div class="tl-line"></div>
-    <div class="tlh-item"><span class="yr">2016 &ndash; 2022</span><p>Cinebody ships its first software and gains real traction &mdash; Nike, Gatorade, Diageo and others sign up. The AI needed to complete the full vision doesn&rsquo;t exist yet, and the market isn&rsquo;t ready. We were early.</p></div>
+    <div class="tlh-item"><span class="yr">2016 &ndash; 2022</span><p>Cinebody ships its first software and gains real traction: Nike, Gatorade, Diageo and others sign up. The AI needed to complete the full vision doesn&rsquo;t exist yet, and the market isn&rsquo;t ready. We were early.</p></div>
     <div class="tlh-item"><span class="yr">2022 &ndash; 2025</span><p>Growth plateaus. Brands shift budgets to creators and hit the problem of briefing and managing them at scale. Cinebody survives on services, rebuilds, sharpens the model.</p></div>
-    <div class="tlh-item"><span class="yr">2026</span><p>First profitable half. Three stages live. The AI capabilities Cinebody always needed finally exist. This is what we set out to build in 2016, and the window to exit at maximum value is open.</p></div>
+    <div class="tlh-item"><span class="yr">2026</span><p>First profitable half. All six stages live. The AI capabilities Cinebody always needed finally exist. This is what we set out to build in 2016, and the window to exit at maximum value is open.</p></div>
   </div>
 </div></div>
 
@@ -1368,8 +1342,8 @@ strong{font-weight:700;color:var(--ink)}
   <p class="lead">The AI capabilities Cinebody always needed to complete the full loop simply didn&rsquo;t exist in 2016. They do now.</p>
   <div class="thennow">
     <div class="tnrow"><div class="lab">Direction</div><div class="tnpair"><div class="then"><span class="tag">Then</span>The shot list gave creative direction, but no ability to guide framing, audio, or lighting in the moment. Using footage that wasn&rsquo;t ideal became the norm.</div><div class="now"><span class="tag">Now</span>AI director rides in the viewfinder. Real-time guidance on light, focus, framing, audio. Any creator, any phone, any market.</div></div></div>
-    <div class="tnrow"><div class="lab">Scoring</div><div class="tnpair"><div class="then"><span class="tag">Then</span>A human reviewer watched every clip and manually selected the best takes &mdash; a bottleneck that killed speed and introduced subjectivity.</div><div class="now"><span class="tag">Now</span>Every clip reviewed automatically the moment it lands &mdash; audio, focus, framing, exposure, stability &mdash; against the brief. Strong clips auto-approve. Zero clicks.</div></div></div>
-    <div class="tnrow"><div class="lab">Editing</div><div class="tnpair"><div class="then"><span class="tag">Then</span>A human editor assembled every cut. Days of post-production per campaign.</div><div class="now"><span class="tag">Now</span>AI assembles the cut from the scored pool &mdash; best take of each shot, b-roll placed, captions burned, music mixed. Finished video in minutes.</div></div></div>
+    <div class="tnrow"><div class="lab">Scoring</div><div class="tnpair"><div class="then"><span class="tag">Then</span>A human reviewer watched every clip and manually selected the best takes, a bottleneck that killed speed and introduced subjectivity.</div><div class="now"><span class="tag">Now</span>Every clip reviewed automatically the moment it lands and scored against the brief on audio, focus, framing, exposure and stability. Strong clips auto-approve. Zero clicks.</div></div></div>
+    <div class="tnrow"><div class="lab">Editing</div><div class="tnpair"><div class="then"><span class="tag">Then</span>A human editor assembled every cut. Days of post-production per campaign.</div><div class="now"><span class="tag">Now</span>AI assembles the cut from the scored pool: best take of each shot, b-roll placed, captions burned, music mixed. Finished video in minutes.</div></div></div>
     <div class="tnrow"><div class="lab">Channel Adaptation</div><div class="tnpair"><div class="then"><span class="tag">Then</span>Repurposing for multiple platforms meant going back for more content, or settling for footage that wasn&rsquo;t designed for the format. An afterthought, not a plan.</div><div class="now"><span class="tag">Now</span>From the brief, Cinebody plans for every channel from the start. One shoot becomes TikTok, YouTube, X automatically.</div></div></div>
   </div>
   <p class="note">These are not incremental improvements. They are the missing stages that make the full loop completable. We have been building toward this since 2016.</p>
@@ -1408,7 +1382,7 @@ strong{font-weight:700;color:var(--ink)}
       <div class="ri"><span class="rdot" style="background:#ffec03"></span><span class="rt"><b>Training data</b><span>Real editor project files, ingested at scale.</span></span></div>
     </div>
   </div>
-  <p style="margin-top:1.4rem;font-size:.86rem">8 granted patents (7 US, 1 Canada), 2017&ndash;2025, protect the foundation of this loop &mdash; new filings extending to AI scoring and edit-assembly are already in process.</p>
+  <p style="margin-top:1.4rem;font-size:.86rem">8 granted patents (7 US, 1 Canada), 2017&ndash;2025, protect the foundation of this loop. New filings extending to AI scoring and edit-assembly are already in process.</p>
 </div></div>
 
 <div class="sec"><div class="wrap">
@@ -1446,16 +1420,16 @@ strong{font-weight:700;color:var(--ink)}
     <div class="cg-row"><div class="cg-name">Adobe Premiere AI</div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Assembles starting points; can&rsquo;t read a brief yet"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
     <div class="cg-row"><div class="cg-name">Descript Underlord</div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell off"></div><div class="cg-cell part" title="Prompt-directed edits inside its own editor"></div><div class="cg-cell off"></div><div class="cg-cell off"></div></div>
   </div></div>
-  <p class="note">TikTok Symphony is fully generative &mdash; licensed-actor avatars, not real footage. Adobe brief support is explicitly &ldquo;on the roadmap&rdquo; per its own FAQ. Descript takes prompts, not briefs, on single recordings inside its own editor.</p>
+  <p class="note">TikTok Symphony is fully generative: licensed-actor avatars, not real footage. Adobe brief support is explicitly &ldquo;on the roadmap&rdquo; per its own FAQ. Descript takes prompts, not briefs, on single recordings inside its own editor.</p>
 </div></div>
 
 <div class="act-light"><div class="curve-backdrop"></div><div class="wrap" style="padding:0 1.75rem">
   <p class="eyebrow">The Ugly</p>
   <h2>Every reason this could fail. And why it won&rsquo;t.</h2>
   <div class="risks">
-    <div class="riskcard"><div class="rk">Risk</div><div class="rq">A fast-follower builds the full loop.</div><div class="ra">They&rsquo;d need every stage &mdash; brief, shoot, score, adapt, distribute, measure, learn &mdash; run at scale, then start collecting labeled data. Years away. 8 patents protect the foundation; the data moat compounds with every campaign.</div></div>
-    <div class="riskcard"><div class="rk">Risk</div><div class="rq">Google or Adobe builds this themselves.</div><div class="ra">Each owns exactly one piece of the loop. Building the full assembly would take 3&ndash;5 years. They would buy Cinebody before they build it &mdash; and they know it.</div></div>
-    <div class="riskcard"><div class="rk">Risk</div><div class="rq">AI-generated video replaces the need for real footage.</div><div class="ra">Nobody wants synthetic ads. They want authentic content made faster &mdash; exactly what Cinebody delivers. The backlash against AI slop strengthens this position every month.</div></div>
+    <div class="riskcard"><div class="rk">Risk</div><div class="rq">A fast-follower builds the full loop.</div><div class="ra">They&rsquo;d need every stage (brief, shoot, score, adapt, distribute, measure, learn) run at scale, then start collecting labeled data. Years away. 8 patents protect the foundation; the data moat compounds with every campaign.</div></div>
+    <div class="riskcard"><div class="rk">Risk</div><div class="rq">Google or Adobe builds this themselves.</div><div class="ra">Each owns exactly one piece of the loop. Building the full assembly would take 3&ndash;5 years. They would buy Cinebody before they build it.</div></div>
+    <div class="riskcard"><div class="rk">Risk</div><div class="rq">AI-generated video replaces the need for real footage.</div><div class="ra">Nobody wants synthetic ads. They want authentic content made faster, exactly what Cinebody delivers. The backlash against AI slop strengthens this position every month.</div></div>
     <div class="riskcard"><div class="rk">Risk</div><div class="rq">Current revenue is too small for platform-scale returns.</div><div class="ra">$1.4&ndash;1.6M is a services-weighted baseline, not the software ceiling. This raise funds the return to software-first. At platform scale, the trajectory is a different order of magnitude.</div></div>
   </div>
 </div></div>
@@ -1466,51 +1440,44 @@ strong{font-weight:700;color:var(--ink)}
   <div class="team">
     <div class="tcard"><img class="pface lg" src="/research-headshots/scott-mcdonald.jpg" alt="Scott McDonald"><div class="tbody"><h3>Scott McDonald</h3><div class="role">CEO &amp; Co-Founder</div><p>Built Cinebody from zero to ten years of operating revenue before UGC was a category. Removed his own salary for multiple years to protect the company and the vision. Now leading the return to software-first at the moment the market finally caught up.</p></div></div>
     <div class="tcard"><img class="pface lg" src="/research-headshots/gavin-anstey.jpg" alt="Gavin Anstey"><div class="tbody"><h3>Gavin Anstey</h3><div class="role">President &amp; Co-Founder</div><p>Engineered the H1 2026 turnaround: +40% revenue YoY, first profitable half, full operational rebuild. Also removed his own salary. The financial architect behind the inflection point this raise is built on.</p></div></div>
-    <div class="tcard"><span class="mono lg c3">AS</span><div class="tbody"><h3>Adam Shaffner</h3><div class="role">COO</div><p>Rebuilt the services operation and sales process &mdash; SOPs, sharpened ICP, structured pipeline. Owns delivery quality and client retention. The commercial backbone behind the H1 2026 turnaround.</p></div></div>
+    <div class="tcard"><span class="mono lg c3">AS</span><div class="tbody"><h3>Adam Shaffner</h3><div class="role">COO</div><p>Rebuilt the services operation and sales process: SOPs, sharpened ICP, structured pipeline. Owns delivery quality and client retention. The commercial backbone behind the H1 2026 turnaround.</p></div></div>
   </div>
   <div class="advisors">
     <div class="advcard"><img class="pface" src="/research-headshots/alex-bogusky.jpg" alt="Alex Bogusky"><div><b>Alex Bogusky</b><span>Advisor, Investor &middot; Co-founder, CP+B &middot; Adweek&rsquo;s Creative Director of the Decade</span></div></div>
     <div class="advcard"><img class="pface" src="/research-headshots/olivier-rabenschlag.jpg" alt="Olivier Rabenschlag"><div><b>Olivier Rabenschlag</b><span>Advisor, Investor &middot; Former Google Director (11 yrs), built &amp; scaled Google&rsquo;s Enterprise AI Partnership Portfolio</span></div></div>
   </div>
-  <p class="photo-note">Adam&rsquo;s headshot still pending &mdash; placeholder initials shown until then.</p>
 </div></div>
 
 <div class="sec"><div class="wrap">
   <p class="eyebrow">The Raise</p>
-  <h2>$1.5M to cross the finish line.</h2>
+  <h2>$1.5M to fuel the path to acquisition.</h2>
   <div class="raisebox">
-    <p class="lead">This is not a growth round. This is the final capital event before acquisition. The software-first repositioning this raise funds is the move that opens the exit conversation you have been waiting ten years for.</p>
+    <p class="lead">Growth capital to scale Cinebody as a software company. This raise funds the return to software-first and puts sales behind it, building the growth that leads to the acquisition conversation you have been waiting ten years for.</p>
     <div class="stats" style="grid-template-columns:repeat(3,1fr)">
       <div class="stat"><div class="n">$1.5M</div><div class="l">Raising</div></div>
       <div class="stat"><div class="n cyan">$10.4M</div><div class="l">Valuation</div></div>
       <div class="stat"><div class="n">12mo</div><div class="l">Runway</div></div>
     </div>
     <div class="returns">
-      <h3>The returns case: SaaS math at scale.</h3>
-      <p class="sub">We&rsquo;re priced at $10.4M today. This raise moves Cinebody back to software-first: a $250&ndash;$500/mo platform, not project-based agency work.</p>
-      <ol class="unlocks">
-        <li><b>Growth Marketer + SDR</b> &mdash; 86 new clients in year one, $319K new ARR</li>
-        <li><b>Re-engagement campaign</b> &mdash; 38 reactivated clients, $157K ARR</li>
-        <li><b>Services converting to subscriptions</b> &mdash; $325K ARR</li>
-        <li><b>Debt removal</b> &mdash; frees $2,400/month in cash flow</li>
-      </ol>
-      <div class="arrbar"><span class="from">$320K</span><span class="arw">&rarr;</span><span class="to">$1.15M</span><span class="cap">ARR today &rarr; year one. Excludes any mid-market or enterprise wins, each adding $30K&ndash;$100K ACV.</span></div>
+      <h3>Valued at $10.4M today. Here is where it could go.</h3>
+      <p class="sub">Software companies are valued on recurring revenue. Our bottom-up SOM puts Cinebody at $7&ndash;10M ARR within three years, and that changes the math.</p>
       <div class="cases">
-        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>Priced at the valuation of our last round.</p></div>
-        <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>$7&ndash;10M year-three ARR at a standard SaaS multiple. $7M = 700 SMB, 60 mid-market, 8 enterprise, plus partner integrations.</p></div>
-        <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Cinebody becomes the OS for brand video: enterprise and partner integrations, a compounding data flywheel, and acquirers bidding against each other.</p><span class="ill">Illustrative</span></div>
+        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>The valuation from our last round, priced on a services-weighted business.</p></div>
+        <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>Our $7&ndash;10M ARR SOM at a standard multiple for defensible, patented SaaS.</p></div>
+        <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Strategic partner integrations embed Cinebody inside global brands and agencies, making it the operating system for brand video. Competing acquirers pay a control premium.</p><span class="ill">Illustrative</span></div>
       </div>
-      <p class="note">7&ndash;10x is standard for defensible SaaS with a patented moat (Bessemer Venture Partners, State of the Cloud 2025). Upside assumes platform scale, e.g. 1,500 brands at $20K blended ACV = $30M ARR; it is illustrative, not part of the plan.</p>
+      <p class="note">7&ndash;10x is standard for defensible SaaS with a patented moat (Bessemer Venture Partners, State of the Cloud 2025). The upside case is illustrative, not part of the plan.</p>
     </div>
   </div>
-  <div class="tl-h tl-4" id="raiseTl" style="margin-top:2.4rem">
+  <h3 class="roadmap-h">Our target roadmap</h3>
+  <div class="tl-h tl-4" id="raiseTl" style="margin-top:1.2rem">
     <div class="tl-line"></div>
     <div class="tlh-item"><span class="yr">Q4 2026</span><p>Software-first launch. Design partners live.</p></div>
     <div class="tlh-item"><span class="yr">H1 2027</span><p>Enterprise client wins. Acquirer conversations seeded.</p></div>
     <div class="tlh-item"><span class="yr">H2 2027</span><p>Formal acquirer process opens.</p></div>
-    <div class="tlh-item tbd"><span class="yr">2028</span><p>Exit target &mdash; directional, not a fixed date.</p></div>
+    <div class="tlh-item tbd"><span class="yr">2028</span><p>Exit target. Directional, not a fixed date.</p></div>
   </div>
-  <p class="note warn">This timeline is directional, not a commitment &mdash; timing is still being discussed and may move.</p>
+  <p class="note warn">This timeline is directional, not a commitment. Timing is still being discussed and may move.</p>
 </div></div>
 
 <div class="act-light"><div class="curve-backdrop"></div><div class="wrap" style="padding:0 1.75rem">
@@ -1518,9 +1485,9 @@ strong{font-weight:700;color:var(--ink)}
   <h2>The exit is the strategy. Here is the path.</h2>
   <p class="lead">Three categories of acquirer. Each owns exactly one piece of what Cinebody has already assembled.</p>
   <div class="acquirers">
-    <div class="acard"><div class="aq">Google</div><div class="ag">Owns Camera Coach &mdash; AI guidance for still photos only. No directed video capture, no brief-to-edit loop, no enterprise workflow.</div><div class="ap"><b>The pitch:</b> Camera Coach directs a still photo. Cinebody directs video, shot by shot, on any phone in an untrained hand. Why build it when you can buy it?</div></div>
-    <div class="acard"><div class="aq">Adobe</div><div class="ag">Owns Premiere AI &mdash; editing and distribution only. Brief ingestion is still on the roadmap. No capture layer, no scoring, no loop.</div><div class="ap"><b>The pitch:</b> Brief ingestion is still on your roadmap. We already shipped it, wired into the whole loop. Why build it when you can buy it?</div></div>
-    <div class="acard"><div class="aq">ByteDance / Apple / Snap</div><div class="ag">Each owns distribution but not the human creation layer.</div><div class="ap"><b>The pitch:</b> Whoever acquires Cinebody acquires the only closed loop from brief to finished human video &mdash; and locks competitors out of the category.</div></div>
+    <div class="acard"><div class="aq">Google</div><div class="ag">Owns Camera Coach: AI guidance for still photos only. No directed video capture, no brief-to-edit loop, no enterprise workflow.</div><div class="ap"><b>The pitch:</b> Camera Coach directs a still photo. Cinebody directs video, shot by shot, on any phone in an untrained hand. Why build it when you can buy it?</div></div>
+    <div class="acard"><div class="aq">Adobe</div><div class="ag">Owns Premiere AI: editing and distribution only. Brief ingestion is still on the roadmap. No capture layer, no scoring, no loop.</div><div class="ap"><b>The pitch:</b> Brief ingestion is still on your roadmap. We already shipped it, wired into the whole loop. Why build it when you can buy it?</div></div>
+    <div class="acard"><div class="aq">ByteDance / Apple / Snap</div><div class="ag">Each owns distribution but not the human creation layer.</div><div class="ap"><b>The pitch:</b> Whoever acquires Cinebody acquires the only closed loop from brief to finished human video, and locks competitors out of the category.</div></div>
   </div>
 </div></div>
 
