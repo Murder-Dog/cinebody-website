@@ -378,10 +378,9 @@ strong{font-weight:700;color:var(--ink)}
 .returns{margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .returns h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:.35rem}
 .returns .sub{font-size:.88rem;color:var(--ink-2);margin-bottom:1.1rem}
-.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem}
 .case{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1rem;position:relative;overflow:hidden}
 .case::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.case.now::before{background:var(--ink-3)}
 .case.base::before{background:var(--cyan)}
 .case.up::before{background:var(--pink)}
 .case .t{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
@@ -689,7 +688,6 @@ strong{font-weight:700;color:var(--ink)}
       <h3>Valued at $10.4M today. Here is where it could go.</h3>
       <p class="sub">Software companies are valued on recurring revenue. Our bottom-up SOM puts Cinebody at $7&ndash;10M ARR within three years, and that changes the math.</p>
       <div class="cases">
-        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>The valuation from our last round, priced on a services-weighted business.</p></div>
         <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>Our $7&ndash;10M ARR SOM at a standard multiple for defensible, patented SaaS.</p></div>
         <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Strategic partner integrations embed Cinebody inside global brands and agencies, making it the operating system for brand video. Competing acquirers pay a control premium.</p><span class="ill">Illustrative</span></div>
       </div>
@@ -1128,10 +1126,9 @@ strong{font-weight:700;color:var(--ink)}
 .returns{margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .returns h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:.35rem}
 .returns .sub{font-size:.88rem;color:var(--ink-2);margin-bottom:1.1rem}
-.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem}
 .case{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1rem;position:relative;overflow:hidden}
 .case::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.case.now::before{background:var(--ink-3)}
 .case.base::before{background:var(--cyan)}
 .case.up::before{background:var(--pink)}
 .case .t{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
@@ -1462,7 +1459,6 @@ strong{font-weight:700;color:var(--ink)}
       <h3>Valued at $10.4M today. Here is where it could go.</h3>
       <p class="sub">Software companies are valued on recurring revenue. Our bottom-up SOM puts Cinebody at $7&ndash;10M ARR within three years, and that changes the math.</p>
       <div class="cases">
-        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>The valuation from our last round, priced on a services-weighted business.</p></div>
         <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>Our $7&ndash;10M ARR SOM at a standard multiple for defensible, patented SaaS.</p></div>
         <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Strategic partner integrations embed Cinebody inside global brands and agencies, making it the operating system for brand video. Competing acquirers pay a control premium.</p><span class="ill">Illustrative</span></div>
       </div>
