@@ -374,6 +374,32 @@ strong{font-weight:700;color:var(--ink)}
 .fundrow .k{font-size:.88rem;color:var(--ink)}
 .fundrow .d{font-size:.76rem;color:var(--ink-3);margin-top:.15rem}
 .fundrow .v{font-family:var(--mono);font-size:.9rem;color:var(--cyan);font-weight:700;white-space:nowrap}
+.returns{margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.returns h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:.35rem}
+.returns .sub{font-size:.88rem;color:var(--ink-2);margin-bottom:1.1rem}
+.unlocks{list-style:none;counter-reset:u;display:grid;gap:.55rem;margin:0 0 1.3rem}
+.unlocks li{counter-increment:u;position:relative;padding-left:1.9rem;font-size:.88rem;color:var(--ink-2);line-height:1.5}
+.unlocks li::before{content:counter(u);position:absolute;left:0;top:.05rem;width:1.3rem;height:1.3rem;border-radius:50%;background:rgba(0,188,241,.14);color:var(--cyan);font-family:var(--mono);font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.unlocks li b{color:var(--ink)}
+.arrbar{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin-bottom:1.3rem}
+.arrbar .from,.arrbar .to{font-family:var(--mono);font-weight:600;font-size:1.35rem;font-variant-numeric:tabular-nums;line-height:1}
+.arrbar .from{color:var(--ink-3)}
+.arrbar .to{color:var(--cyan)}
+.arrbar .arw{color:var(--ink-3)}
+.arrbar .cap{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);flex:1 1 12rem}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.case{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1rem;position:relative;overflow:hidden}
+.case::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.case.now::before{background:var(--ink-3)}
+.case.base::before{background:var(--cyan)}
+.case.up::before{background:var(--pink)}
+.case .t{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.case .n{font-family:var(--mono);font-size:1.6rem;font-weight:600;letter-spacing:-0.02em;margin:.5rem 0 .55rem;font-variant-numeric:tabular-nums;line-height:1}
+.case.base .n{color:var(--cyan)}
+.case.up .n{color:var(--pink)}
+.case p{font-size:.8rem;color:var(--ink-2);line-height:1.5}
+.case .ill{display:inline-block;margin-top:.55rem;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px dashed var(--line);border-radius:4px;padding:.1rem .4rem}
+@media(max-width:760px){.cases{grid-template-columns:1fr}}
 
 .closing{text-align:center;margin-top:3rem;padding:2rem 1.75rem 0}
 .closing p{font-size:1.4rem;color:var(--ink);font-weight:650;line-height:1.4;max-width:34rem;margin:0 auto 2.4rem;text-wrap:balance}
@@ -576,7 +602,7 @@ strong{font-weight:700;color:var(--ink)}
   <div class="stats" style="grid-template-columns:repeat(3,1fr)">
     <div class="stat"><div class="n">$130B</div><div class="l">TAM &middot; brand spend on creator &amp; social video, growing 26% YoY, 4x the media industry</div></div>
     <div class="stat"><div class="n cyan">$9.6B</div><div class="l">SAM &middot; enterprise UGC video production, English-speaking markets</div></div>
-    <div class="stat ph"><div class="n">&mdash;</div><div class="l">SOM &middot; 3-year bottom-up capture &middot; placeholder, finalizing off current pipeline</div></div>
+    <div class="stat"><div class="n pink">$7&ndash;10M</div><div class="l">SOM &middot; ARR, 3-year bottom-up capture across SMB, mid-market &amp; enterprise SaaS</div></div>
   </div>
   <p class="note">Sources: IAB State of Creator Advertising 2026, Grand View Research UGC Platform Market Report 2026.</p>
 </div></div>
@@ -669,13 +695,22 @@ strong{font-weight:700;color:var(--ink)}
       <div class="stat"><div class="n cyan">$10.4M</div><div class="l">Valuation</div></div>
       <div class="stat"><div class="n">12mo</div><div class="l">Runway</div></div>
     </div>
-    <div class="fundtable">
-      <div class="fundrow"><div><div class="k">New Hires</div><div class="d">Design Engineer + Growth Marketer</div></div><div class="v">$275K</div></div>
-      <div class="fundrow"><div><div class="k">Marketing</div><div class="d">Paid spend + creative for GTM</div></div><div class="v">$175K</div></div>
-      <div class="fundrow"><div><div class="k">Operating Buffer</div><div class="d">~2 months post-raise cushion</div></div><div class="v">$350K</div></div>
-      <div class="fundrow"><div><div class="k">Debt Payoff</div><div class="d">Clear high-interest debt from plateau years</div></div><div class="v">$200K</div></div>
-      <div class="fundrow"><div><div class="k">Salary Adjustments</div><div class="d">Restore founder + team pay, 12-month bridge</div></div><div class="v">$339K</div></div>
-      <div class="fundrow" style="border-bottom:0"><div><div class="k">Legal &amp; Patents</div><div class="d">Raise legal + new patent filings</div></div><div class="v">$60K</div></div>
+    <div class="returns">
+      <h3>The returns case: SaaS math at scale.</h3>
+      <p class="sub">We&rsquo;re priced at $10.4M today. This raise moves Cinebody back to software-first: a $250&ndash;$500/mo platform, not project-based agency work.</p>
+      <ol class="unlocks">
+        <li><b>Growth Marketer + SDR</b> &mdash; 86 new clients in year one, $319K new ARR</li>
+        <li><b>Re-engagement campaign</b> &mdash; 38 reactivated clients, $157K ARR</li>
+        <li><b>Services converting to subscriptions</b> &mdash; $325K ARR</li>
+        <li><b>Debt removal</b> &mdash; frees $2,400/month in cash flow</li>
+      </ol>
+      <div class="arrbar"><span class="from">$320K</span><span class="arw">&rarr;</span><span class="to">$1.15M</span><span class="cap">ARR today &rarr; year one. Excludes any mid-market or enterprise wins, each adding $30K&ndash;$100K ACV.</span></div>
+      <div class="cases">
+        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>Priced at the valuation of our last round.</p></div>
+        <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>$7&ndash;10M year-three ARR at a standard SaaS multiple. $7M = 700 SMB, 60 mid-market, 8 enterprise, plus partner integrations.</p></div>
+        <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Cinebody becomes the OS for brand video: enterprise and partner integrations, a compounding data flywheel, and acquirers bidding against each other.</p><span class="ill">Illustrative</span></div>
+      </div>
+      <p class="note">7&ndash;10x is standard for defensible SaaS with a patented moat (Bessemer Venture Partners, State of the Cloud 2025). Upside assumes platform scale, e.g. 1,500 brands at $20K blended ACV = $30M ARR; it is illustrative, not part of the plan.</p>
     </div>
   </div>
 </div></div>
@@ -1106,6 +1141,32 @@ strong{font-weight:700;color:var(--ink)}
 .fundrow .k{font-size:.88rem;color:var(--ink)}
 .fundrow .d{font-size:.76rem;color:var(--ink-3);margin-top:.15rem}
 .fundrow .v{font-family:var(--mono);font-size:.9rem;color:var(--cyan);font-weight:700;white-space:nowrap}
+.returns{margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.returns h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:.35rem}
+.returns .sub{font-size:.88rem;color:var(--ink-2);margin-bottom:1.1rem}
+.unlocks{list-style:none;counter-reset:u;display:grid;gap:.55rem;margin:0 0 1.3rem}
+.unlocks li{counter-increment:u;position:relative;padding-left:1.9rem;font-size:.88rem;color:var(--ink-2);line-height:1.5}
+.unlocks li::before{content:counter(u);position:absolute;left:0;top:.05rem;width:1.3rem;height:1.3rem;border-radius:50%;background:rgba(0,188,241,.14);color:var(--cyan);font-family:var(--mono);font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.unlocks li b{color:var(--ink)}
+.arrbar{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin-bottom:1.3rem}
+.arrbar .from,.arrbar .to{font-family:var(--mono);font-weight:600;font-size:1.35rem;font-variant-numeric:tabular-nums;line-height:1}
+.arrbar .from{color:var(--ink-3)}
+.arrbar .to{color:var(--cyan)}
+.arrbar .arw{color:var(--ink-3)}
+.arrbar .cap{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);flex:1 1 12rem}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.case{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1rem;position:relative;overflow:hidden}
+.case::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.case.now::before{background:var(--ink-3)}
+.case.base::before{background:var(--cyan)}
+.case.up::before{background:var(--pink)}
+.case .t{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.case .n{font-family:var(--mono);font-size:1.6rem;font-weight:600;letter-spacing:-0.02em;margin:.5rem 0 .55rem;font-variant-numeric:tabular-nums;line-height:1}
+.case.base .n{color:var(--cyan)}
+.case.up .n{color:var(--pink)}
+.case p{font-size:.8rem;color:var(--ink-2);line-height:1.5}
+.case .ill{display:inline-block;margin-top:.55rem;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px dashed var(--line);border-radius:4px;padding:.1rem .4rem}
+@media(max-width:760px){.cases{grid-template-columns:1fr}}
 
 .acquirers{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:1.4rem}
 @media(max-width:820px){.acquirers{grid-template-columns:1fr}}
@@ -1331,7 +1392,7 @@ strong{font-weight:700;color:var(--ink)}
   <div class="stats" style="grid-template-columns:repeat(3,1fr)">
     <div class="stat"><div class="n">$130B</div><div class="l">TAM &middot; brand spend on creator &amp; social video, growing 26% YoY, 4x the media industry</div></div>
     <div class="stat"><div class="n cyan">$9.6B</div><div class="l">SAM &middot; enterprise UGC video production, English-speaking markets</div></div>
-    <div class="stat ph"><div class="n">&mdash;</div><div class="l">SOM &middot; 3-year bottom-up capture &middot; placeholder, finalizing off current pipeline</div></div>
+    <div class="stat"><div class="n pink">$7&ndash;10M</div><div class="l">SOM &middot; ARR, 3-year bottom-up capture across SMB, mid-market &amp; enterprise SaaS</div></div>
   </div>
   <p class="note">Sources: IAB State of Creator Advertising 2026, Grand View Research UGC Platform Market Report 2026.</p>
 </div></div>
@@ -1424,13 +1485,22 @@ strong{font-weight:700;color:var(--ink)}
       <div class="stat"><div class="n cyan">$10.4M</div><div class="l">Valuation</div></div>
       <div class="stat"><div class="n">12mo</div><div class="l">Runway</div></div>
     </div>
-    <div class="fundtable">
-      <div class="fundrow"><div><div class="k">New Hires</div><div class="d">Design Engineer + Growth Marketer</div></div><div class="v">$275K</div></div>
-      <div class="fundrow"><div><div class="k">Marketing</div><div class="d">Paid spend + creative for GTM</div></div><div class="v">$175K</div></div>
-      <div class="fundrow"><div><div class="k">Operating Buffer</div><div class="d">~2 months post-raise cushion</div></div><div class="v">$350K</div></div>
-      <div class="fundrow"><div><div class="k">Debt Payoff</div><div class="d">Clear high-interest debt from plateau years</div></div><div class="v">$200K</div></div>
-      <div class="fundrow"><div><div class="k">Salary Adjustments</div><div class="d">Restore founder + team pay, 12-month bridge</div></div><div class="v">$339K</div></div>
-      <div class="fundrow" style="border-bottom:0"><div><div class="k">Legal &amp; Patents</div><div class="d">Raise legal + new patent filings</div></div><div class="v">$60K</div></div>
+    <div class="returns">
+      <h3>The returns case: SaaS math at scale.</h3>
+      <p class="sub">We&rsquo;re priced at $10.4M today. This raise moves Cinebody back to software-first: a $250&ndash;$500/mo platform, not project-based agency work.</p>
+      <ol class="unlocks">
+        <li><b>Growth Marketer + SDR</b> &mdash; 86 new clients in year one, $319K new ARR</li>
+        <li><b>Re-engagement campaign</b> &mdash; 38 reactivated clients, $157K ARR</li>
+        <li><b>Services converting to subscriptions</b> &mdash; $325K ARR</li>
+        <li><b>Debt removal</b> &mdash; frees $2,400/month in cash flow</li>
+      </ol>
+      <div class="arrbar"><span class="from">$320K</span><span class="arw">&rarr;</span><span class="to">$1.15M</span><span class="cap">ARR today &rarr; year one. Excludes any mid-market or enterprise wins, each adding $30K&ndash;$100K ACV.</span></div>
+      <div class="cases">
+        <div class="case now"><div class="t">Today</div><div class="n">$10.4M</div><p>Priced at the valuation of our last round.</p></div>
+        <div class="case base"><div class="t">Base case &middot; 7&ndash;10x</div><div class="n">$49&ndash;100M</div><p>$7&ndash;10M year-three ARR at a standard SaaS multiple. $7M = 700 SMB, 60 mid-market, 8 enterprise, plus partner integrations.</p></div>
+        <div class="case up"><div class="t">Upside &middot; 30&ndash;100x</div><div class="n">$300M&ndash;$1B+</div><p>Cinebody becomes the OS for brand video: enterprise and partner integrations, a compounding data flywheel, and acquirers bidding against each other.</p><span class="ill">Illustrative</span></div>
+      </div>
+      <p class="note">7&ndash;10x is standard for defensible SaaS with a patented moat (Bessemer Venture Partners, State of the Cloud 2025). Upside assumes platform scale, e.g. 1,500 brands at $20K blended ACV = $30M ARR; it is illustrative, not part of the plan.</p>
     </div>
   </div>
   <div class="tl-h tl-4" id="raiseTl" style="margin-top:2.4rem">
