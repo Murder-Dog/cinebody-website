@@ -21,7 +21,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/beta-testing') && !page.includes('/boeing') && !page.includes('/cinebody-blog/preview/') && !page.includes('/cinebody-blog/upcoming') && !page.includes('/giin') && !page.includes('/gilead-cds') && !page.includes('/kc-current') && !page.includes('/kong') && !page.includes('/royal-caribbean-renewal') && !page.includes('/sashco-year2'),
+      filter: (page) => !page.includes('/beta-testing') && !page.includes('/boeing') && !page.includes('/cinebody-blog/preview/') && !page.includes('/cinebody-blog/upcoming') && !page.includes('/giin') && !page.includes('/gilead-cds') && !page.includes('/kc-current') && !page.includes('/kong') && !page.includes('/royal-caribbean-renewal') && !page.includes('/sashco-year2') && !page.includes('/subprocessors'),
     }),
   ],
   compressHTML: true,

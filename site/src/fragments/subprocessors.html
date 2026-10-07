@@ -1,0 +1,673 @@
+<!-- Cinebody, Sub-processors (unlisted reference page for customer notices; noindex, kept out of the sitemap) -->
+
+<style>
+/* ═══════════════════════════════════════════════
+   CINEBODY V4, PRIVACY POLICY PAGE
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --teal: #00bcf1;
+  --teal-dim: rgba(0,188,241,0.6);
+  --yellow: #ffec03;
+  --pink: #eb008b;
+  --bg: #0a0a0a;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.1);
+  --border-hover: rgba(0,188,241,0.2);
+  --text: #e8e8e8;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-muted: rgba(255,255,255,0.3);
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Plus Jakarta Sans', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius: 12px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+body > * { position: relative; z-index: 1; }
+
+/* ── CURVED SECTION DIVIDERS ── */
+.curve {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  line-height: 0;
+  font-size: 0;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  background: none !important;
+}
+.curve svg {
+  display: block;
+  width: 100%;
+  height: 70px;
+}
+@media (max-width: 600px) {
+  .curve svg { height: 90px; }
+}
+
+/* ── CONTAINER ── */
+.contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+/* ── SECTION LABEL ── */
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--teal), var(--pink));
+  z-index: 9999; transition: none;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.vis { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* ── SIGNATURE BAR ── */
+.sig-bar { height: 3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal) 33.33%, var(--yellow) 33.33%, var(--yellow) 66.66%, var(--pink) 66.66%); }
+
+/* ═══════════════════════════
+   HERO, SHORT / CENTERED
+   ═══════════════════════════ */
+.hero {
+  padding: 100px 0 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0a0a 0%, #041a24 100%);
+  text-align: center;
+}
+
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal);
+  background: rgba(0,188,241,0.08); border: 1px solid rgba(0,188,241,0.15);
+  padding: 8px 18px; border-radius: 100px; margin-bottom: 28px;
+}
+
+.hero-eyebrow::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); box-shadow: 0 0 8px rgba(0,188,241,0.5);
+}
+
+.hero h1 {
+  font-size: clamp(2.75rem, 5.5vw, 4rem);
+  font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 20px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--teal) 0%, #33d6ff 50%, var(--teal) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+  font-size: 1rem; color: var(--text-dim); font-family: var(--mono); font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════
+   POLICY CONTENT, WHITE BG
+   ═══════════════════════════ */
+.policy-content {
+  background: #fff;
+  padding: 80px 0 100px;
+  position: relative;
+}
+
+.policy-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  background: #f6f8fa;
+  border: 1px solid #e8ecf0;
+  border-radius: 12px;
+  padding: 32px 36px;
+  margin-bottom: 56px;
+}
+
+.toc-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+  padding: 0;
+  margin: 0;
+}
+
+.toc ol li {
+  counter-increment: toc;
+  margin-bottom: 8px;
+}
+
+.toc ol li a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 6px 0;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+}
+
+.toc ol li a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--teal);
+  min-width: 24px;
+}
+
+.toc ol li a:hover {
+  color: #00bcf1;
+}
+
+/* ── INTRO TEXT ── */
+.policy-intro {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #e8ecf0;
+}
+
+.policy-intro p { margin-bottom: 16px; }
+.policy-intro p:last-child { margin-bottom: 0; }
+
+.policy-intro ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.policy-intro ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #555;
+}
+
+.policy-intro ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.policy-intro .definition {
+  font-style: italic;
+  color: #666;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: #f6f8fa;
+  border-left: 3px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── POLICY SECTIONS ── */
+.policy-section {
+  padding: 48px 0;
+  border-bottom: 1px solid #e8ecf0;
+}
+
+.policy-section:last-child {
+  border-bottom: none;
+}
+
+.policy-section:nth-child(even) {
+  background: #fafafa;
+  margin-left: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+  margin-right: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+  border-radius: 12px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--teal);
+  min-width: 28px;
+}
+
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.section-body {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+}
+
+.section-body p {
+  margin-bottom: 20px;
+}
+
+.section-body p:last-child {
+  margin-bottom: 0;
+}
+
+.section-body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.section-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.section-body ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+}
+
+.section-body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.section-body a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.section-body a:hover {
+  color: var(--pink);
+}
+
+.section-body .caps-note {
+  font-size: 14px;
+  line-height: 1.7;
+  background: #f6f8fa;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 16px;
+  color: #555;
+}
+
+/* ── LEGAL BASIS TABLE ── */
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+
+.legal-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  padding: 10px 16px;
+  border-bottom: 2px solid #e8ecf0;
+}
+
+.legal-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e8ecf0;
+  color: #333;
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.legal-table td:first-child {
+  font-weight: 600;
+  color: #111;
+  width: 34%;
+}
+
+/* ── CONTACT BLOCK ── */
+.contact-block {
+  background: #f6f8fa;
+  border: 1px solid #e8ecf0;
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-top: 16px;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.8;
+}
+
+.contact-block strong {
+  display: block;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+/* ═══════════════════════════
+   FOOTER
+   ═══════════════════════════ */
+
+/* ═══════════════════════════
+   RESPONSIVE
+   ═══════════════════════════ */
+@media (max-width: 1000px) {
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 60px 0 60px; }
+  .policy-content { padding: 60px 0 80px; }
+  .toc { padding: 24px 28px; }
+  .section-header h2 { font-size: 20px; }
+  .policy-section:nth-child(even) {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .legal-table, .legal-table thead, .legal-table tbody, .legal-table th, .legal-table td, .legal-table tr { display: block; }
+  .legal-table th { display: none; }
+  .legal-table td { border-bottom: none; padding: 4px 0; }
+  .legal-table tr { padding: 16px 0; border-bottom: 1px solid #e8ecf0; }
+  .legal-table td:first-child { width: auto; margin-bottom: 8px; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 40px 0 48px; }
+  .hero h1 { font-size: 2.25rem; }
+  .toc { padding: 20px 20px; }
+  .toc ol li a { font-size: 14px; }
+  .section-header { flex-direction: column; gap: 4px; }
+  .section-header h2 { font-size: 19px; }
+  .section-body { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+</style>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="contain">
+    <div class="hero-eyebrow reveal">Legal</div>
+    <h1 class="reveal reveal-d1">Sub-<em>processors</em></h1>
+    <p class="hero-sub reveal reveal-d2">Last Updated: October 6, 2026</p>
+  </div>
+</section>
+
+<!-- curve: dark → white -->
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffffff"/></svg></div>
+
+<!-- ═══ CONTENT ═══ -->
+<section class="policy-content">
+  <div class="policy-inner">
+
+    <div class="policy-section reveal">
+      <div class="section-body">
+        <p>Super 6 LLC d/b/a Cinebody ("Cinebody") uses the third-party service providers below to deliver the Cinebody platform. Each one may process personal data that our customers and their teams upload or create in Cinebody, only to provide its service to Cinebody and under written data protection terms.</p>
+        <p>None of these providers may use Cinebody customer data to train or improve their own AI models. Where a provider offers a setting that allows training on customer data, we keep it turned off.</p>
+        <p>This list covers providers that process customer personal data. It does not include tools that never receive it. How we handle personal data is described in our <a href="/privacy-policy">Privacy Policy</a>.</p>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>AI and video processing</h2>
+      </div>
+      <div class="section-body">
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>What they do for Cinebody</th>
+              <th>Based in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Anthropic</td>
+              <td>AI editing assistance: rough cuts, paper edits, graphics and coaching, working from transcripts, project briefs and still frames</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Google (Gemini API)</td>
+              <td>AI transcription and review of uploaded footage</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>ElevenLabs</td>
+              <td>Speech to text, AI voiceover and audio cleanup</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>fal.ai</td>
+              <td>AI subject cut-out and detection on short clip segments</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Modal</td>
+              <td>Computing for AI subject cut-out</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Mux</td>
+              <td>Video encoding, streaming playback and thumbnails</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Shotstack</td>
+              <td>Cloud rendering of finished videos</td>
+              <td>Australia</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Hosting and storage</h2>
+      </div>
+      <div class="section-body">
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>What they do for Cinebody</th>
+              <th>Based in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Supabase</td>
+              <td>Application database, account sign-in and file storage</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Cloudflare (R2)</td>
+              <td>Storage for original footage, renders and project files</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Vercel</td>
+              <td>Hosting for the Cinebody app and website, plus anonymous page speed and visit measurement</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Railway</td>
+              <td>Video rendering and data migration jobs</td>
+              <td>United States</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Payments, messaging and mobile</h2>
+      </div>
+      <div class="section-body">
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>What they do for Cinebody</th>
+              <th>Based in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Stripe</td>
+              <td>Payments, billing and filmer payouts</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Resend</td>
+              <td>Account and project emails</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Expo</td>
+              <td>Mobile app delivery and push notifications</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Google (Firebase Cloud Messaging)</td>
+              <td>Push notifications to Android devices</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Mapbox</td>
+              <td>Maps of filming locations</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td>Google Analytics</td>
+              <td>Website visitor analytics, only after a visitor accepts analytics cookies</td>
+              <td>United States</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Changes and questions</h2>
+      </div>
+      <div class="section-body">
+        <p>We update this page before we add or replace a sub-processor, and change the date at the top when we do. For questions about our sub-processors or to request a copy of our data processing terms, contact <a href="mailto:support@cinebody.com">support@cinebody.com</a>.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#0a0a0a"/></svg></div>
+
+<script>
+// Scroll progress bar
+(function(){
+  var bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }, { passive: true });
+})();
+
+// Reveal on scroll
+(function(){
+  var o = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        o.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el){ o.observe(el); });
+})();
+
+</script>
