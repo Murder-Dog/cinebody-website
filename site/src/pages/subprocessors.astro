@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../fragments/subprocessors.html?raw';
+---
+<!-- Unlisted: shared by link in customer notices. noindex here, and left out of the sitemap in astro.config.mjs. -->
+<Base title="Sub-processors" description="The third-party service providers Cinebody uses to process customer data." noindex={true}>
+  <Fragment set:html={body} />
+</Base>
