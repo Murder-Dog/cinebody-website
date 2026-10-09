@@ -629,10 +629,8 @@ if (!pageSchema && caseStudies[slug]) {
     if (parentW < 200) return false;
 
     var cs = getComputedStyle(track);
-    var parentLeft = parent.getBoundingClientRect().left;
     var vpW = Math.min(window.innerWidth, document.documentElement.clientWidth || window.innerWidth);
     if (vpW < 200) vpW = window.innerWidth;
-    var bleed = Math.max(0, Math.round(parentLeft));
     var vp = document.createElement('div');
     vp.className = 'cb-vp';
     // Full-bleed clip (viewport width) so a centered 84% card leaves a
@@ -640,11 +638,16 @@ if (!pageSchema && caseStudies[slug]) {
     // cards off-canvas after wrap.
     vp.style.cssText = 'position:relative;overflow:hidden;touch-action:pan-y;cursor:grab;box-sizing:border-box;' +
       'flex:0 0 ' + vpW + 'px;contain:inline-size;' +
-      'margin-left:' + (-bleed) + 'px;margin-right:0;padding:0;';
+      'margin-left:0;margin-right:0;padding:0;';
     vp.style.setProperty('width', vpW + 'px', 'important');
     vp.style.setProperty('min-width', vpW + 'px', 'important');
     vp.style.setProperty('max-width', vpW + 'px', 'important');
     parent.insertBefore(vp, track);
+    // Full-bleed from wherever the box actually lands. Measuring the parent's left
+    // edge missed gutters made of padding (.contain), which parked the strip 20px
+    // right of center on every case-study page.
+    var vpLeft = Math.round(vp.getBoundingClientRect().left);
+    if (vpLeft) vp.style.marginLeft = (-vpLeft) + 'px';
     vp.appendChild(track);
     track.classList.add('cb-tr');
     var gap = parseFloat(cs.columnGap || cs.gap) || 0;
