@@ -621,11 +621,7 @@ if (!pageSchema && caseStudies[slug]) {
     track.style.flexFlow = 'row nowrap';
     track.style.setProperty('justify-content', 'flex-start', 'important');
     track.style.setProperty('max-width', 'none', 'important');
-    if (!track.classList.contains('pipe-outputs')) {
-      track.style.setProperty('width', 'max-content', 'important');
-    } else {
-      track.style.width = '100%';
-    }
+    track.style.setProperty('width', 'max-content', 'important');
     if (!track.style.gap) track.style.gap = '14px';
 
     var parent = track.parentElement;
@@ -654,9 +650,10 @@ if (!pageSchema && caseStudies[slug]) {
     var gap = parseFloat(cs.columnGap || cs.gap) || 0;
 
     var cardPx = Math.min(340, Math.max(160, Math.round(vpW * 0.84)));
-    if (!track.classList.contains('pipe-outputs')) {
-      items.forEach(function (it) { lockCard(it, cardPx); });
-    }
+    // Lock EVERY card to pixels, .pipe-outputs included. .cb-tr forces the track to
+    // max-content, so a percentage card (the finished cuts were 84%) collapses to its
+    // label width, P measures < 80 and setup bails: the strip then sat on card 1 forever.
+    items.forEach(function (it) { lockCard(it, cardPx); });
     track.style.overflow = 'visible';
     track.style.margin = '0';
     track.style.padding = '0';
@@ -689,7 +686,7 @@ if (!pageSchema && caseStudies[slug]) {
       items.forEach(function (it) {
         var c = it.cloneNode(true);
         Array.prototype.forEach.call(c.querySelectorAll('img'), function (i) { i.draggable = false; });
-        if (!track.classList.contains('pipe-outputs')) lockCard(c, cardPx);
+        lockCard(c, cardPx);
         try { wirePlay(c); } catch (_) {}
         track.appendChild(c);
       });
