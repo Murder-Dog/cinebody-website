@@ -1,8 +1,10 @@
 import { defineMiddleware } from 'astro:middleware';
 import { INTRO_HTML, UPDATE_HTML } from './lib/research-content';
+import { DECK_HTML } from './lib/research-deck-content';
 
-// Password gate for the two investor microsites, and ONLY those four exact
-// paths (two pages, two unlock endpoints). Everything else on
+// Password gate for the three investor microsites (the full investor deck
+// plus its two teasers), and ONLY those six exact paths (three pages, three
+// unlock endpoints). Everything else on
 // www.cinebody.com is still a fully static build - this middleware returns
 // immediately (next()) for any other request, so it cannot affect them.
 //
@@ -28,7 +30,7 @@ type GateConfig = {
   unlockPath: string;
   cookie: string;
   token: string;
-  password: string;
+  passwords: string[];
   title: string;
   kicker: string;
   heading: string;
@@ -42,7 +44,7 @@ const GATES: GateConfig[] = [
     unlockPath: '/api/research/unlock-intro',
     cookie: 'cb_research_intro',
     token: 'cb-research-intro-unlocked-v1',
-    password: import.meta.env.RESEARCH_PASSWORD_INTRO || 'Cinebody2026Intro',
+    passwords: [import.meta.env.RESEARCH_PASSWORD_INTRO || 'Cinebody2026Intro'],
     title: 'Cinebody: investor intro',
     kicker: 'Investor Intro &middot; Private',
     heading: 'A quick look at Cinebody.',
@@ -54,12 +56,33 @@ const GATES: GateConfig[] = [
     unlockPath: '/api/research/unlock-update',
     cookie: 'cb_research_update',
     token: 'cb-research-update-unlocked-v1',
-    password: import.meta.env.RESEARCH_PASSWORD_UPDATE || 'Cinebody2026Update',
+    passwords: [import.meta.env.RESEARCH_PASSWORD_UPDATE || 'Cinebody2026Update'],
     title: 'Cinebody: investor update',
     kicker: 'Investor Update &middot; Private',
     heading: 'An update for our investors.',
     sub: 'A short update for current Cinebody investors. Private, requires its own password.',
     html: UPDATE_HTML,
+  },
+  {
+    // Same passwords as the original on app.cinebody.com, so links already
+    // sent keep working: the env value (comma-separated) or its default,
+    // plus the fixed fallback.
+    page: '/research/cinebody-investor-deck',
+    unlockPath: '/api/research/unlock-investor',
+    cookie: 'cb_research_investor',
+    token: 'cb-research-investor-unlocked-v1',
+    passwords: [
+      ...(import.meta.env.RESEARCH_PASSWORD_INVESTOR || 'CinebodyRaise')
+        .split(',')
+        .map((p: string) => p.trim())
+        .filter(Boolean),
+      'Cinebody2026Investor',
+    ],
+    title: 'Cinebody: investor overview',
+    kicker: 'Investor Overview &middot; Private',
+    heading: 'Ten years of real revenue. Now the platform.',
+    sub: 'Cinebody&rsquo;s business today, the AI platform underway, the go-to-market plan, and the raise. Private, requires the investor password.',
+    html: DECK_HTML,
   },
 ];
 
@@ -166,7 +189,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     } catch {
       // malformed body -> treated as wrong password below
     }
-    if (password !== unlockGate.password) {
+    if (!unlockGate.passwords.includes(password)) {
       return new Response(JSON.stringify({ ok: false }), {
         status: 401,
         headers: { 'content-type': 'application/json' },
@@ -185,7 +208,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     });
   }
 
-  // Not one of the four gated paths - the entire rest of www.cinebody.com.
+  // Not one of the six gated paths - the entire rest of www.cinebody.com.
   // Pass straight through.
   return next();
 });
