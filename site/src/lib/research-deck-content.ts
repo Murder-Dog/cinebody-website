@@ -1252,6 +1252,23 @@ footer{padding:2.2rem 1.5rem 2.6rem !important;margin-top:0 !important}
 footer>div:first-child{width:118px !important;margin-bottom:1.1rem !important}
 footer p{margin-bottom:1.1rem !important}
 .confbar{margin-top:1.6rem !important;padding-top:0 !important;border-top:none !important;font-size:.72rem}
+.mk-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1.8rem 0 0}
+.mk-tile,.mk-case{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1rem;font-family:var(--sans)}
+.mk-n{font-family:var(--mono);font-weight:700;font-size:1.6rem;letter-spacing:-0.02em;line-height:1.05;color:var(--ink);font-variant-numeric:tabular-nums}
+.mk-cyan{color:var(--cyan)}
+.mk-pink{color:var(--pink)}
+.mk-l{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-top:.45rem;line-height:1.4}
+.mk-src{font-family:var(--sans);font-size:.76rem;color:var(--ink-3);margin:.9rem 0 0;line-height:1.55}
+.mk-h3{font-family:var(--sans);font-size:1.25rem;font-weight:700;letter-spacing:-0.01em;margin:2.6rem 0 .5rem;color:var(--ink)}
+.mk-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1.2rem}
+.mk-case{position:relative;overflow:hidden}
+.mk-case::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.mk-base::before{background:var(--cyan)}
+.mk-up::before{background:var(--pink)}
+.mk-t{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:.55rem}
+.mk-case p{font-size:.84rem;color:var(--ink-2);line-height:1.5;margin:.6rem 0 0}
+.mk-ill{display:inline-block;margin-top:.6rem;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px dashed var(--line);border-radius:4px;padding:.1rem .4rem}
+@media(max-width:760px){.mk-tiles,.mk-cases{grid-template-columns:1fr}}
 .disclaimer{margin:2.4rem 0 3rem;padding-top:1.6rem;border-top:1px solid var(--line);font-family:var(--sans)}
 .disclaimer p{font-size:.68rem;line-height:1.6;color:var(--ink-3);margin:0 0 .8rem;max-width:none;text-wrap:pretty}
 .wrap{padding-bottom:1.5rem !important}
@@ -1547,6 +1564,24 @@ footer p{margin-bottom:1.1rem !important}
   </section>
 
     
+<section class="sec fade">
+    <p class="eyebrow"><span class="eb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 15l4-4 3 3 6-6"></path></svg></span>Market size</p>
+    <h2>The brand video market is massive. Our capture model is bottom-up.</h2>
+    <div class="mk-tiles">
+      <div class="mk-tile"><div class="mk-n">$130B</div><div class="mk-l">TAM &middot; brand spend on creator &amp; social video, growing 26% YoY, 4x the media industry</div></div>
+      <div class="mk-tile"><div class="mk-n mk-cyan">$9.6B</div><div class="mk-l">SAM &middot; enterprise UGC video production, English-speaking markets</div></div>
+      <div class="mk-tile"><div class="mk-n mk-pink">$7&ndash;10M</div><div class="mk-l">SOM &middot; ARR, 3-year bottom-up capture across SMB, mid-market &amp; enterprise SaaS</div></div>
+    </div>
+    <p class="mk-src">Sources: IAB State of Creator Advertising 2026, Grand View Research UGC Platform Market Report 2026.</p>
+    <h3 class="mk-h3">Valued at $10.4M today. Here is where it could go.</h3>
+    <p class="lead">Software companies are valued on recurring revenue. Our bottom-up SOM puts Cinebody at $7&ndash;10M ARR within three years, and that changes the math.</p>
+    <div class="mk-cases">
+      <div class="mk-case mk-base"><div class="mk-t">Base case &middot; 7&ndash;10x</div><div class="mk-n mk-cyan">$49&ndash;100M</div><p>Our $7&ndash;10M ARR SOM at a standard multiple for defensible, patented SaaS. $7M is 700 SMB, 60 mid-market and 8 enterprise accounts, plus partner integrations.</p></div>
+      <div class="mk-case mk-up"><div class="mk-t">Upside &middot; 30&ndash;100x</div><div class="mk-n mk-pink">$300M&ndash;$1B+</div><p>Strategic partner integrations embed Cinebody inside global brands and agencies, making it the operating system for brand video. Competing acquirers pay a control premium.</p><span class="mk-ill">Illustrative</span></div>
+    </div>
+    <p class="mk-src">7&ndash;10x is standard for defensible SaaS with a patented moat (Bessemer Venture Partners, State of the Cloud 2025). The upside case is illustrative, not part of the plan. Contains forward-looking statements; <a href="#disclaimer" style="color:inherit;text-decoration:underline;text-underline-offset:2px">see disclaimer below</a>.</p>
+  </section>
+
 <section class="sec fade">
     <p class="eyebrow"><span class="eb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>The raise</p>
     <h2>Fueling two years of growth toward the next inflection</h2>
