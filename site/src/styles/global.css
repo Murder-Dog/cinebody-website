@@ -416,6 +416,13 @@ p, li { text-wrap: pretty; }
   padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(235,0,139,0.55);
   color: #ff5cb8; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
 }
+/* Centered stack (yellow CTA band): the tag sits beside the label so the two badges stay symmetric. */
+.cta-apps .store-badges::after { display: none; }
+.cta-apps__label { display: inline-flex; align-items: center; gap: 10px; }
+.cta-apps:has(.store-badge--soon) .cta-apps__label::after {
+  content: 'In private beta'; padding: 3px 9px; border-radius: 999px; border: 1px solid rgba(235,0,139,0.6);
+  color: var(--pink); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+}
 @media (max-width: 768px) { .footer-apps { justify-content: center; } }
 .sig-bar { height: 3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal) 33.33%, var(--yellow) 33.33%, var(--yellow) 66.66%, var(--pink) 66.66%); }
 .footer .contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
