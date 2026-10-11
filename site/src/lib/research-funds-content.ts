@@ -101,7 +101,7 @@ export const FUNDS_HTML = `<!doctype html>
       <thead><tr><th>Role</th><th>Description / Notes</th></tr></thead>
       <tbody>
         <tr><td>Senior Product Designer</td><td>Owns the product experience across the app and web platform, working hands-on with AI design and coding tools. US remote.</td></tr>
-        <tr><td>Growth Marketer (FT)</td><td>Primarily focuses on supporting sales growth through paid funnel development, while spearheading marketing and communication tactics to support all facets of the business</td></tr>
+        <tr><td>Growth Marketer</td><td>Primarily focuses on supporting sales growth through paid funnel development, while spearheading marketing and communication tactics to support all facets of the business</td></tr>
         <tr class="total"><td>Total, both roles (first-year salaries)</td><td class="num">$275,000</td></tr>
       </tbody>
     </table>
@@ -176,7 +176,6 @@ export const FUNDS_HTML = `<!doctype html>
     <p>Not part of this primary raise, but the opportunity does exist for any investor to buy out other, smaller stakeholders and help consolidate the cap table. This would be on top of the $1.5M being raised here.</p>
   </div>
 
-  <a class="backlink" href="/research/cinebody-investor-deck">&larr; Back to the investor overview</a>
 </div>
 </body>
 </html>
