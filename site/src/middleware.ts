@@ -1,10 +1,11 @@
 import { defineMiddleware } from 'astro:middleware';
 import { INTRO_HTML, UPDATE_HTML } from './lib/research-content';
 import { DECK_HTML } from './lib/research-deck-content';
+import { FUNDS_HTML } from './lib/research-funds-content';
 
-// Password gate for the three investor microsites (the full investor deck
-// plus its two teasers), and ONLY those six exact paths (three pages, three
-// unlock endpoints). Everything else on
+// Password gate for the four investor microsites (the full investor deck,
+// its two teasers, and the use-of-funds breakdown), and ONLY those eight
+// exact paths (four pages, four unlock endpoints). Everything else on
 // www.cinebody.com is still a fully static build - this middleware returns
 // immediately (next()) for any other request, so it cannot affect them.
 //
@@ -83,6 +84,25 @@ const GATES: GateConfig[] = [
     heading: 'Ten years of real revenue. Now the platform.',
     sub: 'Cinebody&rsquo;s business today, the AI platform underway, the go-to-market plan, and the raise. Private, requires the investor password.',
     html: DECK_HTML,
+  },
+  {
+    // Its own password, deliberately separate from the deck's, so the deck
+    // password never unlocks this page. Set only through the
+    // RESEARCH_PASSWORD_FUNDS env var (comma-separated); with it unset,
+    // nothing unlocks the page.
+    page: '/research/cinebody-use-of-funds',
+    unlockPath: '/api/research/unlock-funds',
+    cookie: 'cb_research_funds',
+    token: 'cb-research-funds-unlocked-v1',
+    passwords: (import.meta.env.RESEARCH_PASSWORD_FUNDS || '')
+      .split(',')
+      .map((p: string) => p.trim())
+      .filter(Boolean),
+    title: 'Cinebody: use of funds (private)',
+    kicker: 'Use of Funds &middot; Private',
+    heading: 'The raise, broken down.',
+    sub: 'Category-by-category use-of-funds detail for the current raise. Private, requires its own password, separate from the investor overview.',
+    html: FUNDS_HTML,
   },
 ];
 
@@ -208,7 +228,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     });
   }
 
-  // Not one of the six gated paths - the entire rest of www.cinebody.com.
+  // Not one of the eight gated paths - the entire rest of www.cinebody.com.
   // Pass straight through.
   return next();
 });
