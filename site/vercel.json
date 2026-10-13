@@ -223,5 +223,15 @@
       "destination": "/sitemap-index.xml",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/wme",
+      "destination": "https://cinebody-wme.vercel.app/"
+    },
+    {
+      "source": "/wme/:path*",
+      "destination": "https://cinebody-wme.vercel.app/:path*"
+    }
   ]
 }
