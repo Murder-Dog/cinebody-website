@@ -12,12 +12,8 @@ No em dashes, no emojis. **PRICING NOT LANDED** — there's a calculator in flux
 
 ## Tiers (current state — 4 tiers, incl. a real Free tier)
 
-### Free: "For getting started" ($0, public from Oct 15)
-- Shown on the marketing pricing page. Limits match `cinebody-platform` PRICING.md (Sep 28) and `lib/tiers.ts`:
-- 1 project, 1 admin seat, up to 3 people filming at once, 10 GB storage
-- 1 app video a month (resets on the 1st), 3 chat edits per video, graphics and a new song once each per video
-- Save and share at 1080p, ending on the Cinebody end card; no desktop editor
-- AI shot list + clip review; no auto-editor
+### Free — HELD, DO NOT SHOW (this IS the gen-pop free tier we parked)
+- Exists in the product ($0: 1 project, 1 admin, 10 GB, AI shot list + clip review, no auto-editor) but **do not show it on the marketing pricing page for now.** Public pricing = Plus / Pro / Enterprise only.
 
 ### Plus — "For small teams" — $300/mo ($250/mo annual)
 - Unlimited active projects · 2 admin seats · unlimited filmers
@@ -46,7 +42,7 @@ No em dashes, no emojis. **PRICING NOT LANDED** — there's a calculator in flux
 
 ## OPEN QUESTIONS (need Scott)
 - **The pricing model isn't landed** (calculator in flux). Hold the pricing page as a placeholder until it's decided; don't publish numbers.
-- ~~Free tier reconciliation~~ RESOLVED: the product Free tier IS the gen-pop free tier, and it goes public on the pricing page Oct 15. Public pricing = Free / Plus / Pro / Enterprise.
+- ~~Free tier reconciliation~~ RESOLVED: the product Free tier IS the gen-pop free tier; HELD, do not show on the marketing site for now. Public pricing = Plus / Pro / Enterprise.
 - Confirm monthly vs annual display and the exact numbers once the calculator lands.
 
 ## CTA
