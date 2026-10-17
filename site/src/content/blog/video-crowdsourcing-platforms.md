@@ -225,7 +225,7 @@ cardImage: "/blog/video-crowdsourcing-platforms/card.webp"
 
  
  <h3><strong>4. CineCoup</strong></h3>
-<p><a href="http://archive.cinecoup.com/">CineCoup</a> caters to the indie filmmaker community. Filmmakers submit teasers of their ideas, and through community voting and feedback, they compete for financing and distribution deals. Although it’s not necessarily applicable to brands looking for marketing campaigns, it's a platform that integrates crowdsourcing with the potential for real-world cinematic distribution. </p>
+<p>CineCoup caters to the indie filmmaker community. Filmmakers submit teasers of their ideas, and through community voting and feedback, they compete for financing and distribution deals. Although it’s not necessarily applicable to brands looking for marketing campaigns, it's a platform that integrates crowdsourcing with the potential for real-world cinematic distribution. </p>
 
 
  
