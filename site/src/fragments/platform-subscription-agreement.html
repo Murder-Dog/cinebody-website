@@ -1,0 +1,535 @@
+<!-- Cinebody V4, Platform Subscription Agreement (online version).
+     Source: Super 6 - Form Platform Subscription Agreement (online) v2 2024-06-05 (Clean).docx
+     Style and script copied from terms-of-service.html. -->
+
+<!-- Cinebody V4, Platform Subscription Agreement
+     Paste this into a single Code Block on the terms page.
+     Requires: Code Injection (header + footer), Custom CSS, Global Footer -->
+
+<style>
+/* ═══════════════════════════════════════════════
+   CINEBODY V4, PLATFORM SUBSCRIPTION AGREEMENT
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --teal: #00bcf1;
+  --teal-dim: rgba(0,188,241,0.6);
+  --yellow: #ffec03;
+  --pink: #eb008b;
+  --bg: #0a0a0a;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.1);
+  --border-hover: rgba(0,188,241,0.2);
+  --text: #e8e8e8;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-muted: rgba(255,255,255,0.3);
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Plus Jakarta Sans', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius: 12px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+body > * { position: relative; z-index: 1; }
+
+/* ── CURVED SECTION DIVIDERS ── */
+.curve {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  line-height: 0;
+  font-size: 0;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  background: none !important;
+}
+.curve svg {
+  display: block;
+  width: 100%;
+  height: 70px;
+}
+@media (max-width: 600px) {
+  .curve svg { height: 90px; }
+}
+
+/* ── CONTAINER ── */
+.contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+/* ── SECTION LABEL ── */
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--teal), var(--pink));
+  z-index: 9999; transition: none;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.vis { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* ── SIGNATURE BAR ── */
+.sig-bar { height: 3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal) 33.33%, var(--yellow) 33.33%, var(--yellow) 66.66%, var(--pink) 66.66%); }
+
+/* ═══════════════════════════
+   HERO, short, centered
+   ═══════════════════════════ */
+.hero { padding: 100px 0 100px; position: relative; text-align: center; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #0a0a0a 0%, #041a24 100%); }
+
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal);
+  background: rgba(0,188,241,0.08); border: 1px solid rgba(0,188,241,0.15);
+  padding: 8px 18px; border-radius: 100px; margin-bottom: 28px;
+}
+
+.hero-eyebrow::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); box-shadow: 0 0 8px rgba(0,188,241,0.5);
+}
+
+.hero h1 {
+  font-size: clamp(2.75rem, 5.5vw, 4rem);
+  font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 24px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--teal) 0%, #33d6ff 50%, var(--teal) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero-body {
+  font-size: 1.1rem; line-height: 1.7; color: var(--text-dim); max-width: 560px; margin: 0 auto 0;
+}
+
+/* ═══════════════════════════
+   TERMS CONTENT, white section
+   ═══════════════════════════ */
+.terms-content {
+  background: #fff;
+  color: #333;
+  padding: 80px 0 100px;
+  margin-bottom: -2px;
+}
+
+.terms-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* Table of Contents */
+.terms-toc {
+  background: #f6f8fa;
+  border-radius: 12px;
+  padding: 36px 40px;
+  margin-bottom: 56px;
+  border: 1px solid #e8eaed;
+}
+
+.terms-toc h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.terms-toc ol {
+  list-style: none;
+  counter-reset: toc-counter;
+  padding: 0;
+}
+
+.terms-toc > ol > li {
+  margin-bottom: 8px;
+}
+
+.terms-toc ol ol {
+  margin-top: 6px;
+  margin-left: 20px;
+}
+
+.terms-toc ol ol li {
+  margin-bottom: 4px;
+}
+
+.terms-toc a {
+  color: #555;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.terms-toc a:hover {
+  color: var(--teal);
+}
+
+.toc-part-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  margin-top: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.toc-part-label--pink {
+  color: var(--pink);
+}
+
+/* Part Headers */
+.part-header {
+  margin: 64px 0 40px;
+  padding: 28px 32px;
+  border-radius: 12px;
+  background: #f6f8fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.part-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--teal);
+}
+
+.part-header--pink::before {
+  background: var(--pink);
+}
+
+.part-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.part-header p {
+  font-size: 0.88rem;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Subsection dividers ("Terms Applicable to Customers/Filmers") */
+.subsection-divider {
+  margin: 48px 0 32px;
+  padding-top: 20px;
+  border-top: 2px solid #e8eaed;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+}
+
+/* Section Headings */
+.terms-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 32px;
+}
+
+.terms-section h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.terms-section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  margin: 24px 0 10px;
+}
+
+.terms-section p {
+  margin-bottom: 14px;
+}
+
+.terms-section ul, .terms-section ol {
+  margin: 12px 0 16px 24px;
+}
+
+.terms-section li {
+  margin-bottom: 6px;
+}
+
+/* Warning/Notice blocks */
+.terms-warning {
+  background: #fef9e7;
+  border: 1px solid #f5e6a3;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5a4a00;
+  line-height: 1.6;
+}
+
+.terms-notice {
+  background: #f0f7ff;
+  border: 1px solid #cce0f5;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  color: #1a4a7a;
+  line-height: 1.6;
+}
+
+/* Introduction */
+.terms-intro {
+  margin-bottom: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.terms-intro h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+/* Effective date */
+.terms-meta {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+}
+
+/* ═══════════════════════════
+   FOOTER
+   ═══════════════════════════ */
+
+/* ═══════════════════════════
+   RESPONSIVE
+   ═══════════════════════════ */
+@media (max-width: 1000px) {
+}
+
+@media (max-width: 768px) {
+  .terms-toc { padding: 28px 24px; }
+  .part-header { padding: 24px 24px; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 60px 0 60px; }
+  .hero h1 { font-size: 2.25rem; }
+  .terms-content { padding: 48px 0 64px; }
+  .terms-toc { padding: 24px 20px; }
+  .part-header { padding: 20px 20px; margin: 48px 0 32px; }
+  .part-header h2 { font-size: 1.25rem; }
+  .terms-section h3 { font-size: 1.05rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="contain">
+    <div class="reveal">
+      <div class="hero-eyebrow">Legal</div>
+    </div>
+    <h1 class="reveal reveal-d1">Platform Subscription <em>Agreement</em></h1>
+    <p class="hero-body reveal reveal-d2">Super 6 LLC d/b/a Cinebody</p>
+  </div>
+</section>
+
+<!-- ═══ CURVE: dark → white ═══ -->
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffffff"/></svg></div>
+
+<!-- ═══ AGREEMENT CONTENT ═══ -->
+<section class="terms-content">
+  <div class="terms-inner">
+
+    <p class="terms-meta reveal">Last Updated: June 6, 2024</p>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="terms-toc reveal">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">Definitions</a></li>
+        <li><a href="#s2">Access Grant and Other Rights</a></li>
+        <li><a href="#s3">Support Services</a></li>
+        <li><a href="#s4">Proprietary Rights</a></li>
+        <li><a href="#s5">Fees and Payment</a></li>
+        <li><a href="#s6">Warranty; Disclaimer</a></li>
+        <li><a href="#s7">Indemnity</a></li>
+        <li><a href="#s8">Limitation of Liability</a></li>
+        <li><a href="#s9">Confidentiality</a></li>
+        <li><a href="#s10">Term and Termination</a></li>
+        <li><a href="#s11">General</a></li>
+      </ol>
+    </div>
+
+    <!-- INTRODUCTION -->
+    <div class="terms-intro reveal" id="introduction">
+      <h2>Platform Subscription Agreement</h2>
+      <p>This Platform Subscription Agreement (“Agreement”) is between Super 6 LLC, d/b/a Cinebody, a Colorado limited liability company (“Cinebody”) and the party accepting this Agreement (“Customer”) to establish the terms pursuant to which Customer will purchase, and Cinebody will provide, access to and use of Cinebody’s proprietary Platform (as defined below), pursuant to the terms and conditions of this Agreement. This Agreement is effective as of the date Customer accepts this Agreement (the “Effective Date”)</p>
+      <div class="terms-warning">CUSTOMER ACCEPTS THIS AGREEMENT BY: (1) SIGNING AN ORDER (AS DEFINED BELOW) THAT REFERENCES THIS AGREEMENT; (2) PAYING AN INVOICE THAT REFERENCES THE PLATFORM OR THIS AGREEMENT; (3) SUBMITTING CREDIT CARD OR OTHER PAYMENT INFORMATION TO CINEBODY; OR (4) OTHERWISE UTILIZING THE PLATFORM.</div>
+      <div class="terms-warning">THE PLATFORM AND SERVICES AND CUSTOMER’S UTILIZATION OF THE PLATFORM AND SERVICES ARE EXPRESSLY CONDITIONED ON CUSTOMER’S ACCEPTANCE OF THIS AGREEMENT, AND CUSTOMER MAY ONLY UTILZE THE PLATFORM AND SERVICES, AND CINEBODY WILL ONLY PROVIDE THE PLATFORM AND SERVICES, UPON THE TERMS AND CONDITIONS HEREIN. ANY INDIVIDUAL AGREEING TO THIS AGREEMENT ON BEHALF OF A LEGAL ENTITY REPRESENTS AND WARRANTS THAT SUCH INDIVIDUAL HAS THE AUTHORITY TO BIND SUCH ENTITY TO THIS AGREEMENT. NOTWITHSTANDING THE FOREGOING, IF THE PARTIES HAVE OTHERWISE AGREED TO A SEPARATE WRITTEN AGREEMENT SIGNED BY AUTHORIZED REPRESENTATIVES OF EACH PARTY GOVERNING THE PLATFORM AND SERVICES (THE “SERVICES AGREEMENT”), SUCH SERVICES AGREEMENT APPLIES AND THIS AGREEMENT WILL BE OF NO FORCE OR EFFECT.</div>
+      <p>The parties agree as follows:</p>
+    </div>
+
+    <div class="terms-section reveal" id="s1">
+      <h3><span class="section-num">1.</span> Definitions</h3>
+      <p><strong>1.1</strong> “Brand” means each brand linked to Customer’s account and promoted by Customer on the Platform.</p>
+      <p><strong>1.2</strong> “Customer Data” means any data, content and information provided or delivered by Customer and/or any User to Cinebody.</p>
+      <p><strong>1.3</strong> “Documentation” means the user manuals provided to Customer with the Platform in either electronic, online help files or hard copy format.</p>
+      <p><strong>1.4</strong> “Intellectual Property Rights” means all known or hereafter existing worldwide copyrights, trademarks, service marks, trade secrets, patents, patent applications, know-how, moral rights, contract rights, and other proprietary rights.</p>
+      <p><strong>1.5</strong> “Order” means any written order document executed by Cinebody and Customer setting forth the terms and conditions relating to the Platform and any other services provided under this Agreement. Each Order is incorporated by reference into this Agreement.</p>
+      <p><strong>1.6</strong> “Platform” means Cinebody’s software-as-a-service platform allowing customers to upload, share, edit and otherwise collaborate on video clips and other multimedia in connection with the promotion of Brands.</p>
+      <p><strong>1.7</strong> “Users” means individuals who are authorized by Customer to use the Platform on behalf of Customer and have been supplied user identifications by Cinebody for this purpose. Customer assumes full responsibility for its Users’ conduct and compliance with this Agreement.</p>
+    </div>
+
+    <div class="terms-section reveal" id="s2">
+      <h3><span class="section-num">2.</span> Access Grant and Other Rights</h3>
+      <p><strong>2.1</strong> <strong>Access.</strong> Subject to the terms and conditions of this Agreement, Cinebody grants to Customer during the Term (as defined below), a non-exclusive, non-transferable right to access and use the Platform in support of the number of Brands for which Customer has paid the applicable fees, in accordance with the Documentation, applicable laws and regulations and any limitations set forth in the applicable Order.</p>
+      <p><strong>2.2</strong> <strong>Restrictions On Use.</strong> Customer will not, and will not permit their employees and third party contractors to (a) modify, adapt, alter, translate, or create derivative works from the Platform; (b) sublicense, lease, rent, loan, sell, distribute, make available or otherwise transfer the Platform to any third party, (c) reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code for the Platform; (d) otherwise use or copy the Platform except as expressly allowed under Section 2.1 above; or (e) interfere in any manner with the operation of the Platform).</p>
+      <p><strong>2.3</strong> <strong>Customer Data.</strong> Customer retains all right, title and interest in and to the Customer Data, and Cinebody acknowledges that it neither owns nor acquires any additional rights in and to the Customer Data not expressly granted by this Agreement. Customer hereby grants to Cinebody a non-exclusive right and license to use the Customer Data solely for the limited purpose of, and solely as necessary for, performing Cinebody’s obligations hereunder for the benefit of Customer. Cinebody shall not use the Customer Data for the benefit of any other customer of Cinebody, or for any other purpose, without Customer’s prior written approval. Customer represents and warrants that it has the right to use the Customer Data and provide the Customer Data to Cinebody.</p>
+    </div>
+
+    <div class="terms-section reveal" id="s3">
+      <h3><span class="section-num">3.</span> Support Services</h3>
+      <p>Subject to the terms and conditions of this Agreement, Cinebody will provide Customer with customer support as described in the applicable Order (“Support Services”).</p>
+    </div>
+
+    <div class="terms-section reveal" id="s4">
+      <h3><span class="section-num">4.</span> Proprietary Rights</h3>
+      <p>The Platform and all worldwide Intellectual Property Rights therein are the exclusive property of Cinebody and its suppliers. All rights in and to the Platform not expressly granted to Customer in this Agreement are reserved by Cinebody and its suppliers. Customer will not remove, alter, or obscure any proprietary notices (including copyright notices) of Cinebody or its suppliers on the Platform.</p>
+    </div>
+
+    <div class="terms-section reveal" id="s5">
+      <h3><span class="section-num">5.</span> Fees and Payment</h3>
+      <p>Customer will pay to Cinebody the fees set forth in the applicable Order (“Fees”). All Fees are non-refundable, except as otherwise set out in this Agreement or agreed to by the parties. Unless otherwise expressly provided in this Agreement, Customer will pay all invoices within fifteen (15) days after receipt. Fees exclude, and Customer will make all payments of fees to Cinebody free and clear of all applicable sales, use, and other taxes and similar charges. All prices and payments shall be in U.S. dollars.</p>
+    </div>
+
+    <div class="terms-section reveal" id="s6">
+      <h3><span class="section-num">6.</span> Warranty; Disclaimer</h3>
+      <p><strong>6.1</strong> Cinebody warrants that the Platform will operate substantially as described in the applicable published Documentation. Cinebody does not warrant that the Platform will be completely error-free or uninterrupted. If Customer notifies Cinebody of a reproducible error in the Platform that indicates a breach of the foregoing warranty (each, an “Error”) within 30 days after Customer experiences such Error, Cinebody will, as its sole obligation and Customer’s exclusive remedy for any breach of the warranty, (a) at Cinebody’s expense, use commercially reasonable efforts to correct or provide a workaround for such Error; or (b) if Cinebody is unable to correct or provide a workaround for such Error within 60 days after receiving notice of such Error from Customer, Customer may terminate this Agreement upon notice to Cinebody and, Cinebody will refund the amounts paid by Customer for access to the Platform for the period during which the Platform was not usable by Customer.</p>
+      <div class="terms-warning">6.2 EXCEPT AS EXPRESSLY PROVIDED IN THIS SECTION 6, NEITHER PARTY MAKES ANY WARRANTIES OF ANY KIND AND EACH PARTY SPECIFICALLY DISCLAIMS ALL OTHER WARRANTIES, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING, WITHOUT LIMITATION, ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, AND ANY WARRANTIES ARISING FROM COURSE OF DEALING OR COURSE OF PERFORMANCE.</div>
+    </div>
+
+    <div class="terms-section reveal" id="s7">
+      <h3><span class="section-num">7.</span> Indemnity</h3>
+      <p><strong>7.1</strong> <strong>Cinebody.</strong> Cinebody shall defend any claim, suit, or action against Customer brought by a third party to the extent based on an allegation that the Platform infringes any intellectual property rights of such third party (a “Customer Claim”), and Cinebody shall indemnify and hold Customer harmless, from and against damages, losses, liabilities, and expenses (including reasonable attorneys’ fees and other legal expenses) (collectively, “Losses”) that are specifically attributable to such Customer Claim or those costs and damages agreed to in a settlement of such Customer Claim. The foregoing obligations are conditioned on Customer: (a) promptly notifying Cinebody in writing of such Customer Claim; (b) giving Cinebody sole control of the defense thereof and any related settlement negotiations; and (c) cooperating and, at Cinebody’s request and expense, assisting in such defense. In the event that the use of the Platform is enjoined, Cinebody shall, at its option and at its own expense either: (i) procure for Customer the right to continue using the Platform; (ii) replace the Platform with a non-infringing but functionally equivalent product; (iii) modify the Platform so it becomes non-infringing; or (iv) terminate this Agreement and refund the amounts Customer paid for access to the Platform that relate to the period during which Customer was not able to use the Platform. Notwithstanding the foregoing, Cinebody will have no obligation under this Section 7.1 with respect to any infringement claim based upon: (1) any use of the Platform not in accordance with this Agreement; (2) any use of the Platform in combination with products, equipment, software, or data that Cinebody did not supply or approve of if such infringement would have been avoided without the combination with such other products, equipment, software or data; (3) any modification of the Platform by any person other than Cinebody or its authorized agents or subcontractors; or (4) any Customer Data. This Section 7.1 states Cinebody’s entire liability and Customer’s sole and exclusive remedy for infringement claims or actions.</p>
+      <p><strong>7.2</strong> <strong>Customer.</strong> Customer shall defend, any claim, suit, or action against Cinebody brought by a third party to the extent that such claim, suit, or action is based upon: (a) Cinebody’s or Customer’s use of any Customer Data; or (b) Customer’s breach of Section 2.2 (each, a “Cinebody Claim”) and Customer shall indemnify and hold Cinebody harmless, from and against Losses that are specifically attributable to such Cinebody Claim or those costs and damages agreed to in a settlement of such Cinebody Claim. The foregoing obligations are conditioned on Cinebody: (i) promptly notifying Customer in writing of such Cinebody Claim; (ii) giving Customer sole control of the defense thereof and any related settlement negotiations; and (iii) cooperating and, at Customer’s request and expense, assisting in such defense. Notwithstanding the foregoing, Customer will have no obligation under this Section 7.2 or otherwise with respect to any Cinebody Claim to the extent based upon Cinebody’s use of the Customer Data in violation of this Agreement.</p>
+    </div>
+
+    <div class="terms-section reveal" id="s8">
+      <h3><span class="section-num">8.</span> Limitation of Liability</h3>
+      <div class="terms-warning">IN NO EVENT WILL EITHER PARTY BE LIABLE FOR ANY CONSEQUENTIAL, INDIRECT, EXEMPLARY, SPECIAL, OR INCIDENTAL DAMAGES, OR FOR ANY LOST PROFITS OR COSTS OF SUBSTITUTE GOODS OR SERVICES, ARISING FROM OR RELATING TO THIS AGREEMENT, HOWEVER CAUSED AND UNDER ANY THEORY OF LIABILITY (INCLUDING NEGLIGENCE), EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. CINEBODY’S TOTAL CUMULATIVE LIABILITY IN CONNECTION WITH THIS AGREEMENT AND THE PLATFORM, WHETHER IN CONTRACT OR TORT OR OTHERWISE, WILL NOT EXCEED THE TOTAL FEES PAID BY CUSTOMER UNDER THIS AGREEMENT.</div>
+    </div>
+
+    <div class="terms-section reveal" id="s9">
+      <h3><span class="section-num">9.</span> Confidentiality</h3>
+      <p><strong>9.1</strong> <strong>Confidential Information.</strong> Each party (the “Disclosing Party”) may from time to time disclose to the other party (the “Receiving Party”) certain information regarding the business of the Disclosing Party and its suppliers, including technical, marketing, financial, employee, customer, planning, and other confidential or proprietary information (“Confidential Information”). Any information that the Receiving Party knew or should have known, under the circumstances, was considered confidential or proprietary by the Disclosing Party will be considered Confidential Information of the Disclosing Party.</p>
+      <p><strong>9.2</strong> <strong>Protection of Confidential Information.</strong> The Receiving Party will not use any Confidential Information of the Disclosing Party for any purpose not expressly permitted by this Agreement, and will disclose the Confidential Information of the Disclosing Party only to the employees or contractors of the Receiving Party who have a need to know such Confidential Information for purposes of this Agreement and who are under a duty of confidentiality no less restrictive than the Receiving Party’s duty hereunder. The Receiving Party will protect the Disclosing Party’s Confidential Information from unauthorized use, access, or disclosure in the same manner as the Receiving Party protects its own confidential or proprietary information of a similar nature and with no less than reasonable care.</p>
+      <p><strong>9.3</strong> <strong>Exceptions.</strong> The Receiving Party’s obligations under Section 9.2 with respect to any Confidential Information of the Disclosing Party will terminate if such information: (a) was already known to the Receiving Party at the time of disclosure by the Disclosing Party; (b) was disclosed to the Receiving Party by a third party who had the right to make such disclosure without any confidentiality restrictions; (c) is, or through no fault of the Receiving Party has become, generally available to the public; or (d) was independently developed by the Receiving Party without access to, or use of, the Disclosing Party’s Confidential Information. In addition, the Receiving Party will be allowed to disclose Confidential Information of the Disclosing Party to the extent that such disclosure is required by law or by the order of a court of similar judicial or administrative body, provided that the Receiving Party notifies the Disclosing Party of such required disclosure promptly and in writing and cooperates with the Disclosing Party, at the Disclosing Party’s request and expense, in any lawful action to contest or limit the scope of such required disclosure or obtain a protective order.</p>
+      <p><strong>9.4</strong> <strong>Return of Confidential Information.</strong> The Receiving Party will return to the Disclosing Party or destroy all Confidential Information of the Disclosing Party in the Receiving Party’s possession or control promptly upon the written request of the Disclosing Party; provided that the Disclosing Party may keep one copy for its legal and archival purposes.</p>
+    </div>
+
+    <div class="terms-section reveal" id="s10">
+      <h3><span class="section-num">10.</span> Term and Termination</h3>
+      <p><strong>10.1</strong> <strong>Term.</strong> The term of this Agreement will begin on the Effective Date and, unless terminated earlier in accordance with this Agreement, continues until all Orders have terminated (the “Term”).</p>
+      <p><strong>10.2</strong> <strong>Order Term.</strong> The initial term of an Order begins on the date set forth in the Order and continues for one year (the “Initial Term”). Each Order will automatically renew for additional one-year periods (each, a “Renewal Term”), unless a party gives the other party written notice of its intent to not renew at least 60 days prior to the end of the Initial Term or the then-current Renewal Term.</p>
+      <p><strong>10.3</strong> <strong>Termination.</strong> Either party may terminate this Agreement or an Order if the other party breaches any material provision of this Agreement and does not cure such breach within thirty (30) days after receiving written notice thereof.</p>
+      <p><strong>10.4</strong> <strong>Effects of Termination.</strong> Upon termination or expiration of this Agreement and all Orders, any amounts owed to Cinebody under this Agreement before such termination or expiration will be due and payable within fifteen (15) days of termination or expiration, all access rights granted in this Agreement will immediately cease to exist, and Customer must promptly discontinue all use of the Platform. Sections 4, 5, 6.2, 7, 8, 9, 10.3 and 11 will survive expiration or termination of this Agreement for any reason.</p>
+    </div>
+
+    <div class="terms-section reveal" id="s11">
+      <h3><span class="section-num">11.</span> General</h3>
+      <p><strong>11.1</strong> <strong>Assignment.</strong> Neither party may assign or transfer, by operation of law or otherwise, any of its rights under the Agreement to any third party without the other party’s prior written consent, which consent will not be unreasonably withheld or delayed; except that each party may assign this Agreement, without consent, to an affiliate or any successor to all or substantially all its business or assets to which this Agreement relates, whether by merger, sale of assets, sale of stock, reorganization or otherwise. Any attempted assignment or transfer in violation of the foregoing will be null and void.</p>
+      <p><strong>11.2</strong> <strong>Force Majeure.</strong> Neither party shall be liable hereunder by reason of any failure or delay in the performance of its obligations hereunder for any cause which is beyond the reasonable control of such party.</p>
+      <p><strong>11.3</strong> <strong>Notices.</strong> To be effective, notices under this Agreement must be delivered to the other party in writing via email to the address for each party first set forth in this Section. The email address for notices being sent to Cinebody is info@cinebody.com, and the email address for notices being sent to Customer is the primary email address that Cinebody has on file for Customer. Notices sent in accordance with this Section will be effective upon delivery. Each party may update its notice address in accordance with this provision.</p>
+      <p><strong>11.4</strong> <strong>Governing Law.</strong> This Agreement will be governed by and interpreted in accordance with the laws of the State of Colorado, without reference to its choice of laws rules.</p>
+      <p><strong>11.5</strong> <strong>Waivers.</strong> All waivers must be in writing. Any waiver or failure to enforce any provision of this Agreement on one occasion will not be deemed a waiver of any other provision or of such provision on any other occasion.</p>
+      <p><strong>11.6</strong> <strong>Severability.</strong> If any provision of this Agreement is unenforceable, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
+      <p><strong>11.7</strong> <strong>Modification.</strong> Cinebody may modify this Agreement at any time, upon written notice to Customer. Any such modification will become effective with respect to the applicable Order upon the commencement of the Renewal Term for such Order following the date of such notice. If Customer does not agree to the modified Agreement, Customer may choose to not renew the then-current Initial Term or Renewal Term (as applicable). Except as otherwise set forth in this Section, this Agreement may not otherwise be modified except by a written amendment signed by an authorized representative of each party.</p>
+      <p><strong>11.8</strong> <strong>Entire Agreement.</strong> This Agreement, including any Order, constitutes the entire agreement between the parties regarding the subject hereof and supersedes all prior or contemporaneous agreements, understandings, and communication, whether written or oral. To the extent of any conflict between the provisions of this Agreement and the provisions of any Order, the provisions of the Agreement will govern unless the Order specifically overrides this Agreement. This Agreement replaces and supersedes Cinebody’s online Terms of Services with respect to Customer and any Users governed by this Agreement.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- curve: white → dark -->
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#0a0a0a"/></svg></div>
+
+<script>
+/* ── Scroll Progress ── */
+const bar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (window.scrollY / h * 100) + '%';
+}, { passive: true });
+
+/* ── Reveal on Scroll ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

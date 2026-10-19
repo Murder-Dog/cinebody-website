@@ -902,6 +902,181 @@
       "source": "/sitemap.xml",
       "destination": "/sitemap-index.xml",
       "permanent": true
+    },
+    {
+      "source": "/book-a-time",
+      "destination": "https://calendly.com/gavin-cinebody/cinebody-intro2",
+      "permanent": false
+    },
+    {
+      "source": "/cart",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-case-studies",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/bank-of-montreal",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/celonis",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/history-factory",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/moth",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/snapshot",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/education",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/higher-education-universities",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/healthcare",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/finance",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/tech",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/industrial",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/nonprofit",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/nonprofit-storytelling",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/social",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/other",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/marketing-advertising",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/employer-branding-talent-acquisition",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/events-shows-and-conferences",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/tag/:tag*",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/best-college-marketing-videos",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/corporate-event-video-production",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/healthcare-marketing-videos",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/healthcare-video-production",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-crowdsourced-video-can-improve-all-corporate-communications",
+      "destination": "/cinebody-blog/video-crowdsourcing-platforms",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-digital-is-transforming-live-events-during-covid-19",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/how-to-make-a-brand-video",
+      "destination": "/cinebody-blog/the-ultimate-guide-to-video-production",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/product-video-how-to",
+      "destination": "/cinebody-blog/the-ultimate-guide-to-video-production",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/recruitment-video-example",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/top-smartphone-camera-movements",
+      "destination": "/cinebody-blog/how-to-frame-video-on-smartphones",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/top-video-production-blogs-2023",
+      "destination": "/cinebody-blog/the-top-video-production-blogs-to-follow-in-2025",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/user-generated-content-redefining-branding-in-the-digital-era",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/video-production-pricing",
+      "destination": "/cinebody-blog",
+      "permanent": true
     }
   ],
   "rewrites": [
