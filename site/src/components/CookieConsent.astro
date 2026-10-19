@@ -24,6 +24,15 @@ import '../styles/cookie-consent.css';
     });
   }
 
+  // Tells GTM the visitor just said yes, so the ad tags can fire on this page
+  // instead of waiting for the next one.
+  function onConsentChoice() {
+    updateGtagConsent();
+    if (CookieConsent.acceptedCategory('analytics')) {
+      (window.dataLayer = window.dataLayer || []).push({ event: 'cb_consent_granted' });
+    }
+  }
+
   CookieConsent.run({
     guiOptions: {
       consentModal: {
@@ -70,8 +79,8 @@ import '../styles/cookie-consent.css';
         },
       },
     },
-    onFirstConsent: updateGtagConsent,
+    onFirstConsent: onConsentChoice,
     onConsent: updateGtagConsent,
-    onChange: updateGtagConsent,
+    onChange: onConsentChoice,
   });
 </script>
