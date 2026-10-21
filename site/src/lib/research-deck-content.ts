@@ -1181,10 +1181,10 @@ h2{font-weight:700;letter-spacing:-0.03em}
 .mq-par{will-change:transform}
 .logos-track{display:flex;align-items:center;gap:56px;animation:logos-scroll 55s linear infinite;width:max-content}
 .logos-track:hover{animation-play-state:paused}
-.logos-track img{height:24px;width:auto;max-width:130px;object-fit:contain;opacity:.55;transition:opacity .3s ease;flex-shrink:0;filter:brightness(0)}
+.logos-track img{height:24px;width:auto;max-width:130px;object-fit:contain;opacity:.55;transition:opacity .3s ease;flex-shrink:0;filter:brightness(0) invert(1)}
 .logos-track img:hover{opacity:.85}
 .logos-track img[data-logo="siemens"]{height:16px;max-width:100px}
-.logos-track img[data-logo="webmd"]{height:80px;max-width:200px;filter:none !important}
+.logos-track img[data-logo="webmd"]{height:80px;max-width:200px}
 .logos-track img[data-logo="roku"]{height:20px;max-width:90px}
 .logos-track img[data-logo="boeing"]{height:24px;max-width:120px}
 .logos-track img[data-logo="experian"]{height:26px;max-width:130px}
@@ -1193,7 +1193,7 @@ h2{font-weight:700;letter-spacing:-0.03em}
 .logos-track img[data-logo="royalcaribbean"]{height:28px;max-width:140px}
 .logos-track img[data-logo="altra"]{height:22px;max-width:95px}
 .logos-track img[data-logo="acs"]{height:34px;max-width:80px}
-.logos-track img[data-logo="snap"]{height:28px;max-width:28px;filter:brightness(0) !important}
+.logos-track img[data-logo="snap"]{height:28px;max-width:28px}
 @keyframes logos-scroll{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.logos-track{animation:none}}
 .act-light table,.act-light th,.act-light td{color:var(--ink-2);border-color:var(--line)}
@@ -1305,7 +1305,7 @@ footer p{margin-bottom:1.1rem !important}
       <div class="vid169 fade"><div class="vmo" data-vmo><iframe src="https://player.vimeo.com/video/315922252?h=b156ca39e4&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1&amp;transparent=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe><button class="vmo-snd" type="button" aria-label="Toggle sound for Cinebody 2018 recap"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a9 9 0 0 1 0 14"></path></svg><span class="vmo-lbl">Sound</span></button></div></div>
     </div>
     <p>Creative services were part of Cinebody from day one, originally white-labeled through an outside partner, with software driving growth through 2022. As software sales slowed that year, we brought content production and post production in-house to truly own it, and creative services overtook software as the main driver. Growth has plateaued since 2023: our outbound sales system broke down internally, and without capital to keep advancing the product, real friction points went unaddressed. The software worked, it just required real training to use well, and unfortunately was often the first thing cut when client budgets tightened.</p>
-    <p>Since then, we&rsquo;ve rebuilt what we control: a leaner services team operating under documented SOPs and OKR-driven stretch goals, a data-hygiene and BI overhaul, a sharper ideal customer profile backed by real data, and a lead-generation pipeline producing qualified pipeline. We haven&rsquo;t raised money since our initial bridge round in 2018, by choice, waiting for a reason big enough to justify it. That reason is now in front of us.</p>
+    <p>Since then, we&rsquo;ve rebuilt what we control: a leaner services team operating under documented SOPs and OKR-driven stretch goals, a data-hygiene and BI overhaul, a sharper ideal customer profile backed by real data, and a lead-generation pipeline producing qualified pipeline. We haven&rsquo;t raised money since our bridge round in 2018, by choice, waiting for a reason big enough to justify it. That reason is now in front of us.</p>
   </section>
 
   <section class="sec fade">
@@ -1551,7 +1551,7 @@ footer p{margin-bottom:1.1rem !important}
       <div class="pillar">
         <span class="pn">Phase 2 &middot; Now</span>
         <h3>Launch and migration</h3>
-        <p>The new platform is what we sell today, and current clients are moving onto it. The official launch is October 15, with a Free plan so any prospect can sign up and film a project without a sales call.</p>
+        <p>The new platform is what we sell today, and current clients are moving onto it. The official launch is in October, with a Free plan so any prospect can sign up and film a project without a sales call.</p>
       </div>
       <div class="pillar">
         <span class="pn">Phase 3 &middot; Starting</span>
