@@ -415,7 +415,7 @@ strong{font-weight:700;color:var(--ink)}
       <a class="brandbar" href="/" aria-label="Cinebody"><img src="/cinebody-wordmark.svg" alt="Cinebody" width="130" height="25"></a>
       <p class="ppill">Investor Intro &middot; Private</p>
       <h1>Brief in. Video out. Smarter every time.</h1>
-      <p class="dek">Real people film. AI learns what worked, for which brand, which market, which channel. One shoot becomes every format. Every result makes the next brief smarter. Nobody else has the loop, or the decade of human decisions training it.</p>
+      <p class="dek">Cinebody is the video platform brands use to get real footage from their customers, employees and creators. AI directs the shoot on any phone, scores every clip against the brief, and cuts finished social video in minutes. A decade of brand work trains it, and nobody else has the full loop.</p>
       <span class="conf">Confidential &middot; Not For Distribution</span>
     </div>
     <div class="hero-scroller" aria-hidden="true">
@@ -466,14 +466,14 @@ strong{font-weight:700;color:var(--ink)}
   <div class="numlist">
     <div class="numitem"><span class="no">01</span><h3>AI tools process the brief. But they do not understand it.</h3><p>Today&rsquo;s tools ingest a brief but have no grasp of brand voice, market nuance, or audience context. Clips come back with a clear gap between intent and output.</p></div>
     <div class="numitem"><span class="no">02</span><h3>&ldquo;Fix it in post&rdquo; is not a viable option.</h3><p>Every existing AI edit tool receives a dump of unscored, unguided footage. The problem was upstream. The edit cannot fix what the shoot never had.</p></div>
-    <div class="numitem"><span class="no">03</span><h3>Nothing learned for the next brief.</h3><p>Which shots converted, which creators delivered, which channel performed: none of it feeds back. Every brief is written blind.</p></div>
+    <div class="numitem"><span class="no">03</span><h3>Nothing learned for the next video.</h3><p>What made a take usable, what the editor kept and cut, what the brand approved: none of it feeds back. Every edit starts from zero.</p></div>
   </div>
 </div></div>
 
 <div class="sec"><div class="wrap" style="max-width:70rem">
   <p class="eyebrow">The Solution</p>
   <h2>Cinebody runs intelligence while people are still shooting.</h2>
-  <p class="lead">Not just directing the shoot. A full loop, measured, then fed back to make the next brief smarter. Scroll through it.</p>
+  <p class="lead">Not just directing the shoot. One loop from brief to finished cut, with every edit training the next. Scroll through it.</p>
   <div class="pipe-scroll" id="solScroll" style="height:400vh">
     <div class="pipe-sticky"><div class="ps-grid">
       <div class="ps-copies" id="psCopies">
@@ -620,8 +620,8 @@ strong{font-weight:700;color:var(--ink)}
     <div class="stat"><div class="n">10</div><div class="l">Years in business</div></div>
     <div class="stat"><div class="n cyan">$1.4&ndash;1.6M</div><div class="l">Revenue trend, 2026</div></div>
     <div class="stat"><div class="n">+40%</div><div class="l">YoY revenue growth, H1 2026</div></div>
-    <div class="stat"><div class="n">+177%</div><div class="l">YoY net profit growth, H1 2026</div></div>
-    <div class="stat"><div class="n">H1 2026</div><div class="l">First profitable half in company history</div></div>
+    <div class="stat"><div class="n">+$157K</div><div class="l">YoY net profit swing, H1 2026</div></div>
+    <div class="stat"><div class="n">H1 2026</div><div class="l">First profitable half in recent history</div></div>
     <div class="stat"><div class="n">6/6</div><div class="l">Loop stages shipped live</div></div>
   </div>
   <div class="logos"><div class="logos-track">
@@ -655,7 +655,7 @@ strong{font-weight:700;color:var(--ink)}
   <p class="eyebrow">The Ugly</p>
   <h2>Every reason this could fail. And why it won&rsquo;t.</h2>
   <div class="risks">
-    <div class="riskcard"><div class="rk">Risk</div><div class="rq">A fast-follower builds the full loop.</div><div class="ra">They&rsquo;d need every stage (brief, shoot, score, adapt, distribute, measure, learn) run at scale, then start collecting labeled data. Years away. 8 patents protect the foundation; the data moat compounds with every campaign.</div></div>
+    <div class="riskcard"><div class="rk">Risk</div><div class="rq">A fast-follower builds the full loop.</div><div class="ra">They&rsquo;d need every stage (brief, direct, score, edit, finish, brand graphics) run at scale, then start collecting labeled data. Years away. 8 patents protect the foundation; the data moat compounds with every campaign.</div></div>
     <div class="riskcard"><div class="rk">Risk</div><div class="rq">Google or Adobe builds this themselves.</div><div class="ra">Each owns exactly one piece of the loop. Building the full assembly would take 3&ndash;5 years. They would buy Cinebody before they build it.</div></div>
     <div class="riskcard"><div class="rk">Risk</div><div class="rq">AI-generated video replaces the need for real footage.</div><div class="ra">Nobody wants synthetic ads. They want authentic content made faster, exactly what Cinebody delivers. The backlash against AI slop strengthens this position every month.</div></div>
     <div class="riskcard"><div class="rk">Risk</div><div class="rq">Current revenue is too small for platform-scale returns.</div><div class="ra">$1.4&ndash;1.6M is a services-weighted baseline, not the software ceiling. This raise funds the return to software-first. At platform scale, the trajectory is a different order of magnitude.</div></div>
@@ -684,7 +684,7 @@ strong{font-weight:700;color:var(--ink)}
     <div class="stats" style="grid-template-columns:repeat(3,1fr)">
       <div class="stat"><div class="n">$1.5M</div><div class="l">Raising</div></div>
       <div class="stat"><div class="n cyan">$10.4M</div><div class="l">Valuation</div></div>
-      <div class="stat"><div class="n">12mo</div><div class="l">Runway</div></div>
+      <div class="stat"><div class="n">12mo</div><div class="l">Growth plan</div></div>
     </div>
     <div class="returns">
       <h3>Valued at $10.4M today. Here is where it could go.</h3>
