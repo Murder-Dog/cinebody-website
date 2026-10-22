@@ -1087,6 +1087,14 @@
     {
       "source": "/wme/:path*",
       "destination": "https://cinebody-wme.vercel.app/:path*"
+    },
+    {
+      "source": "/presentation/zulu",
+      "destination": "https://cinebody-zulu.vercel.app/"
+    },
+    {
+      "source": "/presentation/zulu/:path*",
+      "destination": "https://cinebody-zulu.vercel.app/:path*"
     }
   ]
 }
