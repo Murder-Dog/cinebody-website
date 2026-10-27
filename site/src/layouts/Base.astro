@@ -22,6 +22,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, ''
 const slug = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
 // per-page branded share card where we generate one; otherwise the passed image (blog hero) or default
 const ogImage = new URL(hasOG(slug) ? `/og/${ogFileSlug(slug)}.png` : image, Astro.site).href;
+// THE SHARE VIDEO (Oct 26): the homepage's link preview plays - the hero wall as a 12s loop
+// with the headline (public/share/cinebody-hero.mp4, built from the wall tiles). iMessage and
+// X play it inline; everything else shows its poster. Other pages keep their still card.
+const shareVideo = slug === '' ? { url: new URL('/share/cinebody-hero.mp4', Astro.site).href, poster: new URL('/share/cinebody-hero.jpg', Astro.site).href, width: 1200, height: 630 } : null;
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -167,16 +171,34 @@ if (!pageSchema && caseStudies[slug]) {
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={shareVideo ? shareVideo.poster : ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={fullTitle} />
+    {shareVideo && (
+      <>
+        <meta property="og:video" content={shareVideo.url} />
+        <meta property="og:video:secure_url" content={shareVideo.url} />
+        <meta property="og:video:type" content="video/mp4" />
+        <meta property="og:video:width" content={String(shareVideo.width)} />
+        <meta property="og:video:height" content={String(shareVideo.height)} />
+      </>
+    )}
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content={shareVideo ? 'player' : 'summary_large_image'} />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={shareVideo ? shareVideo.poster : ogImage} />
+    {shareVideo && (
+      <>
+        <meta name="twitter:player" content={shareVideo.url} />
+        <meta name="twitter:player:stream" content={shareVideo.url} />
+        <meta name="twitter:player:stream:content_type" content="video/mp4" />
+        <meta name="twitter:player:width" content={String(shareVideo.width)} />
+        <meta name="twitter:player:height" content={String(shareVideo.height)} />
+      </>
+    )}
 
     <!-- Self-hosted variable font (no render-blocking third-party request) -->
     <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
