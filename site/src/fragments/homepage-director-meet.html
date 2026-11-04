@@ -4,8 +4,9 @@
 .dm .dm-head{max-width:900px;margin-bottom:20px}.dm-head .label{margin-bottom:10px}.dm-head h2{margin-bottom:10px}
 .dm-head h2{font-size:clamp(1.75rem,3.6vw,2.5rem)}
 .dm-head p{max-width:820px;margin:0 auto;font-size:.95rem}
-.dm-stage{position:relative;display:grid;grid-template-columns:1fr 436px 1fr;gap:28px;align-items:stretch;padding:22px 40px;overflow:hidden;
-  background:radial-gradient(ellipse 60% 50% at 18% 100%,rgba(0,188,241,.13),transparent 70%),radial-gradient(ellipse 50% 40% at 88% 0%,rgba(235,0,139,.07),transparent 70%),#0c1218}
+.dm-stage{position:relative;display:grid;grid-template-columns:1fr 436px 1fr;gap:28px;align-items:stretch;padding:22px 40px;}
+.dm-stage{isolation:isolate}
+.dm-stage::before{content:'';position:absolute;inset:-70px -110px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(16,26,36,.9),transparent 100%),radial-gradient(ellipse 26% 30% at 28% 74%,rgba(0,188,241,.11),transparent 100%),radial-gradient(ellipse 20% 26% at 78% 24%,rgba(235,0,139,.06),transparent 100%)}
 .dm-stage>*{min-width:0}
 /* director */
 .dm-dir{position:relative;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}
@@ -94,7 +95,7 @@
 .dm-mute svg{width:18px;height:18px}
 @media (max-width:760px){.dm-tiptext{font-size:22px}.dm-tipcard{padding:20px 22px 24px}.dm-mute{right:10px!important;top:auto!important;bottom:10px}}
 .dm-car{position:relative;overflow:hidden;touch-action:pan-y;cursor:grab;outline:none;user-select:none;-webkit-user-select:none;
- -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+ -webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 17%,#000 83%,transparent 97%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 17%,#000 83%,transparent 97%,transparent 100%)}
 .dm-car.dm-drag{cursor:grabbing}
 .dm-car:focus-visible{box-shadow:inset 0 0 0 2px var(--teal);border-radius:14px}
 .dm-clipbox{z-index:3;will-change:transform}
@@ -112,21 +113,23 @@
 @media(max-width:900px){.dm-nb{width:240px;height:427px;margin:-213.5px 0 0 -120px}.dm-car{height:447px}.dm-prev{left:6px}.dm-next{left:auto;right:6px}.dm-arw{width:38px;height:38px;margin-top:-19px}}
 
 /* ===== Meet the Director (homepage section). Everything is namespaced dm-. ===== */
-.dm{position:relative;overflow:hidden;background:linear-gradient(180deg,#08131a 0%,#0a0a0a 70%);padding:0 0 28px;--dm-text-dim:rgba(255,255,255,.5)}
+.dm{position:relative;overflow:hidden;background:linear-gradient(180deg,#0a0a0a 0%,#08131a 22%,#0a0a0a 80%);padding:0 0 28px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 56px,#000 calc(100% - 110px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 56px,#000 calc(100% - 110px),transparent 100%);--dm-text-dim:rgba(255,255,255,.5)}
 .dm::before{content:'';position:absolute;top:8%;left:-12%;width:620px;height:620px;background:var(--teal);border-radius:50%;filter:blur(220px);opacity:.06;pointer-events:none}
 .dm::after{content:'';position:absolute;bottom:6%;right:-12%;width:560px;height:560px;background:var(--pink);border-radius:50%;filter:blur(220px);opacity:.05;pointer-events:none}
-.dm-wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:30px 24px 0}
-.dm-sig{position:relative;z-index:2;height:3px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 33%,var(--yellow) 33%,var(--yellow) 66%,var(--pink) 66%,var(--pink) 100%)}
+.dm-wrap{zoom:var(--dcs,1);position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:48px 24px 0}
+.dm-sig{position:relative;z-index:2;height:2px;opacity:.55;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 25%,#000 75%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 25%,#000 75%,transparent 100%);background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 33%,var(--yellow) 33%,var(--yellow) 66%,var(--pink) 66%,var(--pink) 100%)}
 .dm-head{text-align:center;max-width:900px;margin:0 auto 20px}
 .dm-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
 .dm-head h2{font-size:clamp(1.75rem,3.6vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;color:#fff;margin:0 0 10px}
 .dm-head h2 em{font-style:normal;background:linear-gradient(135deg,#00bcf1,#33d6ff,#00bcf1);-webkit-background-clip:text;background-clip:text;color:transparent}
 .dm-head p{max-width:820px;margin:0 auto;font-size:.95rem;color:rgba(255,255,255,.5);line-height:1.65}
-.dm-stage{border:1px solid rgba(255,255,255,.09);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+/* no panel: the stage is lit by soft light and sits straight on the page */
+.dm-stage{border:0;border-radius:0;box-shadow:none}
 .dm img{max-width:none}
 .dm-robot{aspect-ratio:480/560;height:auto}
 .dm-robot>*{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;object-fit:contain;pointer-events:none;background:transparent}
 .dm-robot>.dm-show{opacity:1}
+.dm-rg{background-repeat:no-repeat}
 .dm-rsprite{background:url(/director/meet/robot/director-idle-sprite.webp) 0 0/2400% 100% no-repeat}
 .dm-rsprite.dm-show{animation:dm-spr 1.2s steps(24) infinite}
 @keyframes dm-spr{to{background-position:104.348% 0}}
@@ -161,7 +164,7 @@
      <img id="dm-rposter" class="dm-show" alt="" width="480" height="560" decoding="async">
      <div id="dm-rsprite" class="dm-rsprite"></div>
      <video id="dm-ridle" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
-     <video id="dm-rrun" muted playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
+     <div id="dm-rg" class="dm-rg"></div>
     </div>
    </div>
    <button class="dm-arw dm-prev" id="dm-prev" type="button" aria-label="Previous clip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button><button class="dm-arw dm-next" id="dm-next" type="button" aria-label="Next clip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
@@ -232,20 +235,30 @@
  [1/3,2/3].forEach(function(p){th.insertAdjacentHTML('beforeend','<div class="dm-third dm-v" style="left:'+p*100+'%"></div><div class="dm-third dm-h" style="top:'+p*100+'%"></div>')});
  [1/3,2/3].forEach(function(x){[1/3,2/3].forEach(function(y){th.insertAdjacentHTML('beforeend','<div class="dm-dot" style="left:'+x*100+'%;top:'+y*100+'%"></div>')})});
  var thEls=[].slice.call(th.children);
- var cf=$('cf'),cv=$('cv'),clipbox=$('clipbox'),rposter=$('rposter'),rsprite=$('rsprite'),ridle=$('ridle'),rrun=$('rrun');
+ var cf=$('cf'),cv=$('cv'),clipbox=$('clipbox'),rposter=$('rposter'),rsprite=$('rsprite'),ridle=$('ridle'),rg=$('rg');
  var loaded=false,active=false,activated=false;
  // ---- state ----
  var cur=N-1,aStart=null,settle=null,drag=null,lastU=null,everRan=false,mode='idle',u=0,lastSig='',force=true;
- var doneSet={},unmuted=false,AU={},annKey='',vt=0,lastTs=0,raf=0,vsrc='',replayed=false;
+ var doneSet={},unmuted=false,annKey='',vt=0,lastTs=0,raf=0,vsrc='',replayed=false;
  var now=function(){return vt};
  var SLOT=function(){return clipbox.offsetWidth*.9+18};
  function announce(m){$('live').textContent=m}
- function stopAll(){for(var k in AU)AU[k].pause()}
- function au(id,n){var k=id+'_'+n;if(!AU[k]){AU[k]=new Audio(BASE+'vo/'+k+'.mp3');AU[k].preload='auto'}return AU[k]}
- function cue(q,n){if(unmuted){var a=au(q.id,n);try{a.currentTime=0}catch(e){}var p=a.play();if(p&&p.catch)p.catch(function(){})}}
+ function stopAll(){POOL.forEach(function(a){try{a.pause()}catch(e){}})}
+ // Voice: two reusable <audio> elements, both unlocked inside the Unmute click (Safari/iOS only allow play() on elements a tap has started),
+ // then re-pointed at each line. The next line is preloaded into the idle element so a cue starts on time.
+ var POOL=[new Audio(),new Audio()],pi=0,SIL='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+ POOL.forEach(function(a){a.preload='auto';a._s=''});
+ function vsrc2(q,c){return BASE+'vo/'+q.id+'_'+CUES[c][0]+'.mp3'}
+ function pre(q,c){if(!unmuted||!CUES[c])return;var a=POOL[pi],s=vsrc2(q,c);if(a._s!==s){a._s=s;a.src=s}}
+ function cue(q,c,off){if(!unmuted)return;pre(q,c);var a=POOL[pi];pi^=1;try{a.currentTime=off||0}catch(e){}
+  var p=a.play();if(p&&p.catch)p.catch(function(err){window.__dmErr=String(err)});pre(q,c+1)}
+ function unlockAudio(){POOL.forEach(function(a){a._s='';a.src=SIL;var p=a.play();if(p&&p.catch)p.catch(function(){})})}
  function setMute(on){unmuted=on;var b=$('mute');b.className='dm-mute'+(on?' dm-on':'');b.setAttribute('aria-pressed',on);b.setAttribute('aria-label',on?'Mute the Director':'Unmute the Director');
   $('ml').textContent=on?'Mute':'Unmute';$('mx').style.display=on?'none':'';$('mw').style.display=on?'':'none';if(!on)stopAll()}
- $('mute').addEventListener('click',function(){setMute(!unmuted)});
+ $('mute').addEventListener('click',function(){var on=!unmuted;setMute(on);if(!on)return;unlockAudio();
+  // Unmute should be audible right away: start the Director on this clip if it is idle or finished, otherwise pick up the line he is on.
+  if(aStart===null||mode==='done'){goTo(cur,0)}
+  else if(mode==='run'){var q=QUEUE[cur],c=-1;for(var k=0;k<CUES.length;k++){if(u>=CUES[k][1])c=k}if(c>=0&&u-CUES[c][1]<2.8)cue(q,c,u-CUES[c][1]);else pre(q,c+1)}});
  function vidOf(q){return q.mp4?cv:null}
  function loadClip(q){var v=q.mp4?BASE+'clips/'+q.id+'.mp4':'';if(vsrc===v)return;vsrc=v;replayed=false;
   try{cv.pause()}catch(e){}
@@ -253,7 +266,7 @@
   cv.classList.remove('dm-show')}
  function goTo(i,fromOff){
   stopAll();cur=wrapI(i);var t=now();settle={from:fromOff||0,t0:t};aStart=t+(fromOff?SETTLE:0);lastU=null;force=true;
-  loadClip(QUEUE[cur]);primePosters();
+  loadClip(QUEUE[cur]);primePosters();pre(QUEUE[cur],0);
   announce('Clip '+(cur+1)+' of '+N+', '+QUEUE[cur].lbl+'. The Director is grading it.');
   kick();
  }
@@ -269,7 +282,8 @@
   if(loaded)return;loaded=true;
   [].forEach.call(root.querySelectorAll('img[data-src]'),function(im){im.src=im.getAttribute('data-src')});
   rposter.src=BASE+'robot/director-poster.webp';
-  if(!RM&&ALPHA){ridle.src=BASE+'robot/director-idle-loop.webm';rrun.src=BASE+'robot/director-run.webm';rrun.preload='auto';ridle.load();rrun.load()}
+  if(!RM&&ALPHA){ridle.src=BASE+'robot/director-idle-loop.webm';ridle.load()}
+  if(!RM)loadG(CORE);
   primePosters();loadClip(QUEUE[cur]);force=true;
  }
  // ---- drawing ----
@@ -340,6 +354,26 @@
   $('tipcard').style.transform=RM?'none':'translateY('+(1-ease(tin))*18+'px) scale('+(.97+.03*ease(tin))+')';
   if(uu>=EX1){$('tipfor').textContent='\u00b7 '+q.lbl;var n2=RM?1:clamp((uu-(EX1+.5))/1.6),kq=Math.floor(n2*q.tip.length);$('tiptext').innerHTML=q.tip.slice(0,kq)+(n2<1?'<span class="dm-caret"></span>':'')}
  }
+ // ---- robot gestures: real sprites rendered from the platform robot's own behaviour tables (robot-performance.ts), played off the same clock as the text and the voice ----
+ var GS={"scan":{"f":"scan","n":32,"c":12,"r":3,"fps":15.238,"loop":true},"thinking":{"f":"thinking","n":24,"c":12,"r":2,"fps":16.0,"loop":true},"talk":{"f":"talk","n":24,"c":12,"r":2,"fps":20.87,"loop":true},"waity":{"f":"waity","n":96,"c":12,"r":8,"fps":15.0,"loop":true},"arrive":{"f":"arrive","n":12,"c":12,"r":1,"fps":28.571,"loop":false},"idea":{"f":"idea","n":22,"c":12,"r":2,"fps":24.444,"loop":false},"nod":{"f":"nod","n":17,"c":12,"r":2,"fps":24.286,"loop":false},"shake":{"f":"shake","n":20,"c":12,"r":2,"fps":25.641,"loop":false},"wink":{"f":"wink","n":13,"c":12,"r":2,"fps":25.0,"loop":false}};
+ var CORE=['arrive','scan','thinking','idea','talk','nod'],LATE=['wink','shake','waity'],GI={};
+ var VD={"ep01":[2.43,3.79,3.79,5.25,6.77],"ep07":[2.43,3.55,2.51,3.87,7.81],"ep13":[2.35,2.77,3.4,2.51,7.81],"ep18":[2.35,2.51,2.43,2.69,8.05],"ep32":[2.43,2.35,2.51,4.83,7.81],"ep33":[2.43,2.85,4.05,2.77,7.47]};
+ function loadG(list){list.forEach(function(k){if(!GI[k]){GI[k]=new Image();GI[k].src=BASE+'robot/g-'+GS[k].f+'.webp'}})}
+ function gReady(k){var i=GI[k];return !!(i&&i.complete&&i.naturalWidth)}
+ // One gesture per beat: arrive when the clip lands, scan, think, the idea hop as the lamp fires with the score, talk while a voice line is current,
+ // a reaction at the end of each line (wink on a high score, shake on a low one, nod otherwise), and a calm yellow hold between lines.
+ function gest(q,u){
+  var D=VD[q.id]||[2.4,3.5,3.5,3.5,7],i,st,en;
+  if(u<.42)return['arrive',u];
+  if(u<.8)return null;
+  if(u<2.8)return['scan',u-.8];
+  if(u<5.5)return['thinking',u-2.8];
+  if(u<6.4)return['idea',u-5.5];
+  for(i=0;i<CUES.length;i++){st=CUES[i][1];en=st+D[i];
+   if(u>=st&&u<en-.25)return['talk',u-st];
+   if(u>=en-.25&&u<en+.6){var r=i===0?(q.s>=8?'wink':q.s<=4?'shake':'nod'):'nod';return[r,u-(en-.25)]}}
+  return['waity',u]
+ }
  // clip footage + robot media, driven off the timeline
  function syncMedia(q){
   var run=mode==='run',v=vidOf(q),i;
@@ -362,18 +396,20 @@
   }
   cv.classList.toggle('dm-show',showV);
   // robot
-  var want;
+  var want,g=null;
   if(RM)want='poster';
-  else if(!ALPHA)want=run?'poster':'sprite';
-  else if(run&&rrun.readyState>=3)want='run';
-  else want='idle';
+  else{
+   if(run){loadG(LATE);g=gest(q,u);if(g&&!gReady(g[0]))g=null}
+   want=g?'rg':!ALPHA?'sprite':'idle';
+  }
+  if(g){var m=GS[g[0]],fr=m.loop?Math.floor(g[1]*m.fps)%m.n:Math.min(m.n-1,Math.floor(g[1]*m.fps)),cx=fr%m.c,cy=Math.floor(fr/m.c);
+   if(rg._g!==g[0]){rg._g=g[0];rg.style.backgroundImage='url('+BASE+'robot/g-'+m.f+'.webp)';rg.style.backgroundSize=(m.c*100)+'% '+(m.r*100)+'%'}
+   rg.style.backgroundPosition=(m.c>1?cx/(m.c-1)*100:0)+'% '+(m.r>1?cy/(m.r-1)*100:0)+'%'}
   if(ALPHA&&!RM&&loaded){
-   if(want==='run'){if(rrun.paused&&!rrun.ended&&active)rrun.play().catch(function(){});if(Math.abs(rrun.currentTime-u)>.3&&u<T)rrun.currentTime=u}
-   else{if(!rrun.paused)rrun.pause();if(!run&&rrun.currentTime>0&&rrun.readyState>0)rrun.currentTime=0}
    if(want==='idle'){if(ridle.paused&&active)ridle.play().catch(function(){})}else if(!ridle.paused)ridle.pause();
    if(want==='idle'&&ridle.readyState<2)want='poster';
   }
-  rposter.classList.toggle('dm-show',want==='poster');rsprite.classList.toggle('dm-show',want==='sprite');ridle.classList.toggle('dm-show',want==='idle');rrun.classList.toggle('dm-show',want==='run');
+  rposter.classList.toggle('dm-show',want==='poster');rsprite.classList.toggle('dm-show',want==='sprite');ridle.classList.toggle('dm-show',want==='idle');rg.classList.toggle('dm-show',want==='rg');
  }
  function render(t){
   var q=QUEUE[cur],off=offAt(t),S=SLOT();
@@ -381,7 +417,7 @@
   if(aStart===null||t<aStart||dragging||Math.abs(off)>.5){mode='idle';u=0}
   else{u=t-aStart;mode=u>=T-.4?'done':'run';everRan=true;if(mode==='done')doneSet[cur]=1}
   var sig=mode+'|'+cur+'|'+off.toFixed(1)+'|'+(mode==='run'?'':'s');
-  if(mode==='run'){for(var c=0;c<CUES.length;c++){if((lastU===null?-1:lastU)<CUES[c][1]&&u>=CUES[c][1])cue(q,CUES[c][0])}lastU=u}
+  if(mode==='run'){for(var c=0;c<CUES.length;c++){if((lastU===null?-1:lastU)<CUES[c][1]&&u>=CUES[c][1])cue(q,c)}lastU=u}
   var sc=function(x){return lerp(1,.8,clamp(Math.abs(x)/S))},op=function(x){var a=Math.abs(x);return a<=S?lerp(1,.5,a/S):.5*(1-clamp((a-S)/(S*.7)))};
   clipbox.style.transform='translateX('+off+'px) scale('+sc(off)+')';clipbox.style.opacity=op(off);
   clipbox.setAttribute('aria-label','Clip '+(cur+1)+' of '+N+', '+q.lbl);
@@ -413,7 +449,7 @@
  function setActive(on){
   if(on===active)return;active=on;
   if(on){force=true;kick()}
-  else{stopAll();[cv,rrun,ridle].forEach(function(v){try{v.pause()}catch(e){}});if(raf){cancelAnimationFrame(raf);raf=0}}
+  else{stopAll();[cv,ridle].forEach(function(v){try{v.pause()}catch(e){}});if(raf){cancelAnimationFrame(raf);raf=0}}
  }
  var vis=false;
  function upd(){setActive(vis&&!document.hidden)}
@@ -435,6 +471,6 @@
  root.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();goTo(cur+1,SLOT())}else if(e.key==='ArrowLeft'){e.preventDefault();goTo(cur-1,-SLOT())}});
  // first paint of the idle state
  render(0);
- window.__dm={goTo:goTo,state:function(){return{cur:cur,clip:QUEUE[cur].id,mode:mode,u:+u.toFixed(2),active:active,unmuted:unmuted,alpha:ALPHA}},setMute:setMute};
+ window.__dm={goTo:goTo,state:function(){return{cur:cur,clip:QUEUE[cur].id,mode:mode,u:+u.toFixed(2),active:active,unmuted:unmuted,alpha:ALPHA}},setMute:setMute,pool:POOL};
 })();
 </script>
