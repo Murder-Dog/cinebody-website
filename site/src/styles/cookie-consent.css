@@ -1,87 +1,193 @@
-/* Cookie consent banner (vanilla-cookieconsent), restyled to match the Cinebody brand:
-   a slim, single-line bar flush with the bottom edge — reads as site chrome,
-   not a blocking card, and never overlaps the hero's own bottom-left content. */
+/* Cookie consent (vanilla-cookieconsent), restyled as a compact floating card:
+   Cinebody C mark + title, one line of copy, Accept / Decline as an equal pair, Privacy link.
+   Dark glass surface with a signature teal / yellow / pink hairline, same pill buttons as the nav. */
 
 #cc-main {
   --cc-font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --cc-bg: #0a0a0a;
-  --cc-primary-color: #e8e8e8;
-  --cc-secondary-color: rgba(255, 255, 255, 0.55);
+  --cc-bg: rgba(14, 14, 17, 0.8);
+  --cc-primary-color: #f2f2f2;
+  --cc-secondary-color: rgba(255, 255, 255, 0.62);
   --cc-btn-primary-bg: #00bcf1;
-  --cc-btn-primary-color: #fff;
+  --cc-btn-primary-color: #04121a;
   --cc-btn-primary-border-color: #00bcf1;
-  --cc-btn-primary-hover-bg: #0099c8;
-  --cc-btn-primary-hover-color: #fff;
-  --cc-btn-primary-hover-border-color: #0099c8;
+  --cc-btn-primary-hover-bg: #38ccf6;
+  --cc-btn-primary-hover-color: #04121a;
+  --cc-btn-primary-hover-border-color: #38ccf6;
   --cc-btn-secondary-bg: transparent;
-  --cc-btn-secondary-color: rgba(255, 255, 255, 0.75);
-  --cc-btn-secondary-border-color: rgba(255, 255, 255, 0.18);
-  --cc-btn-secondary-hover-bg: rgba(255, 255, 255, 0.06);
+  --cc-btn-secondary-color: rgba(255, 255, 255, 0.82);
+  --cc-btn-secondary-border-color: rgba(255, 255, 255, 0.28);
+  --cc-btn-secondary-hover-bg: rgba(255, 255, 255, 0.08);
   --cc-btn-secondary-hover-color: #fff;
-  --cc-btn-secondary-hover-border-color: rgba(255, 255, 255, 0.28);
-  --cc-separator-border-color: rgba(255, 255, 255, 0.1);
+  --cc-btn-secondary-hover-border-color: rgba(255, 255, 255, 0.5);
+  --cc-separator-border-color: rgba(255, 255, 255, 0.08);
+  --cc-footer-bg: transparent;
+  --cc-footer-color: rgba(255, 255, 255, 0.5);
+  --cc-footer-border-color: rgba(255, 255, 255, 0.08);
   --cc-link-color: #00bcf1;
-  --cc-btn-border-radius: 6px;
-  --cc-modal-margin: 0;
+  --cc-btn-border-radius: 9999px;
+  --cc-modal-border-radius: 18px;
+  --cc-modal-margin: 20px;
 }
 
-#cc-main .cm--bar {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.35);
+#cc-main .cm {
+  width: 440px;
+  max-width: calc(100vw / var(--zv, 1) - 40px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: radial-gradient(120% 90% at 0% 0%, rgba(0, 188, 241, 0.1), transparent 55%),
+    radial-gradient(90% 80% at 100% 100%, rgba(235, 0, 139, 0.08), transparent 60%),
+    var(--cc-bg);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+/* signature teal / yellow / pink hairline along the top edge */
+#cc-main .cm::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00bcf1 0 33.33%, #ffec03 33.33% 66.66%, #eb008b 66.66% 100%);
+  opacity: 0.9;
 }
 
 #cc-main .cm__body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem) !important;
-  align-items: center;
-  gap: 20px;
-}
-
-#cc-main .cm__title {
-  display: none;
+  padding: 4px 0 0;
 }
 
 #cc-main .cm__texts {
-  display: block !important;
-  padding: 0 !important;
+  padding: 18px 0 0 !important;
+}
+
+#cc-main .cm__title {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  padding: 0 22px;
+}
+
+/* the Cinebody C mark, in a small rounded tile */
+#cc-main .cm__title::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #fff url('/cinebody-icon.png') center / 20px 20px no-repeat;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+#cc-main .cm__title + .cm__desc {
+  margin-top: 10px;
 }
 
 #cc-main .cm__desc {
-  display: inline;
-  font-size: 12.5px;
-  line-height: 1.4;
-  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  padding: 0 22px;
 }
 
 #cc-main .cm__btns {
   border-top: none !important;
-  padding: 0 !important;
-  flex: 0 0 auto;
+  padding: 16px 22px 14px !important;
 }
 
 #cc-main .cm__btn-group {
-  gap: 8px;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 10px;
 }
 
 #cc-main button.cm__btn {
-  font-size: 12.5px;
-  font-weight: 600;
-  padding: 7px 16px;
+  flex: 1 1 0;
   min-width: 0 !important;
+  margin: 0 !important;
+  height: 40px;
+  padding: 0 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
+#cc-main button.cm__btn--primary {
+  box-shadow: 0 6px 18px rgba(0, 188, 241, 0.28);
+}
+
+#cc-main .cm__footer {
+  display: flex;
+  align-items: center;
+  padding: 11px 22px 13px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+#cc-main .cm__footer .cm__links {
+  padding: 0 !important;
+}
+
+#cc-main .cm__footer a {
+  color: var(--cc-footer-color);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.28);
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+#cc-main .cm__footer a:hover {
+  color: #00bcf1;
+  text-decoration-color: #00bcf1;
+}
+
+/* Phones: bottom sheet, full width minus the gutters, buttons side by side, tighter so it covers little */
 @media (max-width: 640px) {
-  #cc-main .cm__body {
-    padding: 14px clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem) !important;
+  #cc-main {
+    --cc-modal-margin: 10px;
+  }
+  #cc-main .cm {
+    width: auto;
+    max-width: none;
+    left: 10px;
+    right: 10px;
+    margin: 0;
+    border-radius: 16px;
+  }
+  #cc-main .cm__texts {
+    padding-top: 14px !important;
+  }
+  #cc-main .cm__title,
+  #cc-main .cm__desc {
+    padding: 0 16px;
+  }
+  #cc-main .cm__desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  #cc-main .cm__btns {
+    padding: 12px 16px 10px !important;
+  }
+  #cc-main .cm__footer {
+    padding: 0 16px 12px;
+    border-top: none;
+  }
+  #cc-main button.cm__btn {
+    height: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cc-main .cm,
+  #cc-main button.cm__btn {
+    transition: none !important;
   }
 }
 
 /* Vendor CSS uses raw viewport units; compensate for the site-wide body zoom (--zv, see global.css). */
-#cc-main .cm.cm--bar {
-  width: calc(100vw / var(--zv, 1));
-}
 #cc-main .cm .cm__desc {
   max-height: calc(40vh / var(--zv, 1));
 }

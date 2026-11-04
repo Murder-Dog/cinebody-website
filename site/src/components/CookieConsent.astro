@@ -27,8 +27,8 @@ import '../styles/cookie-consent.css';
   CookieConsent.run({
     guiOptions: {
       consentModal: {
-        layout: 'bar inline',
-        position: 'bottom',
+        layout: 'box',
+        position: 'bottom left',
         equalWeightButtons: false,
       },
     },
@@ -44,10 +44,12 @@ import '../styles/cookie-consent.css';
       translations: {
         en: {
           consentModal: {
+            title: 'Cookies, your call.',
             description:
               "We use a little data to see what's working on the site. Nothing without your OK.",
             acceptAllBtn: 'Accept',
             acceptNecessaryBtn: 'Decline',
+            footer: '<a href="/privacy-policy">Privacy policy</a>',
           },
           preferencesModal: {
             title: 'Preferences',
