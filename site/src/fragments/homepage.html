@@ -819,6 +819,7 @@ body > * { position: relative; z-index: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .pipeline *, .pipeline *::before, .pipeline *::after { animation-delay: 0s !important; }
   .hero-scroller-col,
   .logos-track,
   .cta-marquee-track { animation: none !important; }
@@ -1451,7 +1452,7 @@ body > * { position: relative; z-index: 1; }
   // The scroll version depends on continuous scroll events, which iOS throttles, so on touch
   // it strands on stage 1-2. Adding .pipe-static makes the class-based CSS above force the stack.
   var isTouch = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
-  if (isTouch || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 1024px)').matches || window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) {
+  if (isTouch || window.matchMedia('(max-width: 1024px)').matches || window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) {
     var pipelineEl = wrap.closest('.pipeline');
     pipelineEl.classList.add('pipe-static');
     // Force the stacked layout INLINE with !important. On WebKit the class/media-query rules
@@ -1638,6 +1639,7 @@ var END=[3.8,5.6,3.6,4.4];
 var CAM='/director/sticky/cam/c';
 var DOC='<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;width:390px;height:844px;overflow:hidden;background:#000}img{position:absolute;inset:0;width:390px;height:844px;display:block}</style></head><body><img id="cam" alt="" src="'+CAM+'001.webp"><script>var F=[];for(var f=1;f<137;f+=3)F.push(f);F.forEach(function(f){var i=new Image();i.src="'+CAM+'"+("00"+f).slice(-3)+".webp";});window.__film=function(t){var f=1+Math.floor(Math.max(0,t)*24);var k=F[0];for(var j=0;j<F.length;j++){if(F[j]<=f)k=F[j];}var s="'+CAM+'"+("00"+k).slice(-3)+".webp";var c=document.getElementById("cam");if(c.getAttribute("src")!==s)c.setAttribute("src",s);};window.__film(0);<\/script></body></html>';
 var STATIC=!!document.querySelector('.pipeline.pipe-static');
+var RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches); // keep the pinned scroll; just show each step's finished pose, no timed motion
 var frameSet=false;
 function setFrame(){if(frameSet)return;frameSet=true;$('d1frame').srcdoc=DOC}
 $('d1frame').addEventListener('load',function(){if(STATIC)D[1](END[1]);else D[1](0)});
@@ -1646,7 +1648,7 @@ var start=[null,null,null,null];
 window.__clock=null; // capture sets a function returning ms
 window.__dirTick=function(){var now=window.__clock?window.__clock():performance.now();
   for(var i=0;i<4;i++){var on=scenes[i].classList.contains('on');if(on&&start[i]===null)start[i]=now;if(!on)start[i]=null;
-    if(start[i]!==null)D[i]((now-start[i])/1000);else if(scenes[i].style.opacity>0.02||!on)D[i](0)}};
+    if(start[i]!==null)D[i](RM?END[i]:(now-start[i])/1000);else if(scenes[i].style.opacity>0.02||!on)D[i](0)}};
 D.forEach(function(f){f(0)});
 var live=false;
 function wake(){live=true}
