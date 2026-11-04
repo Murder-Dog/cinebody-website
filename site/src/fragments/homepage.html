@@ -1597,7 +1597,7 @@ var newMini=document.createElement('div');newMini.className='dmini top';newMini.
 var V=$('d3v'),vb=[];POST.forEach(function(p){var d=document.createElement('div');d.className='dblk dvid';d.innerHTML='<img src="/director/sticky/posters/'+p+'.webp" alt="" loading="lazy" decoding="async">';V.appendChild(d);vb.push(d)});
 var ST=$('d3steps');for(var k=0;k<4;k++)ST.appendChild(document.createElement('span'));var stp=[].slice.call(ST.children);
 var CLIPN=168;
-function rob(i,t){var f=(Math.floor(t*15)*2+(+robots[i].dataset.off))%360;var src='/director/sticky/robot/r'+('00'+f).slice(-3)+'.webp';if(robots[i].getAttribute('src')!==src)robots[i].setAttribute('src',src)}
+function rob(i,t){var f=(Math.floor(t*30)+(+robots[i].dataset.off))%360;var src='/director/sticky/robot/r'+('00'+f).slice(-3)+'.webp';if(robots[i].getAttribute('src')!==src)robots[i].setAttribute('src',src)}
 function txt(id,s){var e=$(id);if(e.innerHTML!==s)e.innerHTML=s}
 var D=[
 function(t){ // PLAN  project-setup-host.tsx
@@ -1609,7 +1609,7 @@ function(t){ // PLAN  project-setup-host.tsx
   shots.forEach(function(s,j){var a=ez((t-2.0-j*.3)/.4);s.style.opacity=a;s.style.transform='translateY('+(1-a)*8+'px)';s.classList.toggle('hot',t>3.3&&j===0)});
 },
 function(t){ // FILM: real camera UI rendered from camera.tsx inside the iframe
-  var fr=$('d1frame');if(fr&&fr.contentWindow&&fr.contentWindow.__film)fr.contentWindow.__film(t);
+  var fr=$('d1frame');if(fr&&fr.contentWindow&&fr.contentWindow.__film)fr.contentWindow.__film(t,STATIC||RM);
 },
 function(t){ // SCORE  analysis.ts / review.ts
   var sc=$('d2scan');sc.style.opacity=t<1.4?1:Math.max(0,1-(t-1.4)*4);sc.style.top=(((t/1.4)%1)*176)+'px';
@@ -1636,12 +1636,13 @@ function(t){ // CUT  post-production/page.tsx / plan-phase.ts / cut-setup-host.t
 }];
 D.forEach(function(fn,i){var o=fn;D[i]=function(t){rob(i,t);o(t)}});
 var END=[3.8,5.6,3.6,4.4];
-var CAM='/director/sticky/cam/c';
-var DOC='<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;width:390px;height:844px;overflow:hidden;background:#000}img{position:absolute;inset:0;width:390px;height:844px;display:block}</style></head><body><img id="cam" alt="" src="'+CAM+'001.webp"><script>var F=[];for(var f=1;f<137;f+=3)F.push(f);F.forEach(function(f){var i=new Image();i.src="'+CAM+'"+("00"+f).slice(-3)+".webp";});window.__film=function(t){var f=1+Math.floor(Math.max(0,t)*24);var k=F[0];for(var j=0;j<F.length;j++){if(F[j]<=f)k=F[j];}var s="'+CAM+'"+("00"+k).slice(-3)+".webp";var c=document.getElementById("cam");if(c.getAttribute("src")!==s)c.setAttribute("src",s);};window.__film(0);<\/script></body></html>';
+var CAM='/director/sticky/cam/camera';
+// Film step: the real camera UI at the source's full 24fps (136 frames, 5.67s) as one H.264 clip. It plays at real speed and is only nudged if it drifts from the scene clock.
+var DOC='<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;width:390px;height:844px;overflow:hidden;background:#000}video{position:absolute;inset:0;width:390px;height:844px;display:block;object-fit:fill}</style></head><body><video id="cam" muted playsinline preload="auto" disablepictureinpicture poster="'+CAM+'-poster.webp" src="'+CAM+'.mp4"></video><script>var v=document.getElementById("cam"),pend=false,seekMode=false,last=-1;window.__film=function(t,hold){var D=v.duration||5.6667;t=Math.max(0,t);if(hold){if(!v.paused)v.pause();var h=Math.min(t,D-0.02);if(Math.abs(v.currentTime-h)>0.02)v.currentTime=h;return}if(t<0.02){if(!v.paused)v.pause();if(v.currentTime>0.01)v.currentTime=0;return}if(t>=D-0.03){if(!v.paused)v.pause();if(v.currentTime<D-0.1)v.currentTime=D-0.02;return}if(seekMode){if(Math.abs(v.currentTime-t)>0.03)v.currentTime=t;return}if(v.paused&&!pend){pend=true;var r=v.play();if(r&&r.then)r.then(function(){pend=false},function(){pend=false;seekMode=true});else pend=false}if(!v.paused&&Math.abs(v.currentTime-t)>0.3)v.currentTime=t};<\/script></body></html>';
 var STATIC=!!document.querySelector('.pipeline.pipe-static');
 var RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches); // keep the pinned scroll; just show each step's finished pose, no timed motion
 var frameSet=false;
-function setFrame(){if(frameSet)return;frameSet=true;$('d1frame').srcdoc=DOC}
+function setFrame(){if(frameSet)return;frameSet=true;$('d1frame').srcdoc=DOC;if(!STATIC&&!RM)setTimeout(function(){for(var f=0;f<360;f++){var im=new Image();im.src='/director/sticky/robot/r'+('00'+f).slice(-3)+'.webp'}},400)}
 $('d1frame').addEventListener('load',function(){if(STATIC)D[1](END[1]);else D[1](0)});
 window.__dirStatic=function(){D.forEach(function(f,i){f(END[i])})};
 var start=[null,null,null,null];
