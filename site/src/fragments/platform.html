@@ -2305,6 +2305,11 @@ body > * { position: relative; z-index: 1; }
 .tour-lockup .tour-rail a:hover { border-color: var(--teal); }
 .tour-lockup .tour-rail a.on { border-color: var(--teal); background: var(--teal); box-shadow: 0 0 12px rgba(0,188,241,0.55); }
 .tour-sec:first-child { padding-top: 12px; }
+/* Landing stops (desktop, fine pointer, motion allowed; the JS adds .tour-snap): each section is a full screen
+   below the fixed nav with its lockup centered, so one stop shows one item with real breathing room.
+   Touch, <1100px and reduced motion never get .tour-snap and keep the stacked padding above. */
+.tour-lockup.tour-snap .tour-sec,
+.tour-lockup.tour-snap .tour-sec:first-child { box-sizing: border-box; display: flex; align-items: center; padding: clamp(96px, calc(12vh / var(--zv,1)), 190px) 0; min-height: calc(100vh / var(--zv,1) - var(--nav-h)); scroll-margin-top: var(--nav-h); }
 .tour-sec + .tour-sec { border-top: 1px solid rgba(255,255,255,0.05); }
 .tour-sec .pipe-stage { margin-bottom: 0; }
 /* stage grounding: spotlight behind, contact shadow beneath */
@@ -2824,7 +2829,7 @@ body > * { position: relative; z-index: 1; }
 <script>
 // Reveal
 (function(){
-  var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');o.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){if(e.target.closest('.tour-run.tour-snap'))return;e.target.classList.add('vis');o.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
 })();
 
@@ -2934,6 +2939,7 @@ body > * { position: relative; z-index: 1; }
     a.addEventListener('click', function(e){
       if (enabled) { e.preventDefault(); engage(); setActive(i); return; }
       e.preventDefault();
+      if (window.__tourStop && window.__tourStop(i)) return;
       secs[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
@@ -2949,6 +2955,100 @@ body > * { position: relative; z-index: 1; }
     });
   }, { rootMargin: '-35% 0px -55% 0px' });
   secs.forEach(function(s){ obs.observe(s); });
+})();
+
+// Tour landing stops: one hard stop per section (same settle as the pinned Plan/Film/Score/Cut section on the homepage).
+// After the scroll goes idle it eases to the nearest stop, any wheel/touch/key/mouse input cancels it, and the page is free
+// before the first stop and after the last. Desktop + fine pointer + motion allowed only; everything else scrolls as before.
+(function(){
+  var run = document.querySelector('.tour-run');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.tour-sec'));
+  var nav = document.querySelector('.site-nav');
+  if (!run || !secs.length) return;
+  var N = secs.length;
+  var mqW = window.matchMedia('(min-width: 1100px)');
+  var mqRM = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  function eligible(){ return mqW.matches && mqFine.matches && !mqRM.matches; }
+  var snap = false, landed = null, animRaf = 0, animating = false, idleT = 0;
+
+  function reveal(k){
+    var st = secs[k].querySelectorAll('.reveal');
+    for (var i = 0; i < st.length; i++) st[i].classList.add('vis');
+  }
+  function apply(){
+    var on = eligible();
+    if (on === snap) return;
+    snap = on;
+    run.classList.toggle('tour-snap', on);
+    if (!on) { cancelAnim(); landed = null; secs.forEach(function(s, k){ reveal(k); }); }
+    else onS();
+  }
+  // stop k: the section centered in the area below the fixed nav (visual px, the same space as scrollY; the page may be zoomed)
+  function navB(){ return nav ? nav.getBoundingClientRect().bottom : 0; }
+  function stops(){
+    var nb = navB(), mid = nb + (window.innerHeight - nb) / 2, y = window.scrollY, out = [];
+    for (var i = 0; i < N; i++) {
+      var r = secs[i].getBoundingClientRect();
+      out.push(Math.round(r.top + y + r.height / 2 - mid));
+    }
+    return out;
+  }
+  // fractional stop position f (0..N-1 inside the tour, outside that below 0 / above N-1)
+  function frac(Y, y){
+    if (y <= Y[0]) return (y - Y[0]) / Math.max(1, Y[1] - Y[0]);
+    if (y >= Y[N-1]) return N - 1 + (y - Y[N-1]) / Math.max(1, Y[N-1] - Y[N-2]);
+    for (var k = 0; k < N - 1; k++) if (y < Y[k+1]) return k + (y - Y[k]) / (Y[k+1] - Y[k]);
+    return N - 1;
+  }
+  function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+  function cancelAnim(){ if (animRaf) { cancelAnimationFrame(animRaf); animRaf = 0; } animating = false; }
+  function settleTo(k){
+    var Y = stops(), from = window.scrollY, to = Y[k], dist = to - from;
+    if (Math.abs(dist) < 1) { landed = k; reveal(k); return; }
+    cancelAnim(); animating = true;
+    var dur = Math.max(260, Math.min(520, Math.abs(dist) * 0.9)), t0 = performance.now();
+    (function tick(now){
+      var t = Math.min(1, (now - t0) / dur);
+      window.scrollTo({ top: from + dist * ease(t), behavior: 'instant' });
+      if (t < 1) { animRaf = requestAnimationFrame(tick); }
+      else { animRaf = 0; animating = false; landed = k; reveal(k); }
+    })(t0);
+  }
+  var T = 0.06; // nudge past 6% of a stop in a direction and you go to the next stop
+  function settle(){
+    if (!snap || animating) return;
+    var Y = stops(), y = window.scrollY, f = frac(Y, y);
+    if (f <= 0.0005 || f >= N - 1 - 0.0005) { // outside (or exactly on an end): free scroll
+      // ...except when you arrive from outside and stop a hair short of an end stop: finish the landing
+      if (landed === null && ((f > -0.2 && f <= 0.0005) || (f >= N - 1 - 0.0005 && f < N - 1 + 0.2))) settleTo(f < 1 ? 0 : N - 1);
+      return;
+    }
+    var target;
+    if (landed === null) target = Math.round(f);
+    else {
+      var d = f - landed;
+      if (Math.abs(d) >= 1 - T) target = Math.round(f);
+      else target = Math.abs(d) >= T ? landed + (d > 0 ? 1 : -1) : landed;
+    }
+    settleTo(Math.max(0, Math.min(N - 1, target)));
+  }
+  function onS(){
+    if (!snap) return;
+    var Y = stops(), f = frac(Y, window.scrollY);
+    if (!animating) { clearTimeout(idleT); idleT = setTimeout(settle, 130); }
+    if (f < -0.3 || f > N - 1 + 0.3) { landed = null; return; }
+    var near = Math.max(0, Math.min(N - 1, Math.round(f)));
+    if (Math.abs(f - near) <= 0.3) reveal(near); // the entrance plays as the stop arrives
+    if (Math.abs(f - near) < 0.002) landed = near;
+  }
+  ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){ window.addEventListener(ev, function(){ if (animating) cancelAnim(); }, { passive: true }); });
+  window.addEventListener('scroll', onS, { passive: true });
+  window.addEventListener('resize', function(){ cancelAnim(); apply(); onS(); settle(); });
+  [mqW, mqRM, mqFine].forEach(function(m){ m.addEventListener ? m.addEventListener('change', apply) : m.addListener(apply); });
+  window.__tourStop = function(k){ if (!snap) return false; cancelAnim(); settleTo(k); return true; };
+  window.__tourStops = function(){ return { snap: snap, Y: stops(), y: window.scrollY, landed: landed }; };
+  apply();
 })();
 
 // FAQ
