@@ -11,7 +11,7 @@ which Squarespace used to provide).
 ```
 site/
 ├── src/
-│   ├── layouts/Base.astro      <head>, SEO/OG, Nav, footer, Vimeo video JS
+│   ├── layouts/Base.astro      <head>, SEO/OG, Nav, footer, video loader JS (self-hosted <video> + on-demand Vimeo fallback)
 │   ├── components/Nav.astro     rebuilt nav (transparent → glass on scroll, mobile menu)
 │   ├── pages/*.astro            one thin wrapper per route (generated)
 │   ├── fragments/*.html         the page bodies (copied from ../v2/paste-ready, URLs localized)
@@ -106,6 +106,8 @@ npm run blog:recrop   # re-crops only posts that set `focal`, from public/blog/<
 
 ## Notes
 
-- Vimeo videos/thumbnails, Calendly, and map tiles remain on their own CDNs
-  (they're not tied to the Squarespace account; videos stream from Vimeo).
+- Home, Platform and Services video is self-hosted in `public/video/{wall,cuts,posters}/`
+  (encode with `scripts/encode-video.sh`; keep each file under ~10 MB). Other pages
+  (case studies, landing pages, blog) still embed Vimeo; Calendly and map tiles remain on
+  their own CDNs.
 - The Squarespace blog can be retired once the domain moves to Vercel.

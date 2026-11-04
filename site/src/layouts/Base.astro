@@ -181,10 +181,12 @@ if (!pageSchema && caseStudies[slug]) {
     <!-- Self-hosted variable font (no render-blocking third-party request) -->
     <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Vimeo player API is loaded on demand (first video that actually
-         mounts) via window.__cbVimeo() below, so pages that never play a video
-         never pay for the script or the third-party connection. -->
-    <link rel="preconnect" href="https://player.vimeo.com" />
+    <!-- Home, Platform and Services play self-hosted video from /video/ (no
+         third-party requests). Pages that still embed Vimeo (case studies and
+         landing pages) load the player API on demand via window.__cbVimeo()
+         below, only when one of those embeds actually mounts. There is
+         deliberately no preconnect: it would open a third-party connection on
+         every page, including the ones that never touch Vimeo. -->
     <script is:inline>
       // Returns a promise that resolves once player.js is on the page. Safe to call repeatedly.
       window.__cbVimeo = function () {
@@ -309,7 +311,7 @@ if (!pageSchema && caseStudies[slug]) {
           container._cbPlayFailed = true;
           container._cbLoading = false;
           container.classList.remove('playing', 'vid-loading');
-          var iframe = container.querySelector('iframe');
+          var iframe = container.querySelector('iframe, video');
           if (iframe) iframe.remove();
           if (container._player && container._player.unload) {
             try { container._player.unload(); } catch (_) {}
@@ -323,6 +325,48 @@ if (!pageSchema && caseStudies[slug]) {
             msg.setAttribute('role', 'status');
             msg.textContent = 'Video unavailable';
             container.appendChild(msg);
+          }
+        }
+
+        // Self-hosted <video> (data-video-src). Same states and classes as the
+        // Vimeo path (.vid-loading / .playing / .vid-error) so CSS, the mute
+        // button and the mobile carousel behave identically. Muted + looped like
+        // the Vimeo player was; the mute button toggles audio on the same element.
+        function loadSelfHosted(container, src, fromUser) {
+          if (container.classList.contains('playing') || container._cbLoading) return;
+          container._cbLoading = true;
+          container._cbPlayFailed = false;
+          container.classList.remove('vid-error');
+          container.classList.add('vid-loading');
+          var oldErr = container.querySelector('.vid-error-msg');
+          if (oldErr) oldErr.remove();
+          var v = document.createElement('video');
+          v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+          v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('loop', '');
+          v.setAttribute('aria-label', container.getAttribute('data-title') || 'Cinebody customer video');
+          v.preload = 'auto';
+          v.src = src;
+          container.insertBefore(v, container.firstChild);
+          container._player = {
+            setVolume: function (n) { v.muted = !n; v.volume = n ? 1 : 0; },
+            unload: function () { try { v.pause(); } catch (_) {} v.removeAttribute('src'); try { v.load(); } catch (_) {} }
+          };
+          v.addEventListener('playing', function () {
+            container._cbLoading = false;
+            container.classList.remove('vid-loading');
+            container.classList.add('playing');
+          }, { once: true });
+          v.addEventListener('error', function () { failPlay(container); }, { once: true });
+          var p = v.play();
+          if (p && p.catch) p.catch(function () { if (!container.classList.contains('playing')) failPlay(container); });
+          // Autoplay (not user-started) cards pause while off screen to save CPU/battery.
+          if (!fromUser && 'IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) { var q = v.play(); if (q && q.catch) q.catch(function () {}); }
+                else v.pause();
+              });
+            }, { threshold: 0.05 }).observe(container);
           }
         }
 
@@ -404,12 +448,23 @@ if (!pageSchema && caseStudies[slug]) {
           if (container.__cbMounted) return;
           var videoId = container.getAttribute('data-vimeo');
           var hash = container.getAttribute('data-vimeo-h');
+          var selfSrc = container.getAttribute('data-video-src');
           var autoplayDesktop = container.hasAttribute('data-autoplay');
           var autoplayAlways = container.hasAttribute('data-autoplay-always');
-          if (!videoId) return;
+          if (!videoId && !selfSrc) return;
           container.__cbMounted = true;
 
-          var shouldAutoplay = !isSafari && !isMobile && (autoplayAlways || autoplayDesktop);
+          // Self-hosted clips autoplay on every desktop browser (Safari included, it
+          // plays muted <video> fine) except for visitors who ask for reduced motion:
+          // they keep the poster + play button and can still press play.
+          var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var shouldAutoplay = selfSrc
+            ? (!isMobile && !reduceMotion && (autoplayAlways || autoplayDesktop))
+            : (!isSafari && !isMobile && (autoplayAlways || autoplayDesktop));
+          var load = function (fromUser) {
+            if (selfSrc) loadSelfHosted(container, selfSrc, fromUser);
+            else loadVideo(container, videoId, hash, fromUser);
+          };
 
           var playBtn = document.createElement('div');
           playBtn.className = 'vid-play-btn';
@@ -429,7 +484,7 @@ if (!pageSchema && caseStudies[slug]) {
           if (shouldAutoplay) {
             var obs = new IntersectionObserver(function (entries) {
               entries.forEach(function (e) {
-                if (e.isIntersecting) { loadVideo(container, videoId, hash, false); obs.unobserve(container); }
+                if (e.isIntersecting) { load(false); obs.unobserve(container); }
               });
             }, { threshold: 0.15 });
             obs.observe(container);
@@ -439,7 +494,7 @@ if (!pageSchema && caseStudies[slug]) {
             if (e.target.closest('.vid-mute-btn')) return;
             // Hide via .playing CSS only — inline opacity:0 survived error
             // rollback and left a dead poster with no play button.
-            loadVideo(container, videoId, hash, true);
+            load(true);
           });
 
           muteBtn.addEventListener('click', function (e) {
@@ -464,10 +519,11 @@ if (!pageSchema && caseStudies[slug]) {
     </script>
 
     <!-- Hero video wall (Home / Platform / Services). The HTML ships only a tiny
-         local poster per card plus the Vimeo URL on data-video. On mobile or with
+         local poster per card plus the self-hosted clip URL on data-video
+         (/video/wall/<id>-360.mp4, 15s muted H.264 loops). On mobile or with
          reduced-motion we never stream: the posters ARE the wall. On desktop we
-         create a background player only for the cards in view (capped) and tear
-         it down once they scroll out, so no page ever pulls 30 players at once. -->
+         create a muted looping <video> only for the cards in view (capped) and
+         tear it down once they scroll out, so no page ever pulls 30 clips at once. -->
     <script is:inline>
       (function () {
         var cards = Array.prototype.slice.call(document.querySelectorAll('.scr-card[data-video]'));
@@ -478,10 +534,11 @@ if (!pageSchema && caseStudies[slug]) {
           !('IntersectionObserver' in window);
         if (noVideo) return;
         var MAX = 9, active = 0;
-        function mount(card, i) {
+        function mountLegacyVimeo(card, i) {
+          // Pages not yet migrated to self-hosted clips still point data-video at Vimeo.
           var iframe = document.createElement('iframe');
           var u = card.getAttribute('data-video');
-          iframe.src = u + (u.indexOf('?') > -1 ? '&' : '?') + 'dnt=1#t=' + ((i % 5) * 6) + 's'; // stagger loop start
+          iframe.src = u + (u.indexOf('?') > -1 ? '&' : '?') + 'dnt=1#t=' + ((i % 5) * 6) + 's';
           iframe.allow = 'autoplay';
           iframe.title = 'Cinebody customer video';
           iframe.setAttribute('aria-hidden', 'true');
@@ -489,9 +546,31 @@ if (!pageSchema && caseStudies[slug]) {
           card.insertBefore(iframe, card.querySelector('.scr-label'));
           card._frame = iframe; active++;
         }
+        function mount(card, i) {
+          if (card.getAttribute('data-video').indexOf('vimeo.com') > -1) return mountLegacyVimeo(card, i);
+          var v = document.createElement('video');
+          v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+          v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('loop', '');
+          v.setAttribute('aria-hidden', 'true');
+          v.tabIndex = -1;
+          v.preload = 'auto';
+          v.src = card.getAttribute('data-video');
+          // stagger the loop start so neighbouring cards are not in lockstep
+          var offset = (i % 5) * 2.5;
+          v.addEventListener('loadedmetadata', function () {
+            if (v.duration > offset + 1) { try { v.currentTime = offset; } catch (_) {} }
+          }, { once: true });
+          // fade in over the poster only once frames are actually flowing
+          v.addEventListener('playing', function () { v.classList.add('on'); }, { once: true });
+          card.insertBefore(v, card.querySelector('.scr-label'));
+          var p = v.play(); if (p && p.catch) p.catch(function () {});
+          card._frame = v; active++;
+        }
         function unmount(card) {
           if (!card._frame) return;
-          card._frame.src = 'about:blank'; card._frame.remove(); card._frame = null;
+          if (card._frame.tagName === 'VIDEO') { card._frame.pause(); card._frame.removeAttribute('src'); card._frame.load(); }
+          else card._frame.src = 'about:blank';
+          card._frame.remove(); card._frame = null;
           active = Math.max(0, active - 1);
         }
         var io = new IntersectionObserver(function (entries) {
@@ -576,7 +655,7 @@ if (!pageSchema && caseStudies[slug]) {
     var v = node.matches && node.matches('.vid-playable') ? node : (node.querySelector && node.querySelector('.vid-playable'));
     if (!v) return;
     v.classList.remove('playing', 'vid-error', 'vid-loading');
-    var old = v.querySelector('iframe'); if (old) old.remove();
+    var old = v.querySelector('iframe, video'); if (old) old.remove();
     var err = v.querySelector('.vid-error-msg'); if (err) err.remove();
     var pb = v.querySelector('.vid-play-btn'); if (pb) pb.remove();
     var mb = v.querySelector('.vid-mute-btn'); if (mb) mb.remove();
