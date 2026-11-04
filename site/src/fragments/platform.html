@@ -2198,7 +2198,6 @@ body > * { position: relative; z-index: 1; }
 .pipe-bar { display: flex; gap: 6px; padding: 11px 14px; background: #141414; border-bottom: 1px solid var(--border); }
 .pipe-bar span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.14); }
 .pipe-cap { margin-top: 20px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); text-align: center; }
-.pipe-stack { position: relative; padding: 26px 0 0 26px; }
 .pipe-duo { position: relative; padding: 0 30px 40px 0; }
 .pipe-pair { display: flex; align-items: center; gap: 18px; }
 .pipe-pair-main { flex: 1; min-width: 0; }
@@ -2215,8 +2214,6 @@ body > * { position: relative; z-index: 1; }
 .feat--light .shot-tab.on { color: #fff; background: #111; border-color: #111; }
 @media (max-width: 900px) { .pipe-pair { flex-direction: column; } .pipe-side-phone { width: 180px; } }
 .pipe-duo-phone { position: absolute; right: -6px; bottom: 0; width: 168px; max-width: none; margin: 0; z-index: 2; box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
-.pipe-stack-back { position: absolute; top: 0; left: 0; right: 52px; opacity: 0.55; filter: saturate(0.8); }
-.pipe-stack-front { position: relative; z-index: 2; }
 .feat { padding: 90px 0; overflow: hidden; }
 .feat .pipe-stage { margin-bottom: 0; }
 .pipeline .pipe-stage { margin-bottom: 0; }
@@ -2329,8 +2326,6 @@ body > * { position: relative; z-index: 1; }
 .pipe-frame--browser { container-type: inline-size; }
 .pipe-bar[data-url]::after { content: attr(data-url); position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-family: var(--mono); font-size: 10px; letter-spacing: 0.02em; color: rgba(255,255,255,0.38); background: rgba(255,255,255,0.05); border-radius: 5px; padding: 2px 16px; white-space: nowrap; }
 @container (max-width: 430px) { .pipe-bar[data-url]::after { display: none; } }
-/* the peeking back frame keeps its lights but not the URL pill (it doubles up) */
-.pipe-stack-back .pipe-bar[data-url]::after { display: none; }
 .tour-run .pipe-frame--phone { padding: 7px; border-radius: 36px; background: linear-gradient(150deg,#2e3237,#131417 55%,#1f2126); border: 1px solid rgba(255,255,255,0.22); box-shadow: inset 0 0 0 2px #000, 0 28px 64px rgba(0,0,0,0.5); }
 .tour-run .pipe-frame--phone img { border-radius: 29px; }
 .tour-run .pipe-frame--phone::before { content: ''; position: absolute; top: 4.2%; left: 50%; transform: translateX(-50%); width: 27%; height: 2.5%; min-height: 8px; background: #000; border-radius: 99px; z-index: 3; }
@@ -2387,9 +2382,6 @@ body > * { position: relative; z-index: 1; }
 .tour-lockup .pipe-pair .pipe-frame--browser img { flex: 1; min-height: 0; height: auto; object-fit: cover; object-position: left top; }
 .tour-lockup .pipe-frame--browser[data-crop="right"] img { object-position: right top; }
 .tour-lockup .pipe-frame--browser[data-crop="center"] img { object-position: center top; }
-.tour-lockup .pipe-stack { height: 100%; padding: 0; }
-.tour-lockup .pipe-stack-front { height: 100%; margin-top: 0; }
-.tour-lockup .pipe-stack-back { display: none; }
 .tour-lockup .pipe-side-phone { position: absolute; left: -8px; bottom: -26px; width: clamp(168px, 24%, 210px); height: auto; z-index: 4; box-shadow: inset 0 0 0 2px #000, 0 34px 80px rgba(0,0,0,0.7); }
 /* phone-led sections: width-bounded so they can never squeeze the copy column */
 .tour-lockup .pipe-phones { height: auto; align-items: center; justify-content: center; gap: clamp(26px, calc(3vw / var(--zv,1)), 44px); }
@@ -2420,8 +2412,6 @@ body > * { position: relative; z-index: 1; }
   .tour-run .pipe-pair-main { position: relative; width: 100%; height: auto; }
   .tour-run .pipe-frame--browser { position: relative; width: 100%; height: auto; display: flex; flex-direction: column; }
   .tour-run .pipe-frame--browser img { width: 100%; height: auto; display: block; object-fit: cover; }
-  .tour-run .pipe-stack, .tour-run .pipe-stack-front { height: auto; }
-  .tour-run .pipe-stack-back { display: none; }   /* only the front screen on small viewports */
   .tour-run .pipe-side-phone { position: absolute; left: 3%; bottom: -16px; width: 34%; max-width: 160px; height: auto; z-index: 4; box-shadow: inset 0 0 0 2px #000, 0 24px 60px rgba(0,0,0,0.6); }
 
   /* if a section ever uses two phones, put them side by side */
@@ -2478,12 +2468,7 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The idea"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-ideastudio.webp"  alt="Idea Studio: a dealt shoot idea, ready to keep or skip" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="The generated shot list" data-crop="center"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-wizard.webp"  alt="An AI-generated shot list from one description" loading="lazy"></div>
-        </div>
-          </div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="The generated shot list" data-crop="center"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-wizard.webp"  alt="An AI-generated shot list from one description" loading="lazy"></div>
           <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-project.webp"  alt="The same project in the Cinebody app" loading="lazy"></div>
         </div>
         <div class="pipe-cap">An idea becomes a plan · dealt, generated, editable</div>
@@ -2531,12 +2516,7 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The live map"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-map.webp"  alt="The clip map: where every clip was filmed, pin by pin" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="Messages & directions"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-messages.webp"  alt="Messages and directions: talk to one filmer or all of them" loading="lazy"></div>
-        </div>
-          </div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="Messages & directions"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-messages.webp"  alt="Messages and directions: talk to one filmer or all of them" loading="lazy"></div>
           <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-messages.webp"  alt="The same conversation in the Cinebody app" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Directions land as notifications, while they film</div>
@@ -2552,12 +2532,7 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The library"><div class="pipe-bar" data-url="cinebody.com/dashboard/library"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-library.webp"  alt="The library: every clip scored on arrival" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="A clip review" data-crop="right"><div class="pipe-bar" data-url="cinebody.com/dashboard/library"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-clipdetail.webp"  alt="A real review: the score and the reasons why" loading="lazy"></div>
-        </div>
-          </div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="A clip review" data-crop="right"><div class="pipe-bar" data-url="cinebody.com/dashboard/library"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-clipdetail.webp"  alt="A real review: the score and the reasons why" loading="lazy"></div>
           <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-library.webp"  alt="The library in the Cinebody app" loading="lazy"></div>
         </div>
         <div class="pipe-cap">AI Clip Review · web and app</div>
@@ -2589,12 +2564,7 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The story it found"><div class="pipe-bar" data-url="cinebody.com/dashboard/post-production"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-postproduction.webp"  alt="Cinebody reads the footage and writes the story brief" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="The timeline it built"><div class="pipe-bar" data-url="cinebody.com/dashboard/post-production"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-postgen.webp"  alt="One click later: a finished timeline with captions and music" loading="lazy"></div>
-        </div>
-          </div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="The timeline it built"><div class="pipe-bar" data-url="cinebody.com/dashboard/post-production"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-postgen.webp"  alt="One click later: a finished timeline with captions and music" loading="lazy"></div>
           <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="The finished cut"><img src="/app-ui/live/app-cut.webp"  alt="The finished vertical cut, the way it lands on the feed" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Auto-Editor · the brief, then the cut</div>
@@ -2610,12 +2580,7 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="Brand profile"><div class="pipe-bar" data-url="cinebody.com/dashboard/brand-kit"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-brandprofile.webp"  alt="Brand profile: voice, audience, and filming rules" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="Visual identity"><div class="pipe-bar" data-url="cinebody.com/dashboard/brand-kit"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-brandkit.webp"  alt="Brand Kit: logo and colors, fetched from your site" loading="lazy"></div>
-        </div>
-          </div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="Visual identity"><div class="pipe-bar" data-url="cinebody.com/dashboard/brand-kit"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-brandkit.webp"  alt="Brand Kit: logo and colors, fetched from your site" loading="lazy"></div>
           <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-brandkit.webp"  alt="Brand Kit in the Cinebody app" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Brand Kit · both pages, fetched from your site</div>
