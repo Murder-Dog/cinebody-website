@@ -2,6 +2,11 @@
      Paste this into a single Code Block on the homepage page.
      Requires: Code Injection (header + footer), Custom CSS, Global Footer -->
 
+<script>
+/* Fluid scale for the two Director sections. --dps drives the pinned Plan/Film/Score/Cut stage (fits the viewport height, so small laptops never clip and big screens fill),
+   --dcs drives Meet the Director (grows on large screens, never shrinks). 1440x900 is exactly 1. Stacked layouts (phones, touch, 1024px and under) stay at 1. */
+(function(){var d=document.documentElement;function f(){var w=innerWidth,h=innerHeight,st=w<=1024||navigator.maxTouchPoints>0||'ontouchstart' in window||matchMedia('(hover: none)').matches||matchMedia('(pointer: coarse)').matches,m=Math.min(w/1440,h/760,2.2);d.style.setProperty('--dps',(st?1:Math.max(.7,m)).toFixed(3));d.style.setProperty('--dcs',(st?1:Math.max(1,m)).toFixed(3))}f();addEventListener('resize',f)})();
+</script>
 <style>
 /* ═══════════════════════════════════════════════
    CINEBODY V4, PREMIUM DARK AURORA DESIGN
@@ -61,6 +66,7 @@ body > * { position: relative; z-index: 1; }
   width: 100%;
   height: 70px;
 }
+.curve-soft { margin-top: -30px; margin-bottom: -10px; } .curve-soft svg { height: 110px; overflow: hidden; }
 @media (max-width: 600px) {
   .curve svg { height: 90px; }
 }
@@ -987,8 +993,9 @@ body > * { position: relative; z-index: 1; }
 }
 /* ── scroll-driven pipeline: pinned wireframe phone stepping through the stages ── */
 .pipe-scroll { height: 540vh; position: relative; }
-.pipe-sticky { position: sticky; top: calc(50vh - 280px); height: 560px; display: flex; align-items: center; }
-.pipe-stickygrid { display: grid; grid-template-columns: minmax(0,1fr) 56px clamp(420px, 32vw, 490px); gap: clamp(28px, 3vw, 44px); align-items: center; width: 100%; max-width: 1180px; margin: 0 auto; }
+.pipe-sticky { position: sticky; top: calc(50vh - 280px * var(--dps,1)); height: calc(560px * var(--dps,1)); display: flex; align-items: center; }
+.pipeline-head { zoom: var(--dps,1); }
+.pipe-stickygrid { zoom: var(--dps,1); display: grid; grid-template-columns: minmax(0,1fr) 56px clamp(420px, 32vw, 490px); gap: clamp(28px, 3vw, 44px); align-items: center; width: 100%; max-width: 1180px; margin: 0 auto; }
 .pipe-copies { position: relative; min-height: 320px; }
 .pipe-copy-block { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); opacity: 0; }
 .pipe-copy-block h3 { font-size: clamp(1.9rem,3vw,2.6rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 16px; position: relative; }
@@ -1211,7 +1218,7 @@ body > * { position: relative; z-index: 1; }
 .dcard{padding:16px 18px 18px}
 .dstat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,188,241,.85)}
 .dhost{display:flex;align-items:flex-end;gap:10px;margin:-4px 0 12px}
-.drobot{width:74px;height:85px;flex:none;display:block;margin:0 -4px -6px -8px;filter:drop-shadow(0 6px 14px rgba(0,188,241,.18))}
+.drobot{width:74px;height:85px;flex:none;display:block;background:url(/director/meet/robot/director-poster.webp) center/contain no-repeat;margin:0 -4px -6px -8px;filter:drop-shadow(0 6px 14px rgba(0,188,241,.18))}
 .dbub{position:relative;flex:1;min-height:54px;padding:9px 13px 10px;border-radius:13px;border:1px solid transparent;
   background-image:linear-gradient(#10171d,#10171d),linear-gradient(120deg,var(--teal),var(--yellow),var(--pink));background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 10px 28px rgba(0,0,0,.35);margin-bottom:22px}
 .dbub::after{content:'';position:absolute;left:-7px;bottom:14px;width:12px;height:12px;background:#10171d;transform:rotate(45deg);border-left:1px solid var(--teal);border-bottom:1px solid var(--teal);border-radius:0 0 0 3px}
@@ -1296,8 +1303,8 @@ body > * { position: relative; z-index: 1; }
 .pipeline.pipe-static .pipe-copy-block .pscene .dshot{opacity:1}
 </style>
 
-<!-- curve: dark → white (mechanic) -->
-<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0a0a0a"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
+<!-- curve: dark → white (mechanic). Feathered, so the Director section does not end on a hard line. -->
+<div class="curve curve-soft"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="softcurve" x="-5%" y="-60%" width="110%" height="260%"><feGaussianBlur stdDeviation="22"/></filter></defs><rect width="1440" height="80" fill="#0a0a0a"/><path filter="url(#softcurve)" d="M-80,24 Q720,74 1520,24 L1520,200 L-80,200 Z" fill="#fff"/></svg></div>
 
 <section class="mech">
   <div class="contain">
@@ -1387,7 +1394,7 @@ body > * { position: relative; z-index: 1; }
 <div class="pscene" data-scene="0">
   <div class="pcard dcard">
     <div class="pcard-head"><span class="pcard-title">Shot list</span><span class="dstat" id="d0s"></span></div>
-    <div class="dhost"><img class="drobot" width="148" height="170" data-off="0" alt="" decoding="async"><div class="dbub"><span class="dtag">Director</span><span class="dtx" id="d0b"></span></div></div>
+    <div class="dhost"><div class="drobot" role="presentation"></div><div class="dbub"><span class="dtag">Director</span><span class="dtx" id="d0b"></span></div></div>
     <div class="pbrief dbrief"><span id="d0brief"></span></div>
     <div class="dshot"><span class="pshot-n">01</span><span class="pshot-t">Product in real hands</span><span class="pshot-tag">Wide</span></div>
     <div class="dshot"><span class="pshot-n">02</span><span class="pshot-t">Why I keep coming back</span><span class="pshot-tag pshot-tag--pink">Interview</span></div>
@@ -1398,13 +1405,13 @@ body > * { position: relative; z-index: 1; }
 <div class="pscene" data-scene="1">
   <div class="dwrap2">
     <div class="dphone2"><div class="dscreen2"><iframe id="d1frame" title="Cinebody camera with the Director coaching a shot" scrolling="no" tabindex="-1"></iframe></div></div>
-    <img class="drobot drobot2" width="148" height="170" data-off="40" alt="" decoding="async">
+    <div class="drobot drobot2" role="presentation"></div>
   </div>
 </div>
 <div class="pscene" data-scene="2">
   <div class="pcard dcard">
     <div class="pcard-head"><span class="pcard-title">Clips</span><span class="dstat" id="d2s">Clip Review</span></div>
-    <div class="dhost"><img class="drobot" width="148" height="170" data-off="114" alt="" decoding="async"><div class="dbub"><span class="dtag" id="d2tag">Director</span><span class="dtx" id="d2b"></span></div></div>
+    <div class="dhost"><div class="drobot" role="presentation"></div><div class="dbub"><span class="dtag" id="d2tag">Director</span><span class="dtx" id="d2b"></span></div></div>
     <div class="dscore">
       <div class="dthumb"><img src="/director/sticky/posters/f060.webp" loading="lazy" decoding="async" alt=""><div class="dbrk dbrk--sm" id="d2brk"></div><div class="dscan" id="d2scan"></div></div>
       <div class="dsbody">
@@ -1422,7 +1429,7 @@ body > * { position: relative; z-index: 1; }
 <div class="pscene" data-scene="3">
   <div class="pcard dcard">
     <div class="pcard-head"><span class="pcard-title">Timeline</span><span class="dbtn" id="d3btn">Build my cut</span></div>
-    <div class="dhost"><img class="drobot" width="148" height="170" data-off="200" alt="" decoding="async"><div class="dbub"><span class="dtag" id="d3tag">Auto-Editor</span><span class="dtx" id="d3b"></span></div></div>
+    <div class="dhost"><div class="drobot" role="presentation"></div><div class="dbub"><span class="dtag" id="d3tag">Auto-Editor</span><span class="dtx" id="d3b"></span></div></div>
     <div class="dsteps" id="d3steps"></div>
     <div class="dtl">
       <div class="ptl-lab">Video</div><div class="dtl-row" id="d3v"></div>
@@ -1597,7 +1604,19 @@ var newMini=document.createElement('div');newMini.className='dmini top';newMini.
 var V=$('d3v'),vb=[];POST.forEach(function(p){var d=document.createElement('div');d.className='dblk dvid';d.innerHTML='<img src="/director/sticky/posters/'+p+'.webp" alt="" loading="lazy" decoding="async">';V.appendChild(d);vb.push(d)});
 var ST=$('d3steps');for(var k=0;k<4;k++)ST.appendChild(document.createElement('span'));var stp=[].slice.call(ST.children);
 var CLIPN=168;
-function rob(i,t){var f=(Math.floor(t*30)+(+robots[i].dataset.off))%360;var src='/director/sticky/robot/r'+('00'+f).slice(-3)+'.webp';if(robots[i].getAttribute('src')!==src)robots[i].setAttribute('src',src)}
+// One real robot gesture per beat of each step. The sprites are rendered from the platform's own robot behaviour tables and shared with the Meet the Director section.
+var GS={"scan":[32,12,3,15.238,1],"thinking":[24,12,2,16,1],"talk":[24,12,2,20.87,1],"idea":[22,12,2,24.444,0],"nod":[17,12,2,24.286,0],"wink":[13,12,2,25,0]};
+var GIM={};function loadG(){for(var k in GS){if(!GIM[k]){GIM[k]=new Image();GIM[k].onload=function(){if(STATIC||RM)window.__dirStatic()};GIM[k].src='/director/meet/robot/g-'+k+'.webp'}}}
+function gready(k){var m=GIM[k];return !!(m&&m.complete&&m.naturalWidth)}
+// step -> [gesture, seconds into the step] ; Plan thinks while the shot list is written, hops when it is ready. Film scans the frame, then coaches. Score scans, winks at the 9.1, then talks. Cut thinks while it builds, nods when the cut is ready.
+var SEQ=[
+ function(t){return t<3.3?['thinking',t]:t<4.2?['idea',t-3.3]:['talk',t-4.2]},
+ function(t){return t<2.4?['scan',t]:['talk',t-2.4]},
+ function(t){return t<1.5?['scan',t]:t<2.5?['wink',t-1.5]:['talk',t-2.5]},
+ function(t){return t<3.4?['thinking',t]:t<4.1?['nod',t-3.4]:['talk',t-4.1]}];
+function rob(i,t){var e=robots[i],g=SEQ[i](t),k=g[0];if(!gready(k)){e.style.backgroundImage='';e._g=null;return}var m=GS[k],fr=m[4]?Math.floor(g[1]*m[3])%m[0]:Math.min(m[0]-1,Math.floor(g[1]*m[3])),cx=fr%m[1],cy=Math.floor(fr/m[1]);
+ if(e._g!==k){e._g=k;e.style.backgroundImage='url(/director/meet/robot/g-'+k+'.webp)';e.style.backgroundSize=(m[1]*100)+'% '+(m[2]*100)+'%';e.style.backgroundRepeat='no-repeat'}
+ e.style.backgroundPosition=(m[1]>1?cx/(m[1]-1)*100:0)+'% '+(m[2]>1?cy/(m[2]-1)*100:0)+'%'}
 function txt(id,s){var e=$(id);if(e.innerHTML!==s)e.innerHTML=s}
 var D=[
 function(t){ // PLAN  project-setup-host.tsx
@@ -1642,7 +1661,7 @@ var DOC='<!doctype html><html><head><meta charset="utf-8"><style>html,body{margi
 var STATIC=!!document.querySelector('.pipeline.pipe-static');
 var RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches); // keep the pinned scroll; just show each step's finished pose, no timed motion
 var frameSet=false;
-function setFrame(){if(frameSet)return;frameSet=true;$('d1frame').srcdoc=DOC;if(!STATIC&&!RM)setTimeout(function(){for(var f=0;f<360;f++){var im=new Image();im.src='/director/sticky/robot/r'+('00'+f).slice(-3)+'.webp'}},400)}
+function setFrame(){if(frameSet)return;frameSet=true;$('d1frame').srcdoc=DOC;setTimeout(loadG,300)}
 $('d1frame').addEventListener('load',function(){if(STATIC)D[1](END[1]);else D[1](0)});
 window.__dirStatic=function(){D.forEach(function(f,i){f(END[i])})};
 var start=[null,null,null,null];
