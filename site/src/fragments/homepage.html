@@ -908,6 +908,8 @@ body > * { position: relative; z-index: 1; }
 <!-- ═══ LOGOS ═══ -->
 <div class="logos"><div class="mq-par" id="logosPar"><div class="logos-track" id="logoTrack"></div></div></div>
 
+<!--DIRECTOR_MEET-->
+
 <!-- ═══ THE MECHANIC + CONNECTED PIPELINE ═══ -->
 <style>
 /* ── The mechanic ── */
@@ -1204,6 +1206,93 @@ body > * { position: relative; z-index: 1; }
 .pipeline.pipe-static .pipe-copy-block .pscene .pdone { opacity: 1 !important; transform: none !important; animation: none !important; }
 .pipeline.pipe-static .pipe-copy-block .pscene .pbar i::after { opacity: 1 !important; transform: scaleX(var(--w,1)) !important; animation: none !important; }
 
+/* ===== Director in every step (mock) ===== */
+.dcard{padding:16px 18px 18px}
+.dstat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,188,241,.85)}
+.dhost{display:flex;align-items:flex-end;gap:10px;margin:-4px 0 12px}
+.drobot{width:74px;height:85px;flex:none;display:block;margin:0 -4px -6px -8px;filter:drop-shadow(0 6px 14px rgba(0,188,241,.18))}
+.dbub{position:relative;flex:1;min-height:54px;padding:9px 13px 10px;border-radius:13px;border:1px solid transparent;
+  background-image:linear-gradient(#10171d,#10171d),linear-gradient(120deg,var(--teal),var(--yellow),var(--pink));background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 10px 28px rgba(0,0,0,.35);margin-bottom:22px}
+.dbub::after{content:'';position:absolute;left:-7px;bottom:14px;width:12px;height:12px;background:#10171d;transform:rotate(45deg);border-left:1px solid var(--teal);border-bottom:1px solid var(--teal);border-radius:0 0 0 3px}
+.dtag{display:block;font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:3px}
+.dtag.y{color:var(--yellow)}
+.dtx{display:block;font-size:13.5px;line-height:1.35;font-weight:600;color:#fff;min-height:18px}
+.dcaret{display:inline-block;width:2px;height:.95em;background:var(--yellow);vertical-align:-2px;margin-left:2px}
+.dbrief{font-size:12.5px;padding:10px 13px;min-height:40px;margin-bottom:10px}
+.dshot{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:11px 14px;margin-bottom:8px;opacity:0}
+.dshot.hot{border-color:rgba(0,188,241,.45);box-shadow:0 0 0 3px rgba(0,188,241,.08)}
+/* film */
+.pscene[data-scene="1"]{justify-content:center}
+.dphone{width:262px;height:480px;border-radius:38px;padding:7px;background:#0b0f13;border:1px solid rgba(255,255,255,.18);box-shadow:0 28px 64px rgba(0,0,0,.55),inset 0 0 0 2px #1b2229}
+.dscreen{position:relative;width:100%;height:100%;border-radius:31px;overflow:hidden;background:#000}
+.dclip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:56% 48%}
+.dbrk{position:absolute;border:3px dashed #00bcf1;border-radius:11px;box-sizing:border-box;opacity:0}
+.dbrk b{position:absolute;left:-3px;top:-27px;font-weight:800;font-size:14px;line-height:1.5;color:#00bcf1;background:rgba(10,10,10,.7);padding:1px 8px;border-radius:6px;white-space:nowrap}
+.dtop{position:absolute;left:12px;right:12px;top:14px;display:flex;justify-content:space-between;align-items:center}
+.dchip{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);border:1px solid rgba(0,188,241,.5);border-radius:99px;padding:5px 10px}
+.dchip i{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px var(--teal)}
+.drec{font-size:10px;font-weight:800;letter-spacing:.1em;color:#fff;background:rgba(0,0,0,.45);border-radius:99px;padding:5px 9px;display:inline-flex;gap:5px;align-items:center;opacity:0}
+.drec::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--pink)}
+.dcues{position:absolute;left:0;right:0;top:46px;display:flex;justify-content:center;gap:6px}
+.dcues span{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;font-weight:700;color:rgba(255,255,255,.85);background:rgba(0,0,0,.42);border-radius:99px;padding:3px 7px}
+.dcues i{width:5px;height:5px;border-radius:50%;background:#3ddc84}
+.dzoom{position:absolute;inset:0;transform-origin:69% 58%}
+.dlive{position:absolute;left:8px;right:10px;top:68px;display:flex;align-items:flex-end;gap:4px}
+.dlive .drobot{width:62px;height:71px;margin:0 -2px -4px -4px}
+.dbub--live{min-height:0;margin-bottom:14px;padding:8px 11px;background-image:linear-gradient(rgba(12,18,24,.9),rgba(12,18,24,.9)),linear-gradient(120deg,var(--teal),var(--yellow),var(--pink))}
+.dbub--live::after{background:#0e151b}
+.dbub--live .dtx{font-size:13px;line-height:1.3}
+.dshutter{position:absolute;left:50%;bottom:16px;width:52px;height:52px;margin-left:-26px;border-radius:50%;border:3px solid rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.dshutter i{width:40px;height:40px;border-radius:50%;background:var(--pink);transition:all .25s}
+.dshutter.rec i{width:20px;height:20px;border-radius:5px}
+/* score */
+.dscore{display:flex;gap:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px}
+.dthumb{position:relative;width:112px;height:176px;border-radius:9px;overflow:hidden;flex:none;background:#000}
+.dthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.dbrk--sm{border-width:2px;border-radius:8px}
+.dscan{position:absolute;left:0;right:0;height:2px;background:var(--teal);box-shadow:0 0 10px 2px rgba(0,188,241,.7);opacity:0}
+.dsbody{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:7px}
+.dsnum{display:flex;align-items:baseline;gap:4px;margin-bottom:2px}
+.dsnum span:first-child{font-size:34px;font-weight:800;letter-spacing:-.03em;color:rgba(255,255,255,.2);line-height:1}
+.dsnum em{font-style:normal;font-size:12px;color:rgba(255,255,255,.4)}
+.dverd{margin-left:auto;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0a0a0a;background:var(--teal);border-radius:99px;padding:3px 9px;opacity:0}
+.dbar{display:grid;grid-template-columns:58px 1fr;align-items:center;gap:8px;font-size:10.5px;color:rgba(255,255,255,.6)}
+.dbar i{height:5px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.dbar u{display:block;height:100%;width:0;border-radius:3px;background:var(--teal)}
+.dminis{display:flex;gap:8px;margin-top:10px;position:relative;height:66px}
+.dmini{position:absolute;top:0;width:calc(25% - 6px);height:66px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.1);transition:left .5s var(--ease),opacity .4s}
+.dmini img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) brightness(.8)}
+.dmini b{position:absolute;right:5px;bottom:4px;font-size:11px;font-weight:800;color:#fff;text-shadow:0 1px 4px #000}
+.dmini.top{border-color:var(--teal)}
+.dmini.set{opacity:.38}
+/* cut */
+.dbtn{font-size:10.5px;font-weight:800;color:#0a0a0a;background:var(--teal);border-radius:99px;padding:6px 12px;transition:transform .15s}
+.dbtn.press{transform:scale(.92);background:#7fdcf7}
+.dbtn.done{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+.dsteps{display:flex;gap:5px;margin:-2px 0 10px}
+.dsteps span{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.1)}
+.dsteps span.on{background:var(--teal)}
+.dtl{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px;position:relative;overflow:hidden}
+.dtl-row{display:flex;gap:4px;height:44px;margin-bottom:10px;position:relative}
+.dtl-row:nth-of-type(4),.dtl-row:last-of-type{height:16px}
+.dblk{border-radius:5px;opacity:0;transform:scaleX(.6);transform-origin:0 50%}
+.dvid{flex:1;overflow:hidden;border:1px solid rgba(0,188,241,.55)}
+.dvid img{width:100%;height:100%;object-fit:cover;display:block}
+.daud{width:100%;height:16px;background:repeating-linear-gradient(90deg,rgba(235,0,139,.65) 0 2px,rgba(235,0,139,.25) 2px 4px)}
+.dcap{width:100%;height:16px;background:repeating-linear-gradient(90deg,rgba(255,236,3,.6) 0 38px,transparent 38px 44px)}
+.dhead{position:absolute;top:8px;bottom:8px;width:2px;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.8);opacity:0}
+.ddone{animation:none !important;transition:opacity .4s,transform .4s}
+
+.dwrap2{position:relative;display:inline-block}
+.dphone2{width:230px;height:482px;box-sizing:border-box;border-radius:36px;padding:7px;background:#0b0f13;border:1px solid rgba(255,255,255,.18);box-shadow:0 28px 64px rgba(0,0,0,.55),inset 0 0 0 2px #1b2229}
+.dscreen2{width:216px;height:468px;border-radius:29px;overflow:hidden;position:relative;background:#000}
+.dscreen2 iframe{border:0;background:#000;width:390px;height:844px;transform:scale(.5545);transform-origin:0 0;position:absolute;left:0;top:0;pointer-events:none}
+.drobot2{position:absolute;right:-84px;bottom:18px;width:70px;height:80px;margin:0}
+/* mobile stack */
+
+.pipeline.pipe-static .pipe-copy-block .pscene{max-width:340px}
+.pipeline.pipe-static .pipe-copy-block .pscene[data-scene="1"]{display:flex;justify-content:flex-start}
+.pipeline.pipe-static .pipe-copy-block .pscene .dshot{opacity:1}
 </style>
 
 <!-- curve: dark → white (mechanic) -->
@@ -1294,101 +1383,56 @@ body > * { position: relative; z-index: 1; }
 
         <div class="pipe-phone-slot">
           <div class="pipe-scenes" id="pipeScenes" aria-hidden="true">
-            <div class="pscene" data-scene="0">
-              <div class="pcard">
-                <div class="pcard-head"><span class="pcard-title">Shotlist</span></div>
-                <div class="pbrief"><span id="pbriefT"></span></div>
-                <div class="pshot"><span class="pshot-n">01</span><span class="pshot-t">Product in real hands</span><span class="pshot-tag">Wide</span></div>
-                <div class="pshot"><span class="pshot-n">02</span><span class="pshot-t">Why I keep coming back</span><span class="pshot-tag pshot-tag--pink">Interview</span></div>
-                <div class="pshot"><span class="pshot-n">03</span><span class="pshot-t">The detail nobody sees</span><span class="pshot-tag">Close</span></div>
-                <div class="pshot"><span class="pshot-n">04</span><span class="pshot-t">Where you use it</span><span class="pshot-tag">B-roll</span></div>
-              </div>
-            </div>
-            <div class="pscene" data-scene="1">
-              <div class="pcard">
-                <div class="pcard-head"><span class="pcard-title">Filming</span></div>
-                <div class="pframe">
-                  <div class="pframe-grid"></div>
-                  <div class="psubject"><svg viewBox="0 0 200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-                    <defs>
-                      <linearGradient id="pBust" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="rgba(255,255,255,0.26)"/>
-                        <stop offset="0.5" stop-color="rgba(255,255,255,0.12)"/>
-                        <stop offset="1" stop-color="rgba(255,255,255,0.03)"/>
-                      </linearGradient>
-                      <radialGradient id="pFace" cx="0.5" cy="0.28" r="0.5">
-                        <stop offset="0" stop-color="rgba(255,255,255,0.2)"/>
-                        <stop offset="1" stop-color="rgba(255,255,255,0)"/>
-                      </radialGradient>
-                    </defs>
-                    <path fill="url(#pBust)" d="M100,18 C123,18 139,37 139,62 C139,81 131,97 119,105 L119,117 C119,124 124,128 133,131 C162,141 178,159 182,192 L184,220 L16,220 L18,192 C22,159 38,141 67,131 C76,128 81,124 81,117 L81,105 C69,97 61,81 61,62 C61,37 77,18 100,18 Z"/>
-                    <path fill="url(#pFace)" d="M100,18 C123,18 139,37 139,62 C139,81 131,97 119,105 L119,117 C119,124 124,128 133,131 C162,141 178,159 182,192 L184,220 L16,220 L18,192 C22,159 38,141 67,131 C76,128 81,124 81,117 L81,105 C69,97 61,81 61,62 C61,37 77,18 100,18 Z"/>
-                  </svg></div>
-                  <i class="pcorner"></i><i class="pcorner"></i><i class="pcorner"></i><i class="pcorner"></i>
-                  <div class="prec">REC 0:14</div>
-                  <div class="pdir d1"><span class="pdir-lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>AI Director</span><span class="pdir-t">Step a little closer</span></div>
-                  <div class="pdir d2 good"><span class="pdir-lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>AI Director</span><span class="pdir-t">&#10003; Framing looks great</span></div>
-                  <div class="pdir d3 good"><span class="pdir-lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>AI Director</span><span class="pdir-t">&#10003; Perfect. Rolling</span></div>
-                  <div class="prec-btn"></div>
-                </div>
-              </div>
-            </div>
-            <div class="pscene" data-scene="2">
-              <div class="pcard">
-                <div class="pcard-head"><span class="pcard-title">Clips</span></div>
-                <div class="pfeat">
-                  <div class="pfeat-thumb"><svg viewBox="0 0 180 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-                      <defs>
-                        <radialGradient id="pSun" cx="0.5" cy="0.5" r="0.5">
-                          <stop offset="0" stop-color="rgba(255,236,170,0.5)"/>
-                          <stop offset="0.55" stop-color="rgba(255,224,140,0.12)"/>
-                          <stop offset="1" stop-color="rgba(255,224,140,0)"/>
-                        </radialGradient>
-                        <linearGradient id="pR4" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0" stop-color="rgba(255,255,255,0.24)"/>
-                          <stop offset="1" stop-color="rgba(255,255,255,0.06)"/>
-                        </linearGradient>
-                      </defs>
-                      <circle cx="62" cy="118" r="44" fill="url(#pSun)"/>
-                      <circle cx="62" cy="118" r="10" fill="rgba(255,242,190,0.55)"/>
-                      <path fill="rgba(255,255,255,0.09)" d="M0,206 Q46,158 92,192 Q138,224 180,172 L180,320 L0,320 Z"/>
-                      <path fill="url(#pR4)" d="M0,268 Q52,216 104,254 Q146,284 180,240 L180,320 L0,320 Z"/>
-                    </svg></div>
-                  <div class="pfeat-body">
-                    <div class="pfeat-toprow">
-                      <div><span class="pfeat-score">9.1</span><span class="pfeat-den">/10</span><div class="pfeat-verdict">Great</div></div>
-                      <span class="pfeat-chip">Top pick</span>
-                    </div>
-                    <div class="pbar"><span>Audio</span><i style="--w:0.9"></i><b>90</b></div>
-                    <div class="pbar"><span>Stability</span><i style="--w:0.86"></i><b>86</b></div>
-                    <div class="pbar"><span>Focus</span><i style="--w:0.94"></i><b>94</b></div>
-                    <div class="pbar"><span>Exposure</span><i style="--w:0.82"></i><b>82</b></div>
-                    <div class="pbar"><span>Framing</span><i style="--w:0.95"></i><b>95</b></div>
-                  </div>
-                </div>
-                <div class="pminis">
-                  <div class="pmini"><i class="m1"></i><span class="pmini-s">8.6</span></div>
-                  <div class="pmini"><i class="m2"></i><span class="pmini-s">8.2</span></div>
-                  <div class="pmini ok"><i class="m3"></i><span class="pmini-s">7.1</span></div>
-                  <div class="pmini bad"><i class="m4"></i><span class="pmini-s">4.7</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="pscene" data-scene="3">
-              <div class="pcard">
-                <div class="pcard-head"><span class="pcard-title">Timeline</span></div>
-                <div class="ptl">
-                  <div class="ptl-lab">Video</div>
-                  <div class="ptl-row"><div class="pblock v1"></div><div class="pblock v2"></div><div class="pblock v3"></div><div class="pblock v4"></div></div>
-                  <div class="ptl-lab">Audio</div>
-                  <div class="ptl-row"><div class="pblock aud"></div></div>
-                  <div class="ptl-lab">Captions</div>
-                  <div class="ptl-row" style="margin-bottom:0"><div class="pblock cap"></div></div>
-                  <div class="pplay"></div>
-                </div>
-                <div class="pdone"><span class="pdone-t">Cut ready</span><span class="pdone-s">0:30 &middot; vertical &middot; captioned</span></div>
-              </div>
-            </div>
+<div class="pscene" data-scene="0">
+  <div class="pcard dcard">
+    <div class="pcard-head"><span class="pcard-title">Shot list</span><span class="dstat" id="d0s"></span></div>
+    <div class="dhost"><img class="drobot" width="148" height="170" data-off="0" alt="" decoding="async"><div class="dbub"><span class="dtag">Director</span><span class="dtx" id="d0b"></span></div></div>
+    <div class="pbrief dbrief"><span id="d0brief"></span></div>
+    <div class="dshot"><span class="pshot-n">01</span><span class="pshot-t">Product in real hands</span><span class="pshot-tag">Wide</span></div>
+    <div class="dshot"><span class="pshot-n">02</span><span class="pshot-t">Why I keep coming back</span><span class="pshot-tag pshot-tag--pink">Interview</span></div>
+    <div class="dshot"><span class="pshot-n">03</span><span class="pshot-t">The detail nobody sees</span><span class="pshot-tag">Close</span></div>
+    <div class="dshot"><span class="pshot-n">04</span><span class="pshot-t">Where you use it</span><span class="pshot-tag">B-roll</span></div>
+  </div>
+</div>
+<div class="pscene" data-scene="1">
+  <div class="dwrap2">
+    <div class="dphone2"><div class="dscreen2"><iframe id="d1frame" title="Cinebody camera with the Director coaching a shot" scrolling="no" tabindex="-1"></iframe></div></div>
+    <img class="drobot drobot2" width="148" height="170" data-off="40" alt="" decoding="async">
+  </div>
+</div>
+<div class="pscene" data-scene="2">
+  <div class="pcard dcard">
+    <div class="pcard-head"><span class="pcard-title">Clips</span><span class="dstat" id="d2s">Clip Review</span></div>
+    <div class="dhost"><img class="drobot" width="148" height="170" data-off="114" alt="" decoding="async"><div class="dbub"><span class="dtag" id="d2tag">Director</span><span class="dtx" id="d2b"></span></div></div>
+    <div class="dscore">
+      <div class="dthumb"><img src="/director/sticky/posters/f060.webp" loading="lazy" decoding="async" alt=""><div class="dbrk dbrk--sm" id="d2brk"></div><div class="dscan" id="d2scan"></div></div>
+      <div class="dsbody">
+        <div class="dsnum"><span id="d2n">?</span><em>/10</em><span class="dverd" id="d2v">Great</span></div>
+        <div class="dbar"><span>Audio</span><i><u id="d2b0"></u></i></div>
+        <div class="dbar"><span>Stability</span><i><u id="d2b1"></u></i></div>
+        <div class="dbar"><span>Focus</span><i><u id="d2b2"></u></i></div>
+        <div class="dbar"><span>Exposure</span><i><u id="d2b3"></u></i></div>
+        <div class="dbar"><span>Framing</span><i><u id="d2b4"></u></i></div>
+      </div>
+    </div>
+    <div class="dminis" id="d2m"></div>
+  </div>
+</div>
+<div class="pscene" data-scene="3">
+  <div class="pcard dcard">
+    <div class="pcard-head"><span class="pcard-title">Timeline</span><span class="dbtn" id="d3btn">Build my cut</span></div>
+    <div class="dhost"><img class="drobot" width="148" height="170" data-off="200" alt="" decoding="async"><div class="dbub"><span class="dtag" id="d3tag">Auto-Editor</span><span class="dtx" id="d3b"></span></div></div>
+    <div class="dsteps" id="d3steps"></div>
+    <div class="dtl">
+      <div class="ptl-lab">Video</div><div class="dtl-row" id="d3v"></div>
+      <div class="ptl-lab">Audio</div><div class="dtl-row"><div class="dblk daud" id="d3a"></div></div>
+      <div class="ptl-lab">Captions</div><div class="dtl-row"><div class="dblk dcap" id="d3c"></div></div>
+      <div class="dhead" id="d3h"></div>
+    </div>
+    <div class="pdone ddone" id="d3done"><span class="pdone-t">Cut ready</span><span class="pdone-s">0:30 &middot; vertical &middot; captioned</span></div>
+  </div>
+</div>
+
           </div>
         </div>
       </div>
@@ -1407,7 +1451,7 @@ body > * { position: relative; z-index: 1; }
   // The scroll version depends on continuous scroll events, which iOS throttles, so on touch
   // it strands on stage 1-2. Adding .pipe-static makes the class-based CSS above force the stack.
   var isTouch = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
-  if (isTouch || window.matchMedia('(max-width: 1024px)').matches || window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) {
+  if (isTouch || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 1024px)').matches || window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) {
     var pipelineEl = wrap.closest('.pipeline');
     pipelineEl.classList.add('pipe-static');
     // Force the stacked layout INLINE with !important. On WebKit the class/media-query rules
@@ -1535,6 +1579,83 @@ body > * { position: relative; z-index: 1; }
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+<script>(function(){
+var BRIEF='Spring line launch. Fun, real, six people.';
+var POST=['ep01','ep07','ep13','ep18','ep25','ep32'];
+function $(id){return document.getElementById(id)}
+function cl(x){return Math.max(0,Math.min(1,x))}
+function ez(x){x=cl(x);return 1-Math.pow(1-x,3)}
+var scenes=[].slice.call(document.querySelectorAll('.pscene'));
+var robots=scenes.map(function(s){return s.querySelector('.drobot')});
+// build dynamic bits
+var shots=[].slice.call(scenes[0].querySelectorAll('.dshot'));
+var M=$('d2m'),minis=[];[['ep07','8.6'],['ep25','8.2'],['ep13','7.1'],['ep32','4.7']].forEach(function(m,i){var d=document.createElement('div');d.className='dmini';d.innerHTML='<img src="/director/sticky/posters/'+m[0]+'.webp" alt="" loading="lazy" decoding="async"><b>'+m[1]+'</b>';M.appendChild(d);minis.push(d)});
+var newMini=document.createElement('div');newMini.className='dmini top';newMini.innerHTML='<img src="/director/sticky/posters/f060.webp" alt="" loading="lazy" decoding="async"><b>9.1</b>';M.appendChild(newMini);
+var V=$('d3v'),vb=[];POST.forEach(function(p){var d=document.createElement('div');d.className='dblk dvid';d.innerHTML='<img src="/director/sticky/posters/'+p+'.webp" alt="" loading="lazy" decoding="async">';V.appendChild(d);vb.push(d)});
+var ST=$('d3steps');for(var k=0;k<4;k++)ST.appendChild(document.createElement('span'));var stp=[].slice.call(ST.children);
+var CLIPN=168;
+function rob(i,t){var f=(Math.floor(t*15)*2+(+robots[i].dataset.off))%360;var src='/director/sticky/robot/r'+('00'+f).slice(-3)+'.webp';if(robots[i].getAttribute('src')!==src)robots[i].setAttribute('src',src)}
+function txt(id,s){var e=$(id);if(e.innerHTML!==s)e.innerHTML=s}
+var D=[
+function(t){ // PLAN  project-setup-host.tsx
+  var n=Math.floor(cl((t-.35)/1.45)*BRIEF.length);
+  $('d0brief').innerHTML=BRIEF.slice(0,n)+(t<1.9?'<span class="dcaret"></span>':'');
+  if(t<1.9){txt('d0b','What are we making?');txt('d0s','')}
+  else if(t<3.3){txt('d0b','Writing your shot list while we talk...');txt('d0s','Writing')}
+  else {txt('d0b','Your shot list is ready when you are.');txt('d0s','Ready')}
+  shots.forEach(function(s,j){var a=ez((t-2.0-j*.3)/.4);s.style.opacity=a;s.style.transform='translateY('+(1-a)*8+'px)';s.classList.toggle('hot',t>3.3&&j===0)});
+},
+function(t){ // FILM: real camera UI rendered from camera.tsx inside the iframe
+  var fr=$('d1frame');if(fr&&fr.contentWindow&&fr.contentWindow.__film)fr.contentWindow.__film(t);
+},
+function(t){ // SCORE  analysis.ts / review.ts
+  var sc=$('d2scan');sc.style.opacity=t<1.4?1:Math.max(0,1-(t-1.4)*4);sc.style.top=(((t/1.4)%1)*176)+'px';
+  var W=[92,86,95,88,90];for(var j=0;j<5;j++){$('d2b'+j).style.width=(W[j]*ez((t-.2-j*.12)/.7))+'%'}
+  var landed=t>=1.5;var n=$('d2n');n.textContent=landed?'9.1':(t>.3?(Math.min(9.1,(t-.3)/1.2*9.1)).toFixed(1):'0.0');n.style.color=landed?'#fff':'rgba(255,255,255,.35)';
+  $('d2v').style.opacity=ez((t-1.5)/.3);
+  if(t<1.5){txt('d2tag','Clip Review');txt('d2b','Checking light, focus, steadiness and sound.')}
+  else if(t<2.6){txt('d2tag','Director');txt('d2b','9.1. Great. Top pick.')}
+  else {txt('d2tag','Director');txt('d2b','Keep this one. Sound is clean and the frame holds.')}
+  var lm=minis.length+1,top=t>=2.6;
+  var order=top?[newMini].concat(minis):minis.concat([newMini]);
+  order.forEach(function(d,j){d.style.left=(j*25)+'%';d.style.opacity=(j>3)?0:(d===newMini?ez((t-1.8)/.4):1)});
+},
+function(t){ // CUT  post-production/page.tsx / plan-phase.ts / cut-setup-host.tsx
+  var b=$('d3btn');b.classList.toggle('press',t>.15&&t<.4);b.classList.toggle('done',t>=.4);b.textContent=t<.4?'Build my cut':(t<3.4?'Building your cut...':'Cut ready');
+  var L=['Watching every clip: the frames and the words','Choosing the lines and the moments, in story order','Picking the picture that covers each line','Screening its own cut and fixing what does not play'];
+  var k=Math.floor((t-.5)/.72);
+  if(t<.5)txt('d3b','Reading the plan, the brand and the footage');else if(k<4)txt('d3b',L[k]);else txt('d3b','Your cut is planned and waiting.');
+  stp.forEach(function(s,j){s.classList.toggle('on',t>=.5+j*.72)});
+  vb.forEach(function(d,j){var a=ez((t-1.3-j*.2)/.35);d.style.opacity=a;d.style.transform='scaleX('+(.6+.4*a)+')'});
+  [[$('d3a'),2.2],[$('d3c'),2.6]].forEach(function(x){var a=ez((t-x[1])/.4);x[0].style.opacity=a;x[0].style.transform='scaleX('+(.6+.4*a)+')'});
+  var h=$('d3h');h.style.opacity=t>3.4?1:0;h.style.left=(12+cl((t-3.4)/1.4)*90)+'%';h.style.left='calc(12px + '+(cl((t-3.4)/1.6)*92)+'%)';
+  var dn=$('d3done');var a=ez((t-3.5)/.4);dn.style.opacity=a;dn.style.transform='translateY('+(1-a)*8+'px)';
+}];
+D.forEach(function(fn,i){var o=fn;D[i]=function(t){rob(i,t);o(t)}});
+var END=[3.8,5.6,3.6,4.4];
+var CAM='/director/sticky/cam/c';
+var DOC='<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;width:390px;height:844px;overflow:hidden;background:#000}img{position:absolute;inset:0;width:390px;height:844px;display:block}</style></head><body><img id="cam" alt="" src="'+CAM+'001.webp"><script>var F=[];for(var f=1;f<137;f+=3)F.push(f);F.forEach(function(f){var i=new Image();i.src="'+CAM+'"+("00"+f).slice(-3)+".webp";});window.__film=function(t){var f=1+Math.floor(Math.max(0,t)*24);var k=F[0];for(var j=0;j<F.length;j++){if(F[j]<=f)k=F[j];}var s="'+CAM+'"+("00"+k).slice(-3)+".webp";var c=document.getElementById("cam");if(c.getAttribute("src")!==s)c.setAttribute("src",s);};window.__film(0);<\/script></body></html>';
+var STATIC=!!document.querySelector('.pipeline.pipe-static');
+var frameSet=false;
+function setFrame(){if(frameSet)return;frameSet=true;$('d1frame').srcdoc=DOC}
+$('d1frame').addEventListener('load',function(){if(STATIC)D[1](END[1]);else D[1](0)});
+window.__dirStatic=function(){D.forEach(function(f,i){f(END[i])})};
+var start=[null,null,null,null];
+window.__clock=null; // capture sets a function returning ms
+window.__dirTick=function(){var now=window.__clock?window.__clock():performance.now();
+  for(var i=0;i<4;i++){var on=scenes[i].classList.contains('on');if(on&&start[i]===null)start[i]=now;if(!on)start[i]=null;
+    if(start[i]!==null)D[i]((now-start[i])/1000);else if(scenes[i].style.opacity>0.02||!on)D[i](0)}};
+D.forEach(function(f){f(0)});
+var live=false;
+function wake(){live=true}
+var pl=document.getElementById('pipeline');
+if(STATIC){setFrame();window.__dirStatic()}
+else{
+  if('IntersectionObserver' in window&&pl){new IntersectionObserver(function(es){es.forEach(function(e){live=e.isIntersecting;if(live)setFrame()})},{rootMargin:'1200px 0px 1200px 0px'}).observe(pl)}else{live=true;setFrame()}
+  (function loop(){if(live&&!document.hidden)window.__dirTick();requestAnimationFrame(loop)})();
+}
 })();
 </script>
 
