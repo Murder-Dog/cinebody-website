@@ -29,9 +29,16 @@
   --cc-modal-margin: 20px;
 }
 
+/* Exempt the banner from the site-wide body zoom (--s, see global.css): counter-zoom so it stays its native 1x size on
+   every viewport. Inside, viewport units are native again, so --zv is 1 here. */
+#cc-main {
+  zoom: calc(1 / var(--s, 1));
+  --zv: 1;
+}
+
 #cc-main .cm {
   width: 440px;
-  max-width: calc(100vw / var(--zv, 1) - 40px);
+  max-width: calc(100vw - 40px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: radial-gradient(120% 90% at 0% 0%, rgba(0, 188, 241, 0.1), transparent 55%),
     radial-gradient(90% 80% at 100% 100%, rgba(235, 0, 139, 0.08), transparent 60%),
@@ -185,9 +192,4 @@
   #cc-main button.cm__btn {
     transition: none !important;
   }
-}
-
-/* Vendor CSS uses raw viewport units; compensate for the site-wide body zoom (--zv, see global.css). */
-#cc-main .cm .cm__desc {
-  max-height: calc(40vh / var(--zv, 1));
 }
