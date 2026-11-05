@@ -178,7 +178,7 @@
 .dm-hud .dm-foc{width:22px;height:22px;margin:-11px 0 0 -11px;--k:5px}
 .dm-hud .dm-foc::before,.dm-hud .dm-foc::after{content:'';position:absolute;background:var(--hc)}
 .dm-hud .dm-foc::before{left:50%;top:7px;width:1px;height:8px}.dm-hud .dm-foc::after{top:50%;left:7px;height:1px;width:8px}
-.dm-hud .dm-foc .dm-l{left:0;top:calc(100% + 4px)}.dm-hud .dm-foc.dm-lf .dm-l{left:auto;right:0}
+.dm-hud .dm-foc .dm-l{left:0;top:calc(100% + 4px)}.dm-hud .dm-foc.dm-ld .dm-l{top:calc(100% + 24px)}.dm-hud .dm-foc.dm-lf .dm-l{left:auto;right:0}
 .dm-hud .dm-hz{left:0;right:0;height:0;transform-origin:50% 0}
 .dm-hud .dm-hz i{position:absolute;left:6%;right:6%;top:0;border-top:1px dashed var(--hc)}
 .dm-hud .dm-hz b{position:absolute;top:-4px;width:1px;height:9px;background:var(--hc)}.dm-hud .dm-hz b:first-of-type{left:6%}.dm-hud .dm-hz b:last-of-type{right:6%}
@@ -332,7 +332,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   ep01:{tl:'Elephant',trk:[[0,.39,.37,.17,.10],[.5,.42,.33,.15,.22],[1,.44,.35,.14,.20],[1.5,.42,.35,.22,.22],[2,.43,.35,.24,.22],[2.5,.45,.35,.22,.23],[3,.44,.35,.21,.22],[3.5,.43,.35,.19,.23],[4,.41,.34,.21,.24],[5,.38,.34,.23,.24],[5.5,.36,.34,.22,.24],[6.08,.37,.36,.18,.12]],
    foc:[.5,.28],fl:'Sharp on the head',hz:[[0,.39]],hl:'Treeline <em>39%</em>',st:'Locked off <em>0.5 px jitter</em>',au:'Clean',
    ex:[0,0,.62,.2],exb:1,el:'Sky <em>peaks 207 · 0% clipped</em>',fr:'Centered <em>bush masks the right</em>'},
-  ep07:{tl:'Far shore',trk:[[0,.15,.08,.85,.28]],foc:[.42,.45],fl:'Sharp on the hillside',hz:[[0,.345],[3.5,.36],[7.25,.376]],hl:'Waterline <em>level · 36%</em>',st:'Locked off <em>0.14 px jitter</em>',au:'Mostly clean',
+  ep07:{tl:'Far shore',tlo:1,trk:[[0,.15,.08,.85,.28]],foc:[.42,.45],fl:'Sharp on the hillside',hz:[[0,.345],[3.5,.36],[7.25,.376]],hl:'Waterline <em>level · 36%</em>',st:'Locked off <em>0.14 px jitter</em>',au:'Mostly clean',
    ex:[0,.38,.22,.6],el:'Branches <em>4% crushed</em>',exb:1,fr:'Branch frame <em>shore on upper third</em>'},
   ep13:{tl:'Dune',trk:[[0,.59,.40,.39,.07],[2,.39,.40,.49,.07],[4,.29,.40,.54,.07],[6,.15,.41,.54,.07],[8,.08,.41,.64,.07]],foc:[.6,.35],fl:'Sharp to the dunes',
    hz:[[0,.439,-3.3],[1,.439,-.6],[2,.437,.7],[3,.439,1.2],[4,.444,1.4],[5,.448,.8],[6,.448,-.6],[7,.45,-1.3],[8,.451,-1.5]],hl:'Horizon <em>level ±1.6°</em>',st:'Slow move <em>0.8 px jitter</em>',au:'Light wind',
@@ -344,7 +344,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   ep32:{tl:'Cabin',trk:[[0,.1,.27,.44,.14],[2,.02,.26,.42,.14],[4,.02,.29,.47,.18],[6,.02,.35,.52,.16],[8,.15,.36,.44,.18],[9.58,.11,.41,.49,.15]],foc:[.5,.5],fl:'Holding on the cabin',
    hz:[[0,.389],[3,.40],[6,.408],[7.5,.42],[8.5,.439],[9.58,.452]],hl:'Waterline <em>drifts 39 to 45%</em>',st:'Low push <em>bobs 0.5 px</em>',au:'Pretty clean',
    ex:[.74,0,.26,.55],el:'Trunks <em>5% crushed</em>',fr:'Cabin sinks <em>ferns fill the bottom</em>'},
-  ep33:{tl:'Skater',trk:[[0,.69,.11,.15,.20],[.5,.64,.24,.17,.22],[1,.42,.02,.47,.46],[1.5,.39,0,.51,.35],[2,.47,0,.51,.55],[2.5,.2,.04,.65,.64],[3,.35,.09,.39,.51],[3.5,.59,.18,.31,.35],[4.08,.64,.12,.2,.42]],foc:[.5,.14],fl:'Tracking the face',
+  ep33:{tl:'Skater',trk:[[0,.69,.11,.15,.20],[.5,.64,.24,.17,.22],[1,.42,.02,.47,.46],[1.5,.39,0,.51,.35],[2,.47,0,.51,.55],[2.5,.2,.04,.65,.64],[3,.35,.09,.39,.51],[3.5,.59,.18,.31,.35],[4.08,.64,.12,.2,.42]],foc:[.5,.14],fl:'Tracking the face',fld:1,
    hz:null,st:'Handheld <em>10 px jitter · 63 px jolt</em>',au:'Okay',
    ex:[.0,0,1,.12],el:'Ceiling lights <em>0.02% clipped</em>',exb:1,fr:'In frame <em>head clips 1.4 to 2.2s</em>',
    xt:{kf:[[1.4,.40,0,.5,.05],[2.2,.47,0,.5,.05]],t0:1.4,t1:2.2,l:'Headroom <em>0%</em>',lo:1}}
@@ -359,7 +359,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
    '<div class="dm-ex'+(d.exb?' dm-lb':'')+'"><span class="dm-l">'+d.el+'</span></div>'+
    (d.xt?'<div class="dm-ex dm-xt'+(d.xt.lo?' dm-lb':'')+'"><span class="dm-l">'+d.xt.l+'</span></div>':'')+
    '<div class="dm-trk dm-hk"><span class="dm-l"></span></div>'+
-   '<div class="dm-foc dm-hk"><span class="dm-l dm-sec">'+d.fl+'</span></div>'+
+   '<div class="dm-foc dm-hk'+(d.fld?' dm-ld':'')+'"><span class="dm-l dm-sec">'+d.fl+'</span></div>'+
    '<div class="dm-cd"></div>'+
    '<div class="dm-frl"><span class="dm-l">'+d.fr+'</span></div>'+
    '<div class="dm-st"><span class="dm-l">'+d.st+'</span></div>'+
@@ -382,7 +382,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   // subject track: acquires from the full frame, then rides the subject on the clip's own clock
   var b=kfAt(d.trk,vt2),acq=RM?1:ease((uu-1.4)/.7),fx=[.06,.05,.88,.9];
   var tb=b.map(function(v,j){return lerp(fx[j],v,acq)});
-  box(HE.trk,tb);HE.trk.classList.toggle('dm-lo',tb[1]<.08);HE.trk.classList.toggle('dm-rt',tb[0]+tb[2]>.62);
+  box(HE.trk,tb);HE.trk.classList.toggle('dm-lo',!!d.tlo||tb[1]<.08);HE.trk.classList.toggle('dm-rt',tb[0]+tb[2]>.62);
   HE.trk.firstChild.innerHTML=d.tl+'<em>'+Math.round(b[2]*b[3]*100)+'% of frame</em>';
   op(HE.trk,run&&uu>=1.4?(RM?1:clamp((uu-1.4)/.25))*(uu<EX0?1:.75)*out:0);
   // 0 audio (muted here, so this reads the score from the original take)
@@ -545,6 +545,8 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
  if('IntersectionObserver' in window){
   new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)loadAll()});},{rootMargin:'300px 0px'}).observe(root);
   new IntersectionObserver(function(es){es.forEach(function(e){vis=e.isIntersecting;upd()})},{rootMargin:'0px'}).observe(root);
+  // grade the first clip as soon as the section is in view (reduced motion keeps tap-to-start)
+  var auto=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){auto.disconnect();if(!RM&&aStart===null&&!everRan)goTo(cur,0)}})},{threshold:.3});auto.observe(car);
  }else{loadAll();vis=true}
  document.addEventListener('visibilitychange',upd);
  // ---- input ----
