@@ -10,7 +10,7 @@
 .dm-stage>*{min-width:0}
 /* director */
 .dm-dir{position:relative;display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
-.dm-bubble{position:relative;z-index:2;width:100%;max-width:none;min-height:112px;padding:16px 18px 22px;border-radius:16px;border:1px solid transparent;
+.dm-bubble{position:relative;z-index:2;width:100%;max-width:none;min-height:0;padding:16px 18px;box-sizing:border-box;transition:height .28s cubic-bezier(.2,.7,.2,1);border-radius:16px;border:1px solid transparent;
   background-image:linear-gradient(#10171d,#10171d),linear-gradient(120deg,var(--teal),var(--yellow),var(--pink));background-origin:border-box;background-clip:padding-box,border-box;
   box-shadow:0 14px 40px rgba(0,0,0,.4)}
 .dm-bubble::after{content:'';position:absolute;left:calc(50% - 8px);bottom:-9px;width:16px;height:16px;background:#10171d;transform:rotate(45deg);border-right:1px solid var(--pink);border-bottom:1px solid var(--pink);border-radius:0 0 4px 0}
@@ -75,7 +75,7 @@
  .dm-stage>*{width:100%}
  .dm-dir{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:0}
  .dm-dir .dm-mute{order:3;margin:2px 0 0 4px}
- .dm-dir .dm-bubble{order:2;max-width:none;flex:1;min-height:100px;align-self:center;margin-top:0;padding:12px 14px 14px}
+ .dm-dir .dm-bubble{order:2;max-width:none;flex:1;min-height:0;align-self:center;margin-top:0;padding:13px 14px}.dm-bslot{display:contents}
  .dm-dir .dm-bubble::after{left:-9px;bottom:auto;top:calc(50% - 8px);transform:rotate(135deg)}
  .dm-robot{order:1;position:relative;left:auto;bottom:auto;width:124px;margin:0 -10px 0 -20px;top:-16px;flex:none}
  .dm-btext{font-size:15px}
@@ -148,10 +148,15 @@
 .dm-tl i{width:9px;height:9px;border-radius:50%;background:var(--yellow);display:inline-block}
 .dm-fcur{display:none}
 .dm-arw:focus-visible,.dm-q:focus-visible,.dm-mute:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.dm-queue{padding-bottom:0}
+.dm-queue{display:none!important}/* thumbnail strip removed: arrows, swipe and the neighbour peeks are the navigation */
 @media(max-width:900px){.dm-wrap{padding:30px 16px 0}.dm-stage{padding-bottom:62px}}
 @media(max-width:900px){.dm-robot>*{inset:0}}
 
+.dm-bslot{width:100%;min-height:136px;display:flex;flex-direction:column;justify-content:flex-end}
+.dm-big{margin:0 10px}
+@media(min-width:901px){.dm-score{padding-left:26px;box-sizing:border-box}}
+@media(max-width:900px){.dm-bslot{display:contents}}
+.dm-bin{display:block}
 </style>
 <section class="dm" id="meet-the-director" aria-labelledby="dm-title">
  <div class="dm-bg" aria-hidden="true"><img id="dm-bg0" alt="" decoding="async"><img id="dm-bg1" alt="" decoding="async"></div>
@@ -165,7 +170,7 @@
   <div class="dm-stage" id="dm-stage">
    <div id="dm-tipwrap" class="dm-tipwrap" aria-hidden="true"><div id="dm-tipcard" class="dm-tipcard"><div class="dm-tl"><i></i>One tip <span id="dm-tipfor"></span></div><div id="dm-tiptext" class="dm-tiptext"></div></div></div>
    <div class="dm-dir">
-    <div class="dm-bubble"><div class="dm-btag" id="dm-btag">Director</div><div class="dm-btext dm-status" id="dm-btext">Swipe to a clip and I will grade it.</div></div>
+    <div class="dm-bslot"><div class="dm-bubble" id="dm-bubble"><div class="dm-bin" id="dm-bin"><div class="dm-btag" id="dm-btag">Director</div><div class="dm-btext dm-status" id="dm-btext">Swipe to a clip and I will grade it.</div></div></div></div>
     <div class="dm-robot" id="dm-robot" aria-hidden="true">
      <img id="dm-rposter" class="dm-show" alt="" width="480" height="560" decoding="async">
      <div id="dm-rsprite" class="dm-rsprite"></div>
@@ -213,9 +218,9 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
  {id:'ep01',why:[[4, "A bush hides the subject. That builds suspense."], [1, "The camera holds steady and lets the subject come to it."], [2, "Then it steps out into open space, sharp and shot low so it looks big."]],lbl:'elephant',fr:146,dur:6.08,mp4:1,rp:.7,s:9,m:[85,90,95,92,92],box:[.34,.31,.30,.22],tip:'Let something close hide your subject. Hold still, and let it step out.'},
  {id:'ep18',why:[[2, "The peaks and the village stay sharp."], [1, "The pan across the village is smooth."], [0, "Wind on the mic cost the most points."]],lbl:'cable car',fr:266,dur:11.08,mp4:1,s:7,m:[40,85,95,90,90],box:[.10,.14,.80,.34],tip:'Wind rumbles across the whole shot. Cover the mic with your hand so the sound does not fight your subject.'},
  {id:'ep32',why:[[2, "The low push toward the cabin works."], [1, "The camera bobs a little on the way in."], [4, "Then it drops and feet come into frame. Framing lost the most."]],lbl:'cabin',fr:230,dur:9.58,mp4:1,s:6,m:[80,80,85,85,70],box:[.14,.27,.46,.20],tip:'The push is good, then the camera drops toward your feet. Keep the phone up until the move ends.'},
- {id:'ep07',why:[[4, "The branches frame the edges. Full marks for framing."], [1, "The camera is locked off and steady."], [2, "Focus is the lowest bar, and it is still strong."]],lbl:'branches',fr:0,dur:0.00,s:9,m:[80,95,90,95,100],box:[.1,.2,.8,.4],tip:'Dark branches frame the edges and pull the eye in. Shoot through something close to your subject.'},
- {id:'ep33',why:[[4, "The skater stays in frame for the whole trick."], [1, "The camera wobbles as it follows. That cost the most."], [2, "Focus slips a little on the fast move."]],lbl:'skater',fr:0,dur:0.00,s:7,m:[80,75,85,90,85],box:[.3,.25,.4,.3],tip:'The camera wobbles as it follows. Keep your subject in frame from take-off to landing.'},
- {id:'ep13',why:[[2, "The dunes are sharp from front to back."], [1, "The pan is slow and the horizon stays level."], [0, "Wind on the mic cost a few points."]],lbl:'dunes',fr:0,dur:0.00,s:9,m:[80,95,100,95,90],box:[.1,.2,.8,.3],tip:'A slow pan with a level horizon. Go slower than feels right when you pan a big view.'}
+ {id:'ep07',why:[[4, "The branches frame the edges. Full marks for framing."], [1, "The camera is locked off and steady."], [2, "Focus is the lowest bar, and it is still strong."]],lbl:'branches',fr:174,dur:7.25,mp4:1,s:9,m:[80,95,90,95,100],box:[.1,.2,.8,.4],tip:'Dark branches frame the edges and pull the eye in. Shoot through something close to your subject.'},
+ {id:'ep33',why:[[4, "The skater stays in frame for the whole trick."], [1, "The camera wobbles as it follows. That cost the most."], [2, "Focus slips a little on the fast move."]],lbl:'skater',fr:98,dur:4.08,mp4:1,s:7,m:[80,75,85,90,85],box:[.3,.25,.4,.3],tip:'The camera wobbles as it follows. Keep your subject in frame from take-off to landing.'},
+ {id:'ep13',why:[[2, "The dunes are sharp from front to back."], [1, "The pan is slow and the horizon stays level."], [0, "Wind on the mic cost a few points."]],lbl:'dunes',fr:192,dur:8.00,mp4:1,s:9,m:[80,95,100,95,90],box:[.1,.2,.8,.3],tip:'A slow pan with a level horizon. Go slower than feels right when you pan a big view.'}
 ];
  var N=QUEUE.length;
  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,SETTLE=RM?0:.45;
@@ -390,17 +395,15 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   // clip footage
   var showV=false;
   if(v&&loaded){
-   if(run||mode==='done'){
+   if(true){ // idle, grading and done: the centred clip always plays muted on a loop
     var dur=v.duration||q.dur,rate=1,tt=u;
     if(q.rp&&u>=EX0){rate=q.rp;tt=(u-EX0)*q.rp}
-    if(mode==='done'){tt=1e9}
+    // the active clip loops on its own clock (muted, inline) for the whole grade and after it,
+    // so short clips never freeze on their last frame while the Director is still talking
     if(v.readyState>=2){
-     if(v.playbackRate!==rate)v.playbackRate=rate;
-     if(tt<dur-.06){
-      if(v.paused&&active)v.play().catch(function(){});
-      if(Math.abs(v.currentTime-tt)>.4)v.currentTime=Math.max(0,tt);
-     }else if(!v.ended&&mode==='done'){v.currentTime=dur}
-     showV=v.currentTime>.01||!v.paused||v.ended;
+     v.loop=true;if(v.playbackRate!==1)v.playbackRate=1;
+     if(v.paused&&active)v.play().catch(function(){});
+     showV=true;
     }
    }else{if(!v.paused)v.pause();if(v.currentTime>0&&v.readyState>0)v.currentTime=0}
   }
@@ -481,6 +484,9 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
  root.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();goTo(cur+1,SLOT())}else if(e.key==='ArrowLeft'){e.preventDefault();goTo(cur-1,-SLOT())}});
  // first paint of the idle state
  render(0);
- window.__dm={goTo:goTo,state:function(){return{cur:cur,clip:QUEUE[cur].id,mode:mode,u:+u.toFixed(2),active:active,unmuted:unmuted,alpha:ALPHA}},setMute:setMute,pool:POOL};
+ (function(){var b=document.getElementById('dm-bubble'),i=document.getElementById('dm-bin');if(!b||!i||!window.ResizeObserver)return;
+ var fit=function(){var cs=getComputedStyle(b);b.style.height=(i.offsetHeight+parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom)+parseFloat(cs.borderTopWidth)+parseFloat(cs.borderBottomWidth))+'px'};
+ new ResizeObserver(fit).observe(i);fit()})();
+window.__dm={goTo:goTo,state:function(){return{cur:cur,clip:QUEUE[cur].id,mode:mode,u:+u.toFixed(2),active:active,unmuted:unmuted,alpha:ALPHA}},setMute:setMute,pool:POOL};
 })();
 </script>
