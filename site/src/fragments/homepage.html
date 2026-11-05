@@ -1150,8 +1150,10 @@ body > * { position: relative; z-index: 1; }
   .pipeline:not(.pipe-static) .pipe-mini { margin-top: 8px; }
 }
 
-/* Short landscape phones: copy left, phone right; clear the fixed nav. */
-@media (max-width: 900px) and (max-height: 430px) {
+/* Short landscape phones: copy left, phone right (fully visible, vertically centered).
+   Scale is applied by JS (--pipe-land-s) so the mockup always fits between nav and bottom.
+   If it cannot fit above a minimum scale, JS falls back to .pipe-static for this case only. */
+@media (max-width: 1100px) and (max-height: 430px) {
   .pipeline:not(.pipe-static) .pipe-sticky {
     top: calc(var(--nav-h) + 4px);
     height: calc(100dvh - var(--nav-h) - 8px);
@@ -1161,23 +1163,32 @@ body > * { position: relative; z-index: 1; }
     align-items: stretch;
   }
   .pipeline:not(.pipe-static) .pipe-stickygrid {
-    grid-template-columns: minmax(0, 1.2fr) minmax(120px, 36vw);
+    /* Phone column hugs the scaled mockup; copy takes the remaining width. */
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: minmax(0, 1fr);
-    gap: 14px; padding: 4px 14px; align-items: center; height: 100%;
+    gap: 18px; padding: 0 16px; align-items: center; height: 100%;
+    width: 100%; max-width: none;
   }
   .pipeline:not(.pipe-static) .pipe-rail { display: none; }
   .pipeline:not(.pipe-static) .pipe-phone-slot {
-    order: 2; min-height: 0; height: 100%; overflow: hidden;
-    display: flex; align-items: center; justify-content: flex-end;
+    order: 2; min-height: 0; height: 100%; width: auto;
+    overflow: visible;
+    display: flex; align-items: center; justify-content: center;
   }
+  .pipeline:not(.pipe-static) .pipe-phone-slot::before,
+  .pipeline:not(.pipe-static) .pipe-phone-slot::after { display: none; }
   .pipeline:not(.pipe-static) .pipe-copies {
     order: 1; position: relative; min-height: 0; height: auto; max-height: 100%;
     overflow: visible; align-self: center;
   }
   .pipeline:not(.pipe-static) .pipe-scenes {
-    height: 482px; width: 230px; margin: 0;
-    transform: scale(0.48); transform-origin: center right;
-    margin-bottom: calc(-482px * 0.52);
+    height: 482px; width: 230px; flex-shrink: 0;
+    /* --pipe-land-s set by JS to fit the slot; default keeps a usable phone until JS runs. */
+    --pipe-land-s: 0.6;
+    transform: scale(var(--pipe-land-s));
+    transform-origin: center center;
+    margin: calc(482px * (var(--pipe-land-s) - 1) / 2)
+            calc(230px * (var(--pipe-land-s) - 1) / 2);
   }
   .pipeline:not(.pipe-static) .dcard2,
   .pipeline:not(.pipe-static) .drobot2 { display: none !important; }
@@ -1241,11 +1252,14 @@ body > * { position: relative; z-index: 1; }
     margin-bottom: calc(-482px * 0.38);
   }
 }
-@media (max-width: 900px) and (max-height: 430px) {
+@media (max-width: 1100px) and (max-height: 430px) {
   .pipeline:not(.pipe-static) .pipe-scenes {
-    height: 482px; width: 230px; margin: 0;
-    transform: scale(0.48); transform-origin: center right;
-    margin-bottom: calc(-482px * 0.52);
+    height: 482px; width: 230px; flex-shrink: 0;
+    --pipe-land-s: 0.6;
+    transform: scale(var(--pipe-land-s));
+    transform-origin: center center;
+    margin: calc(482px * (var(--pipe-land-s) - 1) / 2)
+            calc(230px * (var(--pipe-land-s) - 1) / 2);
   }
 }
 
@@ -1798,6 +1812,79 @@ body > * { position: relative; z-index: 1; }
   }
   var scenesWrap = document.getElementById('pipeScenes');
   var scenes = Array.prototype.slice.call(scenesWrap.querySelectorAll('.pscene'));
+  // Short-landscape: scale the phone to fit fully in the right column. If even a small
+  // scale cannot fit, fall back to the static stack for this case only (do not ship cropped).
+  var LAND_MIN_S = 0.4;
+  var landStaticApplied = false;
+  function shortLandMq(){
+    return !!(window.matchMedia && window.matchMedia('(max-width:1100px) and (max-height:430px)').matches);
+  }
+  function clearLandFit(){
+    if (!scenesWrap) return;
+    scenesWrap.style.removeProperty('--pipe-land-s');
+    scenesWrap.style.removeProperty('transform');
+    scenesWrap.style.removeProperty('margin');
+    scenesWrap.style.removeProperty('width');
+    scenesWrap.style.removeProperty('height');
+  }
+  function applyLandPhoneFit(){
+    if (!scenesWrap || landStaticApplied) return true;
+    if (!shortLandMq()) { clearLandFit(); return true; }
+    var sticky = wrap.querySelector('.pipe-sticky');
+    var vh = (window.visualViewport && window.visualViewport.height) ? window.visualViewport.height : window.innerHeight;
+    // Use sticky height (nav already cleared) and a viewport cap for width. Do NOT use the
+    // phone-slot width: that is already sized to the scaled phone and chicken-eggs the scale.
+    var availH = (sticky && sticky.clientHeight) || Math.max(0, Math.floor(vh - 80));
+    var availW = Math.min(220, Math.floor(window.innerWidth * 0.32));
+    var s = Math.min(availH / 482, availW / 230, 1);
+    if (!(s >= LAND_MIN_S)) return false;
+    scenesWrap.style.setProperty('--pipe-land-s', String(Math.round(s * 1000) / 1000));
+    scenesWrap.style.width = '230px';
+    scenesWrap.style.height = '482px';
+    scenesWrap.style.transformOrigin = 'center center';
+    // Keep transform on the CSS var path; clear any prior inline scale.
+    scenesWrap.style.removeProperty('transform');
+    var mh = (482 * (s - 1)) / 2;
+    var mw = (230 * (s - 1)) / 2;
+    scenesWrap.style.margin = mh + 'px ' + mw + 'px';
+    return true;
+  }
+  function forceLandStatic(){
+    if (landStaticApplied) return;
+    landStaticApplied = true;
+    var pipelineEl = wrap.closest('.pipeline');
+    pipelineEl.classList.add('pipe-static');
+    pipelineEl.classList.remove('pipe-snap', 'pipe-touch');
+    pipelineEl.style.setProperty('overflow-x', 'clip', 'important');
+    pipelineEl.style.setProperty('overflow-y', 'visible', 'important');
+    wrap.style.setProperty('height', 'auto', 'important');
+    var stickyEl = wrap.querySelector('.pipe-sticky');
+    if (stickyEl) {
+      stickyEl.style.setProperty('position', 'static', 'important');
+      stickyEl.style.setProperty('height', 'auto', 'important');
+      stickyEl.style.setProperty('display', 'block', 'important');
+      stickyEl.style.setProperty('overflow', 'visible', 'important');
+    }
+    var liveCopies = Array.prototype.slice.call(wrap.querySelectorAll('.pipe-copy-block'));
+    liveCopies.forEach(function(cb){
+      cb.classList.add('on');
+      cb.style.setProperty('position', 'relative', 'important');
+      cb.style.setProperty('opacity', '1', 'important');
+      cb.style.setProperty('transform', 'none', 'important');
+      cb.style.setProperty('top', 'auto', 'important');
+    });
+    var mBrief = document.getElementById('pbriefT');
+    if (mBrief) mBrief.textContent = 'Spring line launch. Fun, real, six people.';
+    var liveScenes = Array.prototype.slice.call(document.querySelectorAll('#pipeScenes .pscene'));
+    liveScenes.forEach(function(sc, i){
+      if (!liveCopies[i]) return;
+      liveCopies[i].appendChild(sc);
+      sc.classList.add('on');
+      sc.style.opacity = '1';
+    });
+    clearLandFit();
+  }
+
   var subjEl = scenes[1] ? scenes[1].querySelector('.psubject') : null;
   var dirEls = scenes[1] ? Array.prototype.slice.call(scenes[1].querySelectorAll('.pdir')) : [];
   var recBtn = scenes[1] ? scenes[1].querySelector('.prec-btn') : null;
@@ -1834,7 +1921,7 @@ body > * { position: relative; z-index: 1; }
     function copyTransform(dir){
       // dir: -1 up, 1 down, 0 centered. Phone sticky uses top:0 (no -50%).
       var phone = window.matchMedia('(max-width:599px)').matches;
-      var land = window.matchMedia('(max-width:900px) and (max-height:430px)').matches;
+      var land = window.matchMedia('(max-width:1100px) and (max-height:430px)').matches;
       if (phone) {
         if (dir === 0) return 'none';
         return 'translateY(' + (dir * 12) + 'px)';
@@ -1979,9 +2066,24 @@ body > * { position: relative; z-index: 1; }
         requestAnimationFrame(poll);
       })();
     }
-    // Leave transform to CSS (phone/landscape scale). Clearing any prior inline.
+    // Leave transform to CSS (phone/portrait scale). Landscape fit sets --pipe-land-s.
     scenesWrap.style.removeProperty('transform');
+    if (!applyLandPhoneFit()) { forceLandStatic(); return; }
+    requestAnimationFrame(function(){
+      if (landStaticApplied) return;
+      if (!applyLandPhoneFit()) forceLandStatic();
+    });
     onS();
+    // Refit after layout / rotate. If the phone can no longer fit, fall back to static.
+    window.addEventListener('resize', function(){
+      if (landStaticApplied) return;
+      if (!applyLandPhoneFit()) forceLandStatic();
+      else { cancelAnim(); onS(); settle(); }
+    });
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', function(){
+      if (landStaticApplied) return;
+      if (!applyLandPhoneFit()) forceLandStatic();
+    });
     return;
   }
   var target = 0, smooth = -1, last = performance.now();
