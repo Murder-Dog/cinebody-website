@@ -1095,6 +1095,14 @@
     {
       "source": "/presentation/zulu/:path*",
       "destination": "https://cinebody-zulu.vercel.app/:path*"
+    },
+    {
+      "source": "/presentation/contend-snap",
+      "destination": "https://cinebody-contend-snap.vercel.app/"
+    },
+    {
+      "source": "/presentation/contend-snap/:path*",
+      "destination": "https://cinebody-contend-snap.vercel.app/:path*"
     }
   ]
 }
