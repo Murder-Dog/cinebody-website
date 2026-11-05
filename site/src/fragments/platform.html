@@ -2176,9 +2176,12 @@ body > * { position: relative; z-index: 1; }
 .pipe-frame:hover { transform: translateY(-3px); }
 .pipe-frame::after { content: '⤢'; position: absolute; right: 10px; bottom: 10px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; background: rgba(10,14,18,0.75); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; opacity: 0; transition: opacity .25s ease; pointer-events: none; }
 .pipe-frame:hover::after { opacity: 1; }
-.shot-lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(4,8,12,0.9); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: calc(4vh / var(--zv,1)) calc(4vw / var(--zv,1)); opacity: 0; pointer-events: none; transition: opacity .25s ease; cursor: zoom-out; }
+.shot-lightbox { position: fixed; inset: 0; z-index: 10050; background: rgba(4,8,12,0.92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: calc(4vh / var(--zv,1)) calc(4vw / var(--zv,1)); opacity: 0; pointer-events: none; transition: opacity .25s ease; cursor: zoom-out; touch-action: none; overscroll-behavior: none; }
 .shot-lightbox.on { opacity: 1; pointer-events: auto; }
-.shot-lb-body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: min(1000px, calc(76vw / var(--zv,1))); cursor: default; }
+.shot-lb-close { position: fixed; top: calc(env(safe-area-inset-top, 0px) + var(--nav-h, 72px) + 8px); right: calc(env(safe-area-inset-right, 0px) + 12px); z-index: 3; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 28px; line-height: 1; color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28); border-radius: 50%; cursor: pointer; transition: background .2s ease, border-color .2s ease, transform .2s ease; -webkit-tap-highlight-color: transparent; }
+.shot-lb-close:hover, .shot-lb-close:focus-visible { background: rgba(0,188,241,0.3); border-color: var(--teal); outline: none; }
+.shot-lb-close:active { transform: scale(0.96); }
+.shot-lb-body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: min(1000px, calc(76vw / var(--zv,1))); cursor: default; touch-action: pan-y; }
 .shot-lightbox img { max-width: 100%; max-height: calc(62vh / var(--zv,1)); border-radius: 12px; box-shadow: 0 40px 120px rgba(0,0,0,0.65); transform: scale(0.965); transition: transform .3s var(--ease); }
 .shot-lightbox.on img { transform: none; }
 .shot-lb-title { font-size: 1.05rem; font-weight: 700; color: #fff; }
@@ -2191,6 +2194,7 @@ body > * { position: relative; z-index: 1; }
 .shot-lb-arrow:hover { background: rgba(0,188,241,0.25); border-color: var(--teal); }
 .shot-lb-prev { left: calc(3vw / var(--zv,1)); }
 .shot-lb-next { right: calc(3vw / var(--zv,1)); }
+body.shot-lb-open { overflow: hidden; touch-action: none; overscroll-behavior: none; }
 .pipe-frame img { display: block; width: 100%; }
 .pipe-frame--phone { max-width: 274px; margin: 0 auto; border-radius: 30px; padding: 6px; border-color: rgba(255,255,255,0.16); }
 .pipe-frame--phone img { border-radius: 24px; }
@@ -3043,14 +3047,22 @@ document.querySelectorAll('.faq-q').forEach(function(b){
 (function(){
   var lb = document.createElement('div');
   lb.className = 'shot-lightbox';
-  lb.innerHTML = '<button class="shot-lb-arrow shot-lb-prev" aria-label="Previous screen">&#8249;</button>' +
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Screenshot');
+  lb.innerHTML = '<button type="button" class="shot-lb-close" aria-label="Close screenshot">&times;</button>' +
+    '<button type="button" class="shot-lb-arrow shot-lb-prev" aria-label="Previous screen">&#8249;</button>' +
     '<div class="shot-lb-body"><img alt=""><div class="shot-lb-title"></div><div class="shot-lightbox-cap"></div><div class="shot-lb-chips"></div></div>' +
-    '<button class="shot-lb-arrow shot-lb-next" aria-label="Next screen">&#8250;</button>';
+    '<button type="button" class="shot-lb-arrow shot-lb-next" aria-label="Next screen">&#8250;</button>';
   document.body.appendChild(lb);
   var img = lb.querySelector('img'), cap = lb.querySelector('.shot-lightbox-cap'),
       title = lb.querySelector('.shot-lb-title'), chips = lb.querySelector('.shot-lb-chips'),
-      prev = lb.querySelector('.shot-lb-prev'), next = lb.querySelector('.shot-lb-next');
+      prev = lb.querySelector('.shot-lb-prev'), next = lb.querySelector('.shot-lb-next'),
+      closeBtn = lb.querySelector('.shot-lb-close');
   var gallery = [], gCap = '', idx = 0;
+  var histPushed = false;
+  var scrollY = 0;
+  var swipe = { active: false, x0: 0, y0: 0, dx: 0, dy: 0 };
 
   function render(){
     var it = gallery[idx];
@@ -3062,6 +3074,7 @@ document.querySelectorAll('.faq-q').forEach(function(b){
     if (gallery.length > 1) {
       gallery.forEach(function(g, i){
         var b = document.createElement('button');
+        b.type = 'button';
         b.className = 'shot-lb-chip' + (i === idx ? ' on' : '');
         b.textContent = g.label || ('Screen ' + (i + 1));
         b.addEventListener('click', function(e){ e.stopPropagation(); idx = i; render(); });
@@ -3071,21 +3084,94 @@ document.querySelectorAll('.faq-q').forEach(function(b){
     var many = gallery.length > 1;
     prev.style.display = next.style.display = many ? 'flex' : 'none';
   }
-  function open(items, capText, i){ gallery = items; gCap = capText; idx = i || 0; render(); lb.classList.add('on'); }
-  function close(){ lb.classList.remove('on'); }
+  function lockScroll(){
+    scrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.classList.add('shot-lb-open');
+    document.body.style.position = 'fixed';
+    document.body.style.top = (-scrollY) + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+  function unlockScroll(){
+    document.body.classList.remove('shot-lb-open');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
+  }
+  function finishClose(){
+    if (!lb.classList.contains('on')) return;
+    lb.classList.remove('on');
+    unlockScroll();
+    histPushed = false;
+  }
+  function requestClose(){
+    if (!lb.classList.contains('on')) return;
+    if (histPushed) {
+      histPushed = false;
+      try { history.back(); } catch (err) { finishClose(); }
+      // popstate runs finishClose; fallback if it does not
+      setTimeout(function(){ if (lb.classList.contains('on')) finishClose(); }, 100);
+    } else {
+      finishClose();
+    }
+  }
+  function open(items, capText, i){
+    gallery = items; gCap = capText; idx = i || 0; render();
+    if (lb.classList.contains('on')) return;
+    lockScroll();
+    lb.classList.add('on');
+    try {
+      history.pushState({ shotLb: 1 }, '', window.location.href);
+      histPushed = true;
+    } catch (err) { histPushed = false; }
+    try { closeBtn.focus({ preventScroll: true }); } catch (err2) {}
+  }
   function step(d){ idx = (idx + d + gallery.length) % gallery.length; render(); }
-  lb.addEventListener('click', close);
+  lb.addEventListener('click', function(e){
+    if (e.target === lb) requestClose();
+  });
+  closeBtn.addEventListener('click', function(e){ e.stopPropagation(); requestClose(); });
   lb.querySelector('.shot-lb-body').addEventListener('click', function(e){ e.stopPropagation(); });
   prev.addEventListener('click', function(e){ e.stopPropagation(); step(-1); });
   next.addEventListener('click', function(e){ e.stopPropagation(); step(1); });
   document.addEventListener('keydown', function(e){
     if (!lb.classList.contains('on')) return;
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') { e.preventDefault(); requestClose(); }
     if (e.key === 'ArrowLeft') step(-1);
     if (e.key === 'ArrowRight') step(1);
   });
+  window.addEventListener('popstate', function(){
+    if (lb.classList.contains('on')) finishClose();
+  });
+  function onTouchStart(e){
+    if (!lb.classList.contains('on') || !e.touches || e.touches.length !== 1) return;
+    var t = e.touches[0];
+    swipe.active = true; swipe.x0 = t.clientX; swipe.y0 = t.clientY; swipe.dx = 0; swipe.dy = 0;
+  }
+  function onTouchMove(e){
+    if (!swipe.active) return;
+    var t = e.touches[0];
+    swipe.dx = t.clientX - swipe.x0;
+    swipe.dy = t.clientY - swipe.y0;
+    if (swipe.dy > 24 && Math.abs(swipe.dy) > Math.abs(swipe.dx) * 1.2) {
+      e.preventDefault();
+    }
+  }
+  function onTouchEnd(){
+    if (!swipe.active) return;
+    var dy = swipe.dy, dx = swipe.dx;
+    swipe.active = false;
+    if (dy > 80 && Math.abs(dy) > Math.abs(dx) * 1.2) requestClose();
+  }
+  lb.addEventListener('touchstart', onTouchStart, { passive: true });
+  lb.addEventListener('touchmove', onTouchMove, { passive: false });
+  lb.addEventListener('touchend', onTouchEnd);
+  lb.addEventListener('touchcancel', function(){ swipe.active = false; });
 
-  // Build one gallery per section visual: tab screens + any extra frames
   document.querySelectorAll('.pipe-visual').forEach(function(v){
     var items = [];
     var capText = (v.querySelector('.pipe-cap') || {}).textContent || '';
