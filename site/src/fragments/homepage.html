@@ -936,7 +936,7 @@ body > * { position: relative; z-index: 1; }
 .pipeline::before { content: ''; position: absolute; top: 12%; left: -12%; width: 620px; height: 620px; background: var(--teal); border-radius: 50%; filter: blur(220px); opacity: 0.06; pointer-events: none; }
 .pipeline::after { content: ''; position: absolute; bottom: 6%; right: -12%; width: 560px; height: 560px; background: var(--pink); border-radius: 50%; filter: blur(220px); opacity: 0.05; pointer-events: none; }
 .pipeline .contain { position: relative; z-index: 1; }
-.pipeline-head { text-align: center; max-width: 660px; margin: 0 auto 40px; }
+.pipeline-head { text-align: center; max-width: 660px; margin: 0 auto 8px; }
 .pipeline-head h2 { font-size: clamp(2rem,calc(4vw / var(--zv,1)),2.75rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; color: #fff !important; margin-bottom: 16px; }
 .pipeline-head p { font-size: 1rem; color: var(--text-dim); line-height: 1.65; }
 .pipe-stage { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,calc(6vw / var(--zv,1)),80px); align-items: center; margin-bottom: 96px; }
@@ -1672,14 +1672,16 @@ body > * { position: relative; z-index: 1; }
     function onS(){
       var g = geo(), y = window.scrollY, f = (y - g.top) / g.seg;
       if (!animating) { clearTimeout(idleT); idleT = setTimeout(settle, 130); }
-      if (f < -0.3 || f > NSTEP - 1 + 0.3) { landed = null; setStep(-1); return; }
+      // Step 01 is live as soon as the stage scrolls into view (about 10% of a screen in), not only once it reaches the pin.
+      var LO = -0.9;
+      if (f < LO || f > NSTEP - 1 + 0.3) { landed = null; setStep(-1); return; }
       var near = (Math.round(f) || 0), dist = Math.abs(f - near) * g.seg;
       if (near < 0) near = 0; if (near > NSTEP - 1) near = NSTEP - 1;
       if (cur === -1) { // entering from outside: first step shows as soon as it is in view
-        if ((near === 0 && f >= -0.02) || (near > 0 && (near === NSTEP - 1 || Math.abs(f - near) <= 0.3))) { setStep(near); }
+        if ((near === 0 && f >= LO) || (near > 0 && (near === NSTEP - 1 || Math.abs(f - near) <= 0.3))) { setStep(near); }
       } else if (near !== cur && Math.abs(f - cur) > 0.5 && dist <= Math.max(10, 0.06 * g.seg)) {
         landed = near; setStep(near);
-      } else if (Math.abs(f - cur) > 0.75) {
+      } else if (Math.abs(f - cur) > 0.75 && !(cur === 0 && f < 0)) {
         setStep(-1);
       }
       if (near === cur && dist < 2) landed = near;
