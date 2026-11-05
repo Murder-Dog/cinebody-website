@@ -246,7 +246,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
  var cf=$('cf'),cv=$('cv'),clipbox=$('clipbox'),rposter=$('rposter'),rsprite=$('rsprite'),ridle=$('ridle'),rg=$('rg');
  var loaded=false,active=false,activated=false;
  // ---- state ----
- var cur=N-1,aStart=null,settle=null,drag=null,lastU=null,everRan=false,mode='idle',u=0,lastSig='',force=true;
+ var cur=0,aStart=null,settle=null,drag=null,lastU=null,everRan=false,mode='idle',u=0,lastSig='',force=true;
  var doneSet={},unmuted=false,annKey='',vt=0,lastTs=0,raf=0,vsrc='',replayed=false;
  var now=function(){return vt};
  var bgs=[$('bg0'),$('bg1')],bgI=0,bgCur=-1;
