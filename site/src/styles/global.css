@@ -22,10 +22,16 @@
   --mono: 'Plus Jakarta Sans', sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --nav-h: 72px;
+  /* Site-wide scale. --s is the zoom applied to <body> (1 on phones, touch and <=1024px; fluid between .7 and 2.2 on desktop,
+     exactly 1 at 1440x900). --zv is how much the browser multiplies viewport units inside the zoom, so every vh/vw in the
+     stylesheets is written as calc(Nvh / var(--zv,1)). Both are set by the inline script in Base.astro. */
+  --s: 1;
+  --zv: 1;
 }
 
 html { scroll-behavior: smooth; }
 body {
+  zoom: var(--s, 1);
   background: var(--bg);
   margin: 0;
   font-family: var(--font);
@@ -133,7 +139,7 @@ p, li { text-wrap: pretty; }
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  padding: 0 clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -226,7 +232,7 @@ p, li { text-wrap: pretty; }
 .footer-col a.footer-login:hover { color: #fff !important; border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
 @media (max-width: 860px) {
   .site-nav__actions { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; }
-  .site-nav__login { display: block; padding: 12px; margin: 0 clamp(1.25rem, 4vw, 3rem); text-align: center; font-size: 1rem; }
+  .site-nav__login { display: block; padding: 12px; margin: 0 clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem); text-align: center; font-size: 1rem; }
 }
 
 /* Hamburger */
@@ -267,7 +273,7 @@ p, li { text-wrap: pretty; }
     opacity: 0;
     pointer-events: none;
     transition: transform 0.3s var(--ease), opacity 0.3s ease;
-    max-height: calc(100vh - var(--nav-h));
+    max-height: calc(calc(100vh / var(--zv,1)) - var(--nav-h));
     overflow-y: auto;
   }
   .site-nav.open .site-nav__menu { transform: translateY(0); opacity: 1; pointer-events: auto; }
@@ -276,15 +282,15 @@ p, li { text-wrap: pretty; }
   .site-nav__links li { width: 100%; }
   .site-nav__links a {
     display: block;
-    padding: 14px clamp(1.25rem, 4vw, 3rem);
+    padding: 14px clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem);
     font-size: 1rem;
   }
   .site-nav__links a::after { display: none; }
   .site-nav__cta {
-    margin: 12px clamp(1.25rem, 4vw, 3rem) 0;
+    margin: 12px clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem) 0;
     text-align: center;
   }
-  .site-nav__apps { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 20px clamp(1.25rem, 4vw, 3rem) 6px; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .site-nav__apps { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 20px clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem) 6px; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.06); }
   .site-nav__apps-label { font-family: var(--mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
 }
 @media (min-width: 861px) {
@@ -362,7 +368,7 @@ p, li { text-wrap: pretty; }
   .site-nav__item--menu::after { display: none; }
   .site-nav__disclosure {
     display: flex; justify-content: space-between; width: 100%;
-    padding: 14px clamp(1.25rem, 4vw, 3rem); font-size: 1rem;
+    padding: 14px clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem); font-size: 1rem;
   }
   .site-nav__disclosure::after { display: none; }
   .site-nav__dropdown {
@@ -373,9 +379,9 @@ p, li { text-wrap: pretty; }
     max-height: 0; overflow: hidden;
     transition: max-height 0.3s var(--ease);
   }
-  .site-nav__disclosure[aria-expanded="true"] + .site-nav__dropdown { max-height: 60vh; }
-  .site-nav__dropdown-label { padding: 10px clamp(1.25rem, 4vw, 3rem) 4px; }
-  .site-nav__dropdown-grid { gap: 0; padding: 0 calc(clamp(1.25rem, 4vw, 3rem) - 10px) 12px; }
+  .site-nav__disclosure[aria-expanded="true"] + .site-nav__dropdown { max-height: calc(60vh / var(--zv,1)); }
+  .site-nav__dropdown-label { padding: 10px clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem) 4px; }
+  .site-nav__dropdown-grid { gap: 0; padding: 0 calc(clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem) - 10px) 12px; }
 }
 
 /* ============================================================
@@ -424,8 +430,12 @@ p, li { text-wrap: pretty; }
   color: var(--pink); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
 }
 @media (max-width: 768px) { .footer-apps { justify-content: center; } }
+/* Yellow "Get the app" band only (homepage CTA): badges side by side, the pill on its own line centered under the pair */
+.cta-apps .store-badges:has(.store-badge--soon) { display: inline-grid; grid-template-columns: auto auto; justify-content: center; justify-items: center; align-items: center; gap: 12px; }
+.cta-apps .store-badges:has(.store-badge--soon)::after { grid-column: 1 / -1; justify-self: center; }
+@media (max-width: 380px) { .cta-apps .store-badges:has(.store-badge--soon) { gap: 10px; } .cta-apps .store-badges:has(.store-badge--soon) .store-badge svg { height: 38px; } }
 .sig-bar { height: 3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal) 33.33%, var(--yellow) 33.33%, var(--yellow) 66.66%, var(--pink) 66.66%); }
-.footer .contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+.footer .contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem); }
 
 @media (max-width: 1000px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -532,12 +542,12 @@ p, li { text-wrap: pretty; }
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     gap: 14px !important;
-    padding: 4px clamp(1.25rem, 12vw, 4rem) 8px !important;
+    padding: 4px clamp(1.25rem, calc(12vw / var(--zv,1)), 4rem) 8px !important;
     margin-left: -20px !important;
     margin-right: -20px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    scroll-padding-inline: clamp(1.25rem, 12vw, 4rem);
+    scroll-padding-inline: clamp(1.25rem, calc(12vw / var(--zv,1)), 4rem);
   }
   .cb-vp { overflow: hidden !important; min-width: 0; }
   .cb-tr {

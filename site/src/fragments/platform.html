@@ -63,7 +63,7 @@ body > * { position: relative; z-index: 1; }
 }
 
 /* ── CONTAINER ── */
-.contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+.contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem); }
 
 /* ── SECTION LABEL, monospace ── */
 .label {
@@ -153,7 +153,7 @@ body > * { position: relative; z-index: 1; }
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  font-size: clamp(2.5rem, calc(4.5vw / var(--zv,1)), 3.8rem);
   font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 24px;
   color: #fff !important;
 }
@@ -245,7 +245,7 @@ body > * { position: relative; z-index: 1; }
 .how { padding: 120px 0; position: relative; }
 
 .how h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -0.03em;
+  font-size: clamp(2rem, calc(4vw / var(--zv,1)), 2.75rem); font-weight: 700; letter-spacing: -0.03em;
   line-height: 1.1; margin-bottom: 64px; text-align: center; color: #111 !important;
 }
 
@@ -297,9 +297,9 @@ body > * { position: relative; z-index: 1; }
 /* ═══════════════════════════
    CROSS-SELL CARD
    ═══════════════════════════ */
-.cross-sell { padding: 20px 0 96px; position: relative; background: #fff; }
-.cross-split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
-.cross-sell .cross-copy h3 { color: #111; font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px; }
+.cross-sell { padding: 20px 0 96px; position: relative; z-index: 4; background: #fff; }
+.cross-split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(36px, calc(5vw / var(--zv,1)), 72px); align-items: center; }
+.cross-sell .cross-copy h3 { color: #111; font-size: clamp(1.6rem, calc(2.6vw / var(--zv,1)), 2.1rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px; }
 .cross-copy h3 em { font-style: normal; color: var(--teal); }
 .cross-sell .cross-body { color: #555; }
 .cross-note { font-size: 0.85rem; color: #8a9298; line-height: 1.6; margin: 14px 0 26px; max-width: 420px; }
@@ -327,7 +327,7 @@ body > * { position: relative; z-index: 1; }
 .cross-card:hover { border-color: var(--border-hover); }
 
 .cross-card h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700;
+  font-size: clamp(1.5rem, calc(2.5vw / var(--zv,1)), 2rem); font-weight: 700;
   letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 14px;
 }
 
@@ -358,8 +358,8 @@ body > * { position: relative; z-index: 1; }
    ═══════════════════════════ */
 .cb-pricing * { margin: 0; padding: 0; box-sizing: border-box; }
 .cb-pricing__header { text-align: center; max-width: 800px; margin: 0 auto 12px; }
-.cb-pricing__header h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px; color: #fff !important; }
-.cb-pricing__header p { font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 680px; margin: 0 auto; }
+.cb-pricing__header h2 { font-size: clamp(2rem, calc(4.5vw / var(--zv,1)), 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px; color: #fff !important; }
+.cb-pricing__header p { font-size: clamp(1rem, calc(2vw / var(--zv,1)), 1.15rem); color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 680px; margin: 0 auto; }
 .cb-pricing__savings { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px auto 32px; padding: 8px 20px; background: rgba(0,188,241,0.08); border: 1px solid rgba(0,188,241,0.15); border-radius: 100px; width: fit-content; font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--teal); text-align: center; text-transform: uppercase; letter-spacing: 0.08em; }
 .cb-pricing__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
 @media (max-width: 1240px) and (min-width: 961px) { .cb-pricing__grid { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; } }
@@ -435,7 +435,7 @@ body > * { position: relative; z-index: 1; }
 .teaser-badge-name { font-family: var(--font); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
 
 .teaser h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; letter-spacing: -0.025em;
+  font-size: clamp(1.5rem, calc(2.5vw / var(--zv,1)), 2rem); font-weight: 700; letter-spacing: -0.025em;
   line-height: 1.15; margin-bottom: 14px;
 }
 
@@ -488,7 +488,7 @@ body > * { position: relative; z-index: 1; }
    ═══════════════════════════ */
 .faq { padding: 120px 0; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #041a24 0%, #0a1e2e 50%, #0f1a24 100%); }
 .faq .contain { max-width: 680px; }
-.faq h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 48px; text-align: center; color: #fff !important; }
+.faq h2 { font-size: clamp(1.5rem, calc(3vw / var(--zv,1)), 2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 48px; text-align: center; color: #fff !important; }
 
 .faq-item { border-bottom: 1px solid var(--border); }
 .faq-item:first-child { border-top: 1px solid var(--border); }
@@ -546,13 +546,13 @@ body > * { position: relative; z-index: 1; }
   .hero-scroller {
     gap: 6px;
     margin-top: 0; margin-bottom: -60px;
-    width: 100vw;
-    margin-left: calc(-1 * clamp(1.25rem, 4vw, 3rem));
-    margin-right: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+    width: calc(100vw / var(--zv,1));
+    margin-left: calc(-1 * clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem));
+    margin-right: calc(-1 * clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem));
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
   }
-  .hero-scroller-col .scr-card { width: calc((100vw - 24px) / 3); border-radius: 10px; }
+  .hero-scroller-col .scr-card { width: calc((calc(100vw / var(--zv,1)) - 24px) / 3); border-radius: 10px; }
   .hero-scroller-col { gap: 6px; }
   .scr-label { font-size: 6px; padding: 4px 6px; }
   .how, .cross-sell, .faq { padding: 80px 0; }
@@ -2147,9 +2147,9 @@ body > * { position: relative; z-index: 1; }
 .pipeline::after { content: ''; position: absolute; bottom: 6%; right: -12%; width: 580px; height: 580px; background: var(--pink); border-radius: 50%; filter: blur(220px); opacity: 0.05; pointer-events: none; }
 .pipeline .contain { position: relative; z-index: 1; }
 .pipeline-head { text-align: center; max-width: 700px; margin: 0 auto 76px; }
-.pipeline-head h2 { font-size: clamp(2rem,4vw,2.85rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #fff !important; margin-bottom: 16px; }
+.pipeline-head h2 { font-size: clamp(2rem,calc(4vw / var(--zv,1)),2.85rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #fff !important; margin-bottom: 16px; }
 .pipeline-head p { font-size: 1rem; color: var(--text-dim); line-height: 1.65; }
-.pipe-stage { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: center; margin-bottom: 96px; }
+.pipe-stage { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,calc(6vw / var(--zv,1)),80px); align-items: center; margin-bottom: 96px; }
 .pipe-stage.flip { direction: rtl; }
 .pipe-stage.flip > * { direction: ltr; }
 /* Proof of Capture stop: lay the demo card out wide so it sits at the same height as the other stops */
@@ -2169,17 +2169,20 @@ body > * { position: relative; z-index: 1; }
 
 .pipe-num { font-family: var(--mono); font-size: 12px; color: var(--teal); letter-spacing: 0.12em; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
 .pipe-num::before { content: ''; width: 30px; height: 1px; background: var(--teal); opacity: 0.4; }
-.pipe-copy h3 { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 700; letter-spacing: -0.025em; color: #fff; margin-bottom: 16px; }
+.pipe-copy h3 { font-size: clamp(1.5rem,calc(2.5vw / var(--zv,1)),2rem); font-weight: 700; letter-spacing: -0.025em; color: #fff; margin-bottom: 16px; }
 .pipe-copy p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.7; max-width: 460px; }
 .pipe-visual { position: relative; }
 .pipe-frame { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 28px 64px rgba(0,0,0,0.5); background: linear-gradient(135deg, #1a2a3a 0%, #0e1820 100%); position: relative; cursor: zoom-in; transition: transform .35s var(--ease); }
 .pipe-frame:hover { transform: translateY(-3px); }
 .pipe-frame::after { content: '⤢'; position: absolute; right: 10px; bottom: 10px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; background: rgba(10,14,18,0.75); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; opacity: 0; transition: opacity .25s ease; pointer-events: none; }
 .pipe-frame:hover::after { opacity: 1; }
-.shot-lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(4,8,12,0.9); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 4vh 4vw; opacity: 0; pointer-events: none; transition: opacity .25s ease; cursor: zoom-out; }
+.shot-lightbox { position: fixed; inset: 0; z-index: 10050; background: rgba(4,8,12,0.92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: calc(4vh / var(--zv,1)) calc(4vw / var(--zv,1)); opacity: 0; pointer-events: none; transition: opacity .25s ease; cursor: zoom-out; touch-action: none; overscroll-behavior: none; }
 .shot-lightbox.on { opacity: 1; pointer-events: auto; }
-.shot-lb-body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: min(1000px, 76vw); cursor: default; }
-.shot-lightbox img { max-width: 100%; max-height: 62vh; border-radius: 12px; box-shadow: 0 40px 120px rgba(0,0,0,0.65); transform: scale(0.965); transition: transform .3s var(--ease); }
+.shot-lb-close { position: fixed; top: calc(env(safe-area-inset-top, 0px) + var(--nav-h, 72px) + 8px); right: calc(env(safe-area-inset-right, 0px) + 12px); z-index: 3; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 28px; line-height: 1; color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28); border-radius: 50%; cursor: pointer; transition: background .2s ease, border-color .2s ease, transform .2s ease; -webkit-tap-highlight-color: transparent; }
+.shot-lb-close:hover, .shot-lb-close:focus-visible { background: rgba(0,188,241,0.3); border-color: var(--teal); outline: none; }
+.shot-lb-close:active { transform: scale(0.96); }
+.shot-lb-body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: min(1000px, calc(76vw / var(--zv,1))); cursor: default; touch-action: pan-y; }
+.shot-lightbox img { max-width: 100%; max-height: calc(62vh / var(--zv,1)); border-radius: 12px; box-shadow: 0 40px 120px rgba(0,0,0,0.65); transform: scale(0.965); transition: transform .3s var(--ease); }
 .shot-lightbox.on img { transform: none; }
 .shot-lb-title { font-size: 1.05rem; font-weight: 700; color: #fff; }
 .shot-lightbox-cap { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.65); text-align: center; max-width: 640px; text-transform: none; letter-spacing: 0.01em; font-family: var(--font); font-size: 0.9rem; }
@@ -2189,8 +2192,9 @@ body > * { position: relative; z-index: 1; }
 .shot-lb-chip.on { color: #04141c; background: var(--teal); border-color: var(--teal); }
 .shot-lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; font-size: 26px; line-height: 1; color: #fff; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; transition: all .2s ease; z-index: 2; }
 .shot-lb-arrow:hover { background: rgba(0,188,241,0.25); border-color: var(--teal); }
-.shot-lb-prev { left: 3vw; }
-.shot-lb-next { right: 3vw; }
+.shot-lb-prev { left: calc(3vw / var(--zv,1)); }
+.shot-lb-next { right: calc(3vw / var(--zv,1)); }
+body.shot-lb-open { overflow: hidden; touch-action: none; overscroll-behavior: none; }
 .pipe-frame img { display: block; width: 100%; }
 .pipe-frame--phone { max-width: 274px; margin: 0 auto; border-radius: 30px; padding: 6px; border-color: rgba(255,255,255,0.16); }
 .pipe-frame--phone img { border-radius: 24px; }
@@ -2198,7 +2202,6 @@ body > * { position: relative; z-index: 1; }
 .pipe-bar { display: flex; gap: 6px; padding: 11px 14px; background: #141414; border-bottom: 1px solid var(--border); }
 .pipe-bar span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.14); }
 .pipe-cap { margin-top: 20px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); text-align: center; }
-.pipe-stack { position: relative; padding: 26px 0 0 26px; }
 .pipe-duo { position: relative; padding: 0 30px 40px 0; }
 .pipe-pair { display: flex; align-items: center; gap: 18px; }
 .pipe-pair-main { flex: 1; min-width: 0; }
@@ -2215,8 +2218,6 @@ body > * { position: relative; z-index: 1; }
 .feat--light .shot-tab.on { color: #fff; background: #111; border-color: #111; }
 @media (max-width: 900px) { .pipe-pair { flex-direction: column; } .pipe-side-phone { width: 180px; } }
 .pipe-duo-phone { position: absolute; right: -6px; bottom: 0; width: 168px; max-width: none; margin: 0; z-index: 2; box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
-.pipe-stack-back { position: absolute; top: 0; left: 0; right: 52px; opacity: 0.55; filter: saturate(0.8); }
-.pipe-stack-front { position: relative; z-index: 2; }
 .feat { padding: 90px 0; overflow: hidden; }
 .feat .pipe-stage { margin-bottom: 0; }
 .pipeline .pipe-stage { margin-bottom: 0; }
@@ -2230,7 +2231,7 @@ body > * { position: relative; z-index: 1; }
 .feat--dark2 { background: linear-gradient(180deg, #0a0a0a 0%, #041a24 100%); }
 .feat--dark3 { background: linear-gradient(180deg, #0a0a0a 0%, #08131a 100%); }
 .pipe-closer { text-align: center; margin-top: 8px; }
-.pipe-closer h3 { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.2; }
+.pipe-closer h3 { font-size: clamp(1.5rem,calc(3vw / var(--zv,1)),2.25rem); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.2; }
 .pipe-closer h3 em { font-style: normal; background: linear-gradient(135deg,var(--teal),var(--pink),var(--yellow)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .pipe-closer .pipe-cap { margin-top: 26px; }
 .pipe-outputs { display: flex; gap: 14px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
@@ -2242,7 +2243,7 @@ body > * { position: relative; z-index: 1; }
 
 /* ── Global organized shoot ── */
 .global { padding: 96px 0; text-align: center; background: #fff; color: #111; position: relative; }
-.global h2 { font-size: clamp(2rem,4vw,2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #111 !important; max-width: 680px; margin: 0 auto 16px; }
+.global h2 { font-size: clamp(2rem,calc(4vw / var(--zv,1)),2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #111 !important; max-width: 680px; margin: 0 auto 16px; }
 .global h2 em { font-style: normal; color: var(--teal); }
 .global p { font-size: 1rem; color: #666; line-height: 1.65; max-width: 560px; margin: 0 auto 44px; }
 .global-globe { max-width: 780px; margin: 4px auto 30px; }
@@ -2260,7 +2261,7 @@ body > * { position: relative; z-index: 1; }
 /* ── Breadth: the full content operation ── */
 .breadth { padding: 100px 0; position: relative; background: linear-gradient(180deg,#0a0a0a 0%,#041a24 100%); }
 .breadth-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
-.breadth-head h2 { font-size: clamp(2rem,4vw,2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #fff !important; margin-bottom: 12px; }
+.breadth-head h2 { font-size: clamp(2rem,calc(4vw / var(--zv,1)),2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #fff !important; margin-bottom: 12px; }
 .breadth-head p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
 .breadth-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; }
 .breadth-cell { background: var(--surface); padding: 30px 24px; transition: background .4s ease; }
@@ -2280,7 +2281,7 @@ body > * { position: relative; z-index: 1; }
 .tour-run { background: linear-gradient(180deg,#0a0a0a 0%,#06131b 60%,#08131a 100%); overflow: visible; overflow-x: clip; }
 .tour-body { display: block; }
 .tour-rail { display: none; }
-.tour-reel .tour-rail { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin-bottom: clamp(26px, 4vh, 42px); }
+.tour-reel .tour-rail { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin-bottom: clamp(26px, calc(4vh / var(--zv,1)), 42px); }
 .tour-rail a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; padding: 7px 12px; border: 1px solid rgba(255,255,255,0.14); border-radius: 99px; white-space: nowrap; transition: all .25s ease; }
 .tour-rail a:hover { color: #fff; border-color: rgba(0,188,241,0.5); }
 .tour-rail a.on { color: #04141c; background: var(--teal); border-color: var(--teal); }
@@ -2294,7 +2295,7 @@ body > * { position: relative; z-index: 1; }
 .tour-lockup .tour-sec:nth-child(even)::before { right: auto; left: -0.5%; }
 /* soft full-bleed color zones instead of hard separators */
 .tour-lockup .tour-sec + .tour-sec { border-top: none; }
-.tour-lockup .tour-sec::after { content: ''; position: absolute; top: -6%; bottom: -6%; left: 50%; transform: translateX(-50%); width: 100vw; z-index: -1; pointer-events: none; background: radial-gradient(56% 78% at 76% 34%, rgba(0,188,241,0.05), transparent 66%); }
+.tour-lockup .tour-sec::after { content: ''; position: absolute; top: -6%; bottom: -6%; left: 50%; transform: translateX(-50%); width: calc(100vw / var(--zv,1)); z-index: -1; pointer-events: none; background: radial-gradient(56% 78% at 76% 34%, rgba(0,188,241,0.05), transparent 66%); }
 .tour-lockup .tour-sec:nth-child(even)::after { background: radial-gradient(56% 78% at 24% 34%, rgba(235,0,139,0.04), transparent 66%); }
 .tour-lockup .tour-sec:nth-child(3n)::after { background: radial-gradient(56% 78% at 76% 34%, rgba(255,236,3,0.03), transparent 66%); }
 .tour-lockup .tour-sec:nth-child(6n)::after { background: radial-gradient(56% 78% at 24% 34%, rgba(255,236,3,0.03), transparent 66%); }
@@ -2305,6 +2306,14 @@ body > * { position: relative; z-index: 1; }
 .tour-lockup .tour-rail a:hover { border-color: var(--teal); }
 .tour-lockup .tour-rail a.on { border-color: var(--teal); background: var(--teal); box-shadow: 0 0 12px rgba(0,188,241,0.55); }
 .tour-sec:first-child { padding-top: 12px; }
+/* Landing stops (desktop, fine pointer, motion allowed; the JS adds .tour-snap): each section is a full screen
+   below the fixed nav with its lockup centered, so one stop shows one item with real breathing room.
+   Touch, <1100px and reduced motion never get .tour-snap and keep the stacked padding above. */
+.tour-lockup.tour-snap .tour-sec,
+.tour-lockup.tour-snap .tour-sec:first-child { box-sizing: border-box; display: flex; align-items: center; padding: clamp(96px, calc(12vh / var(--zv,1)), 190px) 0; min-height: calc(100vh / var(--zv,1) - var(--nav-h)); scroll-margin-top: var(--nav-h); }
+/* the first stop also carries the section title above it, so its lockup starts right under the title */
+.tour-lockup.tour-snap .pipeline-head { margin-bottom: clamp(20px, calc(3vh / var(--zv,1)), 40px); }
+.tour-lockup.tour-snap .tour-sec:first-child { align-items: flex-start; min-height: 0; padding-top: 0; }
 .tour-sec + .tour-sec { border-top: 1px solid rgba(255,255,255,0.05); }
 .tour-sec .pipe-stage { margin-bottom: 0; }
 /* stage grounding: spotlight behind, contact shadow beneath */
@@ -2324,8 +2333,6 @@ body > * { position: relative; z-index: 1; }
 .pipe-frame--browser { container-type: inline-size; }
 .pipe-bar[data-url]::after { content: attr(data-url); position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-family: var(--mono); font-size: 10px; letter-spacing: 0.02em; color: rgba(255,255,255,0.38); background: rgba(255,255,255,0.05); border-radius: 5px; padding: 2px 16px; white-space: nowrap; }
 @container (max-width: 430px) { .pipe-bar[data-url]::after { display: none; } }
-/* the peeking back frame keeps its lights but not the URL pill (it doubles up) */
-.pipe-stack-back .pipe-bar[data-url]::after { display: none; }
 .tour-run .pipe-frame--phone { padding: 7px; border-radius: 36px; background: linear-gradient(150deg,#2e3237,#131417 55%,#1f2126); border: 1px solid rgba(255,255,255,0.22); box-shadow: inset 0 0 0 2px #000, 0 28px 64px rgba(0,0,0,0.5); }
 .tour-run .pipe-frame--phone img { border-radius: 29px; }
 .tour-run .pipe-frame--phone::before { content: ''; position: absolute; top: 4.2%; left: 50%; transform: translateX(-50%); width: 27%; height: 2.5%; min-height: 8px; background: #000; border-radius: 99px; z-index: 3; }
@@ -2362,9 +2369,9 @@ body > * { position: relative; z-index: 1; }
 }
 
 /* ── Reel mode: auto-advancing, click-driven. The page scrolls past it. ── */
-.tour-reel .tour-stages { position: relative; height: clamp(560px, 76vh, 800px); }
+.tour-reel .tour-stages { position: relative; height: clamp(560px, calc(76vh / var(--zv,1)), 800px); }
 .tour-reel .tour-sec { position: absolute; inset: 0; display: flex; align-items: stretch; padding: 0; border-top: none; opacity: 0; transform: translateY(6%); transition: transform .8s var(--ease), opacity .5s ease; pointer-events: none; }
-.tour-lockup .tour-sec .pipe-stage { width: 100%; grid-template-columns: 0.68fr 1.32fr; gap: clamp(32px,3.5vw,56px); }
+.tour-lockup .tour-sec .pipe-stage { width: 100%; grid-template-columns: 0.68fr 1.32fr; gap: clamp(32px,calc(3.5vw / var(--zv,1)),56px); }
 .tour-reel .tour-sec.is-active { opacity: 1; transform: none; pointer-events: auto; }
 .tour-reel .tour-sec.is-above { transform: translateY(-4.5%); }
 /* eyebrow: numbered label instead of the dash rule */
@@ -2375,23 +2382,20 @@ body > * { position: relative; z-index: 1; }
 /* the screens own the vertical room: height-driven, cropped like tall panels */
 .tour-lockup .pipe-visual { height: 100%; display: flex; flex-direction: column; justify-content: center; padding-bottom: 0; }
 .tour-lockup .pipe-visual .pipe-cap { margin-top: 48px; position: relative; z-index: 5; }
-.tour-lockup .pipe-pair { display: block; position: relative; height: clamp(320px, 40vh, 440px); padding: 0 0 0 46px; }
+.tour-lockup .pipe-pair { display: block; position: relative; height: clamp(320px, calc(40vh / var(--zv,1)), 440px); padding: 0 0 0 46px; }
 .tour-lockup .pipe-pair-main { width: 100%; height: 100%; }
 .tour-lockup .pipe-pair > .pipe-frame--browser { width: 100%; height: 100%; }
 .tour-lockup .pipe-pair .pipe-frame--browser { display: flex; flex-direction: column; }
 .tour-lockup .pipe-pair .pipe-frame--browser img { flex: 1; min-height: 0; height: auto; object-fit: cover; object-position: left top; }
 .tour-lockup .pipe-frame--browser[data-crop="right"] img { object-position: right top; }
 .tour-lockup .pipe-frame--browser[data-crop="center"] img { object-position: center top; }
-.tour-lockup .pipe-stack { height: 100%; padding: 0; }
-.tour-lockup .pipe-stack-front { height: 100%; margin-top: 0; }
-.tour-lockup .pipe-stack-back { display: none; }
 .tour-lockup .pipe-side-phone { position: absolute; left: -8px; bottom: -26px; width: clamp(168px, 24%, 210px); height: auto; z-index: 4; box-shadow: inset 0 0 0 2px #000, 0 34px 80px rgba(0,0,0,0.7); }
 /* phone-led sections: width-bounded so they can never squeeze the copy column */
-.tour-lockup .pipe-phones { height: auto; align-items: center; justify-content: center; gap: clamp(26px, 3vw, 44px); }
-.tour-lockup .pipe-phones .pipe-frame--phone { height: auto; width: clamp(172px, 12.5vw, 232px); max-width: none; }
-.tour-lockup .pipe-visual > .pipe-frame--phone { height: auto; width: clamp(196px, 14vw, 250px); max-width: none; margin: 0 auto; }
+.tour-lockup .pipe-phones { height: auto; align-items: center; justify-content: center; gap: clamp(26px, calc(3vw / var(--zv,1)), 44px); }
+.tour-lockup .pipe-phones .pipe-frame--phone { height: auto; width: clamp(172px, calc(12.5vw / var(--zv,1)), 232px); max-width: none; }
+.tour-lockup .pipe-visual > .pipe-frame--phone { height: auto; width: clamp(196px, calc(14vw / var(--zv,1)), 250px); max-width: none; margin: 0 auto; }
 /* ghost numeral anchors the dark behind each lockup (echoes the pipeline) */
-.tour-lockup .tour-sec::before { content: attr(data-ghost); position: absolute; right: -0.5%; top: 0; font-size: clamp(130px, 15vw, 210px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.8; color: rgba(0,188,241,0.055); z-index: 0; pointer-events: none; }
+.tour-lockup .tour-sec::before { content: attr(data-ghost); position: absolute; right: -0.5%; top: 0; font-size: clamp(130px, calc(15vw / var(--zv,1)), 210px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.8; color: rgba(0,188,241,0.055); z-index: 0; pointer-events: none; }
 /* phones must read as phones: lock the aspect no matter the source frame */
 .tour-run .pipe-frame--phone { aspect-ratio: 9 / 18.6; }
 .tour-run .pipe-frame--phone img { height: 100%; width: 100%; object-fit: cover; }
@@ -2415,8 +2419,6 @@ body > * { position: relative; z-index: 1; }
   .tour-run .pipe-pair-main { position: relative; width: 100%; height: auto; }
   .tour-run .pipe-frame--browser { position: relative; width: 100%; height: auto; display: flex; flex-direction: column; }
   .tour-run .pipe-frame--browser img { width: 100%; height: auto; display: block; object-fit: cover; }
-  .tour-run .pipe-stack, .tour-run .pipe-stack-front { height: auto; }
-  .tour-run .pipe-stack-back { display: none; }   /* only the front screen on small viewports */
   .tour-run .pipe-side-phone { position: absolute; left: 3%; bottom: -16px; width: 34%; max-width: 160px; height: auto; z-index: 4; box-shadow: inset 0 0 0 2px #000, 0 24px 60px rgba(0,0,0,0.6); }
 
   /* if a section ever uses two phones, put them side by side */
@@ -2457,8 +2459,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-pulse.webp"  alt="Pulse on the web: the live overview" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-pulse.webp"  alt="Pulse in the Cinebody app" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-pulse-v3.webp"  alt="Pulse on the web: the Altitude Athletics workspace with active projects, clip count, average score and a map of where clips were shot" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-pulse-v2.webp"  alt="Pulse in the Cinebody app: closest to a cut, project totals and top projects by clips collected" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Pulse · web and app</div>
       </div>
@@ -2473,13 +2475,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The idea"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-ideastudio.webp"  alt="Idea Studio: a dealt shoot idea, ready to keep or skip" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="The generated shot list" data-crop="center"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-wizard.webp"  alt="An AI-generated shot list from one description" loading="lazy"></div>
-        </div>
-          </div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-project.webp"  alt="The same project in the Cinebody app" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="The generated shot list" data-crop="center"><div class="pipe-bar" data-url="cinebody.com/dashboard/new"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-wizard-v2.webp"  alt="A numbered shot list for the Always-On Social project, written from one description, with a note for each shot" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-project-v3.webp"  alt="The same Always-On Social project in the Cinebody app, with the film and upload buttons and the shot list" loading="lazy"></div>
         </div>
         <div class="pipe-cap">An idea becomes a plan · dealt, generated, editable</div>
       </div>
@@ -2494,8 +2491,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard/director"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-director.webp"  alt="The AI Director view on the web" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="On the phone"><img src="/app-ui/live/app-camera-2.webp"  alt="The shot brief and live checks over the camera" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard/director"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-director-v3.webp"  alt="The Director view on the web: what would make the cut better, what to watch out for and the editor's notes" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="On the phone"><img src="/app-ui/live/app-camera-v2.webp"  alt="The camera in the Cinebody app with the shot brief, a Director tip and live light, focus, steady and audio checks" loading="lazy"></div>
         </div>
         <div class="pipe-cap">AI Director · web and the real capture screen</div>
       </div>
@@ -2510,8 +2507,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-shoot.webp"  alt="The shoot dashboard on the web" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="On the phone"><img src="/app-ui/img07.webp"  alt="An AI voice interview in progress on the phone" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-shoot-v2.webp"  alt="A project's clips grid on the web, with a score badge on every clip" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="On the phone"><img src="/app-ui/live/app-interview-v2.webp"  alt="A voice interview about to start on the phone, with the topic, a tip and a choice of interviewer voice" loading="lazy"></div>
         </div>
         <div class="pipe-cap">AI Voice Interview · run the shoot, it interviews on the phone</div>
       </div>
@@ -2526,13 +2523,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The live map"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-map.webp"  alt="The clip map: where every clip was filmed, pin by pin" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="Messages & directions"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-messages.webp"  alt="Messages and directions: talk to one filmer or all of them" loading="lazy"></div>
-        </div>
-          </div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-messages.webp"  alt="The same conversation in the Cinebody app" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="Messages & directions"><div class="pipe-bar" data-url="cinebody.com/dashboard/shoot"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-messages-v2.webp"  alt="Messages and directions for a project: a group thread with every filmer and the Director settings beside it" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-messages-v2.webp"  alt="The same project's messages in the Cinebody app: Everyone plus each filmer" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Directions land as notifications, while they film</div>
       </div>
@@ -2547,13 +2539,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The library"><div class="pipe-bar" data-url="cinebody.com/dashboard/library"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-library.webp"  alt="The library: every clip scored on arrival" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="A clip review" data-crop="right"><div class="pipe-bar" data-url="cinebody.com/dashboard/library"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-clipdetail.webp"  alt="A real review: the score and the reasons why" loading="lazy"></div>
-        </div>
-          </div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-library.webp"  alt="The library in the Cinebody app" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="A clip review" data-crop="right"><div class="pipe-bar" data-url="cinebody.com/dashboard/library"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-clipdetail-v2.webp"  alt="A clip review on the web: the footage, its details, a score of 8 and the reasons why" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-library-v2.webp"  alt="The library in the Cinebody app: every clip with its project and score" loading="lazy"></div>
         </div>
         <div class="pipe-cap">AI Clip Review · web and app</div>
       </div>
@@ -2568,8 +2555,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard/payouts"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-payouts.webp"  alt="Payouts: funded budgets and one-click payments" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="Cashing out in the app"><img src="/app-ui/live/app-earnings.webp"  alt="A filmer's earnings in the app: connect Stripe once, cash out anytime" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="On the web"><div class="pipe-bar" data-url="cinebody.com/dashboard/payouts"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-payouts-v3.webp"  alt="Payouts on the web: what is owed to filmers, what is pending approval and what needs attention" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="Cashing out in the app"><img src="/app-ui/live/app-earnings-v2.webp"  alt="A filmer's earnings in the app: total earned, available to cash out, pending, and Stripe connected" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Payouts · you fund it, filmers cash out in the app</div>
       </div>
@@ -2584,12 +2571,7 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="The story it found"><div class="pipe-bar" data-url="cinebody.com/dashboard/post-production"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-postproduction.webp"  alt="Cinebody reads the footage and writes the story brief" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="The timeline it built"><div class="pipe-bar" data-url="cinebody.com/dashboard/post-production"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-postgen.webp"  alt="One click later: a finished timeline with captions and music" loading="lazy"></div>
-        </div>
-          </div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="The timeline it built"><div class="pipe-bar" data-url="cinebody.com/dashboard/post-production"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-postgen-v2.webp"  alt="The post production editor: footage bin, a timeline built from the clips and the Director panel" loading="lazy"></div>
           <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="The finished cut"><img src="/app-ui/live/app-cut.webp"  alt="The finished vertical cut, the way it lands on the feed" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Auto-Editor · the brief, then the cut</div>
@@ -2605,13 +2587,8 @@ body > * { position: relative; z-index: 1; }
       </div>
       <div class="pipe-visual">
         <div class="pipe-pair">
-          <div class="pipe-pair-main">
-        <div class="pipe-stack">
-          <div class="pipe-frame pipe-frame--browser pipe-stack-back" data-lb="Brand profile"><div class="pipe-bar" data-url="cinebody.com/dashboard/brand-kit"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-brandprofile.webp"  alt="Brand profile: voice, audience, and filming rules" loading="lazy"></div>
-          <div class="pipe-frame pipe-frame--browser pipe-stack-front" data-lb="Visual identity"><div class="pipe-bar" data-url="cinebody.com/dashboard/brand-kit"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-brandkit.webp"  alt="Brand Kit: logo and colors, fetched from your site" loading="lazy"></div>
-        </div>
-          </div>
-          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-brandkit.webp"  alt="Brand Kit in the Cinebody app" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--browser" data-lb="Visual identity"><div class="pipe-bar" data-url="cinebody.com/dashboard/brand-kit"><span></span><span></span><span></span></div><img src="/app-ui/live/desk-brandkit-v2.webp"  alt="Brand Kit on the web: logo, colors and type, with what Cinebody learned about the brand from its site" loading="lazy"></div>
+          <div class="pipe-frame pipe-frame--phone pipe-side-phone" data-lb="In the app"><img src="/app-ui/live/app-brandkit-v2.webp"  alt="Brand Kit in the Cinebody app: build from your website, organization name, logo and brand colors" loading="lazy"></div>
         </div>
         <div class="pipe-cap">Brand Kit · both pages, fetched from your site</div>
       </div>
@@ -2828,7 +2805,7 @@ body > * { position: relative; z-index: 1; }
 <script>
 // Reveal
 (function(){
-  var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');o.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){if(e.target.closest('.tour-run.tour-snap .tour-sec'))return;e.target.classList.add('vis');o.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
 })();
 
@@ -2938,6 +2915,7 @@ body > * { position: relative; z-index: 1; }
     a.addEventListener('click', function(e){
       if (enabled) { e.preventDefault(); engage(); setActive(i); return; }
       e.preventDefault();
+      if (window.__tourStop && window.__tourStop(i)) return;
       secs[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
@@ -2953,6 +2931,108 @@ body > * { position: relative; z-index: 1; }
     });
   }, { rootMargin: '-35% 0px -55% 0px' });
   secs.forEach(function(s){ obs.observe(s); });
+})();
+
+// Tour landing stops: one hard stop per section (same settle as the pinned Plan/Film/Score/Cut section on the homepage).
+// After the scroll goes idle it eases to the nearest stop, any wheel/touch/key/mouse input cancels it, and the page is free
+// before the first stop and after the last. Desktop + fine pointer + motion allowed only; everything else scrolls as before.
+(function(){
+  var run = document.querySelector('.tour-run');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.tour-sec'));
+  var nav = document.querySelector('.site-nav');
+  if (!run || !secs.length) return;
+  var N = secs.length;
+  var mqW = window.matchMedia('(min-width: 1100px)');
+  var mqRM = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  function eligible(){ return mqW.matches && mqFine.matches && !mqRM.matches; }
+  var snap = false, landed = null, animRaf = 0, animating = false, idleT = 0;
+
+  function reveal(k){
+    var st = secs[k].querySelectorAll('.reveal');
+    for (var i = 0; i < st.length; i++) st[i].classList.add('vis');
+  }
+  function apply(){
+    var on = eligible();
+    if (on === snap) return;
+    snap = on;
+    run.classList.toggle('tour-snap', on);
+    if (!on) { cancelAnim(); landed = null; secs.forEach(function(s, k){ reveal(k); }); }
+    else onS();
+  }
+  // stop k: the section centered in the area below the fixed nav (visual px, the same space as scrollY; the page may be zoomed)
+  function navB(){ return nav ? nav.getBoundingClientRect().bottom : 0; }
+  function stops(){
+    var nb = navB(), mid = nb + (window.innerHeight - nb) / 2, y = window.scrollY, out = [];
+    for (var i = 0; i < N; i++) {
+      var r = secs[i].getBoundingClientRect();
+      out.push(Math.round(r.top + y + r.height / 2 - mid));
+    }
+    // stop 0 frames the section title together with the first screen: "Inside the platform." down to the end of the Pulse stage,
+    // centered; if that is taller than the area below the nav, the title sits just under the nav instead
+    var hd = run.querySelector('.pipeline-head'), st0 = secs[0].querySelector('.pipe-stage');
+    if (hd && st0) {
+      var hr = hd.getBoundingClientRect(), sr = st0.getBoundingClientRect(), area = window.innerHeight - nb;
+      var h = sr.bottom - hr.top;
+      out[0] = Math.round(hr.top + y - (h + 24 <= area ? nb + (area - h) / 2 : nb + 12));
+    }
+    return out;
+  }
+  // fractional stop position f (0..N-1 inside the tour, outside that below 0 / above N-1)
+  function frac(Y, y){
+    if (y <= Y[0]) return (y - Y[0]) / Math.max(1, Y[1] - Y[0]);
+    if (y >= Y[N-1]) return N - 1 + (y - Y[N-1]) / Math.max(1, Y[N-1] - Y[N-2]);
+    for (var k = 0; k < N - 1; k++) if (y < Y[k+1]) return k + (y - Y[k]) / (Y[k+1] - Y[k]);
+    return N - 1;
+  }
+  function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+  function cancelAnim(){ if (animRaf) { cancelAnimationFrame(animRaf); animRaf = 0; } animating = false; }
+  function settleTo(k){
+    var Y = stops(), from = window.scrollY, to = Y[k], dist = to - from;
+    if (Math.abs(dist) < 1) { landed = k; reveal(k); return; }
+    cancelAnim(); animating = true;
+    var dur = Math.max(260, Math.min(520, Math.abs(dist) * 0.9)), t0 = performance.now();
+    (function tick(now){
+      var t = Math.min(1, (now - t0) / dur);
+      window.scrollTo({ top: from + dist * ease(t), behavior: 'instant' });
+      if (t < 1) { animRaf = requestAnimationFrame(tick); }
+      else { animRaf = 0; animating = false; landed = k; reveal(k); }
+    })(t0);
+  }
+  var T = 0.06; // nudge past 6% of a stop in a direction and you go to the next stop
+  function settle(){
+    if (!snap || animating) return;
+    var Y = stops(), y = window.scrollY, f = frac(Y, y);
+    if (f <= 0.0005 || f >= N - 1 - 0.0005) { // outside (or exactly on an end): free scroll
+      // ...except when you arrive from outside and stop a hair short of an end stop: finish the landing
+      if (landed === null && ((f > -0.2 && f <= 0.0005) || (f >= N - 1 - 0.0005 && f < N - 1 + 0.2))) settleTo(f < 1 ? 0 : N - 1);
+      return;
+    }
+    var target;
+    if (landed === null) target = Math.round(f);
+    else {
+      var d = f - landed;
+      if (Math.abs(d) >= 1 - T) target = Math.round(f);
+      else target = Math.abs(d) >= T ? landed + (d > 0 ? 1 : -1) : landed;
+    }
+    settleTo(Math.max(0, Math.min(N - 1, target)));
+  }
+  function onS(){
+    if (!snap) return;
+    var Y = stops(), f = frac(Y, window.scrollY);
+    if (!animating) { clearTimeout(idleT); idleT = setTimeout(settle, 130); }
+    if (f < -0.3 || f > N - 1 + 0.3) { landed = null; return; }
+    var near = Math.max(0, Math.min(N - 1, Math.round(f)));
+    if (Math.abs(f - near) <= 0.3) reveal(near); // the entrance plays as the stop arrives
+    if (Math.abs(f - near) < 0.002) landed = near;
+  }
+  ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){ window.addEventListener(ev, function(){ if (animating) cancelAnim(); }, { passive: true }); });
+  window.addEventListener('scroll', onS, { passive: true });
+  window.addEventListener('resize', function(){ cancelAnim(); apply(); onS(); settle(); });
+  [mqW, mqRM, mqFine].forEach(function(m){ m.addEventListener ? m.addEventListener('change', apply) : m.addListener(apply); });
+  window.__tourStop = function(k){ if (!snap) return false; cancelAnim(); settleTo(k); return true; };
+  window.__tourStops = function(){ return { snap: snap, Y: stops(), y: window.scrollY, landed: landed }; };
+  apply();
 })();
 
 // FAQ
@@ -2971,14 +3051,22 @@ document.querySelectorAll('.faq-q').forEach(function(b){
 (function(){
   var lb = document.createElement('div');
   lb.className = 'shot-lightbox';
-  lb.innerHTML = '<button class="shot-lb-arrow shot-lb-prev" aria-label="Previous screen">&#8249;</button>' +
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Screenshot');
+  lb.innerHTML = '<button type="button" class="shot-lb-close" aria-label="Close screenshot">&times;</button>' +
+    '<button type="button" class="shot-lb-arrow shot-lb-prev" aria-label="Previous screen">&#8249;</button>' +
     '<div class="shot-lb-body"><img alt=""><div class="shot-lb-title"></div><div class="shot-lightbox-cap"></div><div class="shot-lb-chips"></div></div>' +
-    '<button class="shot-lb-arrow shot-lb-next" aria-label="Next screen">&#8250;</button>';
+    '<button type="button" class="shot-lb-arrow shot-lb-next" aria-label="Next screen">&#8250;</button>';
   document.body.appendChild(lb);
   var img = lb.querySelector('img'), cap = lb.querySelector('.shot-lightbox-cap'),
       title = lb.querySelector('.shot-lb-title'), chips = lb.querySelector('.shot-lb-chips'),
-      prev = lb.querySelector('.shot-lb-prev'), next = lb.querySelector('.shot-lb-next');
+      prev = lb.querySelector('.shot-lb-prev'), next = lb.querySelector('.shot-lb-next'),
+      closeBtn = lb.querySelector('.shot-lb-close');
   var gallery = [], gCap = '', idx = 0;
+  var histPushed = false;
+  var scrollY = 0;
+  var swipe = { active: false, x0: 0, y0: 0, dx: 0, dy: 0 };
 
   function render(){
     var it = gallery[idx];
@@ -2990,6 +3078,7 @@ document.querySelectorAll('.faq-q').forEach(function(b){
     if (gallery.length > 1) {
       gallery.forEach(function(g, i){
         var b = document.createElement('button');
+        b.type = 'button';
         b.className = 'shot-lb-chip' + (i === idx ? ' on' : '');
         b.textContent = g.label || ('Screen ' + (i + 1));
         b.addEventListener('click', function(e){ e.stopPropagation(); idx = i; render(); });
@@ -2999,21 +3088,94 @@ document.querySelectorAll('.faq-q').forEach(function(b){
     var many = gallery.length > 1;
     prev.style.display = next.style.display = many ? 'flex' : 'none';
   }
-  function open(items, capText, i){ gallery = items; gCap = capText; idx = i || 0; render(); lb.classList.add('on'); }
-  function close(){ lb.classList.remove('on'); }
+  function lockScroll(){
+    scrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.classList.add('shot-lb-open');
+    document.body.style.position = 'fixed';
+    document.body.style.top = (-scrollY) + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+  function unlockScroll(){
+    document.body.classList.remove('shot-lb-open');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
+  }
+  function finishClose(){
+    if (!lb.classList.contains('on')) return;
+    lb.classList.remove('on');
+    unlockScroll();
+    histPushed = false;
+  }
+  function requestClose(){
+    if (!lb.classList.contains('on')) return;
+    if (histPushed) {
+      histPushed = false;
+      try { history.back(); } catch (err) { finishClose(); }
+      // popstate runs finishClose; fallback if it does not
+      setTimeout(function(){ if (lb.classList.contains('on')) finishClose(); }, 100);
+    } else {
+      finishClose();
+    }
+  }
+  function open(items, capText, i){
+    gallery = items; gCap = capText; idx = i || 0; render();
+    if (lb.classList.contains('on')) return;
+    lockScroll();
+    lb.classList.add('on');
+    try {
+      history.pushState({ shotLb: 1 }, '', window.location.href);
+      histPushed = true;
+    } catch (err) { histPushed = false; }
+    try { closeBtn.focus({ preventScroll: true }); } catch (err2) {}
+  }
   function step(d){ idx = (idx + d + gallery.length) % gallery.length; render(); }
-  lb.addEventListener('click', close);
+  lb.addEventListener('click', function(e){
+    if (e.target === lb) requestClose();
+  });
+  closeBtn.addEventListener('click', function(e){ e.stopPropagation(); requestClose(); });
   lb.querySelector('.shot-lb-body').addEventListener('click', function(e){ e.stopPropagation(); });
   prev.addEventListener('click', function(e){ e.stopPropagation(); step(-1); });
   next.addEventListener('click', function(e){ e.stopPropagation(); step(1); });
   document.addEventListener('keydown', function(e){
     if (!lb.classList.contains('on')) return;
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') { e.preventDefault(); requestClose(); }
     if (e.key === 'ArrowLeft') step(-1);
     if (e.key === 'ArrowRight') step(1);
   });
+  window.addEventListener('popstate', function(){
+    if (lb.classList.contains('on')) finishClose();
+  });
+  function onTouchStart(e){
+    if (!lb.classList.contains('on') || !e.touches || e.touches.length !== 1) return;
+    var t = e.touches[0];
+    swipe.active = true; swipe.x0 = t.clientX; swipe.y0 = t.clientY; swipe.dx = 0; swipe.dy = 0;
+  }
+  function onTouchMove(e){
+    if (!swipe.active) return;
+    var t = e.touches[0];
+    swipe.dx = t.clientX - swipe.x0;
+    swipe.dy = t.clientY - swipe.y0;
+    if (swipe.dy > 24 && Math.abs(swipe.dy) > Math.abs(swipe.dx) * 1.2) {
+      e.preventDefault();
+    }
+  }
+  function onTouchEnd(){
+    if (!swipe.active) return;
+    var dy = swipe.dy, dx = swipe.dx;
+    swipe.active = false;
+    if (dy > 80 && Math.abs(dy) > Math.abs(dx) * 1.2) requestClose();
+  }
+  lb.addEventListener('touchstart', onTouchStart, { passive: true });
+  lb.addEventListener('touchmove', onTouchMove, { passive: false });
+  lb.addEventListener('touchend', onTouchEnd);
+  lb.addEventListener('touchcancel', function(){ swipe.active = false; });
 
-  // Build one gallery per section visual: tab screens + any extra frames
   document.querySelectorAll('.pipe-visual').forEach(function(v){
     var items = [];
     var capText = (v.querySelector('.pipe-cap') || {}).textContent || '';
