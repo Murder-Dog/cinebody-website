@@ -249,7 +249,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
  var QUEUE=[
  {id:'ep01',why:[[4, "A bush hides the subject. That builds suspense."], [1, "The camera holds steady and lets the subject come to it."], [2, "Then it steps out into open space, sharp and shot low so it looks big."]],lbl:'elephant',fr:146,dur:6.08,mp4:1,rp:.7,s:9,m:[85,90,95,92,92],box:[.34,.31,.30,.22],tip:'Let something close hide your subject. Hold still, and let it step out.'},
  {id:'ep18',why:[[2, "The peaks and the village stay sharp."], [1, "The pan across the village is smooth."], [0, "Wind on the mic cost the most points."]],lbl:'cable car',fr:266,dur:11.08,mp4:1,s:7,m:[40,85,95,90,90],box:[.10,.14,.80,.34],tip:'Wind rumbles across the whole shot. Cover the mic with your hand so the sound does not fight your subject.'},
- {id:'ep32',why:[[2, "The low push toward the cabin works."], [1, "The camera bobs a little on the way in."], [4, "Then the frame drifts up, the cabin sinks and ferns crowd the bottom. Framing lost the most."]],lbl:'cabin',fr:230,dur:9.58,mp4:1,s:6,m:[80,80,85,85,70],box:[.14,.27,.46,.20],tip:'The push is good, then the frame drifts up off the cabin. Keep the cabin on the same line until the move ends.'},
+ {id:'ep32',hold:[21.9,1.9],why:[[2, "The low push toward the cabin works."], [1, "The camera bobs a little on the way in."], [4, "Then the frame drifts up, the cabin sinks and ferns crowd the bottom. Framing lost the most."]],lbl:'cabin',fr:230,dur:9.58,mp4:1,s:6,m:[80,80,85,85,70],box:[.14,.27,.46,.20],tip:'The push is good, then the frame drifts up off the cabin. Keep the cabin on the same line until the move ends.'},
  {id:'ep07',why:[[4, "The branches frame the edges. Full marks for framing."], [1, "The camera is locked off and steady."], [2, "Focus is the lowest bar, and it is still strong."]],lbl:'branches',fr:174,dur:7.25,mp4:1,s:9,m:[80,95,90,95,100],box:[.1,.2,.8,.4],tip:'Dark branches frame the edges and pull the eye in. Shoot through something close to your subject.'},
  {id:'ep33',why:[[4, "The skater stays in frame for the whole trick."], [1, "The camera wobbles as it follows. That cost the most."], [2, "Focus slips a little on the fast move."]],lbl:'skater',fr:98,dur:4.08,mp4:1,s:7,m:[80,75,85,90,85],box:[.3,.25,.4,.3],tip:'The camera wobbles as it follows. Keep your subject in frame from take-off to landing.'},
  {id:'ep13',why:[[2, "The dunes are sharp from front to back."], [1, "The pan is slow and the horizon stays level."], [0, "Wind on the mic cost a few points."]],lbl:'dunes',fr:192,dur:8.00,mp4:1,s:9,m:[80,95,100,95,90],box:[.1,.2,.8,.3],tip:'A slow pan with a level horizon. Go slower than feels right when you pan a big view.'}
@@ -270,7 +270,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
  var rowsEl=$('rows');
  NAMES.forEach(function(n,i){rowsEl.insertAdjacentHTML('beforeend','<div class="dm-row" id="dm-row'+i+'"><div class="dm-t"><span>'+n+'</span><b id="dm-val'+i+'">-</b></div><div class="dm-tr"><div class="dm-f" id="dm-fill'+i+'"></div></div></div>')});
  QUEUE.forEach(function(q,i){$('queue').insertAdjacentHTML('beforeend','<button type="button" class="dm-q" id="dm-q'+i+'" aria-label="Clip '+(i+1)+' of '+N+', '+q.lbl+'"><div class="dm-th"><img data-src="'+BASE+'clips/'+q.id+'-thumb.webp" alt="" width="38" height="68" decoding="async"></div><div class="dm-c" id="dm-qc'+i+'"></div></button>')});
- var car=$('car');
+ var car=$('car'),lastAct=-1e9;
  var NB=[-2,-1,1,2].map(function(j){var d=document.createElement('div');d.className='dm-nb';d.dataset.j=j;d.setAttribute('aria-hidden','true');d.innerHTML='<img alt="" draggable="false" decoding="async">';car.appendChild(d);return d});
  var cf=$('cf'),cv=$('cv'),clipbox=$('clipbox'),rposter=$('rposter'),rsprite=$('rsprite'),ridle=$('ridle'),rg=$('rg');
  var loaded=false,active=false,activated=false;
@@ -446,9 +446,9 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   if(uu>=EX1){$('tipfor').textContent='\u00b7 '+q.lbl;var n2=RM?1:clamp((uu-(EX1+.5))/1.6),kq=Math.floor(n2*q.tip.length);$('tiptext').innerHTML=q.tip.slice(0,kq)+(n2<1?'<span class="dm-caret"></span>':'')}
  }
  // ---- robot gestures: real sprites rendered from the platform robot's own behaviour tables (robot-performance.ts), played off the same clock as the text and the voice ----
- var GS={"scan":{"f":"scan","n":32,"c":12,"r":3,"fps":15.238,"loop":true},"thinking":{"f":"thinking","n":24,"c":12,"r":2,"fps":16.0,"loop":true},"talk":{"f":"talk","n":24,"c":12,"r":2,"fps":20.87,"loop":true},"waity":{"f":"waity","n":96,"c":12,"r":8,"fps":15.0,"loop":true},"arrive":{"f":"arrive","n":12,"c":12,"r":1,"fps":28.571,"loop":false},"idea":{"f":"idea","n":22,"c":12,"r":2,"fps":24.444,"loop":false},"nod":{"f":"nod","n":17,"c":12,"r":2,"fps":24.286,"loop":false},"shake":{"f":"shake","n":20,"c":12,"r":2,"fps":25.641,"loop":false},"wink":{"f":"wink","n":13,"c":12,"r":2,"fps":25.0,"loop":false}};
- var CORE=['arrive','scan','thinking','idea','talk','nod'],LATE=['wink','shake','waity'],GI={};
- var VD={"ep01":[2.43,3.79,3.79,5.25,6.77],"ep07":[2.43,3.55,2.51,3.87,7.81],"ep13":[2.35,2.77,3.4,2.51,7.81],"ep18":[2.35,2.51,2.43,2.69,8.05],"ep32":[2.43,2.35,2.51,4.83,7.81],"ep33":[2.43,2.85,4.05,2.77,7.47]};
+ var GS={"scan":{"f":"scan","n":32,"c":12,"r":3,"fps":15.238,"loop":true},"thinking":{"f":"thinking","n":24,"c":12,"r":2,"fps":16.0,"loop":true},"talk":{"f":"talk","n":24,"c":12,"r":2,"fps":20.87,"loop":true},"waity":{"f":"waity","n":96,"c":12,"r":8,"fps":15.0,"loop":true},"arrive":{"f":"arrive","n":12,"c":12,"r":1,"fps":28.571,"loop":false},"idea":{"f":"idea","n":22,"c":12,"r":2,"fps":24.444,"loop":false},"nod":{"f":"nod","n":17,"c":12,"r":2,"fps":24.286,"loop":false},"shake":{"f":"shake","n":20,"c":12,"r":2,"fps":25.641,"loop":false},"doze":{"f":"doze","n":96,"c":12,"r":8,"fps":24.0,"loop":true},"wink":{"f":"wink","n":13,"c":12,"r":2,"fps":25.0,"loop":false}};
+ var CORE=['arrive','scan','thinking','idea','talk','nod'],LATE=['wink','shake','waity','doze'],GI={};
+ var VD={"ep01":[2.43,3.79,3.79,5.25,6.77],"ep07":[2.43,3.55,2.51,3.87,7.81],"ep13":[2.35,2.77,3.4,2.51,7.81],"ep18":[2.35,2.51,2.43,2.69,8.05],"ep32":[2.43,2.35,2.51,5.18,7.31],"ep33":[2.43,2.85,4.05,2.77,7.47]};
  function loadG(list){list.forEach(function(k){if(!GI[k]){GI[k]=new Image();GI[k].src=BASE+'robot/g-'+GS[k].f+'.webp'}})}
  function gReady(k){var i=GI[k];return !!(i&&i.complete&&i.naturalWidth)}
  // One gesture per beat: arrive when the clip lands, scan, think, the idea hop as the lamp fires with the score, talk while a voice line is current,
@@ -489,6 +489,8 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   if(RM)want='poster';
   else{
    if(run){loadG(LATE);g=gest(q,u);if(g&&!gReady(g[0]))g=null}
+   // asleep: once a grade is done and nobody has touched anything for 4s, he dozes (platform robot-performance 'doze'); the next grade or any input wakes him
+   else if(mode==='done'&&aStart!==null){var zz=now()-Math.max(aStart+T-.4,lastAct)-4;if(zz>=0){loadG(['doze']);if(gReady('doze'))g=['doze',zz]}}
    want=g?'rg':!ALPHA?'sprite':'idle';
   }
   if(g){var m=GS[g[0]],fr=m.loop?Math.floor(g[1]*m.fps)%m.n:Math.min(m.n-1,Math.floor(g[1]*m.fps)),cx=fr%m.c,cy=Math.floor(fr/m.c);
@@ -504,7 +506,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   var q=QUEUE[cur],off=offAt(t),S=SLOT();
   var dragging=drag&&drag.moved;
   if(aStart===null||t<aStart||dragging||Math.abs(off)>.5){mode='idle';u=0}
-  else{u=t-aStart;mode=u>=T-.4?'done':'run';everRan=true;if(mode==='done')doneSet[cur]=1}
+  else{u=t-aStart;if(q.hold)u=u<q.hold[0]?u:Math.max(q.hold[0],u-q.hold[1]);mode=u>=T-.4?'done':'run';everRan=true;if(mode==='done')doneSet[cur]=1}
   var sig=mode+'|'+cur+'|'+off.toFixed(1)+'|'+(mode==='run'?'':'s');
   if(mode==='run'){for(var c=0;c<CUES.length;c++){if((lastU===null?-1:lastU)<CUES[c][1]&&u>=CUES[c][1])cue(q,c)}lastU=u}
   var sc=function(x){return lerp(1,.86,clamp(Math.abs(x)/S))},op=function(x){var a=Math.abs(x);return a<=S?lerp(1,.62,a/S):.62*(1-clamp((a-S)/(S*.7)))};
@@ -528,7 +530,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   raf=0;if(!active)return;
   var dt=lastTs?Math.min(.1,(ts-lastTs)/1000):0;lastTs=ts;vt+=dt;
   var sig=render(now());
-  var busy=mode==='run'||(settle&&SETTLE>0&&now()-settle.t0<SETTLE+.05)||(drag&&drag.moved)||force;
+  var busy=mode==='run'||(mode==='done'&&!RM)||(settle&&SETTLE>0&&now()-settle.t0<SETTLE+.05)||(drag&&drag.moved)||force;
   force=false;
   if(busy||sig!==lastSig||needMedia())raf=requestAnimationFrame(frame);
   lastSig=sig;
@@ -547,6 +549,7 @@ var STATUS=['Listening to the audio.','Checking how steady it is.','Checking foc
   new IntersectionObserver(function(es){es.forEach(function(e){vis=e.isIntersecting;upd()})},{rootMargin:'0px'}).observe(root);
   // grade the first clip as soon as the section is in view (reduced motion keeps tap-to-start)
   var auto=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){auto.disconnect();if(!RM&&aStart===null&&!everRan)goTo(cur,0)}})},{threshold:.3});auto.observe(car);
+  ["pointerdown","pointermove","keydown","wheel","touchstart"].forEach(function(ev){(car.parentNode||car).addEventListener(ev,function(){lastAct=now();kick()},{passive:true})});
  }else{loadAll();vis=true}
  document.addEventListener('visibilitychange',upd);
  // ---- input ----
