@@ -930,7 +930,7 @@ body > * { position: relative; z-index: 1; }
 @media (max-width: 760px) { .mech-flow { grid-template-columns: 1fr; gap: 12px; } .mech-arrow { transform: rotate(90deg); margin: 0 auto; } }
 
 /* ── The connected pipeline (the star) ── */
-.pipeline { padding: 48px 0 0; position: relative; background: linear-gradient(180deg,#08131a 0%,#0a0a0a 55%); overflow-x: clip; }
+.pipeline { overflow-anchor: none; padding: 48px 0 0; position: relative; background: linear-gradient(180deg,#08131a 0%,#0a0a0a 55%); overflow-x: clip; }
 .pipeline::before { content: ''; position: absolute; top: 12%; left: -12%; width: 620px; height: 620px; background: var(--teal); border-radius: 50%; filter: blur(220px); opacity: 0.06; pointer-events: none; }
 .pipeline::after { content: ''; position: absolute; bottom: 6%; right: -12%; width: 560px; height: 560px; background: var(--pink); border-radius: 50%; filter: blur(220px); opacity: 0.05; pointer-events: none; }
 .pipeline .contain { position: relative; z-index: 1; }
@@ -992,15 +992,17 @@ body > * { position: relative; z-index: 1; }
   .pipe-scroll { height: calc(540dvh / var(--zv,1)); }
   .pipeline.pipe-snap .pipe-scroll { height: calc(400dvh / var(--zv,1)); }
 }
-/* Phone sticky is nearly full-viewport under the nav; keep generous runway so all 4 steps pin. */
+/* Hotfix: no sticky runway on phones or short landscape. JS adds .pipe-static;
+   these rules keep height auto if snap is still present so empty 520dvh cannot appear. */
 @media (max-width: 599px) {
-  .pipeline.pipe-snap:not(.pipe-static) .pipe-scroll { height: calc(520vh / var(--zv,1)); }
+  .pipeline .pipe-scroll { height: auto !important; }
+  .pipeline.pipe-snap .pipe-scroll { height: auto !important; }
 }
-@supports (height: 100dvh) {
-  @media (max-width: 599px) {
-    .pipeline.pipe-snap:not(.pipe-static) .pipe-scroll { height: calc(520dvh / var(--zv,1)); }
-  }
+@media (max-height: 430px) {
+  .pipeline .pipe-scroll { height: auto !important; }
+  .pipeline.pipe-snap .pipe-scroll { height: auto !important; }
 }
+
 .pipeline.pipe-snap .pipe-copy-block { transition: opacity .45s ease, transform .6s var(--ease); }
 .pipeline.pipe-snap .pscene { transition: opacity .45s ease; }
 .pipeline.pipe-snap .pipe-rail-fill { transition: height .7s var(--ease); }
@@ -1759,13 +1761,15 @@ body > * { position: relative; z-index: 1; }
 (function(){
   var wrap = document.getElementById('pipeScroll');
   if (!wrap) return;
-  // Sticky for every viewport. Only prefers-reduced-motion gets the static stack.
-  // Touch used to force static because iOS throttles scroll events during momentum and the
-  // old settleTo path scroll-jacked; we keep sticky on touch with rAF polling and free scroll.
+  // Hotfix: phones (max-width 599) and short landscape (max-height 430) use the stacked
+  // static layout. Sticky runway + dvh/visualViewport jumps were making content vanish on
+  // real phones. Tablets and desktop keep sticky. Reduced-motion also stays static.
   var isTouch = navigator.maxTouchPoints > 0 || 'ontouchstart' in window
     || window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches;
   var RMstatic = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  if (RMstatic) {
+  var phoneStatic = !!(window.matchMedia && window.matchMedia('(max-width: 599px)').matches);
+  var shortLandStatic = !!(window.matchMedia && window.matchMedia('(max-height: 430px)').matches);
+  if (RMstatic || phoneStatic || shortLandStatic) {
     var pipelineEl = wrap.closest('.pipeline');
     pipelineEl.classList.add('pipe-static');
     // Force the stacked layout INLINE with !important. On WebKit the class/media-query rules
