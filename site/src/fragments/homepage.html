@@ -1348,7 +1348,17 @@ body > * { position: relative; z-index: 1; }
 .fcm.is-rec .bot{background:rgba(84,104,130,.28)}
 .fcm.is-rec .bot svg{opacity:.38}
 .fcm.is-rec .b-flip{opacity:.4}
-.drobot2{position:absolute;right:-84px;bottom:18px;width:70px;height:80px;margin:0}
+.drobot2{position:absolute;left:-84px;bottom:18px;width:70px;height:80px;margin:0;transform-origin:50% 100%;will-change:transform}
+/* Director hops out of the phone's coaching chip and lands on the left of the phone (JS adds .dj-pre until the jump starts, .dj-out once he is out of the chip). */
+.dwrap2.dj-pre .drobot2{opacity:0}
+.dwrap2.dj-out .fcm .bot svg{opacity:0;transition-duration:.12s}
+@media (max-width: 1024px), (hover: none), (pointer: coarse) {
+  .pipe-copy-block .dwrap2{margin-left:76px}
+  .pipe-copy-block .drobot2{left:-74px;bottom:14px;width:64px;height:73px}
+}
+@media (prefers-reduced-motion: reduce) { .dwrap2 .fcm .bot svg{transition:none} }
+/* mobile stack: the blanket p{opacity:1!important} rule was stacking all three Director lines on top of each other in the chip; show only the current one */
+.pipe-copy-block .fcm .lines p:not(.on){opacity:0 !important}
 /* mobile stack */
 
 .pipeline.pipe-static .pipe-copy-block .pscene{max-width:340px}
@@ -1856,6 +1866,31 @@ function cmFilm(t,hold){
 }
 var STATIC=!!document.querySelector('.pipeline.pipe-static');
 var RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches); // keep the pinned scroll; just show each step's finished pose, no timed motion
+// DIRECTOR JUMP: the Director starts as the small robot icon in the film phone's coaching chip, hops out (arc, squash and stretch, grows to mascot size) and lands on the left of the phone, then idles with the same gestures as before. Plays once, the first time the Film step is on screen. Transforms only. Reduced motion: he is simply on the left.
+var djW=$('cm').closest('.dwrap2'),djR=robots[1],djDone=false,djTimer=0;
+function djOut(){djW.classList.remove('dj-pre');djW.classList.add('dj-out')}
+function djJump(delay){
+  if(djDone)return;djDone=true;
+  if(RM||!djR.animate){djOut();return}
+  djTimer=setTimeout(function(){
+    var bot=djW.querySelector('.chip .bot'),chip=bot.offsetParent,scr=$('cm').parentNode;
+    var k=scr.offsetWidth/390; // phone screen is the 390 wide camera canvas scaled down
+    var cx=scr.offsetLeft+(chip.offsetLeft+bot.offsetLeft+bot.offsetWidth/2)*k, cy=scr.offsetTop+(chip.offsetTop+bot.offsetTop+bot.offsetHeight/2)*k;
+    var w=djR.offsetWidth,h=djR.offsetHeight,fx=djR.offsetLeft+w/2,fb=djR.offsetTop+h;
+    var s0=Math.max(.2,Math.min(.45,bot.offsetWidth*k*1.15/w)),tx0=cx-fx,ty0=cy+s0*h/2-fb,apY=Math.min(ty0,0)-Math.max(70,h*1.15);
+    function T(x,y,r,sx,sy){return 'translate('+x+'px,'+y+'px) rotate('+r+'deg) scale('+sx+','+sy+')'}
+    djOut();
+    djR.animate([
+      {offset:0,transform:T(tx0,ty0,0,s0,s0),easing:'ease-out'},
+      {offset:.1,transform:T(tx0,ty0+2,0,s0*1.14,s0*.86),easing:'cubic-bezier(.2,.7,.3,1)'},
+      {offset:.46,transform:T(tx0*.4,apY,-14,.78*.92,.78*1.1),easing:'cubic-bezier(.5,0,.9,.6)'},
+      {offset:.74,transform:T(0,0,3,1.16,.84),easing:'ease-out'},
+      {offset:.88,transform:T(0,-11,0,.97,1.04),easing:'ease-in'},
+      {offset:1,transform:T(0,0,0,1,1)}
+    ],{duration:850,fill:'none'});
+  },delay);
+}
+if(RM)djOut();else djW.classList.add('dj-pre');
 var frameSet=false;
 function setFrame(){if(frameSet)return;frameSet=true;cmSetSrc();setTimeout(loadG,300)}
 cv.addEventListener('loadeddata',function(){if(STATIC||RM)D[1](END[1]);else D[1](0)});
@@ -1863,13 +1898,14 @@ window.__dirStatic=function(){D.forEach(function(f,i){f(END[i])})};
 var start=[null,null,null,null];
 window.__clock=null; // capture sets a function returning ms
 window.__dirTick=function(){var now=window.__clock?window.__clock():performance.now();
-  for(var i=0;i<4;i++){var on=scenes[i].classList.contains('on');if(on&&start[i]===null)start[i]=now;if(!on)start[i]=null;
+  for(var i=0;i<4;i++){var on=scenes[i].classList.contains('on');if(on&&start[i]===null){start[i]=now;if(i===1)djJump(450)}if(!on)start[i]=null;
     if(start[i]!==null)D[i](RM?END[i]:(now-start[i])/1000);else if(scenes[i].style.opacity>0.02||!on)D[i](0)}};
 D.forEach(function(f){f(0)});
 var live=false;
 function wake(){live=true}
 var pl=document.getElementById('pipeline');
-if(STATIC){setFrame();window.__dirStatic()}
+if(STATIC){setFrame();window.__dirStatic();
+  if('IntersectionObserver' in window){var djIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){djIO.disconnect();djJump(250)}})},{threshold:.6});djIO.observe(djW)}else djJump(0)}
 else{
   if('IntersectionObserver' in window&&pl){new IntersectionObserver(function(es){es.forEach(function(e){live=e.isIntersecting;if(live)setFrame()})},{rootMargin:'1200px 0px 1200px 0px'}).observe(pl)}else{live=true;setFrame()}
   (function loop(){if(live&&!document.hidden)window.__dirTick();requestAnimationFrame(loop)})();
