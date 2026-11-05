@@ -1931,6 +1931,15 @@ a.hero-trust--auth:hover { color: var(--teal); }
 .poc-closer em { font-style: normal; color: var(--teal); white-space: nowrap; }
 .poc-demo .pipe-cap { margin-top: 16px; }
 @media (max-width: 900px) { .poc { grid-template-columns: 1fr; margin-top: 48px; padding-top: 40px; } }
+.poc .poc-player { background: #121821; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1); }
+.poc .poc-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
+.poc .poc-player::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(8,10,14,0.18) 0%, rgba(8,10,14,0) 22%, rgba(8,10,14,0) 52%, rgba(8,10,14,0.78) 100%); }
+.poc .poc-play, .poc .poc-scrub { z-index: 1; }
+.poc .poc-play { top: 66%; width: 48px; height: 48px; margin: -24px 0 0 -24px; }
+.poc .poc-play { background: rgba(0,0,0,0.32); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-color: rgba(255,255,255,0.55); }
+.poc .poc-scrub { text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+@media (max-width: 900px) { .poc .poc-player { aspect-ratio: 9 / 16; width: min(100%, 220px); margin: 0 auto; } }
+
 /* Lay the demo card out wide, like the platform tour stop, so it sits level with the copy */
 @media (min-width: 901px) {
   .poc { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
@@ -1981,6 +1990,7 @@ a.hero-trust--auth:hover { color: var(--teal); }
         <div class="poc-card">
           <div class="poc-top"><span class="poc-title">Spring campaign · Final cut</span><span class="poc-ver">Version 2</span></div>
           <div class="poc-player" role="img" aria-label="A finished cut waiting for client review">
+            <img class="poc-frame" src="/wall/1072989645-480.webp" width="480" height="853" alt="" decoding="async" loading="lazy"/>
             <div class="poc-play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></div>
             <div class="poc-scrub"><span>0:24</span><i></i><span>1:02</span></div>
           </div>
