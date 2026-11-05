@@ -2307,6 +2307,9 @@ body > * { position: relative; z-index: 1; }
    Touch, <1100px and reduced motion never get .tour-snap and keep the stacked padding above. */
 .tour-lockup.tour-snap .tour-sec,
 .tour-lockup.tour-snap .tour-sec:first-child { box-sizing: border-box; display: flex; align-items: center; padding: clamp(96px, calc(12vh / var(--zv,1)), 190px) 0; min-height: calc(100vh / var(--zv,1) - var(--nav-h)); scroll-margin-top: var(--nav-h); }
+/* the first stop also carries the section title above it, so its lockup starts right under the title */
+.tour-lockup.tour-snap .pipeline-head { margin-bottom: clamp(20px, calc(3vh / var(--zv,1)), 40px); }
+.tour-lockup.tour-snap .tour-sec:first-child { align-items: flex-start; min-height: 0; padding-top: 0; }
 .tour-sec + .tour-sec { border-top: 1px solid rgba(255,255,255,0.05); }
 .tour-sec .pipe-stage { margin-bottom: 0; }
 /* stage grounding: spotlight behind, contact shadow beneath */
@@ -2794,7 +2797,7 @@ body > * { position: relative; z-index: 1; }
 <script>
 // Reveal
 (function(){
-  var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){if(e.target.closest('.tour-run.tour-snap'))return;e.target.classList.add('vis');o.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){if(e.target.closest('.tour-run.tour-snap .tour-sec'))return;e.target.classList.add('vis');o.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
 })();
 
@@ -2956,6 +2959,14 @@ body > * { position: relative; z-index: 1; }
     for (var i = 0; i < N; i++) {
       var r = secs[i].getBoundingClientRect();
       out.push(Math.round(r.top + y + r.height / 2 - mid));
+    }
+    // stop 0 frames the section title together with the first screen: "Inside the platform." down to the end of the Pulse stage,
+    // centered; if that is taller than the area below the nav, the title sits just under the nav instead
+    var hd = run.querySelector('.pipeline-head'), st0 = secs[0].querySelector('.pipe-stage');
+    if (hd && st0) {
+      var hr = hd.getBoundingClientRect(), sr = st0.getBoundingClientRect(), area = window.innerHeight - nb;
+      var h = sr.bottom - hr.top;
+      out[0] = Math.round(hr.top + y - (h + 24 <= area ? nb + (area - h) / 2 : nb + 12));
     }
     return out;
   }
