@@ -1348,15 +1348,36 @@ body > * { position: relative; z-index: 1; }
 .fcm.is-rec .bot{background:rgba(84,104,130,.28)}
 .fcm.is-rec .bot svg{opacity:.38}
 .fcm.is-rec .b-flip{opacity:.4}
-.drobot2{position:absolute;left:-84px;bottom:18px;width:70px;height:80px;margin:0;transform-origin:50% 100%;will-change:transform}
+.drobot2{position:absolute;left:-158px;top:187px;width:84px;height:97px;margin:0;transform-origin:50% 100%;will-change:transform;z-index:3}
+/* The Director carries the coaching chip out of the phone: it lifts off the screen and lands as a larger live card left of the phone, with him perched on its top left corner. Lines and cue pills mirror the phone clip. */
+.dcard2{position:absolute;left:-170px;top:262px;width:224px;box-sizing:border-box;padding:12px 14px 13px;border-radius:18px;background:rgba(16,21,28,.84);border:1px solid rgba(255,255,255,.15);box-shadow:0 18px 44px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transform-origin:0 0;will-change:transform;z-index:2;font-family:'CamRoboto',Roboto,system-ui,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;pointer-events:none;user-select:none}
+.dc2-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.dc2-tag{font-size:10px;letter-spacing:.16em;font-weight:700;color:#00bcf1;text-transform:uppercase;line-height:12px}
+.dc2-live{display:flex;align-items:center;gap:5px;font-size:9px;letter-spacing:.12em;font-weight:600;color:rgba(255,255,255,.5);line-height:12px}
+.dc2-live i{width:5px;height:5px;border-radius:50%;background:#00bcf1;box-shadow:0 0 8px #00bcf1}
+.dc2-lines{position:relative;height:54px}
+.dc2-lines div{position:absolute;left:0;top:0;width:100%;font-size:14px;line-height:18px;font-weight:500;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .34s ease,transform .34s ease}
+.dc2-lines div.on{opacity:1;transform:none}
+.dc2-lines div.off{transform:translateY(-6px)}
+.dc2-pills{display:flex;gap:4px;margin-top:9px}
+.dc2-pills span{height:20px;border-radius:10px;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.38);flex:1 1 auto;justify-content:center;min-width:0;font-size:8.5px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:3px;padding:0 5px;line-height:1;transition:color .3s ease,background .3s ease,border-color .3s ease}
+.dc2-pills span::before{content:'';width:4px;height:4px;border-radius:50%;background:currentColor;flex:none}
+.dc2-pills span.lit{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.12);color:#22c55e}
 /* Director hops out of the phone's coaching chip and lands on the left of the phone (JS adds .dj-pre until the jump starts, .dj-out once he is out of the chip). */
 .dwrap2.dj-pre .drobot2{opacity:0}
+.dwrap2.dj-pre .dcard2{opacity:0;visibility:hidden}
 .dwrap2.dj-out .fcm .bot svg{opacity:0;transition-duration:.12s}
+/* the phone keeps its camera UI; the chip leaves a faint empty slot and the cue pills travel with the card */
+.dwrap2.dj-out .fcm .chip{background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.12);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.dwrap2.dj-out .fcm .chip>*{opacity:0;transition:opacity .22s ease}
+.dwrap2.dj-out .fcm .pills{opacity:0;transition:opacity .25s ease}
 @media (max-width: 1024px), (hover: none), (pointer: coarse) {
-  .pipe-copy-block .dwrap2{margin-left:76px}
-  .pipe-copy-block .drobot2{left:-74px;bottom:14px;width:64px;height:73px}
+  .pipe-copy-block .dwrap2{display:block;width:min(100%,calc(100vw - 76px));margin:0}
+  .pipe-copy-block .dphone2{margin:0 auto}
+  .pipe-copy-block .dcard2{position:relative;left:auto;top:auto;width:auto;margin:16px 0 0 74px}
+  .pipe-copy-block .drobot2{left:0;top:auto;bottom:0;width:68px;height:78px}
 }
-@media (prefers-reduced-motion: reduce) { .dwrap2 .fcm .bot svg{transition:none} }
+@media (prefers-reduced-motion: reduce) { .dwrap2 .fcm .bot svg,.dwrap2 .fcm .chip>*,.dwrap2 .fcm .pills,.dc2-lines div,.dc2-pills span{transition:none} }
 /* mobile stack: the blanket p{opacity:1!important} rule was stacking all three Director lines on top of each other in the chip; show only the current one */
 .pipe-copy-block .fcm .lines p:not(.on){opacity:0 !important}
 /* mobile stack */
@@ -1485,6 +1506,7 @@ body > * { position: relative; z-index: 1; }
 <div class="rb"></div></div>
 </div></div>
     <div class="drobot drobot2" role="presentation"></div>
+    <div class="dcard2" id="dc2" aria-hidden="true"><div class="dc2-in"><div class="dc2-top"><span class="dc2-tag">Director</span><span class="dc2-live"><i></i>LIVE</span></div><div class="dc2-lines" id="dc2l"><div class="on">Get closer on the spray can. The blue fade sells it.</div><div>Stay on the can. Let the spray finish before you move.</div><div>Good light on the canvas. Hold right there.</div></div><div class="dc2-pills" id="dc2p"><span>LIGHT</span><span>FOCUS</span><span>STEADY</span><span>AUDIO</span></div></div></div>
   </div>
 </div>
 <div class="pscene" data-scene="2">
@@ -1843,13 +1865,15 @@ function(t){ // CUT  post-production/page.tsx / plan-phase.ts / cut-setup-host.t
 D.forEach(function(fn,i){var o=fn;D[i]=function(t){rob(i,t);o(t)}});
 var END=[3.8,7,3.6,4.4];
 // FILM: one clean 24fps video of the real over-the-shoulder footage. The camera UI on top is live markup driven from video.currentTime, so it can never drift from the picture.
-var cm=$('cm'),cv=$('cmv'),cmT=$('cmt'),cmL=$('cml').children,cmS={rec:-1,press:-1,ln:-1,sec:-1},cmPend=false,cmSeek=false,cmSrc=false;
+var cm=$('cm'),cv=$('cmv'),cmT=$('cmt'),cmL=$('cml').children,cmS={rec:-1,press:-1,ln:-1,sec:-1,lit:''},cmPend=false,cmSeek=false,cmSrc=false,dcL=$('dc2l').children,dcP=$('dc2p').children,dcC=$('dc2'),LITAT=[4.8,1.0,1.9,3.4];
 var CM_PRESS=1.0,CM_REC=1.14,CM_L2=1.9,CM_L3=4.8,CM_END=7;
 function cmPaint(ct){
   var rec=ct>=CM_REC?1:0,press=(ct>=CM_PRESS&&ct<CM_REC)?1:0,ln=ct<CM_L2?0:(ct<CM_L3?1:2),sec=rec?Math.floor(ct-CM_REC):0;
   if(rec!==cmS.rec){cmS.rec=rec;cm.classList.toggle('is-rec',!!rec)}
   if(press!==cmS.press){cmS.press=press;cm.classList.toggle('press',!!press)}
-  if(ln!==cmS.ln){var p=cmS.ln;cmS.ln=ln;for(var i=0;i<cmL.length;i++){cmL[i].classList.toggle('on',i===ln);cmL[i].classList.toggle('off',i<ln)}}
+  if(ln!==cmS.ln){var p=cmS.ln;cmS.ln=ln;for(var i=0;i<cmL.length;i++){cmL[i].classList.toggle('on',i===ln);cmL[i].classList.toggle('off',i<ln);dcL[i].classList.toggle('on',i===ln);dcL[i].classList.toggle('off',i<ln)}}
+  var lm='';for(var j=0;j<dcP.length;j++)lm+=ct>=LITAT[j]?1:0;
+  if(lm!==cmS.lit){cmS.lit=lm;for(var j=0;j<dcP.length;j++)dcP[j].classList.toggle('lit',lm.charAt(j)==='1')}
   if(sec!==cmS.sec){cmS.sec=sec;cmT.textContent=Math.floor(sec/60)+':'+(sec%60<10?'0':'')+(sec%60)}
 }
 function cmSetSrc(){if(cmSrc)return;cmSrc=true;cv.src='/director/sticky/film/spray-can.mp4'}
@@ -1866,7 +1890,7 @@ function cmFilm(t,hold){
 }
 var STATIC=!!document.querySelector('.pipeline.pipe-static');
 var RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches); // keep the pinned scroll; just show each step's finished pose, no timed motion
-// DIRECTOR JUMP: the Director starts as the small robot icon in the film phone's coaching chip, hops out (arc, squash and stretch, grows to mascot size) and lands on the left of the phone, then idles with the same gestures as before. Plays once, the first time the Film step is on screen. Transforms only. Reduced motion: he is simply on the left.
+// DIRECTOR JUMP: the Director starts as the small robot icon in the film phone's coaching chip, hops out (arc, squash and stretch, grows to mascot size) and lands on the left of the phone, then idles with the same gestures as before. He carries the coaching chip out with him: it lifts off the screen and lands as a larger live card (lines and cue pills mirror the clip) with him perched on its corner. Plays once, the first time the Film step is on screen. Transforms only. Reduced motion: he is simply on the left.
 var djW=$('cm').closest('.dwrap2'),djR=robots[1],djDone=false,djTimer=0;
 function djOut(){djW.classList.remove('dj-pre');djW.classList.add('dj-out')}
 function djJump(delay){
@@ -1879,7 +1903,18 @@ function djJump(delay){
     var w=djR.offsetWidth,h=djR.offsetHeight,fx=djR.offsetLeft+w/2,fb=djR.offsetTop+h;
     var s0=Math.max(.2,Math.min(.45,bot.offsetWidth*k*1.15/w)),tx0=cx-fx,ty0=cy+s0*h/2-fb,apY=Math.min(ty0,0)-Math.max(70,h*1.15);
     function T(x,y,r,sx,sy){return 'translate('+x+'px,'+y+'px) rotate('+r+'deg) scale('+sx+','+sy+')'}
+    var cw=dcC.offsetWidth,ch=dcC.offsetHeight,cl=dcC.offsetLeft,ct=dcC.offsetTop;
+    var ox=scr.offsetLeft+chip.offsetLeft*k-cl,oy=scr.offsetTop+chip.offsetTop*k-ct,sx=chip.offsetWidth*k/cw,sy=chip.offsetHeight*k/ch,my=(oy>0?0:oy*.5)-55;
     djOut();
+    dcC.animate([
+      {offset:0,transform:T(ox,oy,0,sx,sy),easing:'cubic-bezier(.3,.6,.4,1)'},
+      {offset:.12,transform:T(ox,oy+1,0,sx*1.03,sy*.9),easing:'cubic-bezier(.2,.7,.3,1)'},
+      {offset:.5,transform:T(ox*.4,my,-3,.7,.66),easing:'cubic-bezier(.5,0,.9,.6)'},
+      {offset:.78,transform:T(0,0,0,1.05,.93),easing:'ease-out'},
+      {offset:.9,transform:T(0,-5,0,.99,1.02),easing:'ease-in'},
+      {offset:1,transform:T(0,0,0,1,1)}
+    ],{duration:860,delay:70,fill:'backwards'});
+    dcC.firstChild.animate([{opacity:0},{opacity:0,offset:.25},{opacity:1}],{duration:860,delay:70,fill:'backwards'});
     djR.animate([
       {offset:0,transform:T(tx0,ty0,0,s0,s0),easing:'ease-out'},
       {offset:.1,transform:T(tx0,ty0+2,0,s0*1.14,s0*.86),easing:'cubic-bezier(.2,.7,.3,1)'},
@@ -1905,7 +1940,7 @@ var live=false;
 function wake(){live=true}
 var pl=document.getElementById('pipeline');
 if(STATIC){setFrame();window.__dirStatic();
-  if('IntersectionObserver' in window){var djIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){djIO.disconnect();djJump(250)}})},{threshold:.6});djIO.observe(djW)}else djJump(0)}
+  if('IntersectionObserver' in window){var djIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){djIO.disconnect();djJump(250)}})},{threshold:.5});djIO.observe(djW)}else djJump(0)}
 else{
   if('IntersectionObserver' in window&&pl){new IntersectionObserver(function(es){es.forEach(function(e){live=e.isIntersecting;if(live)setFrame()})},{rootMargin:'1200px 0px 1200px 0px'}).observe(pl)}else{live=true;setFrame()}
   (function loop(){if(live&&!document.hidden)window.__dirTick();requestAnimationFrame(loop)})();
