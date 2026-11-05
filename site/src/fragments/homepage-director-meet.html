@@ -120,7 +120,7 @@
 .dm-bg img.dm-on{opacity:1}
 .dm-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0a0a0a 0,rgba(10,10,10,.88) 10%,rgba(10,10,10,.58) 30%,rgba(10,10,10,.55) 62%,rgba(10,10,10,.86) 86%,#0a0a0a 100%)}
 @media(prefers-reduced-motion:reduce){.dm-bg img{transition:none}}
-.dm{position:relative;overflow:hidden;overflow:clip;background:#0a0a0a;padding:0 0 20px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 56px);mask-image:linear-gradient(180deg,transparent 0,#000 56px);--dm-text-dim:rgba(255,255,255,.5)}
+.dm{position:relative;overflow:hidden;overflow:clip;background:#0a0a0a;padding:0 0 20px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 56px,#000 calc(100% - 64px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 56px,#000 calc(100% - 64px),transparent 100%);--dm-text-dim:rgba(255,255,255,.5)}
 /* ambient light is painted as backgrounds on .dm, so the section ends on flat #0a0a0a and meets the curve with no seam */
 .dm-wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:22px 24px 0}
 .dm-sig{position:relative;z-index:2;height:2px;opacity:.55;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 25%,#000 75%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 25%,#000 75%,transparent 100%);background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 33%,var(--yellow) 33%,var(--yellow) 66%,var(--pink) 66%,var(--pink) 100%)}
@@ -162,7 +162,7 @@
 @media(min-width:901px){.dm-stage{gap:44px;grid-template-columns:minmax(0,300px) 346px minmax(0,300px);max-width:1100px}.dm-score{padding-left:30px}}
 @media(max-width:900px){.dm{padding:54px 0 48px}.dm-head{margin-bottom:30px}.dm-stage{gap:22px}}
 /* Meet sits between the mechanic and the pipeline: hand off from flat #0a0a0a into the pipeline tint with no seam */
-.dm + .pipeline{background:linear-gradient(180deg,#0a0a0a 0%,#08131a 14%,#0a0a0a 55%)}
+.dm ~ .pipeline{background:linear-gradient(180deg,#0a0a0a 0%,#08131a 14%,#0a0a0a 55%)}
 </style>
 <section class="dm" id="meet-the-director" aria-labelledby="dm-title">
  <div class="dm-bg" aria-hidden="true"><img id="dm-bg0" alt="" decoding="async"><img id="dm-bg1" alt="" decoding="async"></div>
