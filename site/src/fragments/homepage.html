@@ -1192,6 +1192,11 @@ body > * { position: relative; z-index: 1; }
 .pipeline.pipe-static .pipe-phone-slot, .pipeline.pipe-static .pipe-scenes { display: none; }
 .pipeline.pipe-static .pipe-ghost { display: none; }
 .pipeline.pipe-static .pipe-copies { min-height: 0; position: relative; padding-left: 30px; }
+/* Tablets (iPad etc.) get the stacked timeline too; center it so the right half is not empty */
+@media (min-width: 600px) {
+  .pipeline.pipe-static .pipe-copies { max-width: 620px; margin-left: auto; margin-right: auto; }
+  .pipeline.pipe-static .pipe-copy-block .pscene { max-width: 440px; }
+}
 .pipeline.pipe-static .pipe-copies::before { content: ''; position: absolute; left: 5px; top: 12px; bottom: 30px; width: 2px; background: linear-gradient(180deg, var(--teal), var(--pink)); opacity: 0.5; }
 .pipeline.pipe-static .pipe-copy-block { position: relative; transform: none !important; opacity: 1 !important; margin-bottom: 48px; }
 .pipeline.pipe-static .pipe-copy-block::before { content: ''; position: absolute; left: -30px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(0,188,241,0.14); }
@@ -1964,6 +1969,9 @@ else{
 .stats.payoff .stat:hover { background: #f1f4f6; }
 .stats.payoff .stat-label { color: #777; }
 .payoff .stats-foot { color: #9aa0a5; }
+/* keep the full-bleed mobile video strip and the wide proof badge from widening the page */
+.stats.payoff { overflow-x: clip; }
+@media (max-width: 1100px) { .poc .poc-badge { flex-wrap: wrap; white-space: normal; } }
 .payoff .pipe-outputs .vid-playable { border-color: rgba(0,0,0,0.1); box-shadow: 0 14px 34px rgba(0,0,0,0.18); }
 .payoff .pipe-closer { margin-top: 0; }
 .stats-head { text-align: center; max-width: 620px; margin: 56px auto 36px; }
