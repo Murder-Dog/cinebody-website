@@ -1917,12 +1917,12 @@ else{
 /* ── PROOF OF CAPTURE band (the demo card itself lives in global.css) ── */
 a.hero-trust--auth { text-decoration: none; transition: color .2s ease; }
 a.hero-trust--auth:hover { color: var(--teal); }
-.poc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, calc(5vw / var(--zv,1)), 72px); align-items: center; margin-top: 96px; padding-top: 80px; border-top: 1px solid rgba(0,0,0,0.08); scroll-margin-top: 90px; }
-.poc-copy .label { margin-bottom: 14px; }
-.payoff .poc-copy h2 { font-size: clamp(2rem,calc(4vw / var(--zv,1)),3rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; color: #111 !important; margin: 0 0 18px; }
+.poc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, calc(5vw / var(--zv,1)), 72px); align-items: center; margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.08); scroll-margin-top: 90px; }
+.poc-copy .label { margin-bottom: 10px; }
+.payoff .poc-copy h2 { font-size: clamp(2rem,calc(4vw / var(--zv,1)),3rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; color: #111 !important; margin: 0 0 12px; }
 .poc-copy h2 em { font-style: normal; color: var(--teal); }
-.poc-sub { font-size: 1.05rem; line-height: 1.65; color: #555; max-width: 520px; margin: 0 0 28px; }
-.poc-steps { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 16px; }
+.poc-sub { font-size: 1.05rem; line-height: 1.65; color: #555; max-width: 520px; margin: 0 0 20px; }
+.poc-steps { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 12px; }
 .poc-steps li { display: flex; gap: 14px; align-items: flex-start; }
 .poc-n { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #0a7fa3; background: rgba(0,188,241,0.1); }
 .payoff .poc-steps h3 { font-size: 1rem; font-weight: 700; color: #111; margin: 5px 0 2px; letter-spacing: -0.01em; }
@@ -1930,7 +1930,7 @@ a.hero-trust--auth:hover { color: var(--teal); }
 .poc-closer { font-size: clamp(1.1rem,calc(1.8vw / var(--zv,1)),1.3rem); font-weight: 700; letter-spacing: -0.02em; color: #111; margin: 0; }
 .poc-closer em { font-style: normal; color: var(--teal); white-space: nowrap; }
 .poc-demo .pipe-cap { margin-top: 16px; }
-@media (max-width: 900px) { .poc { grid-template-columns: 1fr; margin-top: 72px; padding-top: 64px; } }
+@media (max-width: 900px) { .poc { grid-template-columns: 1fr; margin-top: 48px; padding-top: 40px; } }
 /* Lay the demo card out wide, like the platform tour stop, so it sits level with the copy */
 @media (min-width: 901px) {
   .poc { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
@@ -1969,11 +1969,11 @@ a.hero-trust--auth:hover { color: var(--teal); }
       <div class="poc-copy reveal">
         <div class="label">Proof of Capture</div>
         <h2>Real, <em>with receipts.</em></h2>
-        <p class="poc-sub">Every clip gets a signed receipt the moment it lands in Cinebody: when it arrived, the phone it came from, and the untouched original. The receipt stays with the clip through the edit, and anyone can check&nbsp;it.</p>
+        <p class="poc-sub">Every clip gets a signed receipt the moment it lands, and it travels with the edit so anyone can check&nbsp;it.</p>
         <ol class="poc-steps">
-          <li><span class="poc-n">01</span><div><h3>Filmed by a person</h3><p>A real phone in a real hand. No avatars, no generated faces.</p></div></li>
-          <li><span class="poc-n">02</span><div><h3>Signed when it lands</h3><p>The original file is fingerprinted and signed the second it arrives.</p></div></li>
-          <li><span class="poc-n">03</span><div><h3>Proof rides with the cut</h3><p>The finished video carries a ledger of every clip inside it.</p></div></li>
+          <li><span class="poc-n">01</span><div><h3>Filmed by a person</h3><p>A real phone in a real hand. No avatars.</p></div></li>
+          <li><span class="poc-n">02</span><div><h3>Signed when it lands</h3><p>Fingerprinted and signed on arrival.</p></div></li>
+          <li><span class="poc-n">03</span><div><h3>Proof rides with the cut</h3><p>The finished cut carries a ledger of every clip.</p></div></li>
         </ol>
         <p class="poc-closer">AI helps with the edit. <em>It never makes the&nbsp;footage.</em></p>
       </div>
@@ -1985,18 +1985,16 @@ a.hero-trust--auth:hover { color: var(--teal); }
             <div class="poc-scrub"><span>0:24</span><i></i><span>1:02</span></div>
           </div>
           <details class="poc-proof" open>
-            <summary class="poc-badge"><span class="poc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94"/><path d="M9.69 8h11.48"/><path d="m7.38 12 5.74-9.94"/><path d="M9.69 16 3.95 6.06"/><path d="M14.31 16H2.83"/><path d="m16.62 12-5.74 9.94"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Proof of Capture · 6 of 6 source clips verified</span></summary>
+            <summary class="poc-badge"><span class="poc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94"/><path d="M9.69 8h11.48"/><path d="m7.38 12 5.74-9.94"/><path d="M9.69 16 3.95 6.06"/><path d="M14.31 16H2.83"/><path d="m16.62 12-5.74 9.94"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Proof of Capture · 4 of 4 source clips verified</span></summary>
             <div class="poc-ledger">
-              <div class="poc-ledger-h">Source clips in this cut · recorded through Cinebody</div>
+              <div class="poc-ledger-h">Recorded through Cinebody</div>
               <ol class="poc-rows">
                 <li class="poc-row" style="--r:0"><b>01</b><span>Opening line, to camera</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
                 <li class="poc-row" style="--r:1"><b>02</b><span>Walking into work</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
                 <li class="poc-row" style="--r:2"><b>03</b><span>Hands on the product</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
                 <li class="poc-row" style="--r:3"><b>04</b><span>Customer interview</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
-                <li class="poc-row" style="--r:4"><b>05</b><span>The team, candid</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
-                <li class="poc-row" style="--r:5"><b>06</b><span>Closing line</span><em class="poc-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Verified</em></li>
               </ol>
-              <p class="poc-fine">Each receipt says a file with exactly those bytes reached Cinebody at that moment, from that phone, and that Cinebody signed it. It does not judge what the footage shows.</p>
+              <p class="poc-fine">A receipt proves arrival, not what the footage shows.</p>
             </div>
           </details>
         </div>
