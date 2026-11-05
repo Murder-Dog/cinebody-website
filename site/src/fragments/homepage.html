@@ -1403,6 +1403,8 @@ body > * { position: relative; z-index: 1; }
 .pipeline.pipe-static .pipe-copy-block::before { content: ''; position: absolute; left: -30px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(0,188,241,0.14); }
 .pipeline.pipe-static .pipe-copy-block h3 { font-size: 1.55rem; }
 .pipeline.pipe-static .pw, .pipeline.pipe-static .pipe-copy-block p, .pipeline.pipe-static .pipe-copy-block .pipe-mini { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; }
+/* Resting Director icon in static stack (no mid-gesture sprite frames). */
+.pipeline.pipe-static .drobot,.pipeline.pipe-static .drobot2{background-image:url(/director/meet/robot/director-poster.webp)!important;background-size:contain!important;background-position:center!important;background-repeat:no-repeat!important}
 .pipeline.pipe-static .pipe-copy-block .pscene { position: static; inset: auto; display: block; opacity: 1; margin-top: 20px; max-width: 330px; }
 .pipeline.pipe-static .pipe-copy-block .pcard { box-shadow: 0 18px 44px rgba(0,0,0,0.4); }
 .pipeline.pipe-static .pipe-copy-block .pscene .pshot,
@@ -2188,7 +2190,10 @@ var SEQ=[
  function(t){return t<2.4?['scan',t]:['talk',t-2.4]},
  function(t){return t<1.5?['scan',t]:t<2.5?['wink',t-1.5]:['talk',t-2.5]},
  function(t){return t<3.4?['thinking',t]:t<4.1?['nod',t-3.4]:['talk',t-4.1]}];
-function rob(i,t){var e=robots[i],g=SEQ[i](t),k=g[0];if(!gready(k)){e.style.backgroundImage='';e._g=null;return}var m=GS[k],fr=m[4]?Math.floor(g[1]*m[3])%m[0]:Math.min(m[0]-1,Math.floor(g[1]*m[3])),cx=fr%m[1],cy=Math.floor(fr/m[1]);
+function rob(i,t){var e=robots[i];if(!e)return;
+ // Static / reduced-motion stack: keep the clean resting Director (poster), never a mid-gesture sprite frame.
+ if(STATIC||RM){if(e._g!=='poster'){e._g='poster';e.style.backgroundImage='';e.style.backgroundSize='';e.style.backgroundPosition='';e.style.backgroundRepeat=''}return}
+ var g=SEQ[i](t),k=g[0];if(!gready(k)){e.style.backgroundImage='';e._g=null;return}var m=GS[k],fr=m[4]?Math.floor(g[1]*m[3])%m[0]:Math.min(m[0]-1,Math.floor(g[1]*m[3])),cx=fr%m[1],cy=Math.floor(fr/m[1]);
  if(e._g!==k){e._g=k;e.style.backgroundImage='url(/director/meet/robot/g-'+k+'.webp)';e.style.backgroundSize=(m[1]*100)+'% '+(m[2]*100)+'%';e.style.backgroundRepeat='no-repeat'}
  e.style.backgroundPosition=(m[1]>1?cx/(m[1]-1)*100:0)+'% '+(m[2]>1?cy/(m[2]-1)*100:0)+'%'}
 function txt(id,s){var e=$(id);if(e.innerHTML!==s)e.innerHTML=s}
