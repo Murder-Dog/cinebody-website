@@ -7,6 +7,7 @@
 
 :root {
   --teal: #00bcf1;
+  --teal-ink: #00718f; /* teal as type on white/yellow: 5.2:1 and 5.1:1 */
   --teal-dim: rgba(0,188,241,0.6);
   --yellow: #ffec03;
   --pink: #eb008b;
@@ -126,102 +127,13 @@ body > * { position: relative; z-index: 1; }
 
 .hero-visual .vid-playable { margin: 0 auto; }
 
-/* ═══ TREE STRUCTURE ═══ */
-.tree-section { padding: 100px 0; position: relative; background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%), linear-gradient(180deg, #041a24 0%, #0a1e2e 50%, #0f1a24 100%); }
-
-.tree-head { text-align: center; margin-bottom: 44px; }
-
-.tree-head h2 {
-  font-size: clamp(1.75rem, calc(3.5vw / var(--zv,1)), 2.5rem); font-weight: 700;
-  letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 12px; color: #fff !important;
-}
-
-.tree-head h2 em { font-style: normal; color: var(--teal) !important; }
-
-.tree-head p {
-  font-size: 0.95rem; color: var(--text-dim); line-height: 1.65; max-width: 560px; margin: 0 auto;
-}
-
-/* Hero CTV video */
-.tree-hero {
-  max-width: 640px; margin: 0 auto 0;
-  border-radius: var(--radius); overflow: hidden;
-  border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-}
-
-.tree-hero .vid-wrap { position: relative; padding-bottom: 56.25%; background: #111; }
-.tree-hero .vid-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.tree-hero .vid-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-
-.tree-hero-label {
-  text-align: center; padding: 14px;
-  font-family: var(--mono); font-size: 11px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal);
-  background: var(--surface); border-top: 1px solid var(--border);
-}
-
-/* Branch connector */
-.tree-connector {
-  display: block; margin: -2px auto 11px; position: relative; max-width: 900px;
-}
-.tree-connector svg { width: 100%; height: 96px; display: block; }
-.tree-flow path { animation: treeFlow 1.4s linear infinite; }
-@keyframes treeFlow { to { stroke-dashoffset: -14; } }
-@media (prefers-reduced-motion: reduce){ .tree-flow path { animation: none; } }
-
-/* Node grid */
-.tree-nodes {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  max-width: 900px; margin: 0 auto;
-}
-
-.tree-node {
-  position: relative;
-  border-radius: var(--radius); overflow: visible;
-  border: 1px solid var(--border); background: #111;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s ease;
-}
-.tree-node > .vid-playable, .tree-node > .vid-playable--v { border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; }
-.tree-node::before {
-  content: ''; position: absolute; top: -11px; left: 18%; right: 18%; height: 11px;
-  border: 2px solid var(--pink); border-bottom: none; border-radius: 7px 7px 0 0;
-  z-index: 2; transition: border-color 0.4s ease;
-}
-.tree-node:hover::before { border-color: var(--pink); box-shadow: 0 0 14px rgba(235,0,139,0.4); }
-
-.tree-node:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0,188,241,0.08);
-  border-color: var(--border-hover);
-}
-
-.tree-node .vid-wrap { position: relative; padding-bottom: 177.78%; background: #111; }
-.tree-node .vid-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.tree-node .vid-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-
-.tree-node-label {
-  padding: 14px; text-align: center;
-  border-top: 1px solid var(--border);
-}
-
-.tree-node-label .node-type {
-  font-family: var(--mono); font-size: 9px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.12em; color: var(--pink);
-  margin-bottom: 4px;
-}
-
-.tree-node-label .node-name {
-  font-size: 0.95rem; font-weight: 700; color: #fff;
-}
-
 /* ═══ CTA BAND ═══ */
 .cta-band { background: var(--yellow); padding: 80px 0; text-align: center; }
 .cta-band h2 {
   font-size: clamp(1.75rem, calc(3.5vw / var(--zv,1)), 2.5rem); font-weight: 700;
   letter-spacing: -0.03em; color: #111 !important; line-height: 1.2; margin-bottom: 28px;
 }
-.cta-band h2 span { color: var(--teal) !important; }
+.cta-band h2 span { color: var(--teal-ink) !important; }
 .cta-band .btn-glow { background: #111; box-shadow: 0 0 20px rgba(0,0,0,0.15); }
 .cta-band .btn-glow:hover { box-shadow: 0 0 40px rgba(0,0,0,0.25); }
 
@@ -231,14 +143,12 @@ body > * { position: relative; z-index: 1; }
 @media (max-width: 1000px) {
   .hero .contain { grid-template-columns: 1fr; gap: 48px; }
   .hero { padding: 104px 0 68px; }
-  .tree-nodes { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
   .hero { padding: 96px 0 52px; }
   .hero h1 { font-size: 2.25rem; }
-  .tree-section, .cta-band { padding: 60px 0; }
-  .tree-nodes { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .snap-light, .snap-dark, .cta-band { padding: 60px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -255,6 +165,7 @@ body > * { position: relative; z-index: 1; }
 
 .hero-visual .vid-playable { max-width: 300px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
 .snap-light { background: #fff; color: #111; padding: 88px 0; }
+.snap-light .label { color: var(--teal-ink); }
 .snap-light h2, .snap-dark h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px; }
 .snap-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
 .snap-copy p { font-size: 1.02rem; line-height: 1.7; color: #555; margin-bottom: 16px; }
@@ -262,9 +173,12 @@ body > * { position: relative; z-index: 1; }
 .snap-stat { padding: 30px 24px; }
 .snap-stat:nth-child(2n) { border-left: 1px solid #eee; }
 .snap-stat:nth-child(n+3) { border-top: 1px solid #eee; }
-.snap-stat .n { font-size: 2.4rem; font-weight: 800; color: var(--teal); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
-.snap-stat .l { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; }
-.snap-dark { background: var(--bg); padding: 96px 0; }
+.snap-stat .n { font-size: 2.4rem; font-weight: 800; color: var(--teal-ink); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+.snap-stat .l { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #6b6b6b; }
+.snap-dark { padding: 96px 0; background:
+  radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%),
+  radial-gradient(ellipse 50% 50% at 30% 80%, rgba(255,236,3,0.04) 0%, transparent 70%),
+  linear-gradient(180deg, #041a24 0%, #0a1e2e 50%, #0f1a24 100%); }
 .snap-head { max-width: 680px; margin-bottom: 44px; }
 .snap-head p { color: var(--text-dim); line-height: 1.7; }
 .snap-mwrap { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent); display: grid; gap: 16px; }
@@ -294,7 +208,7 @@ body > * { position: relative; z-index: 1; }
 .snap-stat .n { font-variant-numeric: tabular-nums; transition: transform .3s var(--ease); }
 .snap-stat:hover .n { transform: scale(1.06); background: linear-gradient(135deg, var(--teal), var(--pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .snap-pace { grid-column: 1 / -1; border-top: 1px solid #eee; padding: 22px 24px; }
-.snap-pace-l { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #888; margin-bottom: 12px; }
+.snap-pace-l { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #6b6b6b; margin-bottom: 12px; }
 .snap-pace-l::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); animation: snapPulse 1.6s ease-in-out infinite; }
 .snap-pace-t { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; }
 .snap-pace-t i { aspect-ratio: 9/16; border-radius: 4px; background: #e9eef1; animation: snapFill 6s calc(var(--t) * .36s) infinite both; }
@@ -303,8 +217,8 @@ body > * { position: relative; z-index: 1; }
 .snap-boxes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
 .snap-box { position: relative; min-width: 0; padding: 20px 18px 22px; border: 1px solid #e4e8eb; border-radius: 12px; animation: snapStep 12.5s calc(var(--i) * 2.5s) infinite; }
 @keyframes snapStep { 0%, 20% { border-color: var(--teal); box-shadow: 0 8px 24px rgba(0,188,241,.14); } 26%, 100% { border-color: #e4e8eb; box-shadow: none; } }
-.snap-box-n { font-size: 1.05rem; font-weight: 800; color: var(--teal); margin-bottom: 12px; }
-.snap-box-o { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--pink); margin-bottom: 6px; }
+.snap-box-n { font-size: 1.05rem; font-weight: 800; color: var(--teal-ink); margin-bottom: 12px; }
+.snap-box-o { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #b3006b; margin-bottom: 6px; }
 .snap-box h3 { font-size: 1.02rem; font-weight: 700; color: #111; margin-bottom: 8px; }
 .snap-box p { font-size: .86rem; line-height: 1.55; color: #555; }
 .snap-loop { margin-top: 20px; font-size: .95rem; color: #666; }
@@ -339,6 +253,8 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
+
 <section class="snap-light">
   <div class="contain" style="max-width:1040px">
     <div class="snap-split">
@@ -354,6 +270,8 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
+
 <section class="snap-dark">
   <div class="contain">
     <div class="snap-head reveal">
@@ -364,6 +282,8 @@ body > * { position: relative; z-index: 1; }
     <div class="snap-mwrap reveal" id="snapMarquee"><div class="snap-mrow to-left"><div class="snap-mtrack"><div class="snap-phone" data-bg-vimeo="1168921908"><img src="https://i.vimeocdn.com/video/2127477928-dd4ffc41b15de6a339826e43de1160cf4ceae64072d3af3a4a21b5ac504facda-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168920922"><img src="https://i.vimeocdn.com/video/2127476595-b123815ece51ee71864e9d1e544d6d6d37d05c3b0237940451c42afa5511635a-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168920028"><img src="https://i.vimeocdn.com/video/2127475765-48abfcdc3a1f4eeb1069f53ce18e7c5ceec628fdfea9060863196f4045a4f344-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168919664"><img src="https://i.vimeocdn.com/video/2127475053-0432b11849cab8899c9a25ac35c46e959c9aa80b4bda027037ae13db2e01e5fd-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168919930"><img src="https://i.vimeocdn.com/video/2127475081-b4b2fc795ec90388c6fa26c0f6e67e59d87fc0fce2353bd3d7b6fc1293e0c642-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168917051"><img src="https://i.vimeocdn.com/video/2127470960-e3d840ec51074798ff40b49ce0fcaf1c5aac522a96483d10927ed6225e0b194f-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168914450"><img src="https://i.vimeocdn.com/video/2127467233-70474e056e0e18b7b4ccfaae874a4791e523548d7a7f1c2d9211dfaaa9b9e71d-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168921908"><img src="https://i.vimeocdn.com/video/2127477928-dd4ffc41b15de6a339826e43de1160cf4ceae64072d3af3a4a21b5ac504facda-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168920922"><img src="https://i.vimeocdn.com/video/2127476595-b123815ece51ee71864e9d1e544d6d6d37d05c3b0237940451c42afa5511635a-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168920028"><img src="https://i.vimeocdn.com/video/2127475765-48abfcdc3a1f4eeb1069f53ce18e7c5ceec628fdfea9060863196f4045a4f344-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168919664"><img src="https://i.vimeocdn.com/video/2127475053-0432b11849cab8899c9a25ac35c46e959c9aa80b4bda027037ae13db2e01e5fd-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168919930"><img src="https://i.vimeocdn.com/video/2127475081-b4b2fc795ec90388c6fa26c0f6e67e59d87fc0fce2353bd3d7b6fc1293e0c642-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168917051"><img src="https://i.vimeocdn.com/video/2127470960-e3d840ec51074798ff40b49ce0fcaf1c5aac522a96483d10927ed6225e0b194f-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1168914450"><img src="https://i.vimeocdn.com/video/2127467233-70474e056e0e18b7b4ccfaae874a4791e523548d7a7f1c2d9211dfaaa9b9e71d-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div></div></div><div class="snap-mrow to-right"><div class="snap-mtrack"><div class="snap-phone" data-bg-vimeo="1154775629"><img src="https://i.vimeocdn.com/video/2107210747-89295709aff33c81109ba2f4e6e8849d406fbe67547c51ae3dac492f879ee908-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154738058"><img src="https://i.vimeocdn.com/video/2107159296-68fe63c5debd893e307856b2b88fc8f21f6e24b94e644e55bd9143e7858fa10d-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154738387"><img src="https://i.vimeocdn.com/video/2107159768-531769726d5e95a5a7e391109631079a86a72ebd6791c728f420f2f104996646-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154740784"><img src="https://i.vimeocdn.com/video/2107162791-36bbead219adea8623c48cbd20eab9b2d74cecb033f8eb1277a29ed1f33a74e6-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154741514"><img src="https://i.vimeocdn.com/video/2107163698-26a99f03687f7e761a37e64ce7b6499d5cbb92d50c627d556e4cb55d48cf4762-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154740845"><img src="https://i.vimeocdn.com/video/2107162857-64a75f6d06016ee264125bb57696a9f3f4ab1c745b1dbd00aaf122b7092846af-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154738823"><img src="https://i.vimeocdn.com/video/2107160274-f55c70711f33e9d6fd039d95c67fae8b8eddb8c1cbd1f39422eec92bc42f4818-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154775629"><img src="https://i.vimeocdn.com/video/2107210747-89295709aff33c81109ba2f4e6e8849d406fbe67547c51ae3dac492f879ee908-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154738058"><img src="https://i.vimeocdn.com/video/2107159296-68fe63c5debd893e307856b2b88fc8f21f6e24b94e644e55bd9143e7858fa10d-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154738387"><img src="https://i.vimeocdn.com/video/2107159768-531769726d5e95a5a7e391109631079a86a72ebd6791c728f420f2f104996646-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154740784"><img src="https://i.vimeocdn.com/video/2107162791-36bbead219adea8623c48cbd20eab9b2d74cecb033f8eb1277a29ed1f33a74e6-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154741514"><img src="https://i.vimeocdn.com/video/2107163698-26a99f03687f7e761a37e64ce7b6499d5cbb92d50c627d556e4cb55d48cf4762-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154740845"><img src="https://i.vimeocdn.com/video/2107162857-64a75f6d06016ee264125bb57696a9f3f4ab1c745b1dbd00aaf122b7092846af-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div><div class="snap-phone" data-bg-vimeo="1154738823"><img src="https://i.vimeocdn.com/video/2107160274-f55c70711f33e9d6fd039d95c67fae8b8eddb8c1cbd1f39422eec92bc42f4818-d_640" alt="Snap creator video" loading="lazy"><button class="snap-mute" type="button" aria-label="Unmute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button></div></div></div></div>
   </div>
 </section>
+
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0f1a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
 
 <section class="snap-light">
   <div class="contain" style="max-width:1040px">
@@ -381,6 +301,8 @@ body > * { position: relative; z-index: 1; }
     <p class="snap-loop reveal">Then the next month's brief starts, and the process runs again.</p>
   </div>
 </section>
+
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffec03"/></svg></div>
 
 <section class="cta-band">
   <div class="contain">
