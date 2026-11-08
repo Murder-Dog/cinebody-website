@@ -81,7 +81,8 @@ body > * { position: relative; z-index: 1; }
 
 
 .hero .contain {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); gap: 60px;
+  align-items: center; max-width: 1320px;
 }
 
 .hero-eyebrow {
@@ -125,7 +126,30 @@ body > * { position: relative; z-index: 1; }
   text-align: center;
 }
 
-.hero-visual .vid-playable { margin: 0 auto; }
+
+/* ═══ HERO VIDEO WALL ═══ */
+/* The headline claims 600 videos; two cards undersold it. Four columns drift at
+   different speeds so the wall never reads as a loop. Posters everywhere, live
+   video only on the tiles marked data-live, so the hero does not load thirty
+   Vimeo players above the fold. */
+.snap-wall { position: relative; display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 11px; height: clamp(440px, 48vw, 640px); overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent); }
+.snap-wall-col { overflow: hidden; }
+.snap-wall-track { display: flex; flex-direction: column; gap: 11px; will-change: transform; }
+.snap-wall-col:nth-child(1) .snap-wall-track { animation: wallUp 54s linear infinite; }
+.snap-wall-col:nth-child(2) .snap-wall-track { animation: wallDown 46s linear infinite; }
+.snap-wall-col:nth-child(3) .snap-wall-track { animation: wallUp 62s linear infinite; }
+.snap-wall-col:nth-child(4) .snap-wall-track { animation: wallDown 50s linear infinite; }
+@keyframes wallUp   { from { transform: translateY(0); } to { transform: translateY(calc(-50% - 5.5px)); } }
+@keyframes wallDown { from { transform: translateY(calc(-50% - 5.5px)); } to { transform: translateY(0); } }
+.snap-wall .snap-phone { width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 14px; flex: none; }
+@media (max-width: 1000px) { .snap-wall { height: 400px; } }
+/* four columns on a phone is confetti, not a wall */
+@media (max-width: 680px) { .snap-wall { grid-template-columns: repeat(3, 1fr); height: 330px; }
+  .snap-wall-col:nth-child(4) { display: none; } }
+@media (prefers-reduced-motion: reduce) { .snap-wall-track { animation: none !important; } }
 
 /* ═══ CTA BAND ═══ */
 .cta-band { background: var(--yellow); padding: 80px 0; text-align: center; }
@@ -163,7 +187,6 @@ body > * { position: relative; z-index: 1; }
 .cta-marquee-track img { width: 200px; height: 200px; object-fit: cover; flex-shrink: 0; }
 @keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-.hero-visual .vid-playable { max-width: 300px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
 .snap-light { background: #fff; color: #111; padding: 88px 0; }
 .snap-light .label { color: var(--teal-ink); }
 .snap-light h2, .snap-dark h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px; }
@@ -198,10 +221,9 @@ body > * { position: relative; z-index: 1; }
 .snap-phone:hover .snap-mute, .snap-mute:focus-visible, .snap-mute.on { opacity: 1; }
 .snap-partner { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 26px; padding: 8px 16px; border-radius: 9999px; border: 1px solid var(--border); font-size: 13px; color: var(--text-dim); }
 .snap-partner b { color: #fff; font-weight: 700; }
-.snap-heros { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 480px; margin: 0 auto; }
-.snap-heros .vid-playable { max-width: none; width: 100%; margin: 0; }
-.snap-heros .vid-playable:nth-child(2) { margin-top: 40px; }
-.snap-callout { margin-top: 8px; padding: 18px 20px; border-radius: 12px; background: #f5f8fa; font-size: .95rem; line-height: 1.6; color: #444; }
+.snap-callout { margin-top: 26px; padding: 18px 22px; background: #e9f6fd;
+  border-left: 3px solid var(--teal-ink); border-radius: 4px 12px 12px 4px;
+  font-size: .95rem; line-height: 1.65; color: #3d4750; }
 .snap-callout b { color: #111; }
 .snap-stat { transition: background .25s; cursor: default; }
 .snap-stat:hover { background: #f6f9fb; }
@@ -225,7 +247,7 @@ body > * { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { .snap-mtrack, .snap-box, .snap-pace-t i, .snap-pace-l::before { animation: none !important; } .snap-mrow { overflow-x: auto; } .snap-pace-t i { background: var(--teal); } }
 @media (max-width: 960px) { .snap-boxes { grid-template-columns: repeat(2, minmax(0, 1fr)); } .snap-box:last-child { grid-column: 1 / -1; } }
 @media (max-width: 820px) { .snap-split { grid-template-columns: 1fr; } .snap-phone { width: 120px; height: 213px; border-radius: 14px; } .snap-mtrack, .snap-mwrap { gap: 12px; } }
-@media (max-width: 560px) { .snap-light, .snap-dark { padding: 64px 0; } .snap-heros { gap: 12px; } .snap-heros .vid-playable:nth-child(2) { margin-top: 24px; } }
+@media (max-width: 560px) { .snap-light, .snap-dark { padding: 64px 0; } }
 </style>
 
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -245,10 +267,7 @@ body > * { position: relative; z-index: 1; }
       <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="btn btn-glow">Book a Strategy Call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
     <div class="hero-visual reveal reveal-d2">
-      <div class="snap-heros">
-        <div class="vid-playable vid-playable--v" data-vimeo="1154740784"><img class="vid-poster" src="https://i.vimeocdn.com/video/2107162791-36bbead219adea8623c48cbd20eab9b2d74cecb033f8eb1277a29ed1f33a74e6-d_640" alt="Snap creator video"></div>
-        <div class="vid-playable vid-playable--v" data-vimeo="1168920922"><img class="vid-poster" src="https://i.vimeocdn.com/video/2127476595-b123815ece51ee71864e9d1e544d6d6d37d05c3b0237940451c42afa5511635a-d_640" alt="Snap creator video"></div>
-      </div>
+      <div class="snap-wall" id="snapWall" aria-hidden="true"><div class="snap-wall-col"><div class="snap-wall-track"><div class="snap-phone" data-live="1" data-bg-vimeo="1168921908"><img src="https://i.vimeocdn.com/video/2127477928-dd4ffc41b15de6a339826e43de1160cf4ceae64072d3af3a4a21b5ac504facda-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-live="1" data-bg-vimeo="1168919930"><img src="https://i.vimeocdn.com/video/2127475081-b4b2fc795ec90388c6fa26c0f6e67e59d87fc0fce2353bd3d7b6fc1293e0c642-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154738058"><img src="https://i.vimeocdn.com/video/2107159296-68fe63c5debd893e307856b2b88fc8f21f6e24b94e644e55bd9143e7858fa10d-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154740845"><img src="https://i.vimeocdn.com/video/2107162857-64a75f6d06016ee264125bb57696a9f3f4ab1c745b1dbd00aaf122b7092846af-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1168921908"><img src="https://i.vimeocdn.com/video/2127477928-dd4ffc41b15de6a339826e43de1160cf4ceae64072d3af3a4a21b5ac504facda-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1168919930"><img src="https://i.vimeocdn.com/video/2127475081-b4b2fc795ec90388c6fa26c0f6e67e59d87fc0fce2353bd3d7b6fc1293e0c642-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154738058"><img src="https://i.vimeocdn.com/video/2107159296-68fe63c5debd893e307856b2b88fc8f21f6e24b94e644e55bd9143e7858fa10d-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154740845"><img src="https://i.vimeocdn.com/video/2107162857-64a75f6d06016ee264125bb57696a9f3f4ab1c745b1dbd00aaf122b7092846af-d_640" alt="Snap creator video" loading="lazy"></div></div></div><div class="snap-wall-col"><div class="snap-wall-track"><div class="snap-phone" data-live="1" data-bg-vimeo="1168920922"><img src="https://i.vimeocdn.com/video/2127476595-b123815ece51ee71864e9d1e544d6d6d37d05c3b0237940451c42afa5511635a-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-live="1" data-bg-vimeo="1168917051"><img src="https://i.vimeocdn.com/video/2127470960-e3d840ec51074798ff40b49ce0fcaf1c5aac522a96483d10927ed6225e0b194f-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154738387"><img src="https://i.vimeocdn.com/video/2107159768-531769726d5e95a5a7e391109631079a86a72ebd6791c728f420f2f104996646-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154738823"><img src="https://i.vimeocdn.com/video/2107160274-f55c70711f33e9d6fd039d95c67fae8b8eddb8c1cbd1f39422eec92bc42f4818-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1168920922"><img src="https://i.vimeocdn.com/video/2127476595-b123815ece51ee71864e9d1e544d6d6d37d05c3b0237940451c42afa5511635a-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1168917051"><img src="https://i.vimeocdn.com/video/2127470960-e3d840ec51074798ff40b49ce0fcaf1c5aac522a96483d10927ed6225e0b194f-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154738387"><img src="https://i.vimeocdn.com/video/2107159768-531769726d5e95a5a7e391109631079a86a72ebd6791c728f420f2f104996646-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154738823"><img src="https://i.vimeocdn.com/video/2107160274-f55c70711f33e9d6fd039d95c67fae8b8eddb8c1cbd1f39422eec92bc42f4818-d_640" alt="Snap creator video" loading="lazy"></div></div></div><div class="snap-wall-col"><div class="snap-wall-track"><div class="snap-phone" data-live="1" data-bg-vimeo="1168920028"><img src="https://i.vimeocdn.com/video/2127475765-48abfcdc3a1f4eeb1069f53ce18e7c5ceec628fdfea9060863196f4045a4f344-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-live="1" data-bg-vimeo="1168914450"><img src="https://i.vimeocdn.com/video/2127467233-70474e056e0e18b7b4ccfaae874a4791e523548d7a7f1c2d9211dfaaa9b9e71d-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154740784"><img src="https://i.vimeocdn.com/video/2107162791-36bbead219adea8623c48cbd20eab9b2d74cecb033f8eb1277a29ed1f33a74e6-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1168920028"><img src="https://i.vimeocdn.com/video/2127475765-48abfcdc3a1f4eeb1069f53ce18e7c5ceec628fdfea9060863196f4045a4f344-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1168914450"><img src="https://i.vimeocdn.com/video/2127467233-70474e056e0e18b7b4ccfaae874a4791e523548d7a7f1c2d9211dfaaa9b9e71d-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154740784"><img src="https://i.vimeocdn.com/video/2107162791-36bbead219adea8623c48cbd20eab9b2d74cecb033f8eb1277a29ed1f33a74e6-d_640" alt="Snap creator video" loading="lazy"></div></div></div><div class="snap-wall-col"><div class="snap-wall-track"><div class="snap-phone" data-live="1" data-bg-vimeo="1168919664"><img src="https://i.vimeocdn.com/video/2127475053-0432b11849cab8899c9a25ac35c46e959c9aa80b4bda027037ae13db2e01e5fd-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-live="1" data-bg-vimeo="1154775629"><img src="https://i.vimeocdn.com/video/2107210747-89295709aff33c81109ba2f4e6e8849d406fbe67547c51ae3dac492f879ee908-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154741514"><img src="https://i.vimeocdn.com/video/2107163698-26a99f03687f7e761a37e64ce7b6499d5cbb92d50c627d556e4cb55d48cf4762-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1168919664"><img src="https://i.vimeocdn.com/video/2127475053-0432b11849cab8899c9a25ac35c46e959c9aa80b4bda027037ae13db2e01e5fd-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154775629"><img src="https://i.vimeocdn.com/video/2107210747-89295709aff33c81109ba2f4e6e8849d406fbe67547c51ae3dac492f879ee908-d_640" alt="Snap creator video" loading="lazy"></div><div class="snap-phone" data-bg-vimeo="1154741514"><img src="https://i.vimeocdn.com/video/2107163698-26a99f03687f7e761a37e64ce7b6499d5cbb92d50c627d556e4cb55d48cf4762-d_640" alt="Snap creator video" loading="lazy"></div></div></div></div>
     </div>
   </div>
 </section>
@@ -367,5 +386,24 @@ body > * { position: relative; z-index: 1; }
     if(active){ player(active).setMuted(true); setBtn(active,false); }
     if(active===b){ active=null; w.classList.remove('paused'); return; }
     var p=player(b); p.setMuted(false); p.setVolume(1); setBtn(b,true); active=b; w.classList.add('paused'); });
+})();
+// Hero wall: live video only for the tiles marked data-live, only on a wide
+// hover-capable screen, and deferred so it never competes with first paint.
+(function(){
+  var wall = document.getElementById('snapWall'); if (!wall) return;
+  if (!window.matchMedia('(hover: hover) and (min-width: 821px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var mounted = false;
+  function mount(){
+    if (mounted) return; mounted = true;
+    wall.querySelectorAll('.snap-phone[data-live]').forEach(function(p){
+      var f = document.createElement('iframe');
+      f.src = 'https://player.vimeo.com/video/' + p.dataset.bgVimeo + '?background=1';
+      f.allow = 'autoplay'; f.title = 'Snap creator video'; f.loading = 'lazy';
+      p.appendChild(f); p.classList.add('live');
+    });
+  }
+  function defer(){ 'requestIdleCallback' in window ? requestIdleCallback(mount, {timeout: 2500}) : setTimeout(mount, 1200); }
+  new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) defer(); }); }, {rootMargin:'100px'}).observe(wall);
 })();
 </script>
