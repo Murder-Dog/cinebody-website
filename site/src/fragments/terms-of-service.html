@@ -261,10 +261,20 @@ body > * { position: relative; z-index: 1; }
   color: var(--teal);
 }
 
+/* Every in-page anchor clears the fixed 72px top nav (gb-346). Set once on the
+   page rather than per target, so a new section cannot be added without it. */
+html {
+  scroll-padding-top: 88px;
+}
+
+.terms-intro.reveal,
+.terms-section.reveal {
+  transform: none;
+}
+
 /* Section Headings */
 .terms-section {
   margin-bottom: 48px;
-  scroll-margin-top: 32px;
 }
 
 .terms-section h3 {
