@@ -212,6 +212,18 @@ body > * { position: relative; z-index: 1; }
 .snap-mwrap.paused .snap-mtrack { animation-play-state: paused; }
 @keyframes snapLeft { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 8px)); } }
 @keyframes snapRight { from { transform: translateX(calc(-50% - 8px)); } to { transform: translateX(0); } }
+/* THE PULL QUOTE. Words carry on paper, so the mark is the brand teal and the type is ink. */
+.snap-quote { max-width: 880px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.snap-quote .q { font-size: clamp(1.4rem, 2.6vw, 2.1rem); font-weight: 600; line-height: 1.35;
+  letter-spacing: -0.02em; color: #111; margin: 0 0 22px; text-wrap: balance; }
+.snap-quote .q::before { content: ''; display: block; width: 44px; height: 3px; border-radius: 2px;
+  background: var(--teal); margin: 0 auto 26px; }
+.snap-quote .by { font-size: .95rem; color: #5a6670; line-height: 1.5; }
+.snap-quote .by b { display: block; color: #111; font-weight: 700; }
+.snap-draft { display: inline-block; margin-bottom: 18px; padding: 5px 12px; border-radius: 9999px;
+  background: #fff4c7; border: 1px solid #e3c84a; color: #6b5300; font-size: 12px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; }
+
 /* THE WORK IS A GRID, NOT A PARADE (Scott, Nov 9: the hero and this were "the same wall twice").
    It was a second marquee of the same clips going the other way. Once a tile is something you
    click, a moving one is a target you have to chase, so these hold still: fourteen clips, each
@@ -354,6 +366,23 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     DRAFT QUOTE. NOT APPROVED. DO NOT SHIP THIS TO cinebody.com.
+
+     Scott, Nov 9: "lets put a tempo quote in so I can go get approval from them".
+     Nobody said these words. I wrote them so there is something concrete to take
+     to Snap and Contend, and the name and title are blanks on purpose so they
+     cannot be mistaken for a real attribution. The yellow DRAFT chip is there for
+     the same reason, and goes when the real words and the real person land.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="snap-light" style="padding-top:0">
+  <div class="snap-quote reveal">
+    <span class="snap-draft">Draft, pending approval</span>
+    <p class="q">We needed a month of content in the time a single shoot used to take, and it had to sound like real people rather than an ad. Cinebody built the system that made both true, every month.</p>
+    <p class="by"><b>First Last</b>Title, Contend</p>
+  </div>
+</section>
 
 <div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
 
