@@ -7,7 +7,12 @@
 
 :root {
   --teal: #00bcf1;
-  --teal-ink: #00718f; /* teal as type on white/yellow: 5.2:1 and 5.1:1 */
+  --teal-ink: #00718f; /* teal as SMALL type on white/yellow: 5.2:1 and 5.1:1 */
+  /* Teal as LARGE type (Scott, Nov 9: "i still see the dark blue"). --teal-ink is safe and reads
+     navy, which is not the brand. Text at 24px bold or 18.66px+ only has to clear 3:1, so display
+     type can come back toward the brand cyan: this is 3.43:1 on white against the brand's own
+     2.22:1, which fails even that. Small type stays on --teal-ink. */
+  --teal-display: #0096c0;
   --teal-dim: rgba(0,188,241,0.6);
   --yellow: #ffec03;
   --pink: #eb008b;
@@ -188,6 +193,9 @@ body > * { position: relative; z-index: 1; }
 @keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 .snap-light { background: #fff; color: #111; padding: 88px 0; }
+/* Two sections sharing a ground would stack their 88px paddings into 176px of nothing; the page
+   alternates now so this only guards against it coming back. */
+.snap-light + .snap-light, .snap-dark + .snap-dark { padding-top: 0; }
 .snap-light .label { color: var(--teal-ink); }
 .snap-light h2, .snap-dark h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 20px; }
 .snap-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
@@ -196,7 +204,7 @@ body > * { position: relative; z-index: 1; }
 .snap-stat { padding: 30px 24px; }
 .snap-stat:nth-child(2n) { border-left: 1px solid #eee; }
 .snap-stat:nth-child(n+3) { border-top: 1px solid #eee; }
-.snap-stat .n { font-size: 2.4rem; font-weight: 800; color: var(--teal-ink); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+.snap-stat .n { font-size: 2.4rem; font-weight: 800; color: var(--teal-display); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
 .snap-stat .l { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #6b6b6b; }
 .snap-dark { padding: 96px 0; background:
   radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%),
@@ -226,7 +234,7 @@ body > * { position: relative; z-index: 1; }
   background: linear-gradient(180deg, var(--teal) 0 33.33%, var(--yellow) 33.33% 66.66%, var(--pink) 66.66% 100%); }
 .snap-quote .q { max-width: 30ch; font-size: clamp(1.45rem, 2.8vw, 2.15rem); font-weight: 600;
   line-height: 1.32; letter-spacing: -0.025em; color: #111; margin: 0 0 20px; text-wrap: balance; }
-.snap-quote .q em { font-style: normal; color: var(--teal-ink); }
+.snap-quote .q em { font-style: normal; color: var(--teal-display); }
 .snap-quote .by { display: flex; align-items: baseline; gap: 10px; font-size: .95rem; color: #5a6670; }
 .snap-quote .by b { color: #111; font-weight: 700; }
 .snap-quote .by span::before { content: ''; display: inline-block; width: 14px; height: 1px;
@@ -320,6 +328,17 @@ body > * { position: relative; z-index: 1; }
 .snap-box h3 { font-size: 1.02rem; font-weight: 700; color: #111; margin-bottom: 8px; }
 .snap-box p { font-size: .86rem; line-height: 1.55; color: #555; }
 .snap-loop { margin-top: 20px; font-size: .95rem; color: #666; }
+/* THE SYSTEM, ON THE DARK (Scott, Nov 9: "we need some sort of like alternating so its not just
+   all white"). Moving it up left three white sections running together. The page alternates again:
+   dark hero, white challenge, dark system, white quote, dark work, yellow band. The boxes keep
+   their shape and change ground; on the dark the numbers go back to the BRAND teal, because the
+   ink teal only exists to carry type on white. */
+.snap-system .snap-box { border-color: rgba(255,255,255,.14); background: rgba(255,255,255,.03); }
+.snap-system .snap-box-n { color: var(--teal); }
+.snap-system .snap-box-o { color: #ff5ab8; }
+.snap-system .snap-box h3 { color: #fff; }
+.snap-system .snap-box p { color: rgba(255,255,255,.66); }
+.snap-system .snap-loop { color: rgba(255,255,255,.55); }
 @media (prefers-reduced-motion: reduce) { .snap-mtrack, .snap-box, .snap-pace-t i, .snap-pace-l::before { animation: none !important; } .snap-mrow { overflow-x: auto; } .snap-pace-t i { background: var(--teal); } }
 @media (max-width: 960px) { .snap-boxes { grid-template-columns: repeat(2, minmax(0, 1fr)); } .snap-box:last-child { grid-column: 1 / -1; } }
 @media (max-width: 820px) { .snap-split { grid-template-columns: 1fr; } .snap-phone { width: 120px; height: 213px; border-radius: 14px; } .snap-mtrack, .snap-mwrap { gap: 12px; } }
@@ -366,11 +385,13 @@ body > * { position: relative; z-index: 1; }
 </section>
 
 
-<section class="snap-light">
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#041a24"/></svg></div>
+
+<section class="snap-dark snap-system">
   <div class="contain" style="max-width:1040px">
     <div class="reveal">
       <div class="label">The System</div>
-      <h2>Built to repeat every month.</h2>
+      <h2 style="color:#fff">Built to repeat every month.</h2>
     </div>
     <div class="snap-boxes reveal">
 <div class="snap-box" style="--i:0"><div class="snap-box-n">01</div><div class="snap-box-o">Snap</div><h3>The Brief</h3><p>Snap sets the themes and the features to highlight.</p></div>
@@ -383,6 +404,8 @@ body > * { position: relative; z-index: 1; }
   </div>
 </section>
 
+
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
      DRAFT QUOTE. NOT APPROVED. DO NOT SHIP THIS TO cinebody.com.
@@ -398,7 +421,7 @@ body > * { position: relative; z-index: 1; }
      When Steven approves: delete this comment. If he changes a word, use his words,
      not these.
      ═══════════════════════════════════════════════════════════════════════════ -->
-<section class="snap-light" style="padding-top:0">
+<section class="snap-light">
   <div class="contain" style="max-width:1040px">
   <div class="snap-quote reveal">
     <p class="q">Snap wanted to flood social with content that actually felt like Snap, at a volume no production schedule could reach. <em>Cinebody was the only way we found to do&nbsp;it.</em></p>
