@@ -213,32 +213,32 @@ body > * { position: relative; z-index: 1; }
 @keyframes snapLeft { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 8px)); } }
 @keyframes snapRight { from { transform: translateX(calc(-50% - 8px)); } to { transform: translateX(0); } }
 /* THE PULL QUOTE. Words carry on paper, so the mark is the brand teal and the type is ink. */
-/* SET IT OFF (Scott, Nov 9: "lets set the quote off in a cool way"). It sat as centred text on
-   the same white as the section above it, so it read as another paragraph. Now it is a card that
-   breaks the white: the brand's own signature edge down the left (the teal, yellow and pink that
-   run across cinebody.com), an oversized quote glyph behind the words, and the sentence that
-   matters in ink teal. Type stays ink because it is words on paper; the edge is a mark and keeps
-   the brand colours. */
-.snap-quote { position: relative; max-width: 940px; margin: 0 auto; padding: 44px 44px 40px 64px;
-  background: #fbfdfe; border: 1px solid #e3ecf2; border-radius: 6px 20px 20px 6px;
-  box-shadow: 0 18px 50px rgba(15, 26, 36, .07); overflow: hidden; }
-.snap-quote::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+/* SET IT OFF, TIGHTLY (Scott, Nov 9: "lets set the quote off in a cool way", then "something
+   about this doesnt feel tight").
+   The first pass wore four devices at once - a left bar, a border, a drop shadow and a big glyph -
+   and the card's padding pushed the words off the left margin every other block on the page sits
+   on. So: no card. The signature edge stands at the page's own gutter, the words start right after
+   it on that same line, and the measure is cut so the quote reads in three tight lines instead of
+   running the full column. One device, one alignment. */
+.snap-quote { position: relative; padding-left: 26px; }
+.snap-quote::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 5px;
+  border-radius: 3px;
   background: linear-gradient(180deg, var(--teal) 0 33.33%, var(--yellow) 33.33% 66.66%, var(--pink) 66.66% 100%); }
-.snap-quote::after { content: '\201C'; position: absolute; left: 34px; top: -26px;
-  font-size: 170px; line-height: 1; font-weight: 800; color: rgba(0,188,241,.11); pointer-events: none; }
-.snap-quote .q { position: relative; font-size: clamp(1.35rem, 2.5vw, 1.95rem); font-weight: 600;
-  line-height: 1.38; letter-spacing: -0.02em; color: #111; margin: 0 0 24px; text-wrap: balance; }
+.snap-quote .q { max-width: 30ch; font-size: clamp(1.45rem, 2.8vw, 2.15rem); font-weight: 600;
+  line-height: 1.32; letter-spacing: -0.025em; color: #111; margin: 0 0 20px; text-wrap: balance; }
 .snap-quote .q em { font-style: normal; color: var(--teal-ink); }
-.snap-quote .by { position: relative; display: flex; align-items: baseline; gap: 10px;
-  font-size: .95rem; color: #5a6670; }
+.snap-quote .by { display: flex; align-items: baseline; gap: 10px; font-size: .95rem; color: #5a6670; }
 .snap-quote .by b { color: #111; font-weight: 700; }
 .snap-quote .by span::before { content: ''; display: inline-block; width: 14px; height: 1px;
   background: #c3d2dc; margin-right: 10px; vertical-align: middle; }
+/* Three lines on a desktop column: narrow enough to read as a quote, wide enough not to
+   leave half the page empty beside it. */
+@media (min-width: 821px) { .snap-quote .q { max-width: 46ch; } }
 @media (max-width: 560px) {
-  .snap-quote { padding: 34px 24px 30px 34px; }
-  .snap-quote::after { left: 18px; top: -18px; font-size: 120px; }
+  .snap-quote { padding-left: 18px; }
   .snap-quote .by { flex-direction: column; gap: 2px; }
   .snap-quote .by span::before { display: none; }
+}
 }
 
 /* THE WORK IS A GRID, NOT A PARADE (Scott, Nov 9: the hero and this were "the same wall twice").
