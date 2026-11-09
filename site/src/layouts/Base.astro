@@ -22,10 +22,22 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, ''
 const slug = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
 // per-page branded share card where we generate one; otherwise the passed image (blog hero) or default
 const ogImage = new URL(hasOG(slug) ? `/og/${ogFileSlug(slug)}.png` : image, Astro.site).href;
-// THE SHARE VIDEO (Oct 26): the homepage's link preview plays - the hero wall as a 12s loop
-// with the headline (public/share/cinebody-hero.mp4, built from the wall tiles). iMessage and
-// X play it inline; everything else shows its poster. Other pages keep their still card.
-const shareVideo = slug === '' ? { url: new URL('/share/cinebody-hero.mp4', Astro.site).href, poster: new URL('/share/cinebody-hero.jpg', Astro.site).href, width: 1200, height: 630 } : null;
+// THE SHARE VIDEOS (Oct 26, Snap added Nov 9): a link preview that PLAYS. iMessage and X play
+// the mp4 inline; everything else falls back to its poster, so the still has to stand on its own.
+// Pages not listed here keep the ordinary still card.
+//
+// The homepage's was made by hand and nothing recorded how. Snap's has a script
+// (site/scripts/build-snap-share.mjs) so the next one is a command, not an afternoon.
+const SHARE_VIDEOS: Record<string, string> = { '': 'cinebody-hero', 'snap': 'snap-hero' };
+const shareName = SHARE_VIDEOS[slug];
+const shareVideo = shareName
+  ? {
+      url: new URL(`/share/${shareName}.mp4`, Astro.site).href,
+      poster: new URL(`/share/${shareName}.jpg`, Astro.site).href,
+      width: 1200,
+      height: 630,
+    }
+  : null;
 
 const orgSchema = {
   '@context': 'https://schema.org',
