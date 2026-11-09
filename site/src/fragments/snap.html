@@ -213,16 +213,33 @@ body > * { position: relative; z-index: 1; }
 @keyframes snapLeft { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 8px)); } }
 @keyframes snapRight { from { transform: translateX(calc(-50% - 8px)); } to { transform: translateX(0); } }
 /* THE PULL QUOTE. Words carry on paper, so the mark is the brand teal and the type is ink. */
-.snap-quote { max-width: 880px; margin: 0 auto; padding: 0 24px; text-align: center; }
-.snap-quote .q { font-size: clamp(1.4rem, 2.6vw, 2.1rem); font-weight: 600; line-height: 1.35;
-  letter-spacing: -0.02em; color: #111; margin: 0 0 22px; text-wrap: balance; }
-.snap-quote .q::before { content: ''; display: block; width: 44px; height: 3px; border-radius: 2px;
-  background: var(--teal); margin: 0 auto 26px; }
-.snap-quote .by { font-size: .95rem; color: #5a6670; line-height: 1.5; }
-.snap-quote .by b { display: block; color: #111; font-weight: 700; }
-.snap-draft { display: inline-block; margin-bottom: 18px; padding: 5px 12px; border-radius: 9999px;
-  background: #fff4c7; border: 1px solid #e3c84a; color: #6b5300; font-size: 12px; font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase; }
+/* SET IT OFF (Scott, Nov 9: "lets set the quote off in a cool way"). It sat as centred text on
+   the same white as the section above it, so it read as another paragraph. Now it is a card that
+   breaks the white: the brand's own signature edge down the left (the teal, yellow and pink that
+   run across cinebody.com), an oversized quote glyph behind the words, and the sentence that
+   matters in ink teal. Type stays ink because it is words on paper; the edge is a mark and keeps
+   the brand colours. */
+.snap-quote { position: relative; max-width: 940px; margin: 0 auto; padding: 44px 44px 40px 64px;
+  background: #fbfdfe; border: 1px solid #e3ecf2; border-radius: 6px 20px 20px 6px;
+  box-shadow: 0 18px 50px rgba(15, 26, 36, .07); overflow: hidden; }
+.snap-quote::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+  background: linear-gradient(180deg, var(--teal) 0 33.33%, var(--yellow) 33.33% 66.66%, var(--pink) 66.66% 100%); }
+.snap-quote::after { content: '\201C'; position: absolute; left: 34px; top: -26px;
+  font-size: 170px; line-height: 1; font-weight: 800; color: rgba(0,188,241,.11); pointer-events: none; }
+.snap-quote .q { position: relative; font-size: clamp(1.35rem, 2.5vw, 1.95rem); font-weight: 600;
+  line-height: 1.38; letter-spacing: -0.02em; color: #111; margin: 0 0 24px; text-wrap: balance; }
+.snap-quote .q em { font-style: normal; color: var(--teal-ink); }
+.snap-quote .by { position: relative; display: flex; align-items: baseline; gap: 10px;
+  font-size: .95rem; color: #5a6670; }
+.snap-quote .by b { color: #111; font-weight: 700; }
+.snap-quote .by span::before { content: ''; display: inline-block; width: 14px; height: 1px;
+  background: #c3d2dc; margin-right: 10px; vertical-align: middle; }
+@media (max-width: 560px) {
+  .snap-quote { padding: 34px 24px 30px 34px; }
+  .snap-quote::after { left: 18px; top: -18px; font-size: 120px; }
+  .snap-quote .by { flex-direction: column; gap: 2px; }
+  .snap-quote .by span::before { display: none; }
+}
 
 /* THE WORK IS A GRID, NOT A PARADE (Scott, Nov 9: the hero and this were "the same wall twice").
    It was a second marquee of the same clips going the other way. Once a tile is something you
@@ -378,14 +395,15 @@ body > * { position: relative; z-index: 1; }
      words attributed to a person who has not approved them must not reach a public
      page. The title is still blank because I do not know it.
 
-     When Steven approves: take the chip out and delete this comment. If he changes
-     a word, use his words, not these.
+     When Steven approves: delete this comment. If he changes a word, use his words,
+     not these.
      ═══════════════════════════════════════════════════════════════════════════ -->
 <section class="snap-light" style="padding-top:0">
+  <div class="contain" style="max-width:1040px">
   <div class="snap-quote reveal">
-    <span class="snap-draft">Draft, pending approval</span>
-    <p class="q">Snap wanted to flood social with content that actually felt like Snap, at a volume no production schedule could reach. Cinebody was the only way we found to do&nbsp;it.</p>
-    <p class="by"><b>Steven Amato</b>CEO, Contend</p>
+    <p class="q">Snap wanted to flood social with content that actually felt like Snap, at a volume no production schedule could reach. <em>Cinebody was the only way we found to do&nbsp;it.</em></p>
+    <p class="by"><b>Steven Amato</b><span>CEO, Contend</span></p>
+  </div>
   </div>
 </section>
 
