@@ -468,9 +468,26 @@ body > * { position: relative; z-index: 1; }
     box.style.width = w + 'px';
     box.style.height = h + 'px';
   }
+  // WHEN IT ENDS, IT LEAVES (Scott, Nov 9). A clip is twenty seconds; sitting on a frozen last
+  // frame waiting for you to find the X is the wrong end to a short video. The player API tells us
+  // when it finishes, so the page takes the lightbox away and you are back in the grid.
+  function watchForEnd(){
+    var f = box.querySelector('iframe'); if (!f) return;
+    function attach(){ try { new Vimeo.Player(f).on('ended', close); } catch (e) {} }
+    if (typeof Vimeo !== 'undefined') { attach(); return; }
+    var sc = document.querySelector('script[data-vimeo-api]');
+    if (!sc) {
+      sc = document.createElement('script');
+      sc.src = 'https://player.vimeo.com/api/player.js';
+      sc.setAttribute('data-vimeo-api', '1');
+      document.head.appendChild(sc);
+    }
+    sc.addEventListener('load', attach);
+  }
   function open(id){
     box.innerHTML = '<iframe src="https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" title="Snap creator video"></iframe>';
     fit();
+    watchForEnd();
     lb.classList.add('open');
     scrollLock = document.body.style.overflow; document.body.style.overflow = 'hidden';
   }
