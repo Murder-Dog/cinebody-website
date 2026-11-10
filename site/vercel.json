@@ -148,6 +148,15 @@
       ]
     },
     {
+      "source": "/nfl",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/boost",
       "headers": [
         {
@@ -1089,6 +1098,22 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/wme/creator-labs",
+      "destination": "https://cinebody-wme-creator-labs.vercel.app/"
+    },
+    {
+      "source": "/wme/creator-labs/:path*",
+      "destination": "https://cinebody-wme-creator-labs.vercel.app/:path*"
+    },
+    {
+      "source": "/production",
+      "destination": "https://cinebody-production-pitch.vercel.app/"
+    },
+    {
+      "source": "/production/:path*",
+      "destination": "https://cinebody-production-pitch.vercel.app/:path*"
+    },
     {
       "source": "/wme",
       "destination": "https://cinebody-wme.vercel.app/"
