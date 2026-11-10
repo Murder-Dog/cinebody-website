@@ -1099,6 +1099,22 @@
   ],
   "rewrites": [
     {
+      "source": "/nfl",
+      "destination": "https://cinebody-nfl-pitch.vercel.app/"
+    },
+    {
+      "source": "/nfl/:path*",
+      "destination": "https://cinebody-nfl-pitch.vercel.app/:path*"
+    },
+    {
+      "source": "/creator-labs",
+      "destination": "https://cinebody-wme-creator-labs.vercel.app/"
+    },
+    {
+      "source": "/creator-labs/:path*",
+      "destination": "https://cinebody-wme-creator-labs.vercel.app/:path*"
+    },
+    {
       "source": "/wme/creator-labs",
       "destination": "https://cinebody-wme-creator-labs.vercel.app/"
     },
