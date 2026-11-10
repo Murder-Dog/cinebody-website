@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>NFL × Cinebody · Fan Content Pitch</title>
+<title>NFL × Cinebody · Initial Ideas</title>
 <meta name="description" content="Four fan-captured content concepts for the NFL and its clubs, filmed on the phones fans already carry.">
 
 <!-- Favicon (same as cinebody.com root) -->
@@ -15,14 +15,14 @@
 <!-- Share card / Open Graph (same image as cinebody.com root) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cinebody">
-<meta property="og:title" content="NFL × Cinebody · Fan Content Pitch">
+<meta property="og:title" content="NFL × Cinebody · Initial Ideas">
 <meta property="og:description" content="Four fan-captured content concepts for the NFL and its clubs, filmed on the phones fans already carry.">
 <meta property="og:url" content="https://www.cinebody.com/nfl">
 <meta property="og:image" content="https://www.cinebody.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NFL × Cinebody · Fan Content Pitch">
+<meta name="twitter:title" content="NFL × Cinebody · Initial Ideas">
 <meta name="twitter:description" content="Four fan-captured content concepts for the NFL and its clubs, filmed on the phones fans already carry.">
 <meta name="twitter:image" content="https://www.cinebody.com/og.png">
 
@@ -80,6 +80,31 @@ a { color: inherit; text-decoration: none; }
 .btn svg { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
 .btn:hover svg { transform: translateX(3px); }
 
+
+/* ── WHAT CINEBODY IS + HOW IT WORKS ── */
+.whatis { background: #fff; padding: 80px 0 72px; }
+.whatis .contain { max-width: 900px; }
+.whatis h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; color: #111; }
+.whatis h2 em { font-style: normal; color: var(--teal); }
+.whatis-body { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 36px; max-width: 700px; }
+.whatis-body strong { color: #111; }
+.hiw { background: #0a0f16; padding: 72px 0 84px; text-align: center; }
+.hiw .label { text-align: center; }
+.hiw h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.2; margin-bottom: 12px; }
+.hiw-sub { font-size: 0.95rem; color: var(--text-dim); max-width: 560px; margin: 0 auto 48px; line-height: 1.6; }
+.hiw-flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; position: relative; }
+.hiw-flow::before { content: ""; position: absolute; top: 27px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, var(--teal), var(--yellow), var(--pink), var(--teal), var(--yellow)); opacity: .55; }
+.hiw-step { position: relative; display: flex; flex-direction: column; align-items: center; }
+.hiw-n { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 700; font-size: 15px; background: #0a0f16; border: 2px solid var(--c); color: var(--c); box-shadow: 0 0 22px -6px var(--c); margin-bottom: 18px; }
+.hiw-step h3 { font-size: 0.98rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+.hiw-step p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.55; max-width: 200px; }
+.svc-grid--two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px) {
+  .svc-grid--two { grid-template-columns: 1fr; }
+  .hiw-flow { grid-template-columns: 1fr; gap: 26px; max-width: 360px; margin: 0 auto; }
+  .hiw-flow::before { display: none; }
+}
+
 /* ── CURVED DIVIDERS ── */
 .curve { position: relative; z-index: 3; width: 100%; line-height: 0; font-size: 0; margin-top: -10px; margin-bottom: -10px; background: none !important; }
 .curve svg { display: block; width: 100%; height: 70px; }
@@ -110,7 +135,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero-logos { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .hero-logos img { height: 20px; width: auto; }
-
+.hero-logos img.nfl-logo { height: 44px; }
 .hero-logos span { color: var(--text-muted); font-size: 16px; font-weight: 300; }
 
 .hero-eyebrow {
@@ -305,7 +330,7 @@ a { color: inherit; text-decoration: none; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .footer-logos { display: flex; align-items: center; gap: 14px; }
 .footer-logo { height: 18px; filter: brightness(0) invert(1); opacity: 0.4; }
-
+.footer-logo--nfl { height: 30px; filter: none; opacity: 0.85; }
 .footer-br { font-family: var(--mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 .footer-legal { font-family: var(--mono); font-size: 10px; color: var(--text-muted); }
 
@@ -358,8 +383,10 @@ a { color: inherit; text-decoration: none; }
     <div class="reveal">
       <div class="hero-logos">
         <img src="/assets/5b29f7e3-cb_white.png" alt="Cinebody">
+        <span>+</span>
+        <img class="nfl-logo" src="/assets/nfl-shield.svg" alt="NFL">
       </div>
-      <div class="hero-eyebrow">Cinebody · NFL Fan Content Pitch</div>
+      <div class="hero-eyebrow">Cinebody · Initial ideas for the NFL</div>
       <h1>It's not about<br>the game.<br><em>It's about being there.</em></h1>
       <div class="hero-case">
         <p>The broadcast covers the game. Everything around it is what fans actually live: the jersey going on at home, the tailgate, a kid's first game, the walk into the stadium, the noise at kickoff. It's also what they share, every week, on the phones already in their pockets.</p>
@@ -428,6 +455,39 @@ a { color: inherit; text-decoration: none; }
 
 <!-- ═══ CURVE: dark → light ═══ -->
 <div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
+
+<!-- ═══ WHAT CINEBODY IS ═══ -->
+<section class="whatis">
+  <div class="contain">
+    <div class="reveal">
+      <div class="bridge-tag">What Cinebody is</div>
+      <h2>A video platform that turns fans, staff and creators <em>into a content team.</em></h2>
+      <p class="whatis-body">Cinebody is a video capture platform. You send out a shot list, people film on the phones already in their pockets, and AI helps cut the footage into finished content, fast. It&#39;s built for the moments a broadcast crew can&#39;t be everywhere for: the tailgate, the concourse, a kid&#39;s first game. <strong>Real footage. AI-assisted, never AI-generated.</strong></p>
+      <div class="bridge-four">
+        <div class="bridge-item"><div class="bridge-item-num">01</div><div class="bridge-item-copy"><h4>More content</h4><p>Every gameday becomes dozens of fan and staff stories, not one recap.</p></div></div>
+        <div class="bridge-item"><div class="bridge-item-num">02</div><div class="bridge-item-copy"><h4>Real fans</h4><p>Filmed by the people living it, which no staged shoot can match.</p></div></div>
+        <div class="bridge-item"><div class="bridge-item-num">03</div><div class="bridge-item-copy"><h4>Fast turnaround</h4><p>Recaps and Shorts ready as the game ends, while it&#39;s still trending.</p></div></div>
+        <div class="bridge-item"><div class="bridge-item-num">04</div><div class="bridge-item-copy"><h4>No extra crews</h4><p>No camera teams needed in the lots, the concourse or the stands.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#0a0f16"/></svg></div>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="hiw">
+  <div class="contain">
+    <div class="reveal">
+      <div class="label">How it works</div>
+      <h2>Anyone with a phone shoots like a pro.</h2>
+      <p class="hiw-sub">Fans, staff and creators film. AI makes it effortless and great. Your team approves.</p>
+    </div>
+    <ol class="hiw-flow reveal reveal-d1" aria-label="How Cinebody works, in five steps"><li class="hiw-step" style="--c:var(--teal)"><div class="hiw-n">01</div><h3>Anyone films</h3><p>Fans, staff, creators or club content teams, on any phone, through the app or a branded web link.</p></li><li class="hiw-step" style="--c:var(--yellow)"><div class="hiw-n">02</div><h3>AI shot list and live cues</h3><p>Ideas for what to film, and on-screen cues that make every take easy.</p></li><li class="hiw-step" style="--c:var(--pink)"><div class="hiw-n">03</div><h3>Auto-edit into moments</h3><p>The best takes become recaps and Shorts, ready as soon as the game ends.</p></li><li class="hiw-step" style="--c:var(--teal)"><div class="hiw-n">04</div><h3>Your team approves</h3><p>Nothing posts without the league&#39;s or the club&#39;s sign-off.</p></li><li class="hiw-step" style="--c:var(--yellow)"><div class="hiw-n">05</div><h3>Post everywhere</h3><p>Cut for social, YouTube, paid and in-stadium screens.</p></li></ol>
+  </div>
+</section>
+
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#0a0f16"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
 
 <!-- ═══ BRIDGE ═══ -->
 <section class="bridge">
@@ -508,10 +568,7 @@ a { color: inherit; text-decoration: none; }
             <div class="pillar-stat-label">Crews needed</div>
           </div>
         </div>
-        <div class="service-note">
-          <svg class="service-note-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          <div class="service-note-text"><strong>Scale plan:</strong> Start with one club and one playoff game to prove the model. Recruit new fans each week, then roll it out club by club so the story pool compounds instead of repeating.</div>
-        </div>
+        
       </div>
 
       <!-- Visual: RIGHT -->
@@ -584,7 +641,7 @@ a { color: inherit; text-decoration: none; }
         </div>
         <div class="service-note" style="background:rgba(0,188,241,0.04);border-color:rgba(0,188,241,0.12)">
           <svg class="service-note-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          <div class="service-note-text" style="color:#666"><strong style="color:var(--teal)">Why it matters for the media buy:</strong> This is a paid social engagement play as much as a content play. It puts your own audience to work generating assets for you, so the campaign produces the creative it runs on.</div>
+          <div class="service-note-text" style="color:#666"><strong style="color:var(--teal)">The media buy opportunity:</strong> The contest is a marketing campaign in its own right, built to drive engagement and entries. Every entry is also an asset, so the same spend that drives engagement leaves you with a library of fan content to run in the next flight.</div>
         </div>
       </div>
 
@@ -658,7 +715,7 @@ a { color: inherit; text-decoration: none; }
         </div>
         <div class="service-note">
           <svg class="service-note-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          <div class="service-note-text"><strong>The Cinebody Creative Services team handles:</strong> Creator recruitment and incentives, the day's shot list and route, remote direction during capture, and edited delivery ready for ticketing, tourism, and social.</div>
+          <div class="service-note-text"><strong>The NFL&#39;s internal team or the Cinebody team can handle all of it:</strong> creator recruitment and incentives, the day&#39;s shot list and route, remote direction during capture, and edited delivery ready for ticketing, tourism, and social.</div>
         </div>
       </div>
 
@@ -765,9 +822,9 @@ a { color: inherit; text-decoration: none; }
 <section class="roadmap">
   <div class="contain">
     <div class="roadmap-head reveal">
-      <div class="label" style="text-align:center">How we'd sequence it</div>
-      <h2>Let's start with the playoffs,<br><em>and build from there.</em></h2>
-      <p>Concepts 01 and 02 we can move on quickly, starting with one club's playoff run. As we execute those, we can expand to Concepts 03 and 04 across more clubs and the league's tentpoles, ahead of next season's kickoff.</p>
+      <div class="label" style="text-align:center">Initial ideas</div>
+      <h2>Four thought starters.<br><em>The possibilities are wide open.</em></h2>
+      <p>These are a few starting points to show what&#39;s possible, not a finished plan. Any club, any tentpole and any fan moment can get a shot list, from a single playoff game to Draft week to a season-long series. We&#39;d love to talk through what would be most useful for the NFL and shape it from there.</p>
     </div>
   </div>
 </section>
@@ -779,48 +836,37 @@ a { color: inherit; text-decoration: none; }
 <section class="services" style="padding-top:60px">
   <div class="contain">
     <div class="services-head reveal">
-      <div class="label">Cinebody Creative Services</div>
-      <h2>You bring the access.<br>We handle everything else.</h2>
-      <p>Fans, staff and creators film on the phones already in their pockets. Cinebody's creative team does the rest (strategy, direction, editing, and delivery), stepping in as much or as little as makes sense alongside NFL Films and the club content teams.</p>
+      <div class="label">Two ways to run it</div>
+      <h2>Run it yourselves,<br>or let us run it.</h2>
+      <p>The NFL and club content teams can use the Cinebody platform directly: build the shot lists, send them out, review clips as they land and cut them with AI. Or Cinebody&#39;s creative team can handle it end to end, alongside NFL Films and the club teams. Most programs mix the two.</p>
     </div>
-    <div class="svc-grid reveal reveal-d1">
+    <div class="svc-grid svc-grid--two reveal reveal-d1">
 
       <div class="svc-card">
         <div class="svc-bar svc-bar--teal"></div>
-        <h3>Program Design &amp; Recruitment</h3>
-        <p>Cinebody maps each concept to a run-of-show with your team, writes every shot list and prompt, and handles recruiting and incentivizing the fans and creators who film.</p>
+        <h3>Your team, on the platform</h3>
+        <p>Your producers run every program in Cinebody. Fans, staff and creators film to your shot lists, and every clip lands in one library, ready to cut.</p>
         <ul>
-          <li>Concept &amp; program mapping</li>
-          <li>Shot list &amp; prompt creation</li>
-          <li>Fan / creator recruitment</li>
-          <li>Contest mechanics &amp; rules</li>
-          <li>KPI &amp; measurement framework</li>
-        </ul>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-bar svc-bar--yellow"></div>
-        <h3>Gameday Capture Support</h3>
-        <p>Remote creative direction throughout the gameday arc, real-time quality review as clips come in, and on-site support for playoff games when it's worth it.</p>
-        <ul>
-          <li>Remote capture direction</li>
-          <li>Real-time quality review</li>
-          <li>On-site playoff support</li>
-          <li>Unlimited filmers deployed</li>
-          <li>Same-day content sync</li>
+          <li>Shot list builder with on-screen cues</li>
+          <li>Branded capture links, no app download</li>
+          <li>Fan, staff and creator uploads in one library</li>
+          <li>AI-assisted editing into recaps and Shorts</li>
+          <li>Approvals and Proof of Capture on every clip</li>
+          <li>Publishing to social and YouTube</li>
         </ul>
       </div>
 
       <div class="svc-card">
         <div class="svc-bar svc-bar--pink"></div>
-        <h3>Edit, Brand &amp; Deliver</h3>
-        <p>Quick-turn editing, league and club-branded motion graphics, subtitles, and platform-optimized packaging for TikTok, Instagram, YouTube, paid social, and in-stadium screens.</p>
+        <h3>Our team, end to end</h3>
+        <p>Cinebody&#39;s creative team designs the program, recruits and directs the people filming, and delivers finished, branded content.</p>
         <ul>
+          <li>Concept and program mapping</li>
+          <li>Fan and creator recruitment, contest mechanics and rules</li>
+          <li>Remote capture direction and on-site gameday support</li>
           <li>24-hour recap turnaround</li>
-          <li>Branded motion graphics</li>
-          <li>Platform-specific formatting</li>
-          <li>Evergreen b-roll bank</li>
-          <li>Paid social asset packages</li>
+          <li>League and club-branded motion graphics</li>
+          <li>Paid social asset packages and an evergreen b-roll bank</li>
         </ul>
       </div>
 
@@ -835,7 +881,7 @@ a { color: inherit; text-decoration: none; }
 <section class="cta-band">
   <div class="contain">
     <h2 class="reveal">Let's capture what it feels like<br><span>to be an NFL fan.</span></h2>
-    <p class="reveal reveal-d1">Four concepts. One game to prove it. Start small, and let the library compound into next season.</p>
+    <p class="reveal reveal-d1">Four thought starters to get the conversation going. Let&#39;s talk through which ones fit, and what else they spark.</p>
   </div>
 </section>
 
@@ -848,6 +894,7 @@ a { color: inherit; text-decoration: none; }
     <div class="footer-inner">
       <div class="footer-logos">
         <img class="footer-logo" src="/assets/5b29f7e3-cb_white.png" alt="Cinebody">
+        <img class="footer-logo footer-logo--nfl" src="/assets/nfl-shield.svg" alt="NFL">
       </div>
       <div class="footer-br">Cinebody Creative Services</div>
       <div class="footer-legal">Confidential · NFL × Cinebody · 2026</div>
