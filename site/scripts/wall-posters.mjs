@@ -10,6 +10,9 @@
 // scroller script in Base.astro creates an iframe on demand for the cards in
 // view and removes it when they scroll out. Mobile never streams.
 //
+// The clips themselves are self-hosted in public/video/wall/<id>-360.mp4 (landscape: -854.mp4),
+// produced by scripts/encode-video.sh. A card whose clip file is missing throws.
+//
 // Usage: node scripts/wall-posters.mjs   (idempotent; re-run after editing the wall)
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -51,9 +54,8 @@ async function main() {
         const iframe = (m.match(/<iframe[^>]*>/) || [''])[0];
         const video = attr(iframe, 'data-src') || attr(iframe, 'src') || attr(m, 'data-video');
         if (!video) throw new Error(`no video url for card: ${label}`);
-        const id = (video.match(/\/video\/(\d+)/) || [])[1];
+        const id = (video.match(/\/video\/(?:wall\/)?(\d+)/) || [])[1];
         if (!id) throw new Error(`no video id in ${video}`);
-        const clean = video.replace(/[?&]dnt=1/, '');
 
         if (!cache.has(id)) {
           const p480 = path.join(OUT, `${id}-480.webp`);
@@ -73,8 +75,9 @@ async function main() {
           cache.set(id, { wide });
         }
         const { wide } = cache.get(id);
+        if (!existsSync(path.join(ROOT, `public/video/wall/${id}-${wide ? 854 : 360}.mp4`))) throw new Error(`missing self-hosted clip for ${id}`);
         const load = eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
-        return `<div class="scr-card${wide ? ' scr-wide' : ''}" data-video="${clean}"><img src="/wall/${id}-240.webp" srcset="/wall/${id}-240.webp 240w, /wall/${id}-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" ${load}/><div class="scr-label">${label}</div></div>`;
+        return `<div class="scr-card${wide ? ' scr-wide' : ''}" data-video="/video/wall/${id}-${wide ? 854 : 360}.mp4"><img src="/wall/${id}-240.webp" srcset="/wall/${id}-240.webp 240w, /wall/${id}-480.webp 480w" sizes="(max-width: 767px) 33vw, 145px" width="240" height="427" alt="" decoding="async" ${load}/><div class="scr-label">${label}</div></div>`;
       })().then((html) => [token, html]));
       return token;
     });
