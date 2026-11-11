@@ -1187,6 +1187,14 @@
     {
       "source": "/presentation/contend-snap/:path*",
       "destination": "https://cinebody-contend-snap.vercel.app/:path*"
+    },
+    {
+      "source": "/presentation/adidas",
+      "destination": "https://cinebody-adidas.vercel.app/"
+    },
+    {
+      "source": "/presentation/adidas/:path*",
+      "destination": "https://cinebody-adidas.vercel.app/:path*"
     }
   ]
 }
