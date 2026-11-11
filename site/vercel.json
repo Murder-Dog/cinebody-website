@@ -148,6 +148,15 @@
       ]
     },
     {
+      "source": "/adidas-v2",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/adidas",
       "headers": [
         {
@@ -1107,6 +1116,14 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/adidas-v2",
+      "destination": "https://cinebody-adidas-v2.vercel.app/"
+    },
+    {
+      "source": "/adidas-v2/:path*",
+      "destination": "https://cinebody-adidas-v2.vercel.app/:path*"
+    },
     {
       "source": "/adidas",
       "destination": "https://cinebody-adidas-pitch.vercel.app/"
