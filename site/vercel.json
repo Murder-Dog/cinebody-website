@@ -148,24 +148,6 @@
       ]
     },
     {
-      "source": "/adidas-v2",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
-      "source": "/adidas",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
       "source": "/nfl",
       "headers": [
         {
@@ -1116,22 +1098,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/adidas-v2",
-      "destination": "https://cinebody-adidas-v2.vercel.app/"
-    },
-    {
-      "source": "/adidas-v2/:path*",
-      "destination": "https://cinebody-adidas-v2.vercel.app/:path*"
-    },
-    {
-      "source": "/adidas",
-      "destination": "https://cinebody-adidas-pitch.vercel.app/"
-    },
-    {
-      "source": "/adidas/:path*",
-      "destination": "https://cinebody-adidas-pitch.vercel.app/:path*"
-    },
     {
       "source": "/nfl",
       "destination": "https://cinebody-nfl-pitch.vercel.app/"
