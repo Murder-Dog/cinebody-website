@@ -413,27 +413,12 @@ p, li { text-wrap: pretty; }
 .store-badge { display: inline-block; line-height: 0; transition: transform 0.2s ease, opacity 0.2s ease; }
 .store-badge svg { height: 44px; width: auto; display: block; }
 .store-badge:hover { transform: translateY(-2px); opacity: 0.88; }
-/* In private beta until the apps are in the stores (Sep 28): the badges show but do not link, with a small tag. */
-.store-badge--soon { opacity: 0.7; cursor: default; }
-.store-badge--soon:hover { transform: none; opacity: 0.7; }
-.store-badges:has(.store-badge--soon) { align-items: center; }
-.store-badges:has(.store-badge--soon)::after {
-  content: 'In private beta'; align-self: center;
-  padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(235,0,139,0.55);
-  color: #ff5cb8; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
-}
-/* Centered stack (yellow CTA band): the tag sits beside the label so the two badges stay symmetric. */
-.cta-apps .store-badges::after { display: none; }
+/* Centered stack (yellow CTA band). */
 .cta-apps__label { display: inline-flex; align-items: center; gap: 10px; }
-.cta-apps:has(.store-badge--soon) .cta-apps__label::after {
-  content: 'In private beta'; padding: 3px 9px; border-radius: 999px; border: 1px solid rgba(235,0,139,0.6);
-  color: var(--pink); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
-}
 @media (max-width: 768px) { .footer-apps { justify-content: center; } }
-/* Yellow "Get the app" band only (homepage CTA): badges side by side, the pill on its own line centered under the pair */
-.cta-apps .store-badges:has(.store-badge--soon) { display: inline-grid; grid-template-columns: auto auto; justify-content: center; justify-items: center; align-items: center; gap: 12px; }
-.cta-apps .store-badges:has(.store-badge--soon)::after { grid-column: 1 / -1; justify-self: center; }
-@media (max-width: 380px) { .cta-apps .store-badges:has(.store-badge--soon) { gap: 10px; } .cta-apps .store-badges:has(.store-badge--soon) .store-badge svg { height: 38px; } }
+/* Yellow "Get the app" band only (homepage CTA): the two badges side by side, centered. */
+.cta-apps .store-badges { justify-content: center; }
+@media (max-width: 380px) { .cta-apps .store-badges { gap: 10px; } .cta-apps .store-badges .store-badge svg { height: 38px; } }
 .sig-bar { height: 3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal) 33.33%, var(--yellow) 33.33%, var(--yellow) 66.66%, var(--pink) 66.66%); }
 .footer .contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, calc(4vw / var(--zv,1)), 3rem); }
 
