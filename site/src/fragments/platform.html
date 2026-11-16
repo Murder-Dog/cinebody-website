@@ -2634,6 +2634,91 @@ body.shot-lb-open { overflow: hidden; touch-action: none; overscroll-behavior: n
   </div>
 </section>
 
+<!-- ═══ AI ASSISTANTS ═══
+     Cinebody as a connector for Claude, Grok, ChatGPT and Gemini (the customer MCP endpoint,
+     app.cinebody.com/api/v1/mcp). Enterprise only. Do not publish until each named assistant
+     has been set up and seen working. -->
+<style>
+.assist { padding: 20px 0 104px; position: relative; background: #08131a; overflow: hidden; }
+.assist-split { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(32px, calc(6vw / var(--zv,1)), 84px); align-items: center; }
+.assist-copy h2 { font-size: clamp(2rem, calc(4vw / var(--zv,1)), 2.85rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #fff !important; margin: 14px 0 16px; }
+.assist-copy h2 em { font-style: normal; color: var(--teal); }
+.assist-copy > p { font-size: 1rem; color: var(--text-dim); line-height: 1.65; max-width: 30em; }
+.assist-points { list-style: none; margin: 30px 0 0; display: grid; gap: 20px; }
+.assist-points li { padding-left: 18px; border-left: 2px solid rgba(0,188,241,0.45); }
+.assist-points b { display: block; color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+.assist-points span { display: block; color: var(--text-dim); font-size: 0.94rem; line-height: 1.6; }
+.assist-foot { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.assist-link { display: inline-flex; align-items: center; gap: 8px; color: var(--teal); font-weight: 600; font-size: 0.95rem; text-decoration: none; }
+.assist-link svg { width: 15px; height: 15px; transition: transform 0.3s var(--ease); }
+.assist-link:hover svg { transform: translateX(3px); }
+.assist-plan { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); }
+.assist-card { border: 1px solid var(--border); border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); box-shadow: 0 30px 80px -30px rgba(0,188,241,0.25); overflow: hidden; }
+.assist-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px 16px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.assist-tab { font-size: 12px; font-weight: 600; color: var(--text-dim); padding: 5px 11px; border-radius: 999px; border: 1px solid var(--border); }
+.assist-tab.on { color: #04222c; background: var(--teal); border-color: var(--teal); }
+.assist-chat { padding: 20px 18px 22px; display: grid; gap: 14px; }
+.assist-me { justify-self: end; max-width: 84%; background: rgba(255,255,255,0.09); color: #fff; font-size: 0.92rem; line-height: 1.5; padding: 10px 14px; border-radius: 16px 16px 4px 16px; }
+.assist-it { max-width: 94%; color: var(--text); font-size: 0.92rem; line-height: 1.55; }
+.assist-used { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
+.assist-used i { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); display: inline-block; }
+.assist-rows { list-style: none; margin: 10px 0 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.assist-rows li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 13px; font-size: 0.88rem; color: #fff; }
+.assist-rows li + li { border-top: 1px solid var(--border); }
+.assist-rows small { display: block; color: var(--text-dim); font-size: 12px; margin-top: 2px; }
+.assist-tag { flex-shrink: 0; font-style: normal; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; color: var(--yellow); border: 1px solid rgba(255,236,3,0.35); white-space: nowrap; }
+.assist-ask { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; padding: 11px 13px; border: 1px solid rgba(0,188,241,0.35); border-radius: 12px; background: rgba(0,188,241,0.06); font-size: 0.88rem; color: #fff; }
+.assist-ask span { color: #04222c; background: var(--teal); font-weight: 700; font-size: 12px; padding: 6px 13px; border-radius: 8px; }
+@media (max-width: 900px) {
+  .assist { padding: 8px 0 80px; }
+  .assist-split { grid-template-columns: 1fr; }
+  .assist-me { max-width: 92%; }
+}
+</style>
+<section class="assist" id="assistants">
+  <div class="contain">
+    <div class="assist-split">
+      <div class="assist-copy reveal">
+        <div class="label">AI assistants</div>
+        <h2>Your shoots, <em>in your AI assistant.</em></h2>
+        <p>Cinebody connects to Claude, Grok, ChatGPT and Gemini. Ask about your projects in plain words and get answers from your own workspace.</p>
+        <ul class="assist-points">
+          <li><b>Ask instead of clicking.</b><span>Which clips are still waiting for review? What came in for the storefront shot last week? Your assistant looks it up and tells you.</span></li>
+          <li><b>Get work done in the chat.</b><span>Start a project, write the shot list, approve the clips you like, and send a note to the people filming. All without leaving the conversation.</span></li>
+          <li><b>You decide what it can do.</b><span>When you connect, you choose: look things up only, also make changes, or also message your contributors. Disconnect it any time in Settings.</span></li>
+        </ul>
+        <div class="assist-foot">
+          <a class="assist-link" href="https://app.cinebody.com/docs/api#use-with-ai-assistants">See how to connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+          <span class="assist-plan">Included with Enterprise</span>
+        </div>
+      </div>
+      <div class="assist-visual reveal reveal-d1">
+        <div class="assist-card" role="img" aria-label="A conversation with an AI assistant connected to Cinebody: it lists three clips waiting for review, then asks permission before approving two of them">
+          <div class="assist-tabs"><span class="assist-tab on">Claude</span><span class="assist-tab">Grok</span><span class="assist-tab">ChatGPT</span><span class="assist-tab">Gemini</span></div>
+          <div class="assist-chat">
+            <div class="assist-me">Which clips from the spring launch are still waiting for review?</div>
+            <div class="assist-it">
+              <div class="assist-used"><i></i>Looked in Cinebody</div>
+              <div>Three clips in Spring Launch are waiting for you.</div>
+              <ul class="assist-rows">
+                <li><span>Wide of the storefront<small>Maya R. · today, 9:14</small></span><em class="assist-tag">Needs review</em></li>
+                <li><span>Hands on the product<small>Jordan T. · today, 8:52</small></span><em class="assist-tag">Needs review</em></li>
+                <li><span>Customer interview<small>Sam K. · yesterday</small></span><em class="assist-tag">Needs review</em></li>
+              </ul>
+            </div>
+            <div class="assist-me">Approve the first two.</div>
+            <div class="assist-it">
+              <div>Approving tells Maya and Jordan their clips made it.</div>
+              <div class="assist-ask">Approve 2 clips in Spring Launch?<span>Allow</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pipe-cap">Works with Claude · Grok · ChatGPT · Gemini</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#08131a"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#fff"/></svg></div>
 
 
@@ -2774,6 +2859,7 @@ body.shot-lb-open { overflow: hidden; touch-action: none; overscroll-behavior: n
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>API Access</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Custom integrations (DAM, Drive)</span></li>
         <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Strategic Producer</span></li>
+        <li class="cb-pricing__feature"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9L7.5 12.75L14.25 6" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Connect Claude, Grok, ChatGPT or Gemini</span></li>
       </ul>
       <a href="https://calendly.com/gavin-cinebody/cinebody-intro2" class="cb-pricing__cta cb-pricing__cta--outline">Talk to Our Team</a>
     </div>
