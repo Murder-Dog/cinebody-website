@@ -2223,8 +2223,8 @@ var djW=$('cm').closest('.dwrap2'),djR=robots[1],djDone=false,djTimer=0;
 function djOut(){djW.classList.remove('dj-pre');djW.classList.add('dj-out')}
 function djJump(delay){
   if(djDone)return;djDone=true;
-  // Phone sticky keeps the Director in the chip (no side card).
-  if(window.matchMedia('(max-width:599px),(max-height:430px)').matches){return}
+  // Phone sticky keeps the Director in the chip (no side card). The phone static stack does have the card and robot under the phone, so he hops there too.
+  if(!STATIC&&window.matchMedia('(max-width:599px),(max-height:430px)').matches){return}
   if(RM||!djR.animate){djOut();return}
   djTimer=setTimeout(function(){
     var bot=djW.querySelector('.chip .bot'),chip=bot.offsetParent,scr=$('cm').parentNode;
