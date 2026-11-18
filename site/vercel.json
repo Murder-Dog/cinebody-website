@@ -1161,6 +1161,14 @@
     {
       "source": "/presentation/adidas/:path*",
       "destination": "https://cinebody-adidas.vercel.app/:path*"
+    },
+    {
+      "source": "/presentation/queenme",
+      "destination": "https://cinebody-queenme.vercel.app/"
+    },
+    {
+      "source": "/presentation/queenme/:path*",
+      "destination": "https://cinebody-queenme.vercel.app/:path*"
     }
   ]
 }
