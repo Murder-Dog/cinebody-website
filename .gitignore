@@ -4,3 +4,8 @@ mempalace.yaml
 entities.json
 
 .DS_Store
+
+# Local secrets: never commit. Example files stay tracked.
+.env
+.env.*
+!.env.example
