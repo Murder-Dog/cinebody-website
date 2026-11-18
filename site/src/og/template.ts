@@ -27,7 +27,7 @@ export async function renderOG(title: string, subtitle?: string): Promise<Buffer
     'div',
     {
       style: {
-        height: '630px', width: '1200px', display: 'flex', flexDirection: 'column',
+        height: '630px', width: '1200px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column',
         justifyContent: 'space-between', padding: '76px 80px',
         background: 'linear-gradient(135deg, #0a0a0a 0%, #041a24 100%)',
         fontFamily: 'Plus Jakarta Sans', color: '#fff',
