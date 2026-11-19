@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../fragments/ai-data.html?raw';
+---
+<!-- Unlisted: shared by link with customers and their IT/legal teams. noindex here, and left out of the sitemap in astro.config.mjs. -->
+<Base title="AI Data Handling" description="What Cinebody's AI features send to each vendor, how long data is kept, how deletion works, and the training setting." noindex={true}>
+  <Fragment set:html={body} />
+</Base>
