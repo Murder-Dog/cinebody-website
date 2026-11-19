@@ -1,0 +1,794 @@
+<!-- Cinebody, AI data handling (unlisted reference page shared with customers; noindex, kept out of the sitemap) -->
+
+<style>
+/* ═══════════════════════════════════════════════
+   CINEBODY V4, PRIVACY POLICY PAGE
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --teal: #00bcf1;
+  --teal-dim: rgba(0,188,241,0.6);
+  --yellow: #ffec03;
+  --pink: #eb008b;
+  --bg: #0a0a0a;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.1);
+  --border-hover: rgba(0,188,241,0.2);
+  --text: #e8e8e8;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-muted: rgba(255,255,255,0.3);
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Plus Jakarta Sans', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius: 12px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+body > * { position: relative; z-index: 1; }
+
+/* ── CURVED SECTION DIVIDERS ── */
+.curve {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  line-height: 0;
+  font-size: 0;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  background: none !important;
+}
+.curve svg {
+  display: block;
+  width: 100%;
+  height: 70px;
+}
+@media (max-width: 600px) {
+  .curve svg { height: 90px; }
+}
+
+/* ── CONTAINER ── */
+.contain { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+/* ── SECTION LABEL ── */
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--teal), var(--pink));
+  z-index: 9999; transition: none;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.vis { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* ── SIGNATURE BAR ── */
+.sig-bar { height: 3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal) 33.33%, var(--yellow) 33.33%, var(--yellow) 66.66%, var(--pink) 66.66%); }
+
+/* ═══════════════════════════
+   HERO, SHORT / CENTERED
+   ═══════════════════════════ */
+.hero {
+  padding: 100px 0 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 30%, rgba(0,188,241,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(255,236,3,0.04) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0a0a 0%, #041a24 100%);
+  text-align: center;
+}
+
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal);
+  background: rgba(0,188,241,0.08); border: 1px solid rgba(0,188,241,0.15);
+  padding: 8px 18px; border-radius: 100px; margin-bottom: 28px;
+}
+
+.hero-eyebrow::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); box-shadow: 0 0 8px rgba(0,188,241,0.5);
+}
+
+.hero h1 {
+  font-size: clamp(2.75rem, 5.5vw, 4rem);
+  font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 20px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--teal) 0%, #33d6ff 50%, var(--teal) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+  font-size: 1rem; color: var(--text-dim); font-family: var(--mono); font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════
+   POLICY CONTENT, WHITE BG
+   ═══════════════════════════ */
+.policy-content {
+  background: #fff;
+  padding: 80px 0 100px;
+  position: relative;
+}
+
+.policy-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  background: #f6f8fa;
+  border: 1px solid #e8ecf0;
+  border-radius: 12px;
+  padding: 32px 36px;
+  margin-bottom: 56px;
+}
+
+.toc-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+  padding: 0;
+  margin: 0;
+}
+
+.toc ol li {
+  counter-increment: toc;
+  margin-bottom: 8px;
+}
+
+.toc ol li a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 6px 0;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+}
+
+.toc ol li a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--teal);
+  min-width: 24px;
+}
+
+.toc ol li a:hover {
+  color: #00bcf1;
+}
+
+/* ── INTRO TEXT ── */
+.policy-intro {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #e8ecf0;
+}
+
+.policy-intro p { margin-bottom: 16px; }
+.policy-intro p:last-child { margin-bottom: 0; }
+
+.policy-intro ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.policy-intro ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #555;
+}
+
+.policy-intro ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.policy-intro .definition {
+  font-style: italic;
+  color: #666;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: #f6f8fa;
+  border-left: 3px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── POLICY SECTIONS ── */
+.policy-section {
+  padding: 48px 0;
+  border-bottom: 1px solid #e8ecf0;
+}
+
+.policy-section:last-child {
+  border-bottom: none;
+}
+
+.policy-section:nth-child(even) {
+  background: #fafafa;
+  margin-left: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+  margin-right: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+  border-radius: 12px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--teal);
+  min-width: 28px;
+}
+
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.section-body {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+}
+
+.section-body p {
+  margin-bottom: 20px;
+}
+
+.section-body p:last-child {
+  margin-bottom: 0;
+}
+
+.section-body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.section-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.section-body ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+}
+
+.section-body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.section-body a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.section-body a:hover {
+  color: var(--pink);
+}
+
+.section-body .caps-note {
+  font-size: 14px;
+  line-height: 1.7;
+  background: #f6f8fa;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 16px;
+  color: #555;
+}
+
+/* ── LEGAL BASIS TABLE ── */
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+
+.legal-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  padding: 10px 16px;
+  border-bottom: 2px solid #e8ecf0;
+}
+
+.legal-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e8ecf0;
+  color: #333;
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.legal-table td:first-child {
+  font-weight: 600;
+  color: #111;
+  width: 34%;
+}
+
+/* ── CONTACT BLOCK ── */
+.contact-block {
+  background: #f6f8fa;
+  border: 1px solid #e8ecf0;
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-top: 16px;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.8;
+}
+
+.contact-block strong {
+  display: block;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+/* ═══════════════════════════
+   FOOTER
+   ═══════════════════════════ */
+
+/* ═══════════════════════════
+   RESPONSIVE
+   ═══════════════════════════ */
+@media (max-width: 1000px) {
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 60px 0 60px; }
+  .policy-content { padding: 60px 0 80px; }
+  .toc { padding: 24px 28px; }
+  .section-header h2 { font-size: 20px; }
+  .policy-section:nth-child(even) {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .legal-table, .legal-table thead, .legal-table tbody, .legal-table th, .legal-table td, .legal-table tr { display: block; }
+  .legal-table th { display: none; }
+  .legal-table td { border-bottom: none; padding: 4px 0; }
+  .legal-table tr { padding: 16px 0; border-bottom: 1px solid #e8ecf0; }
+  .legal-table td:first-child { width: auto; margin-bottom: 8px; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 40px 0 48px; }
+  .hero h1 { font-size: 2.25rem; }
+  .toc { padding: 20px 20px; }
+  .toc ol li a { font-size: 14px; }
+  .section-header { flex-direction: column; gap: 4px; }
+  .section-header h2 { font-size: 19px; }
+  .section-body { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── AI DATA PAGE: wide vendor table + mobile labels ── */
+.legal-table.wide td:first-child { width: 18%; }
+@media (max-width: 768px) {
+  .legal-table td[data-label]::before {
+    content: attr(data-label) ": ";
+    font-weight: 600;
+    color: var(--teal);
+  }
+}
+</style>
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="contain">
+    <div class="hero-eyebrow reveal">Legal</div>
+    <h1 class="reveal reveal-d1">AI data <em>handling</em></h1>
+    <p class="hero-sub reveal reveal-d2">Last Updated: November 19, 2026</p>
+  </div>
+</section>
+
+<!-- curve: dark → white -->
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#041a24"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#ffffff"/></svg></div>
+
+<!-- ═══ CONTENT ═══ -->
+<section class="policy-content">
+  <div class="policy-inner">
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Overview</h2>
+      </div>
+      <div class="section-body">
+        <p>Cinebody's AI features help people film, review and edit. They send footage, frames or audio to a short list of vendors under business API terms. Under those terms, the AI vendors (Anthropic, Google and ElevenLabs) don't train their models on it. Cinebody keeps footage only while the project and account exist, and deletes it on request at any level, down to one clip.</p>
+        <ul>
+          <li><strong>Filming:</strong> the Director and AI interview guide people in real time while they record.</li>
+          <li><strong>Review:</strong> clips are transcribed and scored on production quality, such as framing, light, audio and stability.</li>
+          <li><strong>Editing:</strong> captions, audio clean-up and finished cuts are made in Cinebody's editor.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Who processes what</h2>
+      </div>
+      <div class="section-body">
+        <p>Each vendor gets only what its job needs. Full footage stays with Cinebody's storage vendors; the AI vendors get frames, clips or audio for one task.</p>
+        <table class="legal-table wide">
+          <thead>
+            <tr>
+              <th>Vendor</th>
+              <th>What it receives</th>
+              <th>What it's for</th>
+              <th>How long the vendor keeps it</th>
+              <th>Trains on it?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">Anthropic</a> (Claude)</td>
+              <td data-label="Receives">3 to 5 still frames per clip, shot list and project text</td>
+              <td data-label="For">Director guidance, AI interview questions, edit suggestions</td>
+              <td data-label="Kept">Up to 30 days, then deleted</td>
+              <td data-label="Trains">No, barred by its commercial terms</td>
+            </tr>
+            <tr>
+              <td><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google</a> (Gemini API, paid)</td>
+              <td data-label="Receives">Full clips</td>
+              <td data-label="For">Transcripts and clip quality review</td>
+              <td data-label="Kept">Uploaded clip deleted within 48 hours; prompts logged for a limited time for abuse checks only</td>
+              <td data-label="Trains">No, per its paid-service terms</td>
+            </tr>
+            <tr>
+              <td><a href="https://elevenlabs.io/dpa" target="_blank" rel="noopener">ElevenLabs</a></td>
+              <td data-label="Receives">Clip audio; interview question text</td>
+              <td data-label="For">Word timing for captions, voice clean-up, the AI interviewer's voice</td>
+              <td data-label="Kept">Used only to do the task; deleted within 30 days of the contract ending (DPA &sect;9)</td>
+              <td data-label="Trains">No, the training setting is off on our account</td>
+            </tr>
+            <tr>
+              <td><a href="https://fal.ai/legal/data-processing-addendum" target="_blank" rel="noopener">fal.ai</a></td>
+              <td data-label="Receives">A few seconds of one shot, only when an editor asks</td>
+              <td data-label="For">Cutting an object out of a shot</td>
+              <td data-label="Kept">Used only to do the task; deleted after the contract ends (DPA &sect;1.6)</td>
+              <td data-label="Trains">No, except de-identified data to improve its service (DPA &sect;1.7.2)</td>
+            </tr>
+            <tr>
+              <td><a href="https://shotstack.io/dpa/" target="_blank" rel="noopener">Shotstack</a></td>
+              <td data-label="Receives">The clip segments an edit uses</td>
+              <td data-label="For">Rendering the finished video</td>
+              <td data-label="Kept">Output kept 24 hours by default</td>
+              <td data-label="Trains">No, processes only on our instructions (DPA &sect;4.1)</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.mux.com/dpa" target="_blank" rel="noopener">Mux</a> and <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank" rel="noopener">Cloudflare R2</a></td>
+              <td data-label="Receives">Full clips</td>
+              <td data-label="For">Storage, playback and delivery</td>
+              <td data-label="Kept">Until deleted in Cinebody</td>
+              <td data-label="Trains">No</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Face, framing, motion and lighting checks run on the phone or on Cinebody's own servers. Nothing from them is stored.</p>
+        <p>The full vendor list, including hosting, email and payments, is on our <a href="/subprocessors">Sub-processors</a> page.</p>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>What Cinebody keeps, and for how long</h2>
+      </div>
+      <div class="section-body">
+        <p>Cinebody keeps a workspace's footage and the AI results made from it until someone deletes them. Nothing expires on its own while the workspace is active.</p>
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Where it lives</th>
+              <th>Kept until</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Clips (video and audio)</td>
+              <td data-label="Where">Mux and Cloudflare R2</td>
+              <td data-label="Kept until">Deleted, then purged from Trash after 30 days</td>
+            </tr>
+            <tr>
+              <td>Transcripts and clip reviews (scores, notes)</td>
+              <td data-label="Where">Cinebody's database</td>
+              <td data-label="Kept until">The clip is deleted</td>
+            </tr>
+            <tr>
+              <td>Shot lists, Director notes, messages</td>
+              <td data-label="Where">Cinebody's database</td>
+              <td data-label="Kept until">The project is deleted</td>
+            </tr>
+            <tr>
+              <td>Finished edits and renders</td>
+              <td data-label="Where">Cloudflare R2</td>
+              <td data-label="Kept until">The project or workspace is deleted</td>
+            </tr>
+            <tr>
+              <td>Payout records for paid filmers</td>
+              <td data-label="Where">Cinebody's database, anonymized</td>
+              <td data-label="Kept until">Four years, for tax records</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>All of a workspace's data is separate from every other workspace's. One client's footage never appears in another client's projects. Training is covered below.</p>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Deleting data</h2>
+      </div>
+      <div class="section-body">
+        <p>Any piece of data can be deleted, from one clip up to a whole workspace. A deletion removes the files from storage and the transcripts and AI reviews made from them.</p>
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>What</th>
+              <th>How</th>
+              <th>When it's gone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>One clip</td>
+              <td data-label="How">Delete it in the project</td>
+              <td data-label="Gone">Purged from Trash after 30 days</td>
+            </tr>
+            <tr>
+              <td>One project</td>
+              <td data-label="How">Delete the project</td>
+              <td data-label="Gone">Purged from Trash after 30 days, with all its clips, transcripts, reviews and edits</td>
+            </tr>
+            <tr>
+              <td>One person (filmer or interviewee)</td>
+              <td data-label="How">Email <a href="mailto:support@cinebody.com">support@cinebody.com</a></td>
+              <td data-label="Gone">Within 30 days of verifying the request</td>
+            </tr>
+            <tr>
+              <td>A whole workspace</td>
+              <td data-label="How">Email <a href="mailto:support@cinebody.com">support@cinebody.com</a></td>
+              <td data-label="Gone">Within 30 days of verifying the request</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Deleting a person removes their profile, every clip they filmed, and the transcripts and reviews of those clips, across all projects. A finished video that was already delivered stays, because it's delivered work. Deleting the client's workspace removes it.</p>
+        <p>Vendors use what they receive only to do their task, and keep it only as long as the vendor table and their DPAs allow.</p>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Training</h2>
+      </div>
+      <div class="section-body">
+        <p>Each workspace has its own training setting, and only a workspace admin can change it (Settings &rarr; Team &rarr; Training). It's on by default, and we can switch it off for a client before they start. When it's off, nothing from that workspace is used to train or improve Cinebody's AI.</p>
+        <ul>
+          <li><strong>Off takes nothing away.</strong> Every feature works the same with training off.</li>
+          <li><strong>It applies from the moment it's switched off.</strong> Use before that point isn't undone.</li>
+          <li><strong>Every change is logged</strong>, with who changed it and when, in the workspace's audit log.</li>
+          <li><strong>Vendor training is separate.</strong> The setting covers Cinebody's own use. Anthropic's, Google's and ElevenLabs' terms already rule out training on our data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>What the visual AI looks at</h2>
+      </div>
+      <div class="section-body">
+        <p>The AI judges the shot, not the person. It checks what makes footage usable and nothing about who someone is.</p>
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Looks at</th>
+              <th>Never looks at or stores</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Whether a face is in frame, head angle, distance from camera</td>
+              <td data-label="Never">Identity, facial geometry or face prints</td>
+            </tr>
+            <tr>
+              <td>Framing, motion, stability, lighting</td>
+              <td data-label="Never">Age, race, gender or other sensitive traits</td>
+            </tr>
+            <tr>
+              <td>Audio level and clarity</td>
+              <td data-label="Never">Voice prints</td>
+            </tr>
+            <tr>
+              <td>Common objects in the shot</td>
+              <td data-label="Never">Profiles that follow a person across projects</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Each interview session stands alone. The AI interviewer doesn't remember a person from one session to the next.</p>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>Controls</h2>
+      </div>
+      <div class="section-body">
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Control</th>
+              <th>Who sets it</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Training on or off, per workspace</td>
+              <td data-label="Who">Workspace admin</td>
+              <td data-label="Status">Available now</td>
+            </tr>
+            <tr>
+              <td>Deletion of a clip or project</td>
+              <td data-label="Who">Anyone who manages the project</td>
+              <td data-label="Status">Available now</td>
+            </tr>
+            <tr>
+              <td>Deletion of a person or a workspace</td>
+              <td data-label="Who">Cinebody, on request</td>
+              <td data-label="Status">Available now</td>
+            </tr>
+            <tr>
+              <td>Turning single AI features on or off per client (Director, AI interview, clip scoring)</td>
+              <td data-label="Who">Cinebody, per client</td>
+              <td data-label="Status">On the roadmap</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="policy-section reveal">
+      <div class="section-header">
+        <h2>References and questions</h2>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li><a href="/subprocessors">Sub-processors</a>, with each vendor's data processing agreement</li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li>Questions or deletion requests: <a href="mailto:support@cinebody.com">support@cinebody.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><rect width="1440" height="80" fill="#fff"/><path d="M0,10 Q720,60 1440,10 L1440,80 L0,80 Z" fill="#0a0a0a"/></svg></div>
+
+<script>
+// Scroll progress bar
+(function(){
+  var bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }, { passive: true });
+})();
+
+// Reveal on scroll
+(function(){
+  var o = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        o.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el){ o.observe(el); });
+})();
+
+</script>
