@@ -1095,6 +1095,136 @@
       "source": "/cinebody-blog/video-production-pricing",
       "destination": "/cinebody-blog",
       "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/the-power-of-employee-generated-video-axon-success-story",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-blog/fundraising-video-examples",
+      "destination": "/cinebody-blog",
+      "permanent": true
+    },
+    {
+      "source": "/how-crowdsourced-video-can-improve-all-corporate-communications",
+      "destination": "/cinebody-blog/video-crowdsourcing-platforms",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "https://calendly.com/gavin-cinebody/cinebody-intro2",
+      "permanent": false
+    },
+    {
+      "source": "/contact-us",
+      "destination": "https://calendly.com/gavin-cinebody/cinebody-intro2",
+      "permanent": false
+    },
+    {
+      "source": "/get-in-touch",
+      "destination": "https://calendly.com/gavin-cinebody/cinebody-intro2",
+      "permanent": false
+    },
+    {
+      "source": "/about",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/careers",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/jobs",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "/knowledge-base",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms-of-service",
+      "permanent": true
+    },
+    {
+      "source": "/pointme2026",
+      "destination": "/pointme",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-november-2025",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-december-2025",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-january-2026",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-feb-2026",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cinebody-february-2026",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/februaryugc",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pit-viper",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/brand-standards",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/brand-revolution-emea",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/brand-revolution-usa-conference",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/greek-theatre",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [

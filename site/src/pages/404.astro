@@ -3,5 +3,12 @@ import Base from '../layouts/Base.astro';
 import body from '../fragments/404.html?raw';
 ---
 <Base title="Page Not Found" description="The page you're looking for can't be found." noindex={true}>
+  <!-- Record the address the visitor actually asked for, not "/404", so
+       Web Analytics shows which old links are broken (route stays /404). -->
+  <script is:inline>
+    window.webAnalyticsBeforeSend = function (event) {
+      return Object.assign({}, event, { url: window.location.href });
+    };
+  </script>
   <Fragment set:html={body} />
 </Base>
